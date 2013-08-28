@@ -1,0 +1,129 @@
+﻿@model IEnumerable<ISIC_DATA.Models.ICDog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Today_reg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Born)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Estimated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reg_F)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Father)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reg_M)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mother)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Breeder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HD2)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Today_reg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Born)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Estimated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reg_F)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Father)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reg_M)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mother)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Breeder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HD2)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
