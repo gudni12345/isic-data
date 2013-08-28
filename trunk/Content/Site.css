@@ -1,0 +1,354 @@
+﻿*{
+	
+	font-family:PT Serif Caption;
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background-color: #F2F5F5;
+}
+
+.logomynd
+{
+	height:120px;
+	margin-top:20px;
+	margin-left:8px;
+	margin-bottom:48px;
+}
+
+#header2
+{
+	float:right;
+	margin-top: -220px;
+	margin-right:-110px;
+    background-position: 10px 10px;
+}
+
+
+.listinn
+{
+	float: left;
+    width:280px;
+	background-color:#5A696B;
+    font:bolder;
+	color: black;
+	margin-top: 70px;
+	text-align: left;
+	margin-left: -40px;
+	background-position: 10px 10px;
+	
+}
+
+.ui-menu 
+{
+	float: left;
+    width:150px;
+
+    font:bolder;
+	color: black;
+	margin-top: 70px;
+	text-align: left;
+	margin-left: 0px;
+	background-position: 10px 10px;
+    border: none;
+}
+
+
+
+
+.slagordmynd
+ {
+    float: left;
+    margin-top: 278px;
+    margin-left:-270px;
+}
+
+
+#content
+{
+		margin-left: 300px;
+		font-family: PT Serif Caption;
+}
+.midjaH
+{
+	font-family:HelveticaNeueLT Std Ext;
+    color:black;
+}
+#frettnr1
+{
+	border: 3px solid #3B3D3D;
+	margin-right: 200px;
+	height:170px;
+	background-color: #D9D9D9;
+}
+   
+.frett1
+{
+	background-color:#8FB1B5;
+	color: black;
+	margin-top: 0px;
+	margin-left: 0px;
+	text-indent: 10px;
+}
+.dags1
+{
+	font-size: 10pt;
+    margin: -2px 9px 0px 0px;
+	text-align: right;
+    font-style:italic;
+}
+.mynd1
+{
+    width: 80px;
+	height: 100px;
+	margin-left: 10px;
+	margin-top: -5px;
+}
+
+.texti1
+{
+	font-size: 10pt;
+	margin-top: -110px;
+	margin-left: 95px;
+	margin-right: 10px;
+	
+}
+
+#frettnr2
+{	
+	border: 3px solid #3B3D3D;
+	margin-right: 200px;
+	margin-top: 30px;
+	height:170px;
+    background-color:#D9D9D9;
+}
+
+.frett2
+{
+	color: black;
+	margin-top: 0px;
+	margin-left: 0px;
+	text-indent: 10px;
+    background-color:#8FB1B5;
+}
+
+.dags2
+{
+	font-size: 10pt;
+	margin: 0px 9px 5px 0px;
+	text-align: right;
+    font-style:italic;
+}
+
+.mynd2
+{
+	width: 80px;
+	height: 100px;
+	margin-left: 10px;
+	margin-top: -5px;
+}
+
+.texti2
+{
+	font-size: 10pt;
+	font-size: 10pt;
+	margin-top: -110px;
+	margin-left: 95px;
+	margin-right: 10px;
+}
+
+a:link
+{
+
+	display:block;
+	margin-right:10px;
+	color:white;
+	list-style-type: none;
+	background-color: #67999E;
+	text-indent: 10px;
+	margin-right:10px;
+	border-bottom:1px solid #517478;
+	padding:5px;
+	text-decoration:none;
+}
+
+a:hover
+{
+
+	background-color:#517478;
+	display:block;
+	margin-right:10px;
+	color:white;
+	list-style-type: none;
+	text-indent: 10px;
+	margin-right:10px;
+	border-bottom:1px solid #517478;
+	padding:5px;
+	text-decoration:none;
+}
+
+a:visited
+{
+   
+	display:block;
+	margin-right:10px;
+	color:white;
+	list-style-type: none;
+	text-indent: 10px;
+	margin-right:10px;
+	border-bottom:1px solid #517478;
+	padding:5px;
+	text-decoration:none;
+}
+
+a:active
+{
+   
+	display:block;
+	margin-right:10px;
+	color:white;
+	list-style-type: none;
+	text-indent: 10px;
+	margin-right:10px;
+	border-bottom:1px solid #517478;
+	padding:5px;
+	text-decoration:none;
+}
+
+#footer
+{
+	
+	margin-top: 80px;
+	margin-right:300px;
+}
+
+.botn
+{
+	font-size: 10pt;
+	padding-bottom:40px;
+	padding-top:10px;
+	text-align:center;
+	margin-left:300px;
+    color:#797A7A;
+}
+
+.midjubotn
+{
+    font-family:HelveticaNeueLT Std Ext;
+    font-size:16pt;
+	color:#394142;
+    padding-bottom:10px;
+	padding-top:10px;
+	text-align:center;
+	margin-left:300px;  
+   
+}
+/*Leikir.html*/
+
+
+
+#log
+{
+    width:280px;
+	background-color:black;
+	color: white;
+    background-position: 10px 10px;
+    
+}
+
+#logger
+{
+    width:280px;
+	background-color:#BFDBDE;
+	color: white;
+    background-position: 10px 10px;
+}
+
+#leikjatakkar
+{
+    width:280px;
+	background-color:#BFDBDE;
+	color: white;
+    background-position: 10px 10px;
+    margin-left:20px;
+}
+/*index.html*/
+#leiktakk
+{
+     width:280px;
+	background-color:#BFDBDE;
+	color: white;
+    background-position: 10px 10px;
+    margin-left:300px;
+}
+
+.plina
+{
+    color:green;
+    margin-left:20px;
+}
+/*fimbuulfamb.html*/
+.takkzz
+{
+    width:280px;
+	background-color:#BFDBDE;
+	color: white;
+    background-position: 10px 10px;
+    margin-right:500px;
+}
+/*Tictactoe.html*/
+.myllutakkar
+{
+    width:280px;
+	background-color:#BFDBDE;
+	color: white;
+    background-position: 10px 10px;
+    margin-right:500px;
+    
+}
+.oskrafimbul
+{
+}
+
+.plinafimbul
+{
+    color:#517478;
+}
+/*Login.html*/
+
+.nyskratakkiilogin
+{
+    width:280px;
+	background-color:#BFDBDE;
+	color: white;
+    background-position: 10px 10px;
+    margin-left: 200px;
+}
+
+.oltaflailogin
+{
+   
+}
+
+/*Score.html*/
+
+#taflaniscore
+{
+}
+
+.Topp10
+{
+    border-collapse: collapse;
+    text-align:center;
+}
+
+.Topp10 th
+{
+    padding: 1px 5px;
+}
+
+.Topp10 td
+{
+    padding: 1px 5px;
+}
