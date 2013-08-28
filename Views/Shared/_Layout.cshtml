@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Bordspil.is</title>
+    
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" type="test/css" href="~/Content/Site.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+   
+	@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/signalr")
+    <script src="~/signalr/hubs"></script>
+    @Scripts.Render("~/bundles/modernizr")
+    <script>
+        $(function () {
+            $("#menu").menu();
+        });
+
+    </script>
+
+    <script>
+        $(function () {
+            $("#menu1").menu();
+        });
+
+    </script>
+    @RenderSection("styles", required: false)
+	
+</head>
+    
+<body>
+	<div id="header">
+		<img class="logomynd" src="~/Images/logo.png" alt="not able to load picture"/>
+	</div>
+	
+	<div id="header2">
+         
+	 @RenderSection("featured", required: false)
+     @Html.Partial("_LoginPartial")             
+	
+	</div>
+	
+	<div id="left">
+            <ul id="menu">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>	
+               
+                <li>
+                    @Html.ActionLink("Data", "index", "Data")
+                    <ul>
+                        <li>@Html.ActionLink("ISIC - All", "Index", "ISIC-All")</li>
+                        <li>@Html.ActionLink("Iceland", "Index", "Iceland")</li>
+                        <li>@Html.ActionLink("Demark", "Index", "Denmark")</li>
+                        <li>@Html.ActionLink("Sweden", "Index", "Sweden")</li>
+                        <li>@Html.ActionLink("Norway", "Index", "Norway")</li>
+                        <li>@Html.ActionLink("Finland", "Index", "Finland")</li>
+                        <li>@Html.ActionLink("Germany", "Index", "Germany")</li>
+                        <li>@Html.ActionLink("Austria", "Index", "Austria")</li>
+                        <li>@Html.ActionLink("Holland", "Index", "Holland")</li>
+                        <li>@Html.ActionLink("USA", "Index", "USA")</li>
+                        
+                    </ul>
+                </li>
+                 <li>@Html.ActionLink("About", "About", "Home")</li>
+                 <li>@Html.ActionLink("Search", "Search", "Home")</li>
+                <li>
+                   
+                </li>
+                @if (Roles.IsUserInRole("Administrator"))
+                     {
+                         <li>@Html.ActionLink("Admin", "Manage", "Account")
+                            <ul>
+                                <li>@Html.ActionLink("Notendur", "Users", "Home")</li>
+                                <li>@Html.ActionLink("Disable user", "DisableUsers", "Administrator")</li>
+                                <li>@Html.ActionLink("New Data", "Create", "Data")</li>
+                            </ul>
+                        </li>
+                     }
+                @if (Roles.IsUserInRole("Member"))
+                {
+                <li><span>@Html.ActionLink("Account", "Manage", "Account")</span></li>
+                }
+            </ul>
+    </div>
+        
+         
+
+    <div id="content">
+    @RenderBody()	
+    </div>
+    <div id="footer">
+      
+        <h2 class="botn">&copy; ISIC</h2>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
