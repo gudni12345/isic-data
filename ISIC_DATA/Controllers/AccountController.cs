@@ -14,7 +14,7 @@ using ISIC_DATA.Models;
 namespace ISIC_DATA.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+   // [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //
