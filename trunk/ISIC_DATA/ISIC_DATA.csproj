@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AustriaController.cs" />
     <Compile Include="Controllers\DenmarkController.cs" />
+    <Compile Include="Controllers\dogController.cs" />
     <Compile Include="Controllers\FinnlandController.cs" />
     <Compile Include="Controllers\GermanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -196,6 +197,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\dog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +367,11 @@
     <Content Include="Views\Finnland\Index.cshtml" />
     <Content Include="Views\Austria\Index.cshtml" />
     <Content Include="Views\USA\Index.cshtml" />
+    <Content Include="Views\dog\Index.cshtml" />
+    <Content Include="Views\dog\Details.cshtml" />
+    <Content Include="Views\dog\Create.cshtml" />
+    <Content Include="Views\dog\Edit.cshtml" />
+    <Content Include="Views\dog\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
