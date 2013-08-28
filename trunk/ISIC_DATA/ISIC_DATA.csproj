@@ -182,7 +182,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AustriaController.cs" />
+    <Compile Include="Controllers\DenmarkController.cs" />
+    <Compile Include="Controllers\FinnlandController.cs" />
+    <Compile Include="Controllers\GermanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IcelandController.cs" />
+    <Compile Include="Controllers\NorwayController.cs" />
+    <Compile Include="Controllers\SwedenController.cs" />
+    <Compile Include="Controllers\USAController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -349,6 +357,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Iceland\Index.cshtml" />
+    <Content Include="Views\Denmark\Index.cshtml" />
+    <Content Include="Views\Sweden\Index.cshtml" />
+    <Content Include="Views\Norway\Index.cshtml" />
+    <Content Include="Views\Germany\Index.cshtml" />
+    <Content Include="Views\Finnland\Index.cshtml" />
+    <Content Include="Views\Austria\Index.cshtml" />
+    <Content Include="Views\USA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
