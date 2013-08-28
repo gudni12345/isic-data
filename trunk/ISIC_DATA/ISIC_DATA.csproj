@@ -188,6 +188,7 @@
     <Compile Include="Controllers\FinnlandController.cs" />
     <Compile Include="Controllers\GermanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ICDogsController.cs" />
     <Compile Include="Controllers\IcelandController.cs" />
     <Compile Include="Controllers\NorwayController.cs" />
     <Compile Include="Controllers\SwedenController.cs" />
@@ -198,6 +199,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\dog.cs" />
+    <Compile Include="Models\ICDog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -320,7 +322,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -372,6 +376,11 @@
     <Content Include="Views\dog\Create.cshtml" />
     <Content Include="Views\dog\Edit.cshtml" />
     <Content Include="Views\dog\Delete.cshtml" />
+    <Content Include="Views\ICDogs\Index.cshtml" />
+    <Content Include="Views\ICDogs\Details.cshtml" />
+    <Content Include="Views\ICDogs\Create.cshtml" />
+    <Content Include="Views\ICDogs\Edit.cshtml" />
+    <Content Include="Views\ICDogs\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

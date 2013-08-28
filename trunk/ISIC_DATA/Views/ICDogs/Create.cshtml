@@ -1,0 +1,164 @@
+﻿@model ISIC_DATA.Models.ICDog
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ICDog</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Today_reg)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Today_reg)
+            @Html.ValidationMessageFor(model => model.Today_reg)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Reg)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Reg)
+            @Html.ValidationMessageFor(model => model.Reg)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sex)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sex)
+            @Html.ValidationMessageFor(model => model.Sex)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Born)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Born)
+            @Html.ValidationMessageFor(model => model.Born)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date_Estimated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date_Estimated)
+            @Html.ValidationMessageFor(model => model.Date_Estimated)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Reg_F)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Reg_F)
+            @Html.ValidationMessageFor(model => model.Reg_F)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Father)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Father)
+            @Html.ValidationMessageFor(model => model.Father)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Reg_M)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Reg_M)
+            @Html.ValidationMessageFor(model => model.Reg_M)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mother)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Mother)
+            @Html.ValidationMessageFor(model => model.Mother)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.B)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.B)
+            @Html.ValidationMessageFor(model => model.B)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.C)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.C)
+            @Html.ValidationMessageFor(model => model.C)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Color)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Color)
+            @Html.ValidationMessageFor(model => model.Color)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Breeder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Breeder)
+            @Html.ValidationMessageFor(model => model.Breeder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Owner)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Owner)
+            @Html.ValidationMessageFor(model => model.Owner)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HD)
+            @Html.ValidationMessageFor(model => model.HD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HD2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HD2)
+            @Html.ValidationMessageFor(model => model.HD2)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
