@@ -189,7 +189,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\dog.cs" />
     <Compile Include="Models\IsicDog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

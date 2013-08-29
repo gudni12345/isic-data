@@ -7,12 +7,18 @@ body
 {
     background-color: #e4e0e0;
 }
-
+.logomynd
+{
+	height:120px;
+	margin-top:40px;
+	margin-left:8px;
+	margin-bottom:48px;
+}
 #header2
 {
 	float:right;
 	margin-top: -220px;
-	margin-right:-110px;
+	margin-right: 110px;
     background-position: 10px 10px;
 }
 .ui-menu 
@@ -41,7 +47,7 @@ body
 }
 #frettnr1
 {
-	border: 3px solid #3B3D3D;
+	border: 2px solid #3B3D3D;
 	margin-right: 200px;
 	height:170px;
 	background-color: #D9D9D9;
@@ -128,7 +134,7 @@ a:link
 	margin-right:10px;
 	color:black;
 	list-style-type: none;
-	background-color: #67999E;
+	background-color: #e62424;
 	text-indent: 10px;
 	margin-right:10px;
 	border-bottom:1px solid #517478;
@@ -138,7 +144,7 @@ a:link
 
 a:hover
 {
-	background-color:#517478;
+	background-color:#0d93f8;
 	display:block;
 	margin-right:10px;
 	color:black;
@@ -146,19 +152,6 @@ a:hover
 	text-indent: 10px;
 	margin-right:10px;
 	border-bottom:double solid #517478;
-	padding:5px;
-	text-decoration:none;
-}
-
-a:visited
-{
-   	display:block;
-	margin-right:10px;
-	color:blue;
-	list-style-type: none;
-	text-indent: 10px;
-	margin-right:10px;
-	border-bottom:1px solid #517478;
 	padding:5px;
 	text-decoration:none;
 }
@@ -175,7 +168,14 @@ a:active
 	padding:5px;
 	text-decoration:none;
 }
-
+#log
+{
+    width:280px;
+	background-color:black;
+	color: white;
+    background-position: 10px 10px;
+    
+}
 #footer
 {
 	margin-top: 80px;
