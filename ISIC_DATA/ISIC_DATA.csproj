@@ -184,14 +184,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DenmarkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ICDogsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\dog.cs" />
-    <Compile Include="Models\ICDog.cs" />
     <Compile Include="Models\IsicDog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

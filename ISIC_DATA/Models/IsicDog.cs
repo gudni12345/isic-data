@@ -34,5 +34,4 @@ namespace ISIC_DATA.Models
         public DbSet<IsicDog> IsicDogs { get; set; }
     }
 }
-    }
-}
+
