@@ -6,10 +6,9 @@ using System.Data.Entity;
 
 namespace ISIC_DATA.Models
 {
-    public class ICDog
+    public class IsicDog
     {
-
-        public int ID { get; set; }
+         public int ID { get; set; }
         public string Today_reg { get; set; }
         public string Reg { get; set; }
         public string Name { get; set; }
@@ -32,6 +31,8 @@ namespace ISIC_DATA.Models
     }
     public class IsicDogDBContext : DbContext
     {
-        public DbSet<ICDog> ICDogs { get; set; }
+        public DbSet<IsicDog> IsicDogs { get; set; }
+    }
+}
     }
 }

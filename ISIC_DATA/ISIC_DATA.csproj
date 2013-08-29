@@ -182,17 +182,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AustriaController.cs" />
     <Compile Include="Controllers\DenmarkController.cs" />
-    <Compile Include="Controllers\dogController.cs" />
-    <Compile Include="Controllers\FinnlandController.cs" />
-    <Compile Include="Controllers\GermanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ICDogsController.cs" />
-    <Compile Include="Controllers\IcelandController.cs" />
-    <Compile Include="Controllers\NorwayController.cs" />
-    <Compile Include="Controllers\SwedenController.cs" />
-    <Compile Include="Controllers\USAController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,6 +192,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\dog.cs" />
     <Compile Include="Models\ICDog.cs" />
+    <Compile Include="Models\IsicDog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -363,19 +356,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Iceland\Index.cshtml" />
-    <Content Include="Views\Denmark\Index.cshtml" />
     <Content Include="Views\Sweden\Index.cshtml" />
-    <Content Include="Views\Norway\Index.cshtml" />
-    <Content Include="Views\Germany\Index.cshtml" />
-    <Content Include="Views\Finnland\Index.cshtml" />
-    <Content Include="Views\Austria\Index.cshtml" />
     <Content Include="Views\USA\Index.cshtml" />
-    <Content Include="Views\dog\Index.cshtml" />
-    <Content Include="Views\dog\Details.cshtml" />
-    <Content Include="Views\dog\Create.cshtml" />
-    <Content Include="Views\dog\Edit.cshtml" />
-    <Content Include="Views\dog\Delete.cshtml" />
     <Content Include="Views\ICDogs\Index.cshtml" />
     <Content Include="Views\ICDogs\Details.cshtml" />
     <Content Include="Views\ICDogs\Create.cshtml" />
