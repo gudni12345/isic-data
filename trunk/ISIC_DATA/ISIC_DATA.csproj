@@ -182,8 +182,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DenmarkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IsicDogController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -354,13 +354,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Sweden\Index.cshtml" />
-    <Content Include="Views\USA\Index.cshtml" />
-    <Content Include="Views\ICDogs\Index.cshtml" />
-    <Content Include="Views\ICDogs\Details.cshtml" />
-    <Content Include="Views\ICDogs\Create.cshtml" />
-    <Content Include="Views\ICDogs\Edit.cshtml" />
-    <Content Include="Views\ICDogs\Delete.cshtml" />
+    <Content Include="Views\IsicDog\Index.cshtml" />
+    <Content Include="Views\IsicDog\Details.cshtml" />
+    <Content Include="Views\IsicDog\Create.cshtml" />
+    <Content Include="Views\IsicDog\Edit.cshtml" />
+    <Content Include="Views\IsicDog\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

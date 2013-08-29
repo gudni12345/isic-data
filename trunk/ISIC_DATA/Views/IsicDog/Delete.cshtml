@@ -1,4 +1,4 @@
-﻿@model ISIC_DATA.Models.ICDog
+﻿@model ISIC_DATA.Models.IsicDog
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>ICDog</legend>
+    <legend>IsicDog</legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Today_reg)
@@ -127,6 +127,13 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.HD2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Inbreeding)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Inbreeding)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
