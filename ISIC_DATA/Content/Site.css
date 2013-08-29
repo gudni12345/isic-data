@@ -1,12 +1,11 @@
 ﻿*{
-	
 	font-family:PT Serif Caption;
     margin: 0;
     padding: 0;
 }
 body
 {
-    background-color: #F2F5F5;
+    background-color: #e4e0e0;
 }
 
 .logomynd
@@ -26,19 +25,6 @@ body
 }
 
 
-.listinn
-{
-	float: left;
-    width:280px;
-	background-color:#5A696B;
-    font:bolder;
-	color: black;
-	margin-top: 70px;
-	text-align: left;
-	margin-left: -40px;
-	background-position: 10px 10px;
-	
-}
 
 .ui-menu 
 {
@@ -160,10 +146,9 @@ body
 
 a:link
 {
-
-	display:block;
+    display:block;
 	margin-right:10px;
-	color:white;
+	color:black;
 	list-style-type: none;
 	background-color: #67999E;
 	text-indent: 10px;
@@ -190,10 +175,9 @@ a:hover
 
 a:visited
 {
-   
-	display:block;
+   	display:block;
 	margin-right:10px;
-	color:white;
+	color:black;
 	list-style-type: none;
 	text-indent: 10px;
 	margin-right:10px;
@@ -204,8 +188,7 @@ a:visited
 
 a:active
 {
-   
-	display:block;
+   	display:block;
 	margin-right:10px;
 	color:white;
 	list-style-type: none;
@@ -218,7 +201,6 @@ a:active
 
 #footer
 {
-	
 	margin-top: 80px;
 	margin-right:300px;
 }
