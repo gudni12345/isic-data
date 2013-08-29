@@ -11,7 +11,7 @@ namespace ISIC_DATA.Controllers
 {
     public class ICDogsController : Controller
     {
-        private ICDogDBContext db = new ICDogDBContext();
+        private IsicDogDBContext db = new IsicDogDBContext();
 
         //
         // GET: /ICDogs/
