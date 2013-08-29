@@ -1,4 +1,4 @@
-﻿@model ISIC_DATA.Models.ICDog
+﻿@model ISIC_DATA.Models.IsicDog
 
 @{
     ViewBag.Title = "Edit";
@@ -11,7 +11,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>ICDog</legend>
+        <legend>IsicDog</legend>
 
         @Html.HiddenFor(model => model.ID)
 
@@ -149,6 +149,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.HD2)
             @Html.ValidationMessageFor(model => model.HD2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Inbreeding)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Inbreeding)
+            @Html.ValidationMessageFor(model => model.Inbreeding)
         </div>
 
         <p>

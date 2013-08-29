@@ -1,4 +1,4 @@
-﻿@model ISIC_DATA.Models.ICDog
+﻿@model ISIC_DATA.Models.IsicDog
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>ICDog</legend>
+    <legend>IsicDog</legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Today_reg)
@@ -126,6 +126,13 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.HD2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Inbreeding)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Inbreeding)
     </div>
 </fieldset>
 <p>
