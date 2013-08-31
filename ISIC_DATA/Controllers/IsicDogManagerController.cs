@@ -29,7 +29,7 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var isdogs = from g in _db.GetISDogs()
                         
                         select g;
             if ( isdogs != null)
