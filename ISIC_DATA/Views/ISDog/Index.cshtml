@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ISIC_DATA.Models.ISDog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>>
+
+
+<table>
+ 
+
+@foreach (var item in Model)
+{
+   
+ <ul>
+        @foreach (var g in Model)
+        {
+            <li>@Html.ActionLink(g.ID.ToString() + " Name: " + g.Name.ToString(),  "Fimbulfamb", new{id = g.ID}, null)</li>
+        }
+    </ul>        
+ }
+
+</table>
