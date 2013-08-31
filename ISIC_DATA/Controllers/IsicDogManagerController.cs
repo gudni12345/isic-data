@@ -29,8 +29,8 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-            var isdogs = from g in _db.GetISDogs()
-                        
+            var isdogs = from g in _db.GetIsicDogs()
+                        //where g.B == "IS"
                         select g;
             if ( isdogs != null)
             {
@@ -38,7 +38,7 @@ namespace ISIC_DATA.Controllers
             }
             return View();
         }
-        
+
 
         //
         // GET: /IsicDogManager/Details/5

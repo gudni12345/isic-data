@@ -361,12 +361,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\IsicDog\Index.cshtml" />
     <Content Include="Views\ISDog\Index.cshtml" />
-    <Content Include="Views\IsicDogManager\Index1.cshtml" />
+    <Content Include="Views\IsicDogManager\Index.cshtml" />
     <Content Include="Views\IsicDogManager\Details.cshtml" />
     <Content Include="Views\IsicDogManager\Create.cshtml" />
     <Content Include="Views\IsicDogManager\Edit.cshtml" />
     <Content Include="Views\IsicDogManager\Delete.cshtml" />
-    <Content Include="Views\IsicDogManager\Index.cshtml" />
+    <Content Include="Views\IsicDogManager\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
