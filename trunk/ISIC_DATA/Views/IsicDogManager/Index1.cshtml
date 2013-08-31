@@ -12,58 +12,59 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Today_reg)
+            Today_reg
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Reg)
+            Reg
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sex)
+            Sex
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Born)
+            Born
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date_Estimated)
+            Date_Estimated
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Reg_F)
+            Reg_F
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Father)
+            Father
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Reg_M)
+            Reg_M
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Mother)
+            Mother
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.B)
+            B
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.C)
+            C
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Color)
+            Color
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Breeder)
+           Breeder
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Owner)
+            Owner
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HD)
+           HD
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HD2)
+           HD2
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Inbreeding)
+            Inbreeding
         </th>
         <th></th>
     </tr>
@@ -71,14 +72,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Today_reg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reg)
-        </td>
+            @Html.DisplayFor(modelItem => item.ID)
+       
+            
+             </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Sex)
         </td>
