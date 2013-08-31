@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using System.ComponentModel.DataAnnotations;
 
 namespace ISIC_DATA.Models
 {
-    public class IsicDog : ISIC_DATAEntities
+    public partial class ISDog
     {
-       [ScaffoldColumn(false)]
         public int ID { get; set; }
         public string Today_reg { get; set; }
         public string Reg { get; set; }
@@ -29,10 +27,7 @@ namespace ISIC_DATA.Models
         public string HD { get; set; }
         public string HD2 { get; set; }
         public double Inbreeding { get; set; }
-
-       //public virtual IsicDog { get; set; }
-        
+        public List<IsicDog> IsicDogs { get; set; }
     }
-
+   
 }
-
