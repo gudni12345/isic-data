@@ -9,20 +9,39 @@ using ISIC_DATA.Models;
 
 namespace ISIC_DATA.Controllers
 {
-    public class IsicDogController : Controller
+    public class IsicDogManagerController : Controller
     {
-        private IsicDogDBContext db = new IsicDogDBContext();
+        private ISIC_DATAEntities db = new ISIC_DATAEntities();
+        private allISIC_DATARepository _db = null;
+
+        public IsicDogManagerController()
+        {
+            _db = new ISIC_DATARepository();
+        }
+        public IsicDogManagerController(allISIC_DATARepository rep)
+        {
+            _db = rep;
+
+        } 
 
         //
-        // GET: /IsicDog/
+        // GET: /IsicDogManager/
 
         public ActionResult Index()
         {
-            return View(db.IsicDogs.ToList());
+            var isdogs = from g in _db.GetIsicDogs()
+                        
+                        select g;
+            if ( isdogs != null)
+            {
+                return View(isdogs);
+            }
+            return View();
         }
+        
 
         //
-        // GET: /IsicDog/Details/5
+        // GET: /IsicDogManager/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -35,7 +54,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // GET: /IsicDog/Create
+        // GET: /IsicDogManager/Create
 
         public ActionResult Create()
         {
@@ -43,10 +62,10 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /IsicDog/Create
+        // POST: /IsicDogManager/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create(IsicDog isicdog)
         {
             if (ModelState.IsValid)
@@ -60,7 +79,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // GET: /IsicDog/Edit/5
+        // GET: /IsicDogManager/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
@@ -73,7 +92,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /IsicDog/Edit/5
+        // POST: /IsicDogManager/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -89,7 +108,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // GET: /IsicDog/Delete/5
+        // GET: /IsicDogManager/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
@@ -102,7 +121,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /IsicDog/Delete/5
+        // POST: /IsicDogManager/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
