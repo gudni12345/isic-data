@@ -183,13 +183,19 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IsicDogController.cs" />
+    <Compile Include="Controllers\IsicDogManagerController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\allISIC_DATARepository.cs" />
+    <Compile Include="Models\ISDog.cs" />
     <Compile Include="Models\IsicDog.cs" />
+    <Compile Include="Models\IsicDogManager.cs" />
+    <Compile Include="Models\ISIC_DATAEntities.cs" />
+    <Compile Include="Models\ISIC_DATARepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -354,10 +360,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\IsicDog\Index.cshtml" />
-    <Content Include="Views\IsicDog\Details.cshtml" />
-    <Content Include="Views\IsicDog\Create.cshtml" />
-    <Content Include="Views\IsicDog\Edit.cshtml" />
-    <Content Include="Views\IsicDog\Delete.cshtml" />
+    <Content Include="Views\ISDog\Index.cshtml" />
+    <Content Include="Views\IsicDogManager\Index1.cshtml" />
+    <Content Include="Views\IsicDogManager\Details.cshtml" />
+    <Content Include="Views\IsicDogManager\Create.cshtml" />
+    <Content Include="Views\IsicDogManager\Edit.cshtml" />
+    <Content Include="Views\IsicDogManager\Delete.cshtml" />
+    <Content Include="Views\IsicDogManager\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
