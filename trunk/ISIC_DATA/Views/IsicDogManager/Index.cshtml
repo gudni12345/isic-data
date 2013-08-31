@@ -1,20 +1,114 @@
-﻿@model IEnumerable<ISIC_DATA.Models.ISDog>
+﻿@model IEnumerable<ISIC_DATA.Models.IsicDog>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>All dogs in ISIC</h2>
+<h2>Index</h2>
 
-
-<div>
-
- @foreach (var g in Model)
- {
-    <ul>
-     <li>@Html.ActionLink(g.ID + " Name: " + g.Name.ToString(),  "Fimbulfamb", new{id = g.ID}, null)</li>
-  </ul>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+       
+        <th>
+            Reg
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Sex
+        </th>
+        <th>
+            Born
+        </th>
+      
         
+        <th>
+            Father
+        </th>
+       
+        <th>
+            Mother
+        </th>
+        <th>
+            Born in
+        </th>
+        <th>
+            Lives in
+        </th>
+        <th>
+            Color
+        </th>
+        <th>
+           Breeder
+        </th>
+        
+        <th>
+           HD
 
- }
-</div>
+        </th>
+       
+        <th>
+            Inbreeding
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+       
+            
+             </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Born)
+        </td>
+       
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Father)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Mother)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Breeder)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.HD)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Inbreeding)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
