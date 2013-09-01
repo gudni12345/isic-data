@@ -183,6 +183,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IsicDataController.cs" />
     <Compile Include="Controllers\IsicDogManagerController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -191,11 +192,20 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\allISIC_DATARepository.cs" />
+    <Compile Include="Models\AUDogs.cs" />
+    <Compile Include="Models\DKDog.cs" />
+    <Compile Include="Models\FIDogs.cs" />
+    <Compile Include="Models\GEDogs.cs" />
     <Compile Include="Models\ISDog.cs" />
     <Compile Include="Models\IsicDog.cs" />
     <Compile Include="Models\IsicDogManager.cs" />
+    <Compile Include="Models\ISIC_DATAContext.cs" />
     <Compile Include="Models\ISIC_DATAEntities.cs" />
     <Compile Include="Models\ISIC_DATARepository.cs" />
+    <Compile Include="Models\NEDogs.cs" />
+    <Compile Include="Models\NODogs.cs" />
+    <Compile Include="Models\SEDogs.cs" />
+    <Compile Include="Models\USDogs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -359,7 +369,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\IsicDog\Index.cshtml" />
     <Content Include="Views\ISDog\Index.cshtml" />
     <Content Include="Views\IsicDogManager\Index.cshtml" />
     <Content Include="Views\IsicDogManager\Details.cshtml" />
@@ -367,6 +376,17 @@
     <Content Include="Views\IsicDogManager\Edit.cshtml" />
     <Content Include="Views\IsicDogManager\Delete.cshtml" />
     <Content Include="Views\IsicDogManager\Index2.cshtml" />
+    <Content Include="Views\IsicDog\DKDogs.cshtml" />
+    <Content Include="Views\IsicData\DKDogs.cshtml" />
+    <Content Include="Views\IsicData\ISDogs.cshtml" />
+    <Content Include="Views\IsicData\AUDogs.cshtml" />
+    <Content Include="Views\IsicData\SEDogs.cshtml" />
+    <Content Include="Views\IsicData\FIDogs.cshtml" />
+    <Content Include="Views\IsicData\USDogs.cshtml" />
+    <Content Include="Views\IsicData\DEDogs.cshtml" />
+    <Content Include="Views\IsicData\NEDogs.cshtml" />
+    <Content Include="Views\IsicData\NODogs.cshtml" />
+    <Content Include="Views\IsicData\IsicDogs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

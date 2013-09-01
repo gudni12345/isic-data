@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ISIC_DATA.Models.IsicDog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Iceland</h2>
+
+
+<table>
+    <thead class="ui-widget-header">
+    <tr>
+       
+        <th>
+            Reg
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Sex
+        </th>
+        <th>
+            Born
+        </th>
+      
+        
+        <th>
+            Father
+        </th>
+       
+        <th>
+            Mother
+        </th>
+        <th>
+            Born in
+        </th>
+        <th>
+            Lives in
+        </th>
+        <th>
+            Color
+        </th>
+        <th>
+           Breeder
+        </th>
+        
+        <th>
+           HD
+
+        </th>
+       
+        <th>
+            Inbreeding
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+       
+            
+             </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        </tr>
+}
+
+</table>

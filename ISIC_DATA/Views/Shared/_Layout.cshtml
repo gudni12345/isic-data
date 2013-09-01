@@ -6,7 +6,7 @@
 
     <title></title>
     
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/start/jquery-ui.css" />
     <link rel="stylesheet" type="test/css" href="~/Content/Site.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -28,6 +28,44 @@
         });
 
     </script>
+    <script type="text/javascript">
+
+        (function ($) {
+            $.fn.styleTable = function (options) {
+                var defaults = {
+                    css: 'styleTable'
+                };
+                options = $.extend(defaults, options);
+
+                return this.each(function () {
+
+                    input = $(this);
+                    input.addClass(options.css);
+
+                    input.find("tr").live('mouseover mouseout', function (event) {
+                        if (event.type == 'mouseover') {
+                            $(this).children("td").addClass("ui-state-hover");
+                        } else {
+                            $(this).children("td").removeClass("ui-state-hover");
+                        }
+                    });
+
+                    input.find("th").addClass("ui-state-default");
+                    input.find("td").addClass("ui-widget-content");
+
+                    input.find("tr").each(function () {
+                        $(this).children("td:not(:first)").addClass("first");
+                        $(this).children("th:not(:first)").addClass("first");
+                    });
+                });
+            };
+        })(jQuery);
+
+        $(document).ready(function () {
+            $("#Table1").styleTable();
+        });
+
+</script>
     @RenderSection("styles", required: false)
 	
 </head>
@@ -51,16 +89,16 @@
                 <li>
                     @Html.ActionLink("Data", "index", "Data")
                     <ul>
-                        <li>@Html.ActionLink("ISIC - All", "Index", "IsicDogManager")</li>
-                        <li>@Html.ActionLink("Iceland", "Index", "ISDogs")</li>
-                        <li>@Html.ActionLink("Demark", "Index", "Denmark")</li>
-                        <li>@Html.ActionLink("Sweden", "Index", "Sweden")</li>
-                        <li>@Html.ActionLink("Norway", "Index", "Norway")</li>
-                        <li>@Html.ActionLink("Finland", "Index", "Finland")</li>
-                        <li>@Html.ActionLink("Germany", "Index", "Germany")</li>
-                        <li>@Html.ActionLink("Austria", "Index", "Austria")</li>
-                        <li>@Html.ActionLink("Holland", "Index", "Holland")</li>
-                        <li>@Html.ActionLink("USA", "Index", "USA")</li>
+                        <li>@Html.ActionLink("ISIC - All", "IsicDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Iceland", "ISDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Denmark", "DKDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Sweden", "SEDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Norway", "NODogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Finland", "FIDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Germany", "GEDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Austria", "AUDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("Holland", "NEDogs", "IsicData")</li>
+                        <li>@Html.ActionLink("USA", "USDogs", "IsicData")</li>
                         
                     </ul>
                 </li>
