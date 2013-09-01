@@ -1,7 +1,7 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <div id="logger">
-        <ul id="menu2">
+        <ul id="menu">
             <li>Welcome @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {

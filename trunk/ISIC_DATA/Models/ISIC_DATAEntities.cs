@@ -10,5 +10,6 @@ namespace ISIC_DATA.Models
     {
          public DbSet<IsicDog> IsicDogs { get; set; }
          public DbSet<ISDog> ISDogs { get; set; }
-    }
+         public DbSet<DKDog> DKDogs { get; set; }
+    }   
 }

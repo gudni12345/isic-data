@@ -34,6 +34,19 @@ body
 	background-position: 10px 10px;
     border: none;
 }
+.ui-menu1
+{
+	float: left;
+    width:150px;
+
+    font:bolder;
+	color: black;
+	margin-top: 70px;
+	text-align: left;
+	margin-left: 0px;
+	background-position: 10px 10px;
+    border: none;
+}
 
 #content
 {
@@ -203,3 +216,7 @@ a:active
 	margin-left:300px;  
    
 }
+.styleTable { border-collapse: separate; }
+.styleTable TD { font-weight: normal !important; padding: .4em; border-top-width: 0px !important; }
+.styleTable TH { text-align: center; padding: .8em .4em; }
+.styleTable TD.first, .styleTable TH.first { border-left-width: 0px !important; }
