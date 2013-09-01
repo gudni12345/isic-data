@@ -313,6 +313,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\calendar.gif" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -376,7 +377,6 @@
     <Content Include="Views\IsicDogManager\Edit.cshtml" />
     <Content Include="Views\IsicDogManager\Delete.cshtml" />
     <Content Include="Views\IsicDogManager\Index2.cshtml" />
-    <Content Include="Views\IsicDog\DKDogs.cshtml" />
     <Content Include="Views\IsicData\DKDogs.cshtml" />
     <Content Include="Views\IsicData\ISDogs.cshtml" />
     <Content Include="Views\IsicData\AUDogs.cshtml" />
