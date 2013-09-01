@@ -6,25 +6,22 @@
 
 <h2>Iceland</h2>
 
-
 <table>
     <thead class="ui-widget-header">
     <tr>
-       
-        <th>
+       <th>
             Reg
-        </th>
-        <th>
+       </th>
+       <th>
             Name
-        </th>
-        <th>
+       </th>
+       <th>
             Sex
-        </th>
-        <th>
+       </th>
+       <th>
             Born
         </th>
-      
-        
+         
         <th>
             Father
         </th>
@@ -66,7 +63,43 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        </tr>
+         <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+       <td>
+            @Html.DisplayFor(modelItem => item.Born)
+        </td>
+       
+             
+        <td>
+            @Html.DisplayFor(modelItem => item.Father)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Mother)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Breeder)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.HD)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Inbreeding)
+        </td>
+
+    </tr>
 }
 
 </table>
