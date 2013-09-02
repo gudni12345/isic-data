@@ -19,25 +19,6 @@ namespace ISIC_DATA.Models
         {
             m_db.IsicDogs.Add(dog);
         }
-        public IEnumerable<ISDog> GetISDogs()
-        {
-            return m_db.ISDogs;
-        }
-        public void AddISDog(ISDog dog)
-        {
-            m_db.ISDogs.Add(dog);
-        }
-        public IEnumerable<DKDog> GetDKDogs()
-        {
-            return m_db.DKDogs;
-        }
-        public void AddDKDog(DKDog dog)
-        {
-            m_db.DKDogs.Add(dog);
-        }
-
-
-
         public void SaveChanges()
         {
             m_db.SaveChanges();

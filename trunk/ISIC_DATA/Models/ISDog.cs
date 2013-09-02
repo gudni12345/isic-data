@@ -12,7 +12,7 @@ namespace ISIC_DATA.Models
         public string Today_reg { get; set; }
         public string Reg { get; set; }
         public string Name { get; set; }
-        public string Sex { get; set; }
+        public string S { get; set; }
         public DateTime Born { get; set; }
         public DateTime Date_Estimated { get; set; }
         public string Reg_F { get; set; }
@@ -27,7 +27,7 @@ namespace ISIC_DATA.Models
         public string HD { get; set; }
         public string HD2 { get; set; }
         public double Inbreeding { get; set; }
-        public List<IsicDog> IsicDogs { get; set; }
+        
     }
    
 }

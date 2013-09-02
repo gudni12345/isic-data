@@ -12,14 +12,6 @@ namespace ISIC_DATA.Models
         IEnumerable<IsicDog> GetIsicDogs();
         void AddIsicDog(IsicDog dog);
 
-        IEnumerable<ISDog> GetISDogs();
-        void AddISDog(ISDog dog);
-
-        IEnumerable<DKDog> GetDKDogs();
-        void AddDKDog(DKDog dog);
-
-      
-
         void SaveChanges();
     }
 }
