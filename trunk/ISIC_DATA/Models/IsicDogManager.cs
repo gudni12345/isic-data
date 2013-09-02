@@ -11,9 +11,9 @@ namespace ISIC_DATA.Models
         public string Today_reg { get; set; }
         public string Reg { get; set; }
         public string Name { get; set; }
-        public string Sex { get; set; }
+        public string S { get; set; }
         public DateTime Born { get; set; }
-        public DateTime Date_Estimated { get; set; }
+        public DateTime Date_Estimation2 { get; set; }
         public string Reg_F { get; set; }
         public string Father { get; set; }
         public string Reg_M { get; set; }
