@@ -12,15 +12,15 @@ namespace ISIC_DATA.Controllers
     public class IsicDataController : Controller
     {
         private ISIC_DATAEntities db = new ISIC_DATAEntities();
-        private allISIC_DATARepository _db = null;
+        private allISIC_DATARepository m_repository = null;
 
         public IsicDataController()
         {
-            _db = new ISIC_DATARepository();
+            m_repository = new ISIC_DATARepository();
         }
         public IsicDataController(allISIC_DATARepository rep)
         {
-            _db = rep;
+            m_repository = rep;
 
         } 
         //
@@ -28,120 +28,125 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult IsicDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
-                         
-                         select g;
-            if (isdogs != null)
-            {
-                return View(isdogs);
-            }
-            return View();
+            //   var isicdogs = from g in _db.GetIsicDogs()
+            //               
+            //             select g;
+            //   return View(isicdogs);
+            // }
+
+            var activeGames = from games in m_repository.GetIsicDogs()
+
+                              select games;
+
+
+            return View(activeGames);
         }
+
+
+/*
+
         public ActionResult ISDogs()
         {
             var isdogs = from g in _db.GetIsicDogs()
                          where g.B == "IS"
                          select g;
-            if (isdogs != null)
-            {
-                return View(isdogs);
-            }
+           
             return View();
         }
 
         //Sækir gögn fyrir Damnörk
         public ActionResult DKDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var dkdogs = from g in _db.GetIsicDogs()
                         where g.B == "DK"
                         select g;
-            if ( isdogs != null)
+            if ( dkdogs != null)
             {
-                return View(isdogs);
+                return View(dkdogs);
             }
             return View();
         }
 
         public ActionResult SEDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var sedogs = from g in _db.GetIsicDogs()
                          where g.B == "SE"
                          select g;
-            if (isdogs != null)
+            if (sedogs != null)
             {
-                return View(isdogs);
+                return View(sedogs);
             }
             return View();
         }
 
         public ActionResult NODogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var nodogs = from g in _db.GetIsicDogs()
                          where g.B == "NO"
                          select g;
-            if (isdogs != null)
+            if (nodogs != null)
             {
-                return View(isdogs);
+                return View(nodogs);
             }
             return View();
         }
         
         public ActionResult FIDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var fidogs = from g in _db.GetIsicDogs()
                          where g.B == "FI"
                          select g;
-            if (isdogs != null)
+            if (fidogs != null)
             {
-                return View(isdogs);
+                return View(fidogs);
             }
             return View();
         }
         
         public ActionResult DEDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var dedogs = from g in _db.GetIsicDogs()
                          where g.B == "DE"
                          select g;
-            if (isdogs != null)
+            if (dedogs != null)
             {
-                return View(isdogs);
+                return View(dedogs);
             }
             return View();
         }
         public ActionResult NEDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var nedogs = from g in _db.GetIsicDogs()
                          where g.B == "NE"
                          select g;
-            if (isdogs != null)
+            if (nedogs != null)
             {
-                return View(isdogs);
+                return View(nedogs);
             }
             return View();
         }
         public ActionResult USDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var usdogs = from g in _db.GetIsicDogs()
                          where g.B == "US"
                          select g;
-            if (isdogs != null)
+            if (usdogs != null)
             {
-                return View(isdogs);
+                return View(usdogs);
             }
             return View();
         }
        
         public ActionResult AUDogs()
         {
-            var isdogs = from g in _db.GetIsicDogs()
+            var usdogs = from g in _db.GetIsicDogs()
                          where g.B == "AU"
                          select g;
-            if (isdogs != null)
+            if (usdogs != null)
             {
-                return View(isdogs);
+                return View(usdogs);
             }
             return View();
-        }
+        }*/
     }
 }
