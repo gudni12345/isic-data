@@ -189,23 +189,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201309032241015_InitialCreate.cs" />
+    <Compile Include="Migrations\201309032241015_InitialCreate.Designer.cs">
+      <DependentUpon>201309032241015_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\allISIC_DATARepository.cs" />
-    <Compile Include="Models\AUDogs.cs" />
-    <Compile Include="Models\DKDog.cs" />
-    <Compile Include="Models\FIDogs.cs" />
-    <Compile Include="Models\GEDogs.cs" />
-    <Compile Include="Models\ISDog.cs" />
     <Compile Include="Models\IsicDog.cs" />
     <Compile Include="Models\IsicDogManager.cs" />
-    <Compile Include="Models\ISIC_DATAContext.cs" />
     <Compile Include="Models\ISIC_DATAEntities.cs" />
     <Compile Include="Models\ISIC_DATARepository.cs" />
-    <Compile Include="Models\NEDogs.cs" />
-    <Compile Include="Models\NODogs.cs" />
-    <Compile Include="Models\SEDogs.cs" />
-    <Compile Include="Models\USDogs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -392,6 +386,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201309032241015_InitialCreate.resx">
+      <DependentUpon>201309032241015_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

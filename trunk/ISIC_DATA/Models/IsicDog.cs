@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ISIC_DATA.Models
 {
-    public class IsicDog : ISIC_DATAEntities
+    public class IsicDog 
     {
-       [ScaffoldColumn(false)]
+        [ScaffoldColumn(false)]
         public int ID { get; set; }
         public string Today_reg { get; set; }
         public string Reg { get; set; }

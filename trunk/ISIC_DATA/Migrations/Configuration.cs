@@ -10,7 +10,7 @@ namespace ISIC_DATA.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            //AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ISIC_DATA.Models.ISIC_DATAEntities context)
