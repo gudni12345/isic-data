@@ -186,7 +186,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IsicDataController.cs" />
     <Compile Include="Controllers\IsicDogManagerController.cs" />
     <Compile Include="Controllers\RegisterDogController.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
