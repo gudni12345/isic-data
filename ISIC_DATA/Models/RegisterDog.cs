@@ -7,24 +7,27 @@ using System.Web;
 
 namespace ISIC_DATA.Models
 {
-    public class RegisterDogs
+    public class RegisterDog
     {
-        public int Id { get; set; }
-        [Column(TypeName = "varchar(15)")]
+        public long Id { get; set; }
+        [Key]
+        //, Column(TypeName = "varchar(15)")]
         public string Reg { get; set; }
 
-        [ForeignKey("Reg")]
+    //    [ForeignKey("Dog")]
         public string Reg_M { get; set; }
-        [ForeignKey("Reg")]
+     //   [ForeignKey("Dog1")]
         public string Reg_F { get; set; }
 
         public int LitterId { get; set; }
         public char Sex { get; set; }
 
-        [ForeignKey("AdminId")]
-        public int AdminRegDogId { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
+   //     [Column(TypeName = "nvarchar(100)")]
         public string name { get; set; }
+
+        public virtual Dog Dog { get; set; }
+        public virtual Dog Dog1 { get; set; }
 
     }
 }
+
