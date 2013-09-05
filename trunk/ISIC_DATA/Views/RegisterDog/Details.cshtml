@@ -1,0 +1,50 @@
+﻿@model ISIC_DATA.Models.RegisterDog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RegisterDog</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Reg_M)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Reg_M)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Reg_F)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Reg_F)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LitterId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LitterId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sex)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sex)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

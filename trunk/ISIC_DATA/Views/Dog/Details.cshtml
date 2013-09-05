@@ -1,0 +1,29 @@
+﻿@model ISIC_DATA.Models.Dog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Dog</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NewReg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NewReg)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ColorId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ColorId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
