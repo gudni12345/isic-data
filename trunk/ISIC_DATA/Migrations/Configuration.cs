@@ -5,15 +5,14 @@ namespace ISIC_DATA.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ISIC_DATA.Models.ISIC_DATAEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<ISIC_DATA.DataAccess.DogContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            //AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(ISIC_DATA.Models.ISIC_DATAEntities context)
+        protected override void Seed(ISIC_DATA.DataAccess.DogContext context)
         {
             //  This method will be called after migrating to the latest version.
 
