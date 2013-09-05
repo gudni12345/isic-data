@@ -16,16 +16,16 @@ namespace ISIC_DATA.Models
         }
 
         [Key]
-        public int Id { get; set; }
-      //  [Column(TypeName = "nvarchar(40)")]
+        public int Id { get; set; } 
         public string ColorFile { get; set; }
-    //    [Column(TypeName = "varchar(40)")]
         public string ColorEn { get; set; }
-     //   [Column(TypeName = "varchar(40)")]
         public string ColorWeb { get; set; }
-    //    [Column(TypeName = "nvarchar(255)")]
         public string ColorComment { get; set; }
-
         public virtual ICollection<Dog> Dog { get; set; }
     }
 }
+
+//    [Column(TypeName = "nvarchar(255)")]
+//   [Column(TypeName = "varchar(40)")]
+//    [Column(TypeName = "varchar(40)")]
+//  [Column(TypeName = "nvarchar(40)")]

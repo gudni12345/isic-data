@@ -10,33 +10,33 @@ using ISIC_DATA.DataAccess;
 
 namespace ISIC_DATA.Controllers
 {
-    public class RegisterDogController : Controller
+    public class ColorsController : Controller
     {
         private DogContext db = new DogContext();
 
         //
-        // GET: /RegisterDog/
+        // GET: /Colors/
 
         public ActionResult Index()
         {
-            return View(db.RegisterDog.ToList());
+            return View(db.Color.ToList());
         }
 
         //
-        // GET: /RegisterDog/Details/5
+        // GET: /Colors/Details/5
 
-        public ActionResult Details(string id = null)
+        public ActionResult Details(int id = 0)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            if (registerdog == null)
+            Color color = db.Color.Find(id);
+            if (color == null)
             {
                 return HttpNotFound();
             }
-            return View(registerdog);
+            return View(color);
         }
 
         //
-        // GET: /RegisterDog/Create
+        // GET: /Colors/Create
 
         public ActionResult Create()
         {
@@ -44,70 +44,70 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /RegisterDog/Create
+        // POST: /Colors/Create
 
         [HttpPost]
-        public ActionResult Create(RegisterDog registerdog)
+        public ActionResult Create(Color color)
         {
             if (ModelState.IsValid)
             {
-                db.RegisterDog.Add(registerdog);
+                db.Color.Add(color);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(registerdog);
+            return View(color);
         }
 
         //
-        // GET: /RegisterDog/Edit/5
+        // GET: /Colors/Edit/5
 
-        public ActionResult Edit(string id = null)
+        public ActionResult Edit(int id = 0)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            if (registerdog == null)
+            Color color = db.Color.Find(id);
+            if (color == null)
             {
                 return HttpNotFound();
             }
-            return View(registerdog);
+            return View(color);
         }
 
         //
-        // POST: /RegisterDog/Edit/5
+        // POST: /Colors/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(RegisterDog registerdog)
+        public ActionResult Edit(Color color)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(registerdog).State = EntityState.Modified;
+                db.Entry(color).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(registerdog);
+            return View(color);
         }
 
         //
-        // GET: /RegisterDog/Delete/5
+        // GET: /Colors/Delete/5
 
-        public ActionResult Delete(string id = null)
+        public ActionResult Delete(int id = 0)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            if (registerdog == null)
+            Color color = db.Color.Find(id);
+            if (color == null)
             {
                 return HttpNotFound();
             }
-            return View(registerdog);
+            return View(color);
         }
 
         //
-        // POST: /RegisterDog/Delete/5
+        // POST: /Colors/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            db.RegisterDog.Remove(registerdog);
+            Color color = db.Color.Find(id);
+            db.Color.Remove(color);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

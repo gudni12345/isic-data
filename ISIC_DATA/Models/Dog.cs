@@ -10,25 +10,24 @@ namespace ISIC_DATA.Models
     public class Dog
     {
      
-        public Dog()
+    /*    public Dog()
         {
-            this.RegisterDog = new HashSet<RegisterDog>();
-            this.RegisterDog1 = new HashSet<RegisterDog>();
+            this.Reg_M = new HashSet<RegisterDog>();
+            this.Reg_F = new HashSet<RegisterDog>();
         }
-
+        */
         public int Id { get; set; }
         [Key]
-//        , Column(TypeName = "varchar(15)")]
         public string Reg { get; set; }
-   //     [Column(TypeName = "varchar(15)")]
         public string NewReg { get; set; }
-
-      //  [ForeignKey("Color")]
         public int ColorId { get; set; }
 
-       // public virtual List<OLDColor> colors { get; set; }
-        public virtual ICollection<RegisterDog> RegisterDog { get; set; }
-        public virtual ICollection<RegisterDog> RegisterDog1 { get; set; }
+        public virtual ICollection<RegisterDog> Reg_M { get; set; }
+        public virtual ICollection<RegisterDog> Reg_F { get; set; }
     }
 }
 
+// public virtual List<OLDColor> colors { get; set; }
+
+//  [ForeignKey("Color")]
+//      [Column(TypeName = "varchar(15)")]

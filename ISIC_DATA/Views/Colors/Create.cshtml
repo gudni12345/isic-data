@@ -1,0 +1,59 @@
+﻿@model ISIC_DATA.Models.Color
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Color</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ColorFile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ColorFile)
+            @Html.ValidationMessageFor(model => model.ColorFile)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ColorEn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ColorEn)
+            @Html.ValidationMessageFor(model => model.ColorEn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ColorWeb)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ColorWeb)
+            @Html.ValidationMessageFor(model => model.ColorWeb)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ColorComment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ColorComment)
+            @Html.ValidationMessageFor(model => model.ColorComment)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
