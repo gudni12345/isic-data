@@ -29,10 +29,7 @@ namespace ISIC_DATA.Models
         public string HD { get; set; }
         public string HD2 { get; set; }
         public double Inbreeding { get; set; }
-       // public List<ISDog> ISDogs { get; set; }
-       // public List<DKDog> DKDogs { get; set; }
-
-        //public virtual ISDog { get; set; }
+    
         
     }
 
