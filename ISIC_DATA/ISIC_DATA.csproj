@@ -370,15 +370,6 @@
     <Content Include="Views\IsicDogManager\Edit.cshtml" />
     <Content Include="Views\IsicDogManager\Delete.cshtml" />
     <Content Include="Views\IsicDogManager\Index2.cshtml" />
-    <Content Include="Views\IsicData\DKDogs.cshtml" />
-    <Content Include="Views\IsicData\ISDogs.cshtml" />
-    <Content Include="Views\IsicData\AUDogs.cshtml" />
-    <Content Include="Views\IsicData\SEDogs.cshtml" />
-    <Content Include="Views\IsicData\FIDogs.cshtml" />
-    <Content Include="Views\IsicData\USDogs.cshtml" />
-    <Content Include="Views\IsicData\DEDogs.cshtml" />
-    <Content Include="Views\IsicData\NEDogs.cshtml" />
-    <Content Include="Views\IsicData\NODogs.cshtml" />
     <Content Include="Views\IsicData\IsicDogs.cshtml" />
   </ItemGroup>
   <ItemGroup>
