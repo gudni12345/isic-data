@@ -10,12 +10,12 @@ using ISIC_DATA.DataAccess;
 
 namespace ISIC_DATA.Controllers
 {
-    public class ColorsController : Controller
+    public class ColorController : Controller
     {
         private DogContext db = new DogContext();
 
         //
-        // GET: /Colors/
+        // GET: /Color/
 
         public ActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // GET: /Colors/Details/5
+        // GET: /Color/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -36,7 +36,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // GET: /Colors/Create
+        // GET: /Color/Create
 
         public ActionResult Create()
         {
@@ -44,7 +44,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /Colors/Create
+        // POST: /Color/Create
 
         [HttpPost]
         public ActionResult Create(Color color)
@@ -60,7 +60,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // GET: /Colors/Edit/5
+        // GET: /Color/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
@@ -73,7 +73,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /Colors/Edit/5
+        // POST: /Color/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Color color)
@@ -88,7 +88,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // GET: /Colors/Delete/5
+        // GET: /Color/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
@@ -101,7 +101,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /Colors/Delete/5
+        // POST: /Color/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

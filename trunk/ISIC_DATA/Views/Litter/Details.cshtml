@@ -1,0 +1,29 @@
+﻿@model ISIC_DATA.Models.Litter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Litter</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Reg_Mother)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Reg_Mother)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Reg_Father)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Reg_Father)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.LitterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

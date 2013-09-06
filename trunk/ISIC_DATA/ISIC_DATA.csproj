@@ -184,11 +184,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ColorsController.cs" />
+    <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IsicDogManagerController.cs" />
-    <Compile Include="Controllers\RegisterDogController.cs" />
+    <Compile Include="Controllers\LitterController.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -203,7 +203,7 @@
     <Compile Include="Models\IsicDogManager.cs" />
     <Compile Include="Models\ISIC_DATAEntities.cs" />
     <Compile Include="Models\ISIC_DATARepository.cs" />
-    <Compile Include="Models\RegisterDog.cs" />
+    <Compile Include="Models\Litter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -375,21 +375,21 @@
     <Content Include="Views\IsicDogManager\Delete.cshtml" />
     <Content Include="Views\IsicDogManager\Index2.cshtml" />
     <Content Include="Views\IsicData\IsicDogs.cshtml" />
+    <Content Include="Views\Color\Index.cshtml" />
+    <Content Include="Views\Color\Details.cshtml" />
+    <Content Include="Views\Color\Create.cshtml" />
+    <Content Include="Views\Color\Edit.cshtml" />
+    <Content Include="Views\Color\Delete.cshtml" />
     <Content Include="Views\Dog\Index.cshtml" />
     <Content Include="Views\Dog\Details.cshtml" />
     <Content Include="Views\Dog\Create.cshtml" />
     <Content Include="Views\Dog\Edit.cshtml" />
     <Content Include="Views\Dog\Delete.cshtml" />
-    <Content Include="Views\RegisterDog\Index.cshtml" />
-    <Content Include="Views\RegisterDog\Details.cshtml" />
-    <Content Include="Views\RegisterDog\Create.cshtml" />
-    <Content Include="Views\RegisterDog\Edit.cshtml" />
-    <Content Include="Views\RegisterDog\Delete.cshtml" />
-    <Content Include="Views\Colors\Index.cshtml" />
-    <Content Include="Views\Colors\Details.cshtml" />
-    <Content Include="Views\Colors\Create.cshtml" />
-    <Content Include="Views\Colors\Edit.cshtml" />
-    <Content Include="Views\Colors\Delete.cshtml" />
+    <Content Include="Views\Litter\Index.cshtml" />
+    <Content Include="Views\Litter\Details.cshtml" />
+    <Content Include="Views\Litter\Create.cshtml" />
+    <Content Include="Views\Litter\Edit.cshtml" />
+    <Content Include="Views\Litter\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
