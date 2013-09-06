@@ -9,12 +9,6 @@ namespace ISIC_DATA.Models
 {
     public class Color
     {
-
-        public Color()
-        {
-            this.Dog = new HashSet<Dog>();
-        }
-
         [Key]
         public int Id { get; set; } 
         public string ColorFile { get; set; }
@@ -25,7 +19,3 @@ namespace ISIC_DATA.Models
     }
 }
 
-//    [Column(TypeName = "nvarchar(255)")]
-//   [Column(TypeName = "varchar(40)")]
-//    [Column(TypeName = "varchar(40)")]
-//  [Column(TypeName = "nvarchar(40)")]

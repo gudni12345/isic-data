@@ -9,9 +9,9 @@ namespace ISIC_DATA.DataAccess
 {
     public class DogContext : DbContext
     {
-        public DbSet<RegisterDog> RegisterDog { get; set; }
         public DbSet<Dog> Dog { get; set; }
         public DbSet<Color> Color { get; set; }
+        public DbSet<Litter> Litter { get; set; }
     }
 }
 

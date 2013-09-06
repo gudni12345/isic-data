@@ -10,33 +10,33 @@ using ISIC_DATA.DataAccess;
 
 namespace ISIC_DATA.Controllers
 {
-    public class RegisterDogController : Controller
+    public class LitterController : Controller
     {
         private DogContext db = new DogContext();
 
         //
-        // GET: /RegisterDog/
+        // GET: /Litter/
 
         public ActionResult Index()
         {
-            return View(db.RegisterDog.ToList());
+            return View(db.Litter.ToList());
         }
 
         //
-        // GET: /RegisterDog/Details/5
+        // GET: /Litter/Details/5
 
-        public ActionResult Details(string id = null)
+        public ActionResult Details(int id = 0)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            if (registerdog == null)
+            Litter litter = db.Litter.Find(id);
+            if (litter == null)
             {
                 return HttpNotFound();
             }
-            return View(registerdog);
+            return View(litter);
         }
 
         //
-        // GET: /RegisterDog/Create
+        // GET: /Litter/Create
 
         public ActionResult Create()
         {
@@ -44,70 +44,70 @@ namespace ISIC_DATA.Controllers
         }
 
         //
-        // POST: /RegisterDog/Create
+        // POST: /Litter/Create
 
         [HttpPost]
-        public ActionResult Create(RegisterDog registerdog)
+        public ActionResult Create(Litter litter)
         {
             if (ModelState.IsValid)
             {
-                db.RegisterDog.Add(registerdog);
+                db.Litter.Add(litter);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(registerdog);
+            return View(litter);
         }
 
         //
-        // GET: /RegisterDog/Edit/5
+        // GET: /Litter/Edit/5
 
-        public ActionResult Edit(string id = null)
+        public ActionResult Edit(int id = 0)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            if (registerdog == null)
+            Litter litter = db.Litter.Find(id);
+            if (litter == null)
             {
                 return HttpNotFound();
             }
-            return View(registerdog);
+            return View(litter);
         }
 
         //
-        // POST: /RegisterDog/Edit/5
+        // POST: /Litter/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(RegisterDog registerdog)
+        public ActionResult Edit(Litter litter)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(registerdog).State = EntityState.Modified;
+                db.Entry(litter).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(registerdog);
+            return View(litter);
         }
 
         //
-        // GET: /RegisterDog/Delete/5
+        // GET: /Litter/Delete/5
 
-        public ActionResult Delete(string id = null)
+        public ActionResult Delete(int id = 0)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            if (registerdog == null)
+            Litter litter = db.Litter.Find(id);
+            if (litter == null)
             {
                 return HttpNotFound();
             }
-            return View(registerdog);
+            return View(litter);
         }
 
         //
-        // POST: /RegisterDog/Delete/5
+        // POST: /Litter/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            RegisterDog registerdog = db.RegisterDog.Find(id);
-            db.RegisterDog.Remove(registerdog);
+            Litter litter = db.Litter.Find(id);
+            db.Litter.Remove(litter);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

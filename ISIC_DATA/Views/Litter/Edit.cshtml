@@ -1,0 +1,45 @@
+﻿@model ISIC_DATA.Models.Litter
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Litter</legend>
+
+        @Html.HiddenFor(model => model.LitterId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Reg_Mother)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Reg_Mother)
+            @Html.ValidationMessageFor(model => model.Reg_Mother)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Reg_Father)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Reg_Father)
+            @Html.ValidationMessageFor(model => model.Reg_Father)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

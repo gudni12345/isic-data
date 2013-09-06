@@ -19,13 +19,14 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Dog.ToList());
+            var dog = db.Dog.Include(d => d.Litter).Include(d => d.Color);
+            return View(dog.ToList());
         }
 
         //
         // GET: /Dog/Details/5
 
-        public ActionResult Details(string id = null)
+        public ActionResult Details(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
@@ -40,6 +41,8 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother");
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile");
             return View();
         }
 
@@ -56,19 +59,23 @@ namespace ISIC_DATA.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile", dog.ColorId);
             return View(dog);
         }
 
         //
         // GET: /Dog/Edit/5
 
-        public ActionResult Edit(string id = null)
+        public ActionResult Edit(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile", dog.ColorId);
             return View(dog);
         }
 
@@ -84,13 +91,15 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile", dog.ColorId);
             return View(dog);
         }
 
         //
         // GET: /Dog/Delete/5
 
-        public ActionResult Delete(string id = null)
+        public ActionResult Delete(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
@@ -104,7 +113,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Dog dog = db.Dog.Find(id);
             db.Dog.Remove(dog);
