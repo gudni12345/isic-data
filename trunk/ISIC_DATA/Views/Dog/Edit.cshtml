@@ -14,13 +14,7 @@
 
         @Html.HiddenFor(model => model.Id)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Reg)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Reg)
-            @Html.ValidationMessageFor(model => model.Reg)
-        </div>
+        @Html.HiddenFor(model => model.Reg)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.NewReg)
@@ -28,6 +22,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.NewReg)
             @Html.ValidationMessageFor(model => model.NewReg)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
 
         <div class="editor-label">
