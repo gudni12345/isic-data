@@ -26,7 +26,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Dog/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(string id = null)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
@@ -67,7 +67,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Dog/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(string id = null)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
@@ -99,7 +99,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Dog/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(string id = null)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
@@ -113,7 +113,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             Dog dog = db.Dog.Find(id);
             db.Dog.Remove(dog);

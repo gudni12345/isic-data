@@ -9,28 +9,35 @@
 <fieldset>
     <legend>Dog</legend>
 
-  
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NewReg)
+    </div>
     <div class="display-field">
-        REG: @Html.DisplayFor(model => model.Reg)
+        @Html.DisplayFor(model => model.NewReg)
     </div>
 
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
     <div class="display-field">
-        NewReg: @Html.DisplayFor(model => model.NewReg)
+        @Html.DisplayFor(model => model.Name)
     </div>
 
-    <div class="display-field">
-        Mother: @Html.DisplayFor(model => model.Litter.Reg_Mother)
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Litter.Reg_Mother)
     </div>
-    
     <div class="display-field">
-        Father: @Html.DisplayFor(model => model.Litter.Reg_Father)
+        @Html.DisplayFor(model => model.Litter.Reg_Mother)
     </div>
 
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Color.ColorFile)
+    </div>
     <div class="display-field">
-        Color: @Html.DisplayFor(model => model.Color.ColorFile)
+        @Html.DisplayFor(model => model.Color.ColorFile)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

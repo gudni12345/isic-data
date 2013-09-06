@@ -9,8 +9,8 @@ namespace ISIC_DATA.Models
 {
     public class Dog
     {
-        [Key]
         public int Id { get; set; }
+        [Key, Column(Order = 1)]
         public string Reg { get; set; }
         public string NewReg { get; set; }
         public string Name { get; set; }
