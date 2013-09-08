@@ -4,22 +4,36 @@
     ViewBag.Title = "Index";
 }
 
+<h2>Index</h2>
+
 <p>
-    @Html.ActionLink("Create New Litter", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NewReg)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.ColorComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Litter.Reg_Mother)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Color.ColorFile)
+            @Html.DisplayNameFor(model => model.Color.ColorText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetailedInfo.OldColor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country.Name)
         </th>
         <th></th>
     </tr>
@@ -27,21 +41,33 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NewReg)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.ColorComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Litter.Reg_Mother)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Color.ColorFile)
+            @Html.DisplayFor(modelItem => item.Color.ColorText)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Reg }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.Reg  }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Reg })
+            @Html.DisplayFor(modelItem => item.DetailedInfo.OldColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.Reg }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

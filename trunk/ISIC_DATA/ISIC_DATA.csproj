@@ -197,13 +197,17 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\allISIC_DATARepository.cs" />
+    <Compile Include="Models\Breeder.cs" />
     <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\DetailedInfo.cs" />
     <Compile Include="Models\Dog.cs" />
     <Compile Include="Models\IsicDog.cs" />
     <Compile Include="Models\IsicDogManager.cs" />
     <Compile Include="Models\ISIC_DATAEntities.cs" />
     <Compile Include="Models\ISIC_DATARepository.cs" />
     <Compile Include="Models\Litter.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

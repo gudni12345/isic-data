@@ -10,17 +10,24 @@
     <legend>Dog</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.NewReg)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NewReg)
-    </div>
-
-    <div class="display-label">
          @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ColorComment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ColorComment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sex)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sex)
     </div>
 
     <div class="display-label">
@@ -31,10 +38,31 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Color.ColorFile)
+         @Html.DisplayNameFor(model => model.Color.ColorText)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Color.ColorFile)
+        @Html.DisplayFor(model => model.Color.ColorText)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetailedInfo.OldColor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetailedInfo.OldColor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Person.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Person.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Country.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Country.Name)
     </div>
 </fieldset>
 <p>

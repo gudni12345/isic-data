@@ -12,16 +12,7 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ColorFile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ColorEn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ColorWeb)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ColorComment)
+            @Html.DisplayNameFor(model => model.ColorText)
         </th>
         <th></th>
     </tr>
@@ -29,16 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ColorFile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ColorEn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ColorWeb)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ColorComment)
+            @Html.DisplayFor(modelItem => item.ColorText)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

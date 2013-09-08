@@ -12,6 +12,11 @@ namespace ISIC_DATA.DataAccess
         public DbSet<Dog> Dog { get; set; }
         public DbSet<Color> Color { get; set; }
         public DbSet<Litter> Litter { get; set; }
+
+        public DbSet<Breeder> Breeder { get; set; }
+        public DbSet<Country> Country { get; set; }
+        public DbSet<DetailedInfo> DetailedInfo { get; set; }
+        public DbSet<Person> Person { get; set; }
     }
 }
 
