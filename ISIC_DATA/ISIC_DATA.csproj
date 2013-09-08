@@ -397,6 +397,8 @@
     <Content Include="Views\Litter\Create.cshtml" />
     <Content Include="Views\Litter\Edit.cshtml" />
     <Content Include="Views\Litter\Delete.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Dog\Search.cshtml" />
     <None Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
