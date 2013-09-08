@@ -42,56 +42,44 @@
 </head>
     
 <body>
-	<div id="header">
+	<div id="">
 		<img class="logomynd" src="~/Images/logo.png" alt="not able to load picture"/>
+        
 	</div>
-	
-	<div id="header2">
-         
-	 @RenderSection("featured", required: false)
+    <div>
+        <img class="linaupp" src="~/Images/isic/LineUp.png" alt="not able to load picture"/>
+    </div>
+
+      <div class="vinstri">
+          <ul id="menu">
+             <li>@Html.ActionLink("Home", "Index", "Home")<li>
+             <li>@Html.ActionLink("About", "About", "Home")</li>
+             <li>@Html.ActionLink("Search", "Search", "Home")</li>
+
+        <li>@Html.ActionLink("Admin", "Manage", "Account")
+           <ul>
+             <li>@Html.ActionLink("Users", "Users", "Home")</li>
+             <li>@Html.ActionLink("Disable user", "DisableUsers", "Administrator")</li>
+             <li>@Html.ActionLink("New Data", "Create", "IsicDogManager")</li>
+           </ul>
+         </li>
+        </ul>
+    </div>
+     
+     <div class="register">
+     @RenderSection("featured", required: false)
      @Html.Partial("_LoginPartial")             
 	
 	</div>
-	
-	<div id="left">
-            <ul id="menu">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>	
-               
-                <li>
-                    @Html.ActionLink("Data", "index", "Data")
-                    <ul>
-                        <li>@Html.ActionLink("ISIC - All", "IsicDogs", "IsicData")</li>
-                                                
-                    </ul>
-                </li>
-                 <li>@Html.ActionLink("About", "About", "Home")</li>
-                 <li>@Html.ActionLink("Search", "Search", "Home")</li>
-                <li>
-                   
-                </li>
-            
-                     
-                 <li>@Html.ActionLink("Admin", "Manage", "Account")
-                       <ul>
-                            <li>@Html.ActionLink("Notendur", "Users", "Home")</li>
-                            <li>@Html.ActionLink("Disable user", "DisableUsers", "Administrator")</li>
-                            <li>@Html.ActionLink("New Data", "Create", "IsicDogManager")</li>
-                        </ul>
-                     </li>
-                   
-               
-            </ul>
+     
+    <div class="bottombar">
+       <h2>&copy; ISIC</h2>
     </div>
-        
-         
-
-    <div id="content">
+     <div id="content">
+       
     @RenderBody()	
-    </div>
-    <div id="footer">
-      
-        <h2 class="botn">&copy; ISIC</h2>
     </div>
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

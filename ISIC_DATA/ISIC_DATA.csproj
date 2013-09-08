@@ -311,7 +311,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\bgr315.png" />
     <Content Include="Images\calendar.gif" />
+    <Content Include="Images\isic\bgr150.png" />
+    <Content Include="Images\isic\bgr190.png" />
+    <Content Include="Images\isic\bgr315.png" />
+    <Content Include="Images\isic\LineDownLeft.PNG" />
+    <Content Include="Images\isic\LineDownSlice.PNG" />
+    <Content Include="Images\isic\LineUp.PNG" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -390,6 +397,7 @@
     <Content Include="Views\Litter\Create.cshtml" />
     <Content Include="Views\Litter\Edit.cshtml" />
     <Content Include="Views\Litter\Delete.cshtml" />
+    <None Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

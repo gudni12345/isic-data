@@ -16,7 +16,7 @@
 
     <fieldset>
         <legend>Log in Form</legend>
-        <ol>
+        <ul>
             <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
@@ -31,7 +31,7 @@
                 @Html.CheckBoxFor(m => m.RememberMe)
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
-        </ol>
+        </ul>
         <input type="submit" value="Log in" />
     </fieldset>
     <p>
@@ -39,12 +39,6 @@
     </p>
 }
 </section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
