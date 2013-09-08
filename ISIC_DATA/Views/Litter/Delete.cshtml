@@ -23,6 +23,20 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Reg_Father)
     </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfBirth)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfBirth)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Breeder.Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Breeder.Id)
+    </div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>

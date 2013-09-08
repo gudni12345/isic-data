@@ -13,35 +13,11 @@
         <legend>Color</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ColorFile)
+            @Html.LabelFor(model => model.ColorText)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ColorFile)
-            @Html.ValidationMessageFor(model => model.ColorFile)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ColorEn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ColorEn)
-            @Html.ValidationMessageFor(model => model.ColorEn)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ColorWeb)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ColorWeb)
-            @Html.ValidationMessageFor(model => model.ColorWeb)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ColorComment)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ColorComment)
-            @Html.ValidationMessageFor(model => model.ColorComment)
+            @Html.EditorFor(model => model.ColorText)
+            @Html.ValidationMessageFor(model => model.ColorText)
         </div>
 
         <p>

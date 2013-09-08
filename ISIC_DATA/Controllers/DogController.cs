@@ -19,7 +19,7 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-            var dog = db.Dog.Include(d => d.Litter).Include(d => d.Color);
+            var dog = db.Dog.Include(d => d.Litter).Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country);
             return View(dog.ToList());
         }
 
@@ -42,7 +42,10 @@ namespace ISIC_DATA.Controllers
         public ActionResult Create()
         {
             ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother");
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile");
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor");
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name");
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
             return View();
         }
 
@@ -60,7 +63,10 @@ namespace ISIC_DATA.Controllers
             }
 
             ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile", dog.ColorId);
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
+            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
             return View(dog);
         }
 
@@ -75,7 +81,10 @@ namespace ISIC_DATA.Controllers
                 return HttpNotFound();
             }
             ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile", dog.ColorId);
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
+            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
             return View(dog);
         }
 
@@ -92,7 +101,10 @@ namespace ISIC_DATA.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorFile", dog.ColorId);
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
+            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
             return View(dog);
         }
 
@@ -126,15 +138,5 @@ namespace ISIC_DATA.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-        //
-        // POST: /Dog/Search/5
-
-        //[HttpPost, ActionName("Search")]
-        public ActionResult Search()
-        {
-           return View();
-        }
-
-    
     }
 }

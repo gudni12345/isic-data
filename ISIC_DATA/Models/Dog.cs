@@ -11,15 +11,27 @@ namespace ISIC_DATA.Models
     {
         public int Id { get; set; }
         [Key, Column(Order = 1)]
-        public string Reg { get; set; }
-        public string NewReg { get; set; }
+        public string Reg { get; set; } //Primary Key - provider by FCI 
         public string Name { get; set; }
+        public string ColorComment { get; set; }
+        public char Sex { get; set; }
 
         public int LitterId { get; set; }
         public virtual Litter Litter { get; set; }
 
         public int ColorId { get; set; }
         public virtual Color Color { get; set; }
+
+        public Nullable<int> DetailedInfoId { get; set; }
+        public virtual DetailedInfo DetailedInfo { get; set; }
+
+        public Nullable<int> PersonId { get; set; }
+        public virtual Person Person { get; set; }
+
+        public Nullable<int> CountryId { get; set; }
+        public virtual Country Country { get; set; }
+        
+        
 
     }
 }

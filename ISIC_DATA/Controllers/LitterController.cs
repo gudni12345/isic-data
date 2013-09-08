@@ -19,7 +19,8 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Litter.ToList());
+            var litter = db.Litter.Include(l => l.Breeder);
+            return View(litter.ToList());
         }
 
         //
@@ -40,6 +41,7 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
             return View();
         }
 
@@ -56,6 +58,7 @@ namespace ISIC_DATA.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id", litter.BreederId);
             return View(litter);
         }
 
@@ -69,6 +72,7 @@ namespace ISIC_DATA.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id", litter.BreederId);
             return View(litter);
         }
 
@@ -84,6 +88,7 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id", litter.BreederId);
             return View(litter);
         }
 
