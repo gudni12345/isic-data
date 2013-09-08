@@ -126,5 +126,15 @@ namespace ISIC_DATA.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+        //
+        // POST: /Dog/Search/5
+
+        //[HttpPost, ActionName("Search")]
+        public ActionResult Search()
+        {
+           return View();
+        }
+
+    
     }
 }
