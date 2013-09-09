@@ -11,7 +11,8 @@ namespace ISIC_DATA.Models
     {
         [Key]
         public int Id { get; set; }
-        public int CountryCode { get; set; }
+        [MaxLength(5)]
+        public String CountryCode { get; set; }
         public string Name { get; set; }
     }
 }
