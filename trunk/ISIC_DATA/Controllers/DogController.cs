@@ -53,6 +53,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Dog dog)
         {
             if (ModelState.IsValid)
@@ -92,6 +93,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Dog dog)
         {
             if (ModelState.IsValid)
@@ -125,6 +127,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             Dog dog = db.Dog.Find(id);
