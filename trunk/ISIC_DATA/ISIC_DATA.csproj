@@ -184,11 +184,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BreederController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IsicDogManagerController.cs" />
     <Compile Include="Controllers\LitterController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -403,6 +406,21 @@
     <Content Include="Views\Litter\Delete.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Dog\Search.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Person\Details.cshtml" />
+    <Content Include="Views\Person\Create.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Person\Delete.cshtml" />
+    <Content Include="Views\Breeder\Index.cshtml" />
+    <Content Include="Views\Breeder\Details.cshtml" />
+    <Content Include="Views\Breeder\Create.cshtml" />
+    <Content Include="Views\Breeder\Edit.cshtml" />
+    <Content Include="Views\Breeder\Delete.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
     <None Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
