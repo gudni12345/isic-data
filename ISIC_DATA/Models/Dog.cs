@@ -11,7 +11,7 @@ namespace ISIC_DATA.Models
     {
         public int Id { get; set; }
         [Key, Column(Order = 1)]
-        public string Reg { get; set; } //Primary Key - provider by FCI 
+        public string Reg { get; set; }     //Primary Key - provider by FCI 
         public string Name { get; set; }
         public string ColorComment { get; set; }
         public char Sex { get; set; }
