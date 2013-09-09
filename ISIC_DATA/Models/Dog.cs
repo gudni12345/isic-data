@@ -9,12 +9,14 @@ namespace ISIC_DATA.Models
 {
     public class Dog
     {
-        public int Id { get; set; }
+     //   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+      //  public int Id { get; set; }
         [Key, Column(Order = 1)]
         public string Reg { get; set; }     //Primary Key - provider by FCI 
         public string Name { get; set; }
         public string ColorComment { get; set; }
-        public char Sex { get; set; }
+        [MaxLength(1)]
+        public string Sex { get; set; }
 
         public int LitterId { get; set; }
         public virtual Litter Litter { get; set; }

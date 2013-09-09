@@ -7,10 +7,19 @@
 <h2>Create</h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Dog</legend>
+
+          <div class="editor-label">
+            @Html.LabelFor(model => model.Reg)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Reg)
+            @Html.ValidationMessageFor(model => model.Reg)
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -40,7 +49,7 @@
             @Html.LabelFor(model => model.LitterId, "Litter")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => Model.LitterId)
+            @Html.EditorFor(model => model.LitterId)
             @Html.ValidationMessageFor(model => model.LitterId)
         </div>
 
@@ -48,7 +57,7 @@
             @Html.LabelFor(model => model.ColorId, "Color")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ColorId)
+              @Html.EditorFor(model => model.ColorId)
             @Html.ValidationMessageFor(model => model.ColorId)
         </div>
 
@@ -56,7 +65,7 @@
             @Html.LabelFor(model => model.DetailedInfoId, "DetailedInfo")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DetailedInfoId)
+            @Html.DropDownList("DetailedInfoId", String.Empty)
             @Html.ValidationMessageFor(model => model.DetailedInfoId)
         </div>
 
@@ -64,15 +73,15 @@
             @Html.LabelFor(model => model.PersonId, "Person")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PersonId)
+            @Html.DropDownList("PersonId", String.Empty)
             @Html.ValidationMessageFor(model => model.PersonId)
         </div>
 
-              <div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.CountryId, "Country")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CountryId)
+            @Html.DropDownList("CountryId", String.Empty)
             @Html.ValidationMessageFor(model => model.CountryId)
         </div>
 
