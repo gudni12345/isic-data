@@ -20,7 +20,7 @@ namespace ISIC_DATA.Controllers
         public ActionResult Index()
         {
             var dog = db.Dog.Include(d => d.Litter).Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country);
-            return View(dog.ToList());
+            return View(dog.Take(20).ToList());
         }
 
         //
