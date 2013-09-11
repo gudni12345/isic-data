@@ -55,7 +55,7 @@
             @Html.DisplayFor(modelItem => item.DateOfBirth)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Breeder.Id)
+            @Html.DisplayFor(modelItem => item.Breeder.Person.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.LitterId }) |

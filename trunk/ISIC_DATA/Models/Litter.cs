@@ -13,6 +13,7 @@ namespace ISIC_DATA.Models
         public int LitterId { get; set; }
         public string Reg_Mother { get; set; }
         public string Reg_Father { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<DateTime> DateOfBirth { get; set; }
 
         public virtual List<Dog> dogs { get; set; }

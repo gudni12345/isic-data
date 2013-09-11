@@ -56,7 +56,7 @@ namespace ISIC_DATA.Controllers
                     litter = litter.OrderBy(l => l.DateOfBirth);
                     break;
                 default:
-                    litter = litter.OrderBy(l => l.DateOfBirth);
+                    litter = litter.OrderByDescending(l => l.LitterId);
                     break;
             }
 
