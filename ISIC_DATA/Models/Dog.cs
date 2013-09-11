@@ -21,7 +21,7 @@ namespace ISIC_DATA.Models
         public int LitterId { get; set; }
         public virtual Litter Litter { get; set; }
 
-        public int ColorId { get; set; }
+        public Nullable<int> ColorId { get; set; }
         public virtual Color Color { get; set; }
 
         public Nullable<int> DetailedInfoId { get; set; }

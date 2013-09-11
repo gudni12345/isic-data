@@ -20,7 +20,7 @@ namespace ISIC_DATA.Controllers
         public ActionResult Index()
         {
             var person = db.Person.Include(p => p.Country);
-            return View(person.ToList());
+            return View(person.Take(20).ToList());
         }
 
         //
