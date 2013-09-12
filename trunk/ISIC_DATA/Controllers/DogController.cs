@@ -19,14 +19,14 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-            var dog = db.Dog.Include(d => d.Litter).Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country);
-            return View(dog.Take(20).ToList());
+            var dog = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country);
+            return View(dog.ToList());
         }
 
         //
         // GET: /Dog/Details/5
 
-        public ActionResult Details(string id = null)
+        public ActionResult Details(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
@@ -41,11 +41,10 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor");
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name");
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode");
             return View();
         }
 
@@ -63,29 +62,27 @@ namespace ISIC_DATA.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
             return View(dog);
         }
 
         //
         // GET: /Dog/Edit/5
 
-        public ActionResult Edit(string id = null)
+        public ActionResult Edit(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
             return View(dog);
         }
 
@@ -102,18 +99,17 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.LitterId = new SelectList(db.Litter, "LitterId", "Reg_Mother", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
             return View(dog);
         }
 
         //
         // GET: /Dog/Delete/5
 
-        public ActionResult Delete(string id = null)
+        public ActionResult Delete(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
             if (dog == null)
@@ -128,7 +124,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Dog dog = db.Dog.Find(id);
             db.Dog.Remove(dog);

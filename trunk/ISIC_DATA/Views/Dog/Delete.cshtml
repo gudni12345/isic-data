@@ -11,6 +11,13 @@
     <legend>Dog</legend>
 
     <div class="display-label">
+         @Html.DisplayNameFor(model => model.Reg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Reg)
+    </div>
+
+    <div class="display-label">
          @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
@@ -32,10 +39,10 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Litter.Reg_Mother)
+         @Html.DisplayNameFor(model => model.LitterId)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Litter.Reg_Mother)
+        @Html.DisplayFor(model => model.LitterId)
     </div>
 
     <div class="display-label">
@@ -60,10 +67,10 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Country.Name)
+         @Html.DisplayNameFor(model => model.Country.CountryCode)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Country.Name)
+        @Html.DisplayFor(model => model.Country.CountryCode)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {

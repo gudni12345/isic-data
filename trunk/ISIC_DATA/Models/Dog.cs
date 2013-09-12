@@ -9,10 +9,11 @@ namespace ISIC_DATA.Models
 {
     public class Dog
     {
-     //   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-      //  public int Id { get; set; }
-        [Key, Column(Order = 1)]
-        public string Reg { get; set; }     //Primary Key - provider by FCI 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+    //    [Key, Column(Order = 1)]
+        [MaxLength(15)]
+        public string Reg { get; set; }     // - provider by FCI 
         public string Name { get; set; }
         public string ColorComment { get; set; }
         [MaxLength(1)]

@@ -9,28 +9,19 @@
 <fieldset>
     <legend>Litter</legend>
 
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfBirth)
+    </div>
     <div class="display-field">
-       Mother: @Html.DisplayFor(model => model.Reg_Mother)
+        @Html.DisplayFor(model => model.DateOfBirth)
     </div>
 
-    <div class="display-field">
-       Father: @Html.DisplayFor(model => model.Reg_Father)
-    </div>
-
-    <div class="display-field">
-       Date of birth: @Html.DisplayFor(model => model.DateOfBirth)
-    </div>
-
-    <div class="display-field">
-        Breeder Id: @Html.DisplayFor(model => model.Breeder.Id)
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Breeder.Id)
     </div>
     <div class="display-field">
-        Breeder name: @Html.DisplayFor(model => model.Breeder.Person.Name)
+        @Html.DisplayFor(model => model.Breeder.Id)
     </div>
-    <div class="display-field">
-        Country: @Html.DisplayFor(model => model.Breeder.Person.Country.Name)
-    </div>
-
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.LitterId }) |

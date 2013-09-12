@@ -1,41 +1,21 @@
-﻿@model PagedList.IPagedList<ISIC_DATA.Models.Litter>
-@using PagedList.Mvc; 
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+﻿@model IEnumerable<ISIC_DATA.Models.Litter>
 
 @{
-    ViewBag.Title = "List of litters";
+    ViewBag.Title = "Index";
 }
 
-<h2>Litters</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-@using (Html.BeginForm("Index", "Litter", FormMethod.Get))
-{
-    <p>
-        Find by Reg : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
-        <input type="submit" value="Search" />
-    </p>
-}
-
 <table>
     <tr>
         <th>
-            LitterId
+            @Html.DisplayNameFor(model => model.DateOfBirth)
         </th>
         <th>
-            Mother
-        </th>
-        <th>
-            Father
-        </th>
-        <th>
-            DateOfBirth
-        </th>
-        <th>
-            Breeder
+            @Html.DisplayNameFor(model => model.Breeder.Id)
         </th>
         <th></th>
     </tr>
@@ -43,19 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.LitterId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reg_Mother)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reg_Father)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DateOfBirth)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Breeder.Person.Name)
+            @Html.DisplayFor(modelItem => item.Breeder.Id)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.LitterId }) |
@@ -66,9 +37,3 @@
 }
 
 </table>
-
-
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )
-
