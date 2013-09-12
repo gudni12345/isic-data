@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
-using PagedList;
 
 namespace ISIC_DATA.Controllers
 {
@@ -18,51 +17,10 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Litter/
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index()
         {
-            ViewBag.MotherSortParm = String.IsNullOrEmpty(sortOrder) ? "Reg_Mother" : "";
-            ViewBag.FatherSortParm = String.IsNullOrEmpty(sortOrder) ? "Reg_Father" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "DateOfBirth";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-            ViewBag.CurrentFilter = searchString;
-
-
             var litter = db.Litter.Include(l => l.Breeder);
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                litter = litter.Where(l => l.Reg_Mother.ToUpper().Contains(searchString.ToUpper())
-                                       || l.Reg_Father.ToUpper().Contains(searchString.ToUpper()));
-            }
-
-
-            switch (sortOrder)
-            {
-                case "Reg_Mother":
-                    litter = litter.OrderByDescending(l => l.Reg_Mother);
-                    break;
-                case "Reg_Father":
-                    litter = litter.OrderByDescending(l => l.Reg_Father);
-                    break;
-                case "DateOfBirth":
-                    litter = litter.OrderBy(l => l.DateOfBirth);
-                    break;
-                default:
-                    litter = litter.OrderByDescending(l => l.LitterId);
-                    break;
-            }
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(litter.ToPagedList(pageNumber, pageSize));
+            return View(litter.ToList());
         }
 
         //
@@ -91,6 +49,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Litter/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Litter litter)
         {
             if (ModelState.IsValid)
@@ -122,6 +81,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Litter/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Litter litter)
         {
             if (ModelState.IsValid)
@@ -151,6 +111,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Litter/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Litter litter = db.Litter.Find(id);

@@ -7,26 +7,11 @@
 <h2>Create</h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Litter</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Reg_Mother)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Reg_Mother)
-            @Html.ValidationMessageFor(model => model.Reg_Mother)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Reg_Father)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Reg_Father)
-            @Html.ValidationMessageFor(model => model.Reg_Father)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.DateOfBirth)
