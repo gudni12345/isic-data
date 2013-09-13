@@ -7,7 +7,6 @@
 <h2>Edit</h2>
 
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -48,10 +47,10 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.LitterId)
+            @Html.LabelFor(model => model.LitterId, "Litter")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.LitterId)
+            @Html.DropDownList("LitterId", String.Empty)
             @Html.ValidationMessageFor(model => model.LitterId)
         </div>
 
