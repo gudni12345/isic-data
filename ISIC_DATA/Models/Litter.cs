@@ -10,7 +10,7 @@ namespace ISIC_DATA.Models
     public class Litter
     {
         [Key]
-        public int LitterId { get; set; }
+        public int Id { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<DateTime> DateOfBirth { get; set; }
