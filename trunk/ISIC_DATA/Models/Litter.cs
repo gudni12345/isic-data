@@ -23,6 +23,11 @@ namespace ISIC_DATA.Models
     }
 }
 
+
+//  public int Mother_Id { get; set; }
+//  public int Father_Id { get; set; }
+
+
 //public string Reg_Mother { get; set; }
 //public string Reg_Father { get; set; }
 

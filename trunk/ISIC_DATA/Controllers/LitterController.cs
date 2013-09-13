@@ -49,7 +49,6 @@ namespace ISIC_DATA.Controllers
         // POST: /Litter/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(Litter litter)
         {
             if (ModelState.IsValid)
@@ -81,7 +80,6 @@ namespace ISIC_DATA.Controllers
         // POST: /Litter/Edit/5
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(Litter litter)
         {
             if (ModelState.IsValid)
@@ -111,7 +109,6 @@ namespace ISIC_DATA.Controllers
         // POST: /Litter/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Litter litter = db.Litter.Find(id);
