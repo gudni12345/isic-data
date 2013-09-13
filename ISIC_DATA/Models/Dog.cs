@@ -11,7 +11,7 @@ namespace ISIC_DATA.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-    //    [Key, Column(Order = 1)]
+   
         [MaxLength(50)]
         public string Reg { get; set; }     // - provider by FCI 
         public string Name { get; set; }

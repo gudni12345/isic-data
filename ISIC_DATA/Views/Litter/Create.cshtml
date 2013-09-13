@@ -7,34 +7,26 @@
 <h2>Create</h2>
 
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Litter</legend>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfBirth)
+        </div>
         <div class="editor-field">
-            DateOfBirth: @Html.EditorFor(model => model.DateOfBirth)
+            @Html.EditorFor(model => model.DateOfBirth)
             @Html.ValidationMessageFor(model => model.DateOfBirth)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BreederId, "Breeder")
+        </div>
         <div class="editor-field">
-            Breeder: @Html.DropDownList("BreederId", String.Empty)
+            @Html.DropDownList("BreederId", String.Empty)
             @Html.ValidationMessageFor(model => model.BreederId)
         </div>
-
-        <div class="editor-field">
-            (REG NR) MotherId: 
-            @Html.EditorFor(model => model.Mother_Id.Reg)
-            @Html.ValidationMessageFor(model => model.Mother_Id.Reg)
-        </div>
-
-        <div class="editor-field">
-            (REG NR) FatherId: 
-            @Html.EditorFor(model => model.Father_Id.Reg)
-            @Html.ValidationMessageFor(model => model.Father_Id.Reg)
-        </div>
-
 
         <p>
             <input type="submit" value="Create" />
