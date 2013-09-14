@@ -1,4 +1,6 @@
-﻿@model IEnumerable<ISIC_DATA.Models.Dog>
+﻿@model PagedList.IPagedList<ISIC_DATA.Models.Dog>
+@using PagedList.Mvc; 
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -9,40 +11,38 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Dog", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Reg)
+            Reg -
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name - 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ColorComment)
+            Colorcomment - 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sex)
+            Sex - 
         </th>
         <th>
             Father - 
         </th>
         <th>
             Mother - 
-        </th>
+        </th>        
+        
         <th>
-            @Html.DisplayNameFor(model => model.LitterId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color.ColorText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DetailedInfo.OldColor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country.CountryCode)
+            CountryCode
         </th>
         <th></th>
     </tr>
@@ -68,15 +68,6 @@
             @Html.DisplayFor(modelItem => item.Litter.Mother_Id.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Color.ColorText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DetailedInfo.OldColor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person.Name)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Country.CountryCode)
         </td>
         <td>
@@ -88,3 +79,7 @@
 }
 
 </table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )

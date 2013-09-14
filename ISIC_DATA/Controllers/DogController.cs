@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
+using PagedList;
 
 namespace ISIC_DATA.Controllers
 {
@@ -17,10 +18,41 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Dog/
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var dog = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country).Include(d => d.Litter);
-            return View(dog.Take(10).ToList());
+            
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var dogs = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country).Include(d => d.Litter);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper()) );
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    dogs = dogs.OrderByDescending(d => d.Name);
+                    break;
+                case "Date":
+                    dogs = dogs.OrderBy(d => d.Litter.DateOfBirth);
+                    break;
+                default:
+                    dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(dogs.ToPagedList(pageNumber, pageSize));
         }
 
         //
