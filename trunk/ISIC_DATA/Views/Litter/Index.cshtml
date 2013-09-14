@@ -17,6 +17,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Breeder.Id)
         </th>
+
+        <th>
+           Father - 
+        </th>
+        <th>
+           Mother
+        </th>
+
         <th></th>
     </tr>
 
@@ -27,6 +35,13 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Breeder.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Father_Id.Name)
+        </td>
+       
+          <td>
+            @Html.DisplayFor(modelItem => item.Mother_Id.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -24,7 +24,13 @@
             @Html.DisplayNameFor(model => model.Sex)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Litter.Id)
+            Father - 
+        </th>
+        <th>
+            Mother - 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LitterId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Color.ColorText)
@@ -56,7 +62,10 @@
             @Html.DisplayFor(modelItem => item.Sex)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Litter.Id)
+            @Html.DisplayFor(modelItem => item.Litter.Father_Id.Name)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.Litter.Mother_Id.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Color.ColorText)
