@@ -27,7 +27,7 @@ namespace ISIC_DATA.Controllers
            
             return View();
         }
-        public ActionResult Users()
+       /* public ActionResult Users()
         {
             
             var query = from u in n_repository.UserProfiles
@@ -37,6 +37,6 @@ namespace ISIC_DATA.Controllers
 
             var userProfiles = m_repository.GetUserProfiles();
             return View(userProfiles);
-        }
+        }*/
     }
 }
