@@ -218,6 +218,7 @@
     <Compile Include="Models\Litter.cs" />
     <Compile Include="Models\LitterDogs.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
