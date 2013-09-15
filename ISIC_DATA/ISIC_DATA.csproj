@@ -216,6 +216,7 @@
     <Compile Include="Models\ISIC_DATAEntities.cs" />
     <Compile Include="Models\ISIC_DATARepository.cs" />
     <Compile Include="Models\Litter.cs" />
+    <Compile Include="Models\LitterDogs.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
