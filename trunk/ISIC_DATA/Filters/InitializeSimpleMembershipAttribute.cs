@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using ISIC_DATA.Models;
+using ISIC_DATA.DataAccess;
 
 namespace ISIC_DATA.Filters
 {
@@ -29,7 +30,7 @@ namespace ISIC_DATA.Filters
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new DogContext())
                     {
                         if (!context.Database.Exists())
                         {

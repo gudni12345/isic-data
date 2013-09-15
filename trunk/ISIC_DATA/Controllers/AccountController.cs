@@ -8,15 +8,17 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
+using ISIC_DATA.DataAccess;
 using ISIC_DATA.Filters;
 using ISIC_DATA.Models;
 
 namespace ISIC_DATA.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private DogContext db = new DogContext();
         //
         // GET: /Account/Login
 
@@ -263,7 +265,7 @@ namespace ISIC_DATA.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                using (DogContext db = new DogContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists

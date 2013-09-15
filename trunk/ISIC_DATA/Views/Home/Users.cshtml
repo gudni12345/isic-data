@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Users";
+}
+
+<body>
+    <h2>Notendur</h2>
+    <table>
+        <thead class="ui-widget-header">
+            <tr>
+                <th>Nafn</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
