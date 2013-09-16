@@ -32,7 +32,7 @@ namespace ISIC_DATA.Controllers
            
             return View();
         }
-      
+        [Authorize(Roles = "Administrator")]
         public ActionResult Users()
         {
 
