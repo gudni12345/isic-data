@@ -6,6 +6,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
+using System.Security.Principal;
+using WebMatrix.WebData;
 
 namespace ISIC_DATA
 {
@@ -17,6 +20,8 @@ namespace ISIC_DATA
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            WebSecurity.InitializeDatabaseConnection("DogContext", "UserProfile", "UserId", "UserName", autoCreateTables: false);
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
