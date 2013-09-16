@@ -26,10 +26,11 @@ namespace ISIC_DATA.Filters
         {
             public SimpleMembershipInitializer()
             {
-               // Database.SetInitializer<UsersContext>(null);
+               Database.SetInitializer<DogContext>(null);
 
                 try
                 {
+                    
                     using (var context = new DogContext())
                     {
                         if (!context.Database.Exists())
@@ -40,6 +41,8 @@ namespace ISIC_DATA.Filters
                     }
 
                     WebSecurity.InitializeDatabaseConnection("DogContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+               
+                    
                 }
                 catch (Exception ex)
                 {
