@@ -33,11 +33,10 @@ namespace ISIC_DATA.Controllers
             return View();
         }
       
-       /*public ActionResult Users()
+        public ActionResult Users()
         {
 
-            var query = db.UserProfiles.Include(u => u);
-            return View(query.ToList());
-        }*/
+            return View(db.UserProfiles.ToList());
+        }
     }
 }
