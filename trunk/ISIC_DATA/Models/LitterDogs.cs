@@ -9,7 +9,6 @@ namespace ISIC_DATA.Models
 {
     public class LitterDogs
     {
-        [Key]
         public Litter Litter { get; set; }
         public List<Dog> Dogs { get; set; }
     }
