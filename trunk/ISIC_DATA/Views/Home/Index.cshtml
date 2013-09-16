@@ -28,9 +28,16 @@
         @Html.ActionLink("Color", "Index", "Color")
         @Html.ActionLink("Litter", "Index", "Litter")
 
-        @Html.ActionLink("Register dogs", "Create", "Litter")
+        <ul>
 
-         @Html.ActionLink("Users", "Users", "Home")
+        <h3>Admin</h3> 
+         @if (Roles.IsUserInRole("Administrator"))
+         {
+             
+             @Html.ActionLink("Register dogs", "Create", "Litter")
+             @Html.ActionLink("Users", "Users", "Home")
+         }
+         </ul>
         <p>.....
         </p>
     </div>

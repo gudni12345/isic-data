@@ -82,6 +82,7 @@ namespace ISIC_DATA.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.Name, model.Password);
+                    Roles.AddUserToRoles(model.UserName, new[] { "Member" });
                     WebSecurity.Login(model.Name, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

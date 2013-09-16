@@ -4,6 +4,8 @@ namespace ISIC_DATA.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Security;
+    using WebMatrix.WebData;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ISIC_DATA.DataAccess.DogContext>
     {
@@ -14,18 +16,27 @@ namespace ISIC_DATA.Migrations
 
         protected override void Seed(ISIC_DATA.DataAccess.DogContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            WebSecurity.InitializeDatabaseConnection(
+                        "DogContext",
+                        "UserProfile",
+                        "UserId",
+                        "UserName", autoCreateTables: true);
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            if (!Roles.RoleExists("Administrator"))
+                Roles.CreateRole("Administrator");
+
+            if (!Roles.RoleExists("Disabled"))
+                Roles.CreateRole("Disabled");
+
+            if (!WebSecurity.UserExists("Admin"))
+                WebSecurity.CreateUserAndAccount(
+                    "Admin",
+                    "password"
+                   );
+        
+
+            if (!Roles.GetRolesForUser("Admin").Contains("Administrator"))
+                Roles.AddUsersToRoles(new[] { "Admin" }, new[] { "Administrator" });
         }
     }
 }
