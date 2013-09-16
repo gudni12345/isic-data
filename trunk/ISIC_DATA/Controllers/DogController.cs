@@ -68,6 +68,41 @@ namespace ISIC_DATA.Controllers
             return View(dog);
         }
 
+        public ActionResult RegisterDogs()
+        {
+            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id");
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor");
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name");
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode");
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
+            ViewBag.DogName = new SelectList(db.Dog, "Name", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Litter litter, Dog dog)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Litter.Add(litter);
+                db.Dog.Add(dog);
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+  
+
+
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
+            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
+            ViewBag.DogName = new SelectList(db.Dog, "Name", "Name");
+            return View(dog);
+        }
+        
         //
         // GET: /Dog/Create
 

@@ -12,16 +12,15 @@
     <fieldset>
         <legend>Litter</legend>
 
+         <div class="editor-field">
+            Litter Id: @Html.EditorFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+
         <div class="editor-field">
             Date of birth: @Html.EditorFor(model => model.DateOfBirth)
             @Html.ValidationMessageFor(model => model.DateOfBirth)
         </div>
-
-        <div class="editor-field">
-            Breeder name: @Html.EditorFor(model => model.Breeder.Person.Name)
-            @Html.ValidationMessageFor(model => model.Breeder.Person.Name)
-        </div>
-
 
        
         <div class="editor-field">

@@ -58,7 +58,7 @@ namespace ISIC_DATA.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", breeder.PersonId);
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", breeder.Person.Id);
             return View(breeder);
         }
 
@@ -72,7 +72,7 @@ namespace ISIC_DATA.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", breeder.PersonId);
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", breeder.Person.Id);
             return View(breeder);
         }
 
@@ -88,7 +88,7 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", breeder.PersonId);
+            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", breeder.Person.Id);
             return View(breeder);
         }
 
