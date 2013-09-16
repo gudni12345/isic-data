@@ -120,6 +120,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Create
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(Dog dog)
         {
             if (ModelState.IsValid)
