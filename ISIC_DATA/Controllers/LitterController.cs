@@ -41,7 +41,7 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
+  //          ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
             ViewBag.DogName = new SelectList(db.Dog, "Name", "Name");
             return View();
         }
@@ -59,7 +59,7 @@ namespace ISIC_DATA.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id", litter.BreederId);
+           // ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id", litter.BreederId);
             return View(litter);
         }
 

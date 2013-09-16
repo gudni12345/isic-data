@@ -9,7 +9,7 @@ namespace ISIC_DATA.Models
 {
     public class Person
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

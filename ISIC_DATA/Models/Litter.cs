@@ -8,8 +8,9 @@ using System.Web;
 namespace ISIC_DATA.Models
 {
     public class Litter
-    {
+    {       
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]

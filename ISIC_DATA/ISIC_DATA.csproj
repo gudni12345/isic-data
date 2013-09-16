@@ -436,6 +436,7 @@
     <Content Include="Views\Litter\Edit.cshtml" />
     <Content Include="Views\Litter\Delete.cshtml" />
     <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Dog\RegisterDogs.cshtml" />
     <None Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
