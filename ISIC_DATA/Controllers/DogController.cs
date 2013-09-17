@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
-using PagedList;
 
 namespace ISIC_DATA.Controllers
 {
@@ -18,41 +17,10 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Dog/
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index()
         {
-            
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-            var dogs = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country).Include(d => d.Litter);
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper()) );
-            }
-
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    dogs = dogs.OrderByDescending(d => d.Name);
-                    break;
-                case "Date":
-                    dogs = dogs.OrderBy(d => d.Litter.DateOfBirth);
-                    break;
-                default:
-                    dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth);
-                    break;
-            }
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(dogs.ToPagedList(pageNumber, pageSize));
+            var dog = db.Dog.Include(d => d.Litter).Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country);
+            return View(dog.ToList());
         }
 
         //
@@ -68,41 +36,6 @@ namespace ISIC_DATA.Controllers
             return View(dog);
         }
 
-        public ActionResult RegisterDogs()
-        {
-            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id");
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
-            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor");
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name");
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode");
-            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
-            ViewBag.DogName = new SelectList(db.Dog, "Name", "Name");
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Litter litter, Dog dog)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Litter.Add(litter);
-                db.Dog.Add(dog);
-
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-  
-
-
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
-            ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
-            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
-            ViewBag.DogName = new SelectList(db.Dog, "Name", "Name");
-            return View(dog);
-        }
-        
         //
         // GET: /Dog/Create
 
@@ -120,7 +53,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Create
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Dog dog)
         {
             if (ModelState.IsValid)
@@ -130,6 +63,7 @@ namespace ISIC_DATA.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
@@ -147,7 +81,7 @@ namespace ISIC_DATA.Controllers
             {
                 return HttpNotFound();
             }
-    
+            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
@@ -159,6 +93,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Dog dog)
         {
             if (ModelState.IsValid)
@@ -167,7 +102,7 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-          
+            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
@@ -192,6 +127,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Dog/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Dog dog = db.Dog.Find(id);
