@@ -13,13 +13,13 @@ namespace ISIC_DATA.Models
         public int Id { get; set; }
    
         [MaxLength(50)]
-        public string Reg { get; set; }     // - provider by FCI 
+        public string Reg { get; set; }     // - provided by FCI 
         public string Name { get; set; }
         public string ColorComment { get; set; }
         [MaxLength(1)]
         public string Sex { get; set; }
 
-        public int LitterId { get; set; }
+        public Nullable<int> LitterId { get; set; }
         public virtual Litter Litter { get; set; }
 
         public Nullable<int> ColorId { get; set; }
@@ -33,8 +33,9 @@ namespace ISIC_DATA.Models
 
         public Nullable<int> CountryId { get; set; }
         public virtual Country Country { get; set; }
-        
-        
+
+        public virtual ICollection<Litter> Father { get; set; }
+        public virtual ICollection<Litter> Mother { get; set; }
 
     }
 }

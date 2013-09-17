@@ -16,15 +16,19 @@ namespace ISIC_DATA.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<DateTime> DateOfBirth { get; set; }
 
-        public virtual Dog Mother_Id { get; set; }
-        public virtual Dog Father_Id { get; set; }
+        public int MotherId { get; set; }
+        public virtual Dog Mother { get; set; }
+
+        public int FatherId { get; set; }
+        public virtual Dog Father { get; set; }
 
         public Nullable<int> BreederId { get; set; }
         public virtual Breeder Breeder { get; set; }
     }
 }
 
-
+//public virtual Dog Mother_Id { get; set; }
+//public virtual Dog Father_Id { get; set; }
 //  public int Mother_Id { get; set; }
 //  public int Father_Id { get; set; }
 
