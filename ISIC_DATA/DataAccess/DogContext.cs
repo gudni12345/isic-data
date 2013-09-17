@@ -18,6 +18,23 @@ namespace ISIC_DATA.DataAccess
         public DbSet<DetailedInfo> DetailedInfo { get; set; }
         public DbSet<Person> Person { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Litter>()
+                        .HasRequired(f => f.Father)
+                        .WithMany(d => d.Father)
+                        .HasForeignKey(f => f.FatherId)
+                        .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Litter>()
+                        .HasRequired(f => f.Mother)
+                        .WithMany(d => d.Mother)
+                        .HasForeignKey(f => f.MotherId)
+                        .WillCascadeOnDelete(false);
+        }
+  
     }
+
 }
 

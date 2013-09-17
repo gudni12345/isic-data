@@ -21,7 +21,7 @@ namespace ISIC_DATA
         {
             AreaRegistration.RegisterAllAreas();
 
-            WebSecurity.InitializeDatabaseConnection("DogContext", "UserProfile", "UserId", "UserName", autoCreateTables: false);
+            //WebSecurity.InitializeDatabaseConnection("DogContext", "UserProfile", "UserId", "UserName", autoCreateTables: false);
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
