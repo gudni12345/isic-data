@@ -19,8 +19,9 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-            var litter = db.Litter.Include(l => l.Breeder).Include(l => l.Father).Include(l => l.Mother);
-            return View(litter.Take(5).ToList());
+           // var litter = db.Litter.Include(l => l.Breeder).Include(l => l.Father).Include(l => l.Mother);
+           // return View(litter.Take(5).ToList());
+            return View();
         }
 
         //
@@ -41,11 +42,16 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Create()
         {
+
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
+            ViewBag.DogName = new SelectList(db.Dog, "Name", "Name");
+
             var Fathers = db.Dog.Where(d => d.Sex == "M").ToList();
             var Mothers = db.Dog.Where(d => d.Sex == "F").ToList();
             ViewBag.MotherId = new SelectList(Mothers, "Id", "Name");
             ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
             ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
+
             return View();
         }
 
