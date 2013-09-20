@@ -5,7 +5,7 @@
     Layout = "~\\Views\\Shared\\_Layout.cshtml";
 }
 
-<h2>Add Applicant</h2>
+<h2>Register Dog(s)</h2>
 
 @using (Html.BeginForm())
 {
@@ -17,6 +17,22 @@
         <span class="editor-field">
             @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { data_bind = "value: birth" })
         </span>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Litter.MotherId, "Mother")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor( model => model.Litter.MotherId, (SelectList)ViewBag.MotherId)
+            @Html.ValidationMessageFor(model => model.Litter.MotherId)
+        </div>
+
+           <div class="editor-label">
+            @Html.LabelFor(model => model.Litter.FatherId, "Father")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId)
+            @Html.ValidationMessageFor(model => model.Litter.FatherId)
+        </div>
 
     </fieldset>
     <fieldset>
