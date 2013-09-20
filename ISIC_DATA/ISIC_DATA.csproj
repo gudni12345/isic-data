@@ -198,6 +198,7 @@
     <Compile Include="Controllers\IsicDogManagerController.cs" />
     <Compile Include="Controllers\LitterController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RegisterDogController.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -211,12 +212,12 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\DetailedInfo.cs" />
     <Compile Include="Models\Dog.cs" />
+    <Compile Include="Models\DogViewModel.cs" />
     <Compile Include="Models\IsicDog.cs" />
     <Compile Include="Models\IsicDogManager.cs" />
     <Compile Include="Models\ISIC_DATAEntities.cs" />
     <Compile Include="Models\ISIC_DATARepository.cs" />
     <Compile Include="Models\Litter.cs" />
-    <Compile Include="Models\LitterDogs.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -350,6 +351,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout.namepathbinding.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -433,7 +435,8 @@
     <Content Include="Views\Litter\Delete.cshtml" />
     <Content Include="Views\Home\Users.cshtml" />
     <Content Include="Views\Dog\RegisterDogs.cshtml" />
-    <None Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\RegisterDog\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Dog.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Create.cshtml" />

@@ -4,38 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
-    <title></title>
-    
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/start/jquery-ui.css" />
-    <link rel="stylesheet" type="test/css" href="~/Content/Site.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-     <link rel="stylesheet" href="/resources/demos/style.css" />
+    <title>ISIC</title>
    
 	@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/signalr")
-    <script src="~/signalr/hubs"></script>
     @Scripts.Render("~/bundles/modernizr")
-    <script>
-        $(function () {
-            $("#menu").menu();
-        });
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/knockout")
+    <script src="~/Scripts/knockout.namepathbinding.js"></script>
 
-    </script>
-
-    <script>
-        $(function () {
-            $("#menu1").menu();
-        });
-
-    </script>
-    
-  <script>
-      $(function() {
-          $("#Born").datepicker();
-
-      });
-        </script>
 
     @RenderSection("styles", required: false)
 	
@@ -72,14 +48,12 @@
       @Html.Partial("_LoginPartial")             
 	</div>
 
-     
-    <!--div class="bottombar">
-       <h2>&copy; ISIC</h2>
-    </!--div-->
      <div id="content">
        
     @RenderBody()	
     </div>
+
+    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>

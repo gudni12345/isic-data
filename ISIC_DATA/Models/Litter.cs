@@ -26,14 +26,3 @@ namespace ISIC_DATA.Models
         public virtual Breeder Breeder { get; set; }
     }
 }
-
-//public virtual Dog Mother_Id { get; set; }
-//public virtual Dog Father_Id { get; set; }
-//  public int Mother_Id { get; set; }
-//  public int Father_Id { get; set; }
-
-
-//public string Reg_Mother { get; set; }
-//public string Reg_Father { get; set; }
-
-// public virtual List<Dog> dogs { get; set; }

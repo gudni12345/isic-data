@@ -1,0 +1,69 @@
+﻿@model ISIC_DATA.Models.DogViewModel
+
+@{
+    ViewBag.Title = "Register dogs";
+    Layout = "~\\Views\\Shared\\_Layout.cshtml";
+}
+
+<h2>Add Applicant</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Litter details</legend>
+        <span class="editor-label">
+            @Html.LabelFor(model => model.Litter.DateOfBirth)
+        </span>
+        <span class="editor-field">
+            @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { data_bind = "value: birth" })
+        </span>
+
+    </fieldset>
+    <fieldset>
+        <legend>Dogs</legend>
+        @Html.EditorFor(model => model.Dogs)
+        <button data-bind="click: addPosition">Add one</button>
+        <button data-bind="click: removePosition">Remove one</button>
+    </fieldset>
+    <input type="Submit" value="save"/>
+}
+<script type="text/javascript">
+
+    function createViewModel() {
+
+        var createPosition = function () {
+            return {
+                name: ko.observable(),
+                reg: ko.observable(),
+                sex: ko.observable(),
+                colorId: ko.observable()
+            };
+        };
+
+        var addPosition = function () {
+            positions.push(createPosition());
+        };
+
+        var removePosition = function () {
+            positions.pop();
+        };
+
+        var birth = ko.observable();        
+        var positions = ko.observableArray([createPosition()]);
+
+        return {
+            birth: birth,            
+            positions: positions,
+            addPosition: addPosition,
+            removePosition: removePosition
+        };
+
+    }
+
+    $(document).ready(function () {
+        var viewModel = createViewModel();
+        ko.applyBindings(viewModel);
+    });
+
+</script>
+
