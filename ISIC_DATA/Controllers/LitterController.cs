@@ -19,9 +19,9 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
-           // var litter = db.Litter.Include(l => l.Breeder).Include(l => l.Father).Include(l => l.Mother);
-           // return View(litter.Take(5).ToList());
-            return View();
+            var litter = db.Litter.Include(l => l.Breeder).Include(l => l.Father).Include(l => l.Mother);
+            return View(litter.Take(20).ToList());
+            //return View();
         }
 
         //
