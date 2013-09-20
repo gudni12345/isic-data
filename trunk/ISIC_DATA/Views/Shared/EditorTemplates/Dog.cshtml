@@ -1,0 +1,33 @@
+﻿@model ISIC_DATA.Models.Dog
+
+<!-- ko foreach: positions -->
+<fieldset>
+    <span class="editor-label">
+        @Html.LabelFor(model => model.Name)
+    </span>
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true" })
+    </span>
+
+    <span class="editor-label">
+        @Html.LabelFor(model => model.Reg)
+    </span>
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true" })
+    </span>
+
+    <span class="editor-label">
+        @Html.LabelFor(model => model.Sex)
+    </span>
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.Sex, new { data_bind = "value: sex, namePath: true" })
+    </span>
+
+    <span class="editor-label">
+        @Html.LabelFor(model => model.ColorId)
+    </span>
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.ColorId, new { data_bind = "value: colorId, namePath: true" })
+    </span>
+</fieldset>
+<!-- /ko -->
