@@ -69,6 +69,34 @@ namespace ISIC_DATA.Controllers
         }
 
         //
+        // GET: /Dog/RegisterDogs
+
+        public ActionResult RegisterDogs()
+        {
+            var Fathers = db.Dog.Where(d => d.Sex == "M").ToList();
+            var Mothers = db.Dog.Where(d => d.Sex == "F").ToList();
+            ViewBag.MotherId = new SelectList(Mothers, "Id", "Name");
+            ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
+            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterDogs(Litter litter, Dog dog)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Litter.Add(litter);
+                db.Dog.Add(dog);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(dog);
+        }
+
+        //
         // GET: /Dog/Create
 
         public ActionResult Create()

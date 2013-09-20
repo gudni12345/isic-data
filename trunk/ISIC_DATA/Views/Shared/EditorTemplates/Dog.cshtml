@@ -27,7 +27,8 @@
         @Html.LabelFor(model => model.ColorId)
     </span>
     <span class="editor-field">
-        @Html.TextBoxFor(model => model.ColorId, new { data_bind = "value: colorId, namePath: true" })
+        @Html.DropDownListFor( model => model.ColorId, (SelectList)ViewBag.ColorId)
+       
     </span>
 </fieldset>
 <!-- /ko -->
