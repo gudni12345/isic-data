@@ -14,7 +14,9 @@ namespace ISIC_DATA.Models
         public int Id { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public Nullable<DateTime> DateOfBirth { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth is missing")]
+
+        public Nullable<DateTime> DateOfBirth { get; set; }   // Nullable required for the import.  
 
         public int MotherId { get; set; }
         public virtual Dog Mother { get; set; }

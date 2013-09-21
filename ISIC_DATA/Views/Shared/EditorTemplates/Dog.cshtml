@@ -7,6 +7,7 @@
     </span>
     <span class="editor-field">
         @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true" })
+        @Html.ValidationMessageFor(model => model.Name)
     </span>
 
     <span class="editor-label">
@@ -14,6 +15,7 @@
     </span>
     <span class="editor-field">
         @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true" })
+        @Html.ValidationMessageFor(model => model.Reg)
     </span>
 
     <span class="editor-label">
@@ -21,13 +23,14 @@
     </span>
     <span class="editor-field">
         @Html.TextBoxFor(model => model.Sex, new { data_bind = "value: sex, namePath: true" })
+        @Html.ValidationMessageFor(model => model.Sex)
     </span>
 
     <span class="editor-label">
         @Html.LabelFor(model => model.ColorId)
     </span>
     <span class="editor-field">
-        @Html.DropDownListFor( model => model.ColorId, (SelectList)ViewBag.ColorId)
+        @Html.DropDownListFor( model => model.ColorId, (SelectList)ViewBag.ColorId ,new { data_bind = "value: colorId, namePath: true" })
        
     </span>
 </fieldset>
