@@ -1,5 +1,4 @@
 ﻿@model ISIC_DATA.Models.DogViewModel
-
 @{
     ViewBag.Title = "Register dogs";
     Layout = "~\\Views\\Shared\\_Layout.cshtml";
@@ -7,22 +6,22 @@
 
 <h2>Register Dog(s)</h2>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
     <fieldset>
         <legend>Litter details</legend>
-        <span class="editor-label">
-            @Html.LabelFor(model => model.Litter.DateOfBirth)
-        </span>
         <span class="editor-field">
-            @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
+            Date of birth: @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
+            @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
         </span>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Litter.MotherId, "Mother")
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor( model => model.Litter.MotherId, (SelectList)ViewBag.MotherId)
+            @Html.DropDownListFor( model => model.Litter.MotherId, (SelectList)ViewBag.MotherId,"Select mother")
             @Html.ValidationMessageFor(model => model.Litter.MotherId)
         </div>
 
@@ -30,7 +29,7 @@
             @Html.LabelFor(model => model.Litter.FatherId, "Father")
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId)
+            @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId, "Select father")
             @Html.ValidationMessageFor(model => model.Litter.FatherId)
         </div>
 
@@ -41,9 +40,25 @@
         <button data-bind="click: addPosition">Add one</button>
         <button data-bind="click: removePosition">Remove one</button>
     </fieldset>
-    <input type="Submit" value="save"/>
+    <input type="Submit" value="SAVE" id="registerform"/>
+
 }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
 <script type="text/javascript">
+
+    $(function () {
+        $('#registerform').submit(function () {
+            if ($(this).valid()) {
+                alert('the form is valid');
+            }
+            else
+                alert('The form was not valid');
+        });
+    });
 
     $(function () {
         $('.datePicker').datepicker();

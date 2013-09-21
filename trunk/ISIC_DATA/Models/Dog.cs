@@ -12,9 +12,12 @@ namespace ISIC_DATA.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
    
-        [MaxLength(50)]
+        [MaxLength(50), MinLength(4, ErrorMessage = "Reg number is required.")]
         public string Reg { get; set; }     // - provided by FCI 
+
+        [Required(ErrorMessage="Name is required.")]
         public string Name { get; set; }
+
         public string ColorComment { get; set; }
         [MaxLength(1)]
         public string Sex { get; set; }

@@ -27,6 +27,12 @@ namespace ISIC_DATA.Controllers
         [HttpPost]
         public ActionResult Index(DogViewModel viewModel)
         {
+            var Fathers = db.Dog.Where(d => d.Sex == "M").ToList();
+            var Mothers = db.Dog.Where(d => d.Sex == "F").ToList();
+            ViewBag.MotherId = new SelectList(Mothers, "Id", "Name");
+            ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+
             if (ModelState.IsValid)
             {
                 db.Litter.Add(viewModel.Litter);
@@ -39,10 +45,11 @@ namespace ISIC_DATA.Controllers
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Index");
+                
+                return RedirectToAction("../Home");  // Success
             }
 
-            return View(viewModel);
+            return RedirectToAction("Index");
         }
 
     }
