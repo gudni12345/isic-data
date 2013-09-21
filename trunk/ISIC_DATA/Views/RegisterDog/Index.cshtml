@@ -15,7 +15,7 @@
             @Html.LabelFor(model => model.Litter.DateOfBirth)
         </span>
         <span class="editor-field">
-            @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { data_bind = "value: birth" })
+            @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
         </span>
 
         <div class="editor-label">
@@ -44,6 +44,10 @@
     <input type="Submit" value="save"/>
 }
 <script type="text/javascript">
+
+    $(function () {
+        $('.datePicker').datepicker();
+    });
 
     function createViewModel() {
 
