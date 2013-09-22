@@ -3,7 +3,7 @@
 <!-- ko foreach: positions -->
 <fieldset>
     <span class="editor-label">
-        @Html.LabelFor(model => model.Name)
+        Name: 
     </span>
     <span class="editor-field">
         @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true" })
@@ -11,7 +11,7 @@
     </span>
 
     <span class="editor-label">
-        @Html.LabelFor(model => model.Reg)
+        Reg: 
     </span>
     <span class="editor-field">
         @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true" })
@@ -19,7 +19,7 @@
     </span>
 
     <span class="editor-label">
-        @Html.LabelFor(model => model.Sex)
+        Sex: 
     </span>
     <span class="editor-field">
         @Html.TextBoxFor(model => model.Sex, new { data_bind = "value: sex, namePath: true" })
@@ -27,11 +27,11 @@
     </span>
 
     <span class="editor-label">
-        @Html.LabelFor(model => model.ColorId)
+        Color: 
     </span>
     <span class="editor-field">
         @Html.DropDownListFor( model => model.ColorId, (SelectList)ViewBag.ColorId ,new { data_bind = "value: colorId, namePath: true" })
-       
+        @Html.ValidationMessageFor(model => model.Color.Id)
     </span>
 </fieldset>
 <!-- /ko -->

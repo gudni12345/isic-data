@@ -13,7 +13,7 @@ namespace ISIC_DATA.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'MM'/'yy}")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth is missing")]
 
         public Nullable<DateTime> DateOfBirth { get; set; }   // Nullable required for the import.  

@@ -33,6 +33,9 @@ namespace ISIC_DATA.Controllers
             ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
 
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
             if (ModelState.IsValid)
             {
                 db.Litter.Add(viewModel.Litter);
