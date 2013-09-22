@@ -12,6 +12,7 @@
 
     <fieldset>
         <legend>Litter details</legend>
+
         <span class="editor-field">
             Date of birth: @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
             @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
@@ -61,8 +62,24 @@
     });
 
     $(function () {
-        $('.datePicker').datepicker();
+        $.validator.addMethod('date',
+        function (value, element) {
+            if (this.optional(element)) {
+                return true;
+            }
+            var ok = true;
+            try {
+                $.datepicker.parseDate('dd/mm/yy', value);
+            }
+            catch (err) {
+                ok = false;
+            }
+            return ok;
+        });
+        $(".datePicker").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true });
     });
+
+
 
     function createViewModel() {
 
