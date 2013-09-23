@@ -15,7 +15,15 @@ namespace ISIC_DATA.Models
         public String Eyes { get; set; }
         public string Comment { get; set; }
         public string Hair { get; set; }
-        public char HD { get; set; }
+        
+        [MaxLength(1)]
+        public string HD { get; set; }
+
+        [MaxLength(1)]
+        public string HD2 { get; set; }
+
+        public string RS { get; set; }
+        public string MT { get; set; }
         public string AD { get; set; }
         public string HT { get; set; }
         public string NewReg { get; set; }
