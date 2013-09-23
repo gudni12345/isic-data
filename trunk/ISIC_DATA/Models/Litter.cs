@@ -18,6 +18,9 @@ namespace ISIC_DATA.Models
 
         public Nullable<DateTime> DateOfBirth { get; set; }   // Nullable required for the import.  
 
+        public string Reg_F { get; set; }
+        public string Reg_M { get; set; }
+
         public int MotherId { get; set; }
         public virtual Dog Mother { get; set; }
 
