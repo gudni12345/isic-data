@@ -14,23 +14,19 @@
 
      
         <span class="editor-field">
-            Date of birth: 
+            <label>Date of birth:</label>
             @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth"})
             @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
         </span>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Litter.FatherId, "Father")
-        </div>
+       
         <div class="editor-field">
+            <label>Father:</label>
             @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId, "Select father")
             @Html.ValidationMessageFor(model => model.Litter.FatherId)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Litter.MotherId, "Mother")
-        </div>
         <div class="editor-field">
+            <label>Mother:</label>
             @Html.DropDownListFor( model => model.Litter.MotherId, (SelectList)ViewBag.MotherId,"Select mother")
             @Html.ValidationMessageFor(model => model.Litter.MotherId)
         </div>
