@@ -1,17 +1,9 @@
 ﻿@{
     ViewBag.Title = "";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-           </div>
-    </section>
-}
-<br>
+<br />
+<br />
+
 
     <div id="welcome">
         <h3 class="frett1">Welcome</h3>
@@ -19,7 +11,7 @@
         <p> Welcome to the ISIC Database web.......</p>
     </div>
 <br>
-    <div id="welcome">
+    <div id="welcome2">
         <h3 class="frett2">New Data</h3>
         <h4 class="dags2">6.9.2013</h4>
 
@@ -31,16 +23,16 @@
         New form - still under contruction.
         @Html.ActionLink("RegisterDog", "Index", "RegisterDog")
 
-        <ul>
-
-        <h3>Admin</h3> 
+        
+        <br />
+        Admin
          @if (Roles.IsUserInRole("Administrator"))
          {
              
              @Html.ActionLink("Register dogs", "Create", "Litter")
              @Html.ActionLink("Users", "Users", "Home")
          }
-         </ul>
+     
         <p>.....
         </p>
     </div>

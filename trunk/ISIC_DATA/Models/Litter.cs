@@ -13,9 +13,8 @@ namespace ISIC_DATA.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'MM'/'yy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'mm'/'yy}")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth is missing")]
-
         public Nullable<DateTime> DateOfBirth { get; set; }   // Nullable required for the import.  
 
         public string Reg_F { get; set; }
@@ -31,3 +30,18 @@ namespace ISIC_DATA.Models
         public virtual Breeder Breeder { get; set; }
     }
 }
+
+
+//[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'MM'/'yy}")]
+
+/*       [DataType(DataType.Date)]
+       [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+       [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth is missing")]
+ * 
+ *         [DataType(DataType.Date)]
+       [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+       [Required(ErrorMessage = "Please enter a date")]
+
+
+
+*/
