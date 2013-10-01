@@ -21,6 +21,9 @@ namespace ISIC_DATA.Controllers
             ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
 
+            List<string> genderList = new List<string>() { "Male", "Female" };
+            ViewBag.Gender = new SelectList(genderList);
+
             return this.View(viewModel);
         }
 
@@ -33,6 +36,9 @@ namespace ISIC_DATA.Controllers
             ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
 
+            List<string> genderList = new List<string>() { "Male", "Female" };
+            ViewBag.Gender = new SelectList(genderList);
+
             if (!ModelState.IsValid)
                 return View(viewModel);
 
@@ -43,6 +49,8 @@ namespace ISIC_DATA.Controllers
 
                 foreach (Dog d in viewModel.Dogs)
                 {
+                    if (d.Sex.Equals("Male")) d.Sex = "M";
+                    if (d.Sex.Equals("Female")) d.Sex = "F";
                     d.LitterId = db.Litter.Count();
                     db.Dog.Add(d);
                     db.SaveChanges();

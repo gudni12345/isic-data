@@ -18,11 +18,12 @@
         @Html.ValidationMessageFor(model => model.Reg)
     </span>
 
+
     <span class="editor-label">
         Sex: 
     </span>
     <span class="editor-field">
-        @Html.TextBoxFor(model => model.Sex, new { data_bind = "value: sex, namePath: true" })
+        @Html.DropDownListFor( model => model.Sex, (SelectList)ViewBag.Gender ,new { data_bind = "value: sex, namePath: true" })
         @Html.ValidationMessageFor(model => model.Sex)
     </span>
 
