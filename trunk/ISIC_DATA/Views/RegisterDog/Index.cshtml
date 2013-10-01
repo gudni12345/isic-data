@@ -59,6 +59,7 @@
         $(".datePicker").datepicker({ format: 'dd/mm/yyyy' });
     });
 
+    var numOfDogs=1;
 
     function createViewModel() {
 
@@ -72,11 +73,17 @@
         };
 
         var addPosition = function () {
-            positions.push(createPosition());
+            if (numOfDogs < 15) {
+                positions.push(createPosition());
+                numOfDogs++;
+            }
         };
 
         var removePosition = function () {
-            positions.pop();
+            if (numOfDogs > 1) {
+                positions.pop();
+                numOfDogs = numOfDogs - 1;
+            }
         };
 
         var birth = ko.observable();        
