@@ -1,22 +1,31 @@
-﻿@model ISIC_DATA.Models.DogViewModel
-@{
-    ViewBag.Title = "Register dogs";
-    Layout = "~\\Views\\Shared\\_Layout.cshtml";
-}
+﻿@using BootstrapSupport
+@model ISIC_DATA.Models.DogViewModel
 
+<br />
+<br />
 <h2>Register Dog(s)</h2>
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
 
     <fieldset>
         <legend>Litter details</legend>
 
+     
         <span class="editor-field">
-            Date of birth: @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
+            Date of birth: 
+            @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth"})
             @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
         </span>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Litter.FatherId, "Father")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId, "Select father")
+            @Html.ValidationMessageFor(model => model.Litter.FatherId)
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Litter.MotherId, "Mother")
@@ -26,13 +35,7 @@
             @Html.ValidationMessageFor(model => model.Litter.MotherId)
         </div>
 
-           <div class="editor-label">
-            @Html.LabelFor(model => model.Litter.FatherId, "Father")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId, "Select father")
-            @Html.ValidationMessageFor(model => model.Litter.FatherId)
-        </div>
+
 
     </fieldset>
     <fieldset>
@@ -41,44 +44,20 @@
         <button data-bind="click: addPosition">Add one</button>
         <button data-bind="click: removePosition">Remove one</button>
     </fieldset>
-    <input type="Submit" value="SAVE" id="registerform"/>
-
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
+    </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
 
 <script type="text/javascript">
 
-    $(function () {
-        $('#registerform').submit(function () {
-            if ($(this).valid()) {
-                alert('the form is valid');
-            }
-            else
-                alert('The form was not valid');
-        });
+    $(document).ready(function () {
+        $.validator.methods["date"] = function (value, element) { return true; }
+        $(".datePicker").datepicker({ format: 'dd/mm/yyyy' });
     });
-
-    $(function () {
-        $.validator.addMethod('date',
-        function (value, element) {
-            if (this.optional(element)) {
-                return true;
-            }
-            var ok = true;
-            try {
-                $.datepicker.parseDate('dd/mm/yy', value);
-            }
-            catch (err) {
-                ok = false;
-            }
-            return ok;
-        });
-        $(".datePicker").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true });
-    });
-
 
 
     function createViewModel() {

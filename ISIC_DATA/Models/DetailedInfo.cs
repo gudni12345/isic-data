@@ -16,10 +16,10 @@ namespace ISIC_DATA.Models
         public string Comment { get; set; }
         public string Hair { get; set; }
         
-        [MaxLength(1)]
+        [MaxLength(20)]
         public string HD { get; set; }
 
-        [MaxLength(1)]
+        [MaxLength(20)]
         public string HD2 { get; set; }
 
         public string RS { get; set; }
