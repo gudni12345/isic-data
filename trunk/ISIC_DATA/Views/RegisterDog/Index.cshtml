@@ -36,7 +36,8 @@
     </fieldset>
     <fieldset>
         <legend>Dogs</legend>
-        @Html.EditorFor(model => model.Dogs)
+        @Html.EditorFor(model => model.DogAndPersons)
+
         <button data-bind="click: addPosition">Add one</button>
         <button data-bind="click: removePosition">Remove one</button>
     </fieldset>
@@ -67,7 +68,11 @@
                 name: ko.observable(),
                 reg: ko.observable(),
                 sex: ko.observable(),
-                colorId: ko.observable()
+                colorId: ko.observable(),
+
+                personName: ko.observable(),
+                email: ko.observable(),
+                address: ko.observable()                
             };
         };
 

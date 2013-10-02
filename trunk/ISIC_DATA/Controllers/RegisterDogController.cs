@@ -47,12 +47,13 @@ namespace ISIC_DATA.Controllers
                 db.Litter.Add(viewModel.Litter);
                 db.SaveChanges();
 
-                foreach (Dog d in viewModel.Dogs)
-                {
-                    if (d.Sex.Equals("Male")) d.Sex = "M";
-                    if (d.Sex.Equals("Female")) d.Sex = "F";
-                    d.LitterId = db.Litter.Count();
-                    db.Dog.Add(d);
+                foreach (DogAndPerson dp in viewModel.DogAndPersons)
+                {                    
+                    if (dp.Dog.Sex.Equals("Male")) dp.Dog.Sex = "M";
+                    if (dp.Dog.Sex.Equals("Female")) dp.Dog.Sex = "F";
+                    dp.Dog.LitterId = db.Litter.Count();
+                    db.Dog.Add(dp.Dog);
+                    db.Person.Add(dp.Person);
                     db.SaveChanges();
                 }
 

@@ -222,6 +222,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Breeder.cs" />
     <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\DogAndPerson.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\DetailedInfo.cs" />
     <Compile Include="Models\Dog.cs" />
@@ -476,6 +477,8 @@
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.test.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Person.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DogAndPerson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
