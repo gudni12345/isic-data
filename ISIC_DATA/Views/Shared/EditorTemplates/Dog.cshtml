@@ -1,26 +1,32 @@
 ﻿@using BootstrapSupport
-@model ISIC_DATA.Models.Dog
+﻿@model ISIC_DATA.Models.Dog
 
 <!-- ko foreach: positions -->
-<form class="form-inline" role="form">
-    
-    <div class="form-group">
-          
-        @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true", placeholder="Name", @class = "input-xlarge" })
-        @Html.ValidationMessageFor(model => model.Name)
-   
-   
-        @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true", placeholder="Reg", @class = "input-small"  })
-        @Html.ValidationMessageFor(model => model.Reg)
+<fieldset>
 
-         
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true", placeholder="Name", @class = "input-xlarge" })
+        @Html.ValidationMessageFor(model => model.Name,null, new { @class = "help-inline" })
+    </span>
+
+
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true", placeholder="Reg", @class = "input-small" })
+        @Html.ValidationMessageFor(model => model.Reg,null, new { @class = "help-inline" })
+    </span>
+
+
+    <span class="editor-field">
         @Html.DropDownListFor( model => model.Sex, (SelectList)ViewBag.Gender ,new { data_bind = "value: sex, namePath: true" })
-        @Html.ValidationMessageFor(model => model.Sex)
-   
+        @Html.ValidationMessageFor(model => model.Sex,null, new { @class = "help-inline" })
+    </span>
+
+
+    <span class="editor-field">
         @Html.DropDownListFor( model => model.ColorId, (SelectList)ViewBag.ColorId ,new { data_bind = "value: colorId, namePath: true" })
-        @Html.ValidationMessageFor(model => model.Color.Id)
-  </div>
-</form>
-<form class="form-inline" role="form"> </form>
+        @Html.ValidationMessageFor(model => model.Color.Id,null, new { @class = "help-inline" })
+    </span>
+</fieldset>
 <!-- /ko -->
+
 
