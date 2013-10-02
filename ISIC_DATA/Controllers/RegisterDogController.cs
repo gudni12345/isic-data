@@ -48,13 +48,15 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
 
                 foreach (DogAndPerson dp in viewModel.DogAndPersons)
-                {                    
+                {
+                    db.Person.Add(dp.Person);
+                    db.SaveChanges();
+
                     if (dp.Dog.Sex.Equals("Male")) dp.Dog.Sex = "M";
                     if (dp.Dog.Sex.Equals("Female")) dp.Dog.Sex = "F";
                     dp.Dog.LitterId = db.Litter.Count();  // DOg linked to LitterId
-                    dp.Dog.PersonId = db.Person.Count()+1;  // Dog linked to PersonId
-                    db.Dog.Add(dp.Dog);
-                    db.Person.Add(dp.Person);
+                    dp.Dog.PersonId = db.Person.Count();  // Dog linked to PersonId
+                    db.Dog.Add(dp.Dog);                    
                     db.SaveChanges();
                 }
 
