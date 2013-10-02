@@ -1,0 +1,25 @@
+﻿@using BootstrapSupport
+﻿@model ISIC_DATA.Models.Person
+
+<!-- ko foreach: positions -->
+<fieldset>
+    @Html.ValidationSummary(true)
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.Name, new { data_bind = "value: personName, namePath: true", placeholder="Owner", @class = "input-xlarge" })
+        @Html.ValidationMessageFor(model => model.Name,null, new { @class = "help-inline" })
+    </span>
+
+
+    <span class="editor-field">
+        @Html.TextBoxFor(model => model.Email, new { data_bind = "value: email, namePath: true", placeholder="email", @class = "input-xlarge" })
+        @Html.ValidationMessageFor(model => model.Email,null, new { @class = "help-inline" })
+    </span>
+
+     <span class="editor-field">
+        @Html.TextBoxFor(model => model.Address, new { data_bind = "value: address, namePath: true", placeholder="address", @class = "input-xlarge" })
+        @Html.ValidationMessageFor(model => model.Address,null, new { @class = "help-inline" })
+    </span>
+</fieldset>
+<!-- /ko -->
+
+
