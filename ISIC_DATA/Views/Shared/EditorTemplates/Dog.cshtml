@@ -3,7 +3,7 @@
 
 <!-- ko foreach: positions -->
 <fieldset>
-
+    @Html.ValidationSummary(true)
     <span class="editor-field">
         @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true", placeholder="Name", @class = "input-xlarge" })
         @Html.ValidationMessageFor(model => model.Name,null, new { @class = "help-inline" })
@@ -27,6 +27,8 @@
         @Html.ValidationMessageFor(model => model.Color.Id,null, new { @class = "help-inline" })
     </span>
 </fieldset>
+
+
 <!-- /ko -->
 
 
