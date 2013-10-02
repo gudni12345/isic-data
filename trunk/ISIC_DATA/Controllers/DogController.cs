@@ -54,6 +54,7 @@ namespace ISIC_DATA.Controllers
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(dogs.ToPagedList(pageNumber, pageSize));
+           // return View(dogs.Take(10));
         }
         //
         // GET: /Dog/Details/5

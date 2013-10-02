@@ -12,23 +12,23 @@
     <fieldset>
         <legend>Litter details</legend>
 
-     
+        
         <span class="editor-field">
-            <label>Date of birth:</label>
+            @Html.Label("Date of birth:", new { @class = "control-label" })
             @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth"})
-            @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
+            @Html.ValidationMessageFor(model => model.Litter.DateOfBirth, null,  new { @class = "help-inline" })
         </span>
        
         <div class="editor-field">
             <label>Father:</label>
             @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId, "Select father")
-            @Html.ValidationMessageFor(model => model.Litter.FatherId)
+            @Html.ValidationMessageFor(model => model.Litter.FatherId, null,  new { @class = "help-inline" })
         </div>
 
         <div class="editor-field">
             <label>Mother:</label>
             @Html.DropDownListFor( model => model.Litter.MotherId, (SelectList)ViewBag.MotherId,"Select mother")
-            @Html.ValidationMessageFor(model => model.Litter.MotherId)
+            @Html.ValidationMessageFor(model => model.Litter.MotherId, null,  new { @class = "help-inline" })
         </div>
 
 
@@ -45,11 +45,14 @@
         <button type="submit" class="btn btn-primary">Save changes</button>
         @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
     </div>
+    
+
 }
 
 
 <script type="text/javascript">
 
+  
     $(document).ready(function () {
         $.validator.methods["date"] = function (value, element) { return true; }
         $(".datePicker").datepicker({ format: 'dd/mm/yyyy' });

@@ -1,38 +1,26 @@
-﻿@model ISIC_DATA.Models.Dog
+﻿@using BootstrapSupport
+@model ISIC_DATA.Models.Dog
 
 <!-- ko foreach: positions -->
-<fieldset>
-    <span class="editor-label">
-        Name: 
-    </span>
-    <span class="editor-field">
-        @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true" })
+<form class="form-inline" role="form">
+    
+    <div class="form-group">
+          
+        @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name, namePath: true", placeholder="Name", @class = "input-xlarge" })
         @Html.ValidationMessageFor(model => model.Name)
-    </span>
-
-    <span class="editor-label">
-        Reg: 
-    </span>
-    <span class="editor-field">
-        @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true" })
+   
+   
+        @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true", placeholder="Reg", @class = "input-small"  })
         @Html.ValidationMessageFor(model => model.Reg)
-    </span>
 
-
-    <span class="editor-label">
-        Sex: 
-    </span>
-    <span class="editor-field">
+         
         @Html.DropDownListFor( model => model.Sex, (SelectList)ViewBag.Gender ,new { data_bind = "value: sex, namePath: true" })
         @Html.ValidationMessageFor(model => model.Sex)
-    </span>
-
-    <span class="editor-label">
-        Color: 
-    </span>
-    <span class="editor-field">
+   
         @Html.DropDownListFor( model => model.ColorId, (SelectList)ViewBag.ColorId ,new { data_bind = "value: colorId, namePath: true" })
         @Html.ValidationMessageFor(model => model.Color.Id)
-    </span>
-</fieldset>
+  </div>
+</form>
+<form class="form-inline" role="form"> </form>
 <!-- /ko -->
+
