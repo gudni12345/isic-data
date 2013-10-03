@@ -19,7 +19,9 @@ namespace ISIC_DATA.Models
         public string Name { get; set; }
 
         public string ColorComment { get; set; }
-        
+
+        public string PicturePath { get; set; }
+
         [Required, MaxLength(10)]
         public string Sex { get; set; }
 
