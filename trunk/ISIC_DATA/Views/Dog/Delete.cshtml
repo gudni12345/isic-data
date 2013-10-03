@@ -66,13 +66,7 @@
         @Html.DisplayFor(model => model.Person.Name)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Country.CountryCode)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Country.CountryCode)
-    </div>
-</fieldset>
+    </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
