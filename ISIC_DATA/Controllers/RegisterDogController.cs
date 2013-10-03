@@ -44,20 +44,43 @@ namespace ISIC_DATA.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Litter.Add(viewModel.Litter);
+                Litter l = new Litter()
+                {
+                    DateOfBirth = viewModel.Litter.DateOfBirth,
+                    FatherId = viewModel.Litter.FatherId,
+                    MotherId = viewModel.Litter.MotherId
+                };
+
+                db.Litter.Add(l);
                 db.SaveChanges();
 
                 foreach (DogAndPerson dp in viewModel.DogAndPersons)
                 {
-                    db.Person.Add(dp.Person);
-                    db.SaveChanges();
+                    Person P = new Person()
+                    {
+                        Name = dp.Person.Name,
+                        Address = dp.Person.Address,
+                        Email = dp.Person.Email,
+                    };
 
-                    if (dp.Dog.Sex.Equals("Male")) dp.Dog.Sex = "M";
-                    if (dp.Dog.Sex.Equals("Female")) dp.Dog.Sex = "F";
-                    dp.Dog.LitterId = db.Litter.Count();  // DOg linked to LitterId
-                    dp.Dog.PersonId = db.Person.Count();  // Dog linked to PersonId
-                    db.Dog.Add(dp.Dog);                    
-                    db.SaveChanges();
+                    db.Person.Add(P);
+                    db.SaveChanges(); 
+
+                    Dog d = new Dog()
+                    {
+                        Name = dp.Dog.Name,
+                        Reg = dp.Dog.Reg,
+                        Sex = dp.Dog.Sex,
+                        Color = dp.Dog.Color,
+                        LitterId = l.Id,             // Dog linked with privious litter.
+                        PersonId = P.Id              // Dog linked with Owner/Person
+                    };
+                    if (d.Sex.Equals("Male")) d.Sex = "M";
+                    if (d.Sex.Equals("Female")) d.Sex = "F";
+
+                    db.Dog.Add(d);
+                    db.SaveChanges();   // saving Dog to DB 
+
                 }
 
                 
