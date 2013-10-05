@@ -10,41 +10,67 @@
 
 <fieldset>
 
-    <legend> Dog </legend>
+    <legend class=""> Dog </legend>
 
     <ul class="thumbnails">
-<li class="span5 clearfix">
+<li class="span10 clearfix">
   <div class="thumbnail clearfix">
-    <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+    <img src="http://placehold.it/1400x1200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
     <div class="caption" class="pull-left">
-      <a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Edit</a>
+      @*<a href="http://bootsnipp.com/" class="btn btn-primary icon  pull-right">Edit</a>*@
       <h4>      
       <a href="#" >@Html.DisplayFor(model => model.Name)</a>
           
       </h4>
+        <div class="control-group">
+       <label class="control-label"><b>Reg:</b> @Html.DisplayFor(model => model.Reg)</label>
+              
+        </div>
+        <div class="control-group">
+           <label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) <b>Gender:</b>@Html.DisplayFor(model => model.Sex) </label>
+            
+         </div>
+
+        <div class="control-group">
+            <label class="control-label"><b>Father:</b>  @Html.DisplayFor(model => model.Litter.Father.Name) </label>
+                       
+        </div>
+
+         <div class="control-group">
+            <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
+           
+          </div>
+
+         <div class="control-group">
+          <label class="control-label"> <b>Color comment:</b> @Html.DisplayFor(model => model.ColorComment)</label>
+           
+          </div>
+
         
-        <large><b>Reg: </b>@Html.DisplayFor(model => model.Reg)</large>
-        
-       <div><b>Father:</b> @Html.DisplayFor(model => model.Litter.Father.Name)</div>
-       <div><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</div>
-       <div><b>Color comment:</b> @Html.DisplayFor(model => model.ColorComment)</div>
-       <div><b>Gender:</b> @Html.DisplayFor(model => model.Sex)</div>
-       <div><b>Litter Id:</b> @Html.DisplayFor(model => model.Litter.Id)</div>
-       <div Color: @Html.DisplayFor(model => model.Color.ColorText)></div>  
-       <div><b>Owner: </b> @Html.DisplayFor(model => model.Person.Name)</div>
-       <div><b>Old color:</b>@Html.DisplayFor(model => model.DetailedInfo.OldColor)</div>
-      
-        
-      
-    </div>
-  </div>
+@*
+  
+
+         <div class="control-group">
+             <label class="control-label"> <b>Litter Id:</b>  @Html.DisplayFor(model => model.Litter.Id)</label>
+                
+          </div>
+
+         <div class="control-group">
+                  <label class="control-label"><b> Color:</b>@Html.DisplayFor(model => model.Color.ColorText) </label>
+                   
+             </div>
+
+         <div class="control-group">
+                 <label class="control-label"><b>Owner: </b>@Html.DisplayFor(model => model.Person.Name)</label>                     
+            </div>
+
+         <div class="control-group">
+                   <label class="control-label"><b>Old color:</b>@Html.DisplayFor(model => model.DetailedInfo.OldColor)</label>
+*@                            
+            </div>
     </ul>
      
-    <div class="display-field">
-       
-    </div>
-
-</fieldset>
+ </fieldset>
 </form>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
