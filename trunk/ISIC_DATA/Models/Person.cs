@@ -15,6 +15,9 @@ namespace ISIC_DATA.Models
         public string Address { get; set; }
         public string Email { get; set; }
 
+        public bool Owner { get; set; }
+        public bool Breeder { get; set; }
+
         public Nullable<int> CountryId { get; set; }
         public virtual Country Country { get; set; }
         

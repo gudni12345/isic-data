@@ -78,7 +78,6 @@ namespace ISIC_DATA.Controllers
             var Mothers = db.Dog.Where(d => d.Sex == "F").ToList();
             ViewBag.MotherId = new SelectList(Mothers, "Id", "Name");
             ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
-            ViewBag.BreederId = new SelectList(db.Breeder, "Id", "Id");
             return View();
         }
 

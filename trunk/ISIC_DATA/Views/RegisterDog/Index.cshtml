@@ -19,6 +19,14 @@
             @Html.ValidationMessageFor(model => model.Litter.DateOfBirth, null,  new { @class = "help-inline" })
         </span>
        
+        <span class="editor-field">
+            @Html.Label("Type in Father Reg number:", new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Litter.Father.Reg)
+            @Html.ValidationMessageFor(model => model.Litter.Father.Reg, null,  new { @class = "help-inline" })
+        </span>
+
+        Father: @Html.DisplayFor(model => model.Litter.Father.Name)
+
         <div class="editor-field">
             <label>Father:</label>
             @Html.DropDownListFor( model => model.Litter.FatherId, (SelectList)ViewBag.FatherId, "Select father")
