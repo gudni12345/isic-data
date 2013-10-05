@@ -73,8 +73,17 @@
  </fieldset>
 </form>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+  @*  <a href="Path" class="btn btn-primary icon  pull-right">Edit</a>*@
+    @*@Html.ActionLink("<i class=\"icon-fire\"></i> Edit", "Edit", new { id=Model.Id @class = "btn" })*@
+  
+     
+    <p class="btn btn-primary icon  pull-left">
+         @Html.ActionLink("Edit", "Edit", new  { id=Model.Id  } )  </p>  |  <p class="btn btn-primary icon  pull-center"> @Html.ActionLink("Back to List", "Index")</p>
+
+        
+   
+    
+
 </p>
 
 
