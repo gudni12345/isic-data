@@ -14,12 +14,14 @@ namespace ISIC_DATA
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapNavigationRoute("Home-navigation", "Home", "", new { controller = "Home", action = "Index" });
+            routes.MapNavigationRoute("Home-navigation", "Home", "Home", new { controller = "Home", action = "Index" });
 
-            routes.MapNavigationRoute("Dog-navigation", "Database", "dog", new { controller = "Dog", action = "Index" });
+            routes.MapNavigationRoute("Dog-navigation", "Database", "Dog", new { controller = "Dog", action = "Index" });
+
+            routes.MapNavigationRoute("News-navigation", "News", "News", new { controller = "Home", action = "News" });
             //This is the second Navigation route
             //                          RouteName        DisplayName    Url   Defaults
-            routes.MapNavigationRoute("About-navigation", "About", "about", new { controller = "Home", action = "About" });
+            routes.MapNavigationRoute("About-navigation", "About", "About", new { controller = "Home", action = "About" });
 
             routes.MapRoute(
                 name: "Default",

@@ -1,20 +1,14 @@
 ﻿@{
-    ViewBag.Title = "";
+    ViewBag.Title = "Home";
 }
-<br />
-<br />
 
-
-    <div id="welcome">
-        <h3 class="frett1">Welcome</h3>
-        <h4 class="dags1">7.5.2013</h4>
-        <p> Welcome to the ISIC Database web.......</p>
-    </div>
-<br>
-    <div id="welcome2">
-        <h3 class="frett2">New Data</h3>
-        <h4 class="dags2">6.9.2013</h4>
-
+<div id="PageTitle">
+    <h3>The ISIC database</h3>
+    <h4>Connection to Admin sites:</h4>
+    <br />
+</div>
+        
+<div>  
         New views
         @Html.ActionLink("Dog", "Index", "Dog")
         @Html.ActionLink("Color", "Index", "Color")
@@ -33,7 +27,6 @@
              @Html.ActionLink("Users", "Users", "Home")
          }
      
-        <p>.....
-        </p>
+       
     </div>
     
