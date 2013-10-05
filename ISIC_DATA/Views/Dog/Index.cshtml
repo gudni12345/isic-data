@@ -3,10 +3,13 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Registered Dogs";
 }
+
+<div>
+<h5>Here you can choose between filters to find a certain dog or a list of dogs.</h5>
 <br />
-<br />
+</div>
 
 @using (Html.BeginForm("Index", "Dog", FormMethod.Get))
 {

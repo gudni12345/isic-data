@@ -23,6 +23,12 @@ namespace ISIC_DATA.Controllers
         public ActionResult About()
         {
             
+            return View();
+        }
+
+
+        public ActionResult News()
+        {
 
             return View();
         }
@@ -32,11 +38,12 @@ namespace ISIC_DATA.Controllers
            
             return View();
         }
+
+
         [Authorize(Roles = "Administrator")]
         public ActionResult Users()
         {
-
-            return View(db.UserProfiles.ToList());
+                 return View(db.UserProfiles.ToList());
         }
     }
 }

@@ -105,7 +105,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor");
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name");
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode");
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
             return View();
         }
 
@@ -127,7 +127,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
             return View(dog);
         }
 
@@ -145,7 +145,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
             return View(dog);
         }
 
@@ -166,7 +166,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "CountryCode", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
             return View(dog);
         }
 
