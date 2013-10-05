@@ -26,8 +26,7 @@ namespace ISIC_DATA.Models
         public int FatherId { get; set; }
         public virtual Dog Father { get; set; }
 
-        public Nullable<int> BreederId { get; set; }
-        public virtual Breeder Breeder { get; set; }
+       
     }
 }
 
