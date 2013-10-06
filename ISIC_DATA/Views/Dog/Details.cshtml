@@ -82,9 +82,9 @@
 <td>
 <table BORDER CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF" >
 <tr>
-<td ROWSPAN="16">Name: @Html.DisplayFor(model => model.Name)</td>
+<td ROWSPAN="16"><b>Name:</b> @Html.DisplayFor(model => model.Name)<br><b>Reg: </b>@Html.DisplayFor(model => model.Reg)</td>
 
-<td ROWSPAN="8">Father: @Html.DisplayFor(model => model.Litter.Father.Name)</td>
+<td ROWSPAN="8"><b>Father:</b> @Html.DisplayFor(model => model.Litter.Father.Name)</td>
 
 <td ROWSPAN="4">&nbsp;</td>
 
@@ -130,7 +130,7 @@
 </tr>
 
 <tr>
-<td ROWSPAN="8">Mother: @Html.DisplayFor(model => model.Litter.Mother.Name)</td>
+<td ROWSPAN="8"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)<br><b>Reg: </b></td>
 
 <td ROWSPAN="4">&nbsp;</td>
 
