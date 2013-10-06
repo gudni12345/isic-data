@@ -23,6 +23,9 @@ namespace ISIC_DATA
             //                          RouteName        DisplayName    Url   Defaults
             routes.MapNavigationRoute("About-navigation", "About", "About", new { controller = "Home", action = "About" });
 
+            routes.MapNavigationRoute("Contact-navigation", "Contact", "Contact", new { controller = "Home", action = "Contact" });
+
+            routes.MapNavigationRoute("Admin-navigation", "Admin", "Admin", new { controller = "RegisterDog", action = "Index" });
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
