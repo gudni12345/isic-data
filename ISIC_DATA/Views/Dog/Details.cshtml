@@ -76,6 +76,108 @@
      
  </fieldset>
 </form>
+
+<table BORDER=0 CELLSPACING=12 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td>
+<table BORDER CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF" >
+<tr>
+<td ROWSPAN="16">Name: @Html.DisplayFor(model => model.Name)</td>
+
+<td ROWSPAN="8">Father: @Html.DisplayFor(model => model.Litter.Father.Name)</td>
+
+<td ROWSPAN="4">&nbsp;</td>
+
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td ROWSPAN="4">&nbsp;</td>
+
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td ROWSPAN="8">Mother: @Html.DisplayFor(model => model.Litter.Mother.Name)</td>
+
+<td ROWSPAN="4">&nbsp;</td>
+
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td ROWSPAN="4">&nbsp;</td>
+
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td ROWSPAN="2">&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 <p>
   @*  <a href="Path" class="btn btn-primary icon  pull-right">Edit</a>*@
     @*@Html.ActionLink("<i class=\"icon-fire\"></i> Edit", "Edit", new { id=Model.Id @class = "btn" })*@
