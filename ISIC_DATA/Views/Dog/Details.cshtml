@@ -7,8 +7,8 @@
 
 <h2>Dog Details Information</h2>
 
-<form>
 <fieldset> 
+   
   <div class="container-fluid">
 <ul class="thumbnails">
 <li class="span12 clearfix">
@@ -30,12 +30,12 @@
            </div>
 
             <div class="control-group">
-            <label class="control-label"><b>Father:</b>  @Html.DisplayFor(model => model.Litter.Father.Name) </label>
+                <label class="control-label"><b>Father:</b>  @Html.DisplayFor(model => model.Litter.Father.Name) </label>
                        
             </div>
 
                 <div class="control-group">
-                <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
+                    <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
            
                 </div>
 
@@ -45,9 +45,9 @@
                 </div>
 
                     <div class="control-group">
-                    <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
+                        <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
            
-          </div>
+                    </div>
         
       
   @*
@@ -74,12 +74,13 @@
             
         </div>
       </div>
-    </div>
-   </li>  
-    </ul> 
+   </li>
+</div>
    
+</ul> 
+      
  </fieldset>
-</form>
+
 
 <div class="container-fluid">
 	<div class="row">
@@ -115,7 +116,7 @@
 							
 			</ul>
 </div>
- <div class="span8">
+ <div class="span9">
 <table BORDER=0 CELLSPACING=12 CELLPADDING=0 WIDTH="100%" >
 <tr>
 <td>
