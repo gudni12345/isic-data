@@ -9,9 +9,9 @@
 
 <form>
 <fieldset> 
-    
+  <div class="container-fluid">
 <ul class="thumbnails">
-<li class="span10 clearfix">
+<li class="span12 clearfix">
   <div class="thumbnail clearfix">
     <img src="http://placehold.it/1400x1800" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
     <div class="caption" "pull-right">
@@ -23,29 +23,29 @@
         <div class="control-group">
        <label class="control-label"><b>Reg:</b> @Html.DisplayFor(model => model.Reg)</label>
               
-        </div>
-        <div class="control-group">
-           <label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) <b>Gender:</b>@Html.DisplayFor(model => model.Sex) </label>
+       </div>
+            <div class="control-group">
+            <label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) <b>Gender:</b>@Html.DisplayFor(model => model.Sex) </label>
             
-         </div>
+           </div>
 
-        <div class="control-group">
+            <div class="control-group">
             <label class="control-label"><b>Father:</b>  @Html.DisplayFor(model => model.Litter.Father.Name) </label>
                        
-        </div>
+            </div>
 
-         <div class="control-group">
-            <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
+                <div class="control-group">
+                <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
            
-          </div>
+                </div>
 
-         <div class="control-group">
-          <label class="control-label"> <b>Color comment:</b> @Html.DisplayFor(model => model.ColorComment)</label>
+                <div class="control-group">
+                   <label class="control-label"> <b>Color comment:</b> @Html.DisplayFor(model => model.ColorComment)</label>
            
-          </div>
+                </div>
 
-        <div class="control-group">
-          <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
+                    <div class="control-group">
+                    <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
            
           </div>
         
@@ -70,16 +70,19 @@
                    <label class="control-label"><b>Old color:</b>@Html.DisplayFor(model => model.DetailedInfo.OldColor)</label>
         </div>
 *@                            
+  
             
         </div>
       </div>
-     
-    </ul>     
+    </div>
+   </li>  
+    </ul> 
+   
  </fieldset>
 </form>
 
 <div class="container-fluid">
-	<div class="row-fluid">
+	<div class="row">
 		<div class="span2">
 			<ul class="nav nav-list">
 				<li class="nav-header">
@@ -114,7 +117,7 @@
 		</div>
 	</div>
 </div>
-
+<div class="wrapper">
 <table BORDER=0 CELLSPACING=12 CELLPADDING=0 WIDTH="100%" >
 <tr>
 <td>
@@ -215,7 +218,9 @@
 </table>
 </td>
 </tr>
-</table>    
+</table>   
+    </div> 
+
 <p>
   
   
