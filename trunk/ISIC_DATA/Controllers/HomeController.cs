@@ -35,10 +35,12 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Contact()
         {
-           
+
             return View();
         }
-
+        
+        
+        
 
         [Authorize(Roles = "Administrator")]
         public ActionResult Users()
