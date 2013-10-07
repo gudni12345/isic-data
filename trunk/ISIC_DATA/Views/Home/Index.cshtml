@@ -1,32 +1,78 @@
-﻿@{
+﻿@using BootstrapSupport
+@model ISIC_DATA.Models.Dog
+@{
     ViewBag.Title = "Home";
 }
 
-<div id="PageTitle">
-    <h3>The ISIC database</h3>
-    <h4>Connection to Admin sites:</h4>
-    <br />
-</div>
-        
-<div>  
-        New views
-        @Html.ActionLink("Dog", "Index", "Dog")
-        @Html.ActionLink("Color", "Index", "Color")
-        @Html.ActionLink("Litter", "Index", "Litter")
-        <br/>
-        New form - still under contruction.
-        @Html.ActionLink("RegisterDog", "Index", "RegisterDog")
+  
+    <div class="hero-unit well">
+		<h1>
+			<img alt="140x140" src="http://lorempixel.com/1100/300/" class="img-polaroid" />
+		</h1>
+	</div>
+		
+	<div class="row-fluid">
+		<div class="span4">
+            <h3>
+				The ISIC database
+			</h3>
+			<p>
+				This database is the collection of the registered Icelandic Sheepdogs from all 10 countries that are members of ISIC. 
+                It gives the opportunity for breeders to test mates for their dogs and calculate inbreeding. <br /><br />
+                For all others this website should help to enjoy and appreciate the Icelandic breed of an exceptional friendly, 
+                extremly clever and lovable dog. <br /><br />
+                If you are a breeder or own a dog please contact us if you would like to ask questions or add information or pictures.
+			</p>
+		</div>
+		<div class="span4">
+			<h3>
+				Shortcuts
+			</h3>
+			<p>
+				While under construction you can use the tabs on the navigation bar on the top of the page to get to the users vies.
+                For other interesting views see the buttons below:
+            </p>
+            <p> <a class="btn" href="Color">Color (Admin) »</a><br /><br />
+                <a class="btn" href="Country">Countries (Admin) »</a><br /><br />
+                <a class="btn" href="Dog">Dogs (Admin) »</a><br /><br />
+            	<a class="btn" href="Litter">Litter (Admin) »</a><br /><br />
+                List of existing breeders and owners<br /> (still need to split lists):<br />
+				<a class="btn" href="Person">People (Admin) »</a><br /><br />
+            </p>      		
+		</div>
+		 
+        <div class="span4">
+           <div class="thumbnail clearfix">
+            <h3>
+				Popular Dogs
+			</h3>
+            @* Still to do: needs to be dynamic, not hardcoded*@
+             <p>
+				Kersins Garpur - IS08875/05
+			</p>
+			<img src="../../Images/Dogs/KersinsGarpur.png" alt="Kersins Garpur">
+			<p></p>
+			<p>
+				<a class="btn" href="Dog/Details/10016">View more »</a>
+			</p>
+         </div>
+         </div>
+	</div>
+
+
+
 
         
-        <br />
-        Admin
+    @*   
+    <div>
+         Admin
          @if (Roles.IsUserInRole("Administrator"))
          {
              
              @Html.ActionLink("Register dogs", "Create", "Litter")
              @Html.ActionLink("Users", "Users", "Home")
          }
-     
-       
-    </div>
-    
+     </div>
+    *@
+      
+
