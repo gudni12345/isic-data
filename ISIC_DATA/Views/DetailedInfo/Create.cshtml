@@ -1,0 +1,123 @@
+﻿@model ISIC_DATA.Models.DetailedInfo
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DetailedInfo</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OldColor)
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OldColor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OldColor)
+            @Html.ValidationMessageFor(model => model.OldColor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Eyes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Eyes)
+            @Html.ValidationMessageFor(model => model.Eyes)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Comment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comment)
+            @Html.ValidationMessageFor(model => model.Comment)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Hair)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Hair)
+            @Html.ValidationMessageFor(model => model.Hair)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HD)
+            @Html.ValidationMessageFor(model => model.HD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HD2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HD2)
+            @Html.ValidationMessageFor(model => model.HD2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RS)
+            @Html.ValidationMessageFor(model => model.RS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MT)
+            @Html.ValidationMessageFor(model => model.MT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AD)
+            @Html.ValidationMessageFor(model => model.AD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HT)
+            @Html.ValidationMessageFor(model => model.HT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NewReg)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NewReg)
+            @Html.ValidationMessageFor(model => model.NewReg)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
