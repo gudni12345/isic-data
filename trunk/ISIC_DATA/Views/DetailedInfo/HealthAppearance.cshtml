@@ -1,0 +1,98 @@
+﻿@model ISIC_DATA.Models.DetailedInfo
+
+@{
+    ViewBag.Title = "Health and appearance";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DetailedInfo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Id)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OldColor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OldColor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Eyes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Eyes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Comment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Hair)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Hair)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HD2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HD2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NewReg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NewReg)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
