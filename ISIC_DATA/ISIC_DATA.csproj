@@ -207,6 +207,7 @@
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\DetailedInfoController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LitterController.cs" />
@@ -514,6 +515,11 @@
     <Content Include="Views\Shared\EditorTemplates\Person.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DogAndPerson.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\DetailedInfo\Index.cshtml" />
+    <Content Include="Views\DetailedInfo\Details.cshtml" />
+    <Content Include="Views\DetailedInfo\Create.cshtml" />
+    <Content Include="Views\DetailedInfo\Edit.cshtml" />
+    <Content Include="Views\DetailedInfo\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
