@@ -41,14 +41,11 @@ padding-right: 10px;
          margin-bottom: 10px;
     }
 
-ThumbnailPopularDogs, p
+.ThumbnailPopularDogs
     {
         margin-left: 15px;
     }
-ThumbnailPopularDogs, h3
-    {
-        margin-left: 15px;
-    }
+
 
 /*padding needed for the navigation bar*/
 .navbar .nav > li 
