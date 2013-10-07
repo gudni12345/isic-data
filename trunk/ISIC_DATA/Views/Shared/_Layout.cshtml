@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width" />
 
     <title>ISIC</title>
-   
+       
 	@Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -13,14 +13,25 @@
     @Scripts.Render("~/bundles/knockout")
     <script src="~/Scripts/knockout.namepathbinding.js"></script>
 
-
     @RenderSection("styles", required: false)
-	
+        
 </head>
-    
+       
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css", "~/Content/css")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+
+@*
 <body>
 	<div id="">
-		<img class="logomynd" src="~/Images/logo.png" alt="not able to load picture"/>
+		<img class="logomynd" src="~/Images/logo1.png" alt="not able to load picture"/>
         
 	</div>
     <div>
@@ -42,6 +53,7 @@
          </li>
         </ul>
     </div>
+    
      
     
      <div class="register">
@@ -50,14 +62,10 @@
 	</div>
 
      <div id="content">
-       
-    @RenderBody()	
-    </div>
+           
+                 @RenderBody()	
+     </div>
+    *@
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Styles.Render("~/Content/themes/base/css", "~/Content/css")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+
 

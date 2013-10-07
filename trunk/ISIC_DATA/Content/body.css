@@ -5,6 +5,13 @@ body {
             padding-left: 40px;
             padding-right: 40px;
       }
+/*padding needed to adjust nav container to body*/
+.container-fluid 
+{
+padding-left: 10px;
+padding-right: 10px;
+}
+
 
 /*padding to get the pic in the home page right*/
 .hero-unit
@@ -27,37 +34,40 @@ body {
     margin: 10px;
 }
 /*Adjustments Dog Detail thumbnail on Home*/
-.thumbnail>img 
-{
- float:left;
- margin-left: 15px;
- margin-bottom: 10px;
-}
+.thumbnail > img 
+    {
+         float:left;
+         margin-left: 15px;
+         margin-bottom: 10px;
+    }
 
-thumbnail , p
-{
-    margin-left: 15px;
-}
-thumbnail ,h3
-{
-    margin-left: 15px;
-}
+ThumbnailPopularDogs, p
+    {
+        margin-left: 15px;
+    }
+ThumbnailPopularDogs, h3
+    {
+        margin-left: 15px;
+    }
 
 /*padding needed for the navigation bar*/
 .navbar .nav > li 
-{
-    float: left;
-}
-.navbar .nav > li > a
-{
-    padding: 27px 25px;
-}
- .navbar-inverse .brand
- {
-    width: 122px;
-    height: 74px;
- }
-  .navbar-inverse .nav > li > a
+    {
+        float: left;
+    }
+/*padding for nav tabs*/
+.navbar .nav > li > a 
+    {
+        padding: 27px 20px;
+    }
+/*padding for all nav bar (from logo)*/
+.navbar-inverse .brand
+    {
+        width: 90px;
+        height: 74px;
+    }
+/*padding for fonts on nav bar*/
+.navbar-inverse .nav > li > a
     {  
         font-weight: bold; 
         font-size: 18px;
