@@ -4,12 +4,13 @@ body {
             padding-bottom: 40px;
             padding-left: 40px;
             padding-right: 40px;
+                        
       }
 /*padding needed to adjust nav container to body*/
 .container-fluid 
 {
-padding-left: 10px;
-padding-right: 10px;
+padding-left: 0px;
+padding-right: 0px;
 }
 
 
