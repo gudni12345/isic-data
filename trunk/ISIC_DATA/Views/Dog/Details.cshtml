@@ -21,7 +21,7 @@
           
       </h4>
         <div class="control-group">
-       <label class="control-label"><b>Reg:</b> @Html.DisplayFor(model => model.Reg)</label>
+       <label class="control-label"><b>@Html.DisplayNameFor(Model => Model.Reg):</b> @Html.DisplayFor(model => model.Reg)</label>
               
        </div>
             <div class="control-group">
@@ -69,16 +69,14 @@
          <div class="control-group">
                    <label class="control-label"><b>Old color:</b>@Html.DisplayFor(model => model.DetailedInfo.OldColor)</label>
         </div>
-*@                            
-  
-            
-        </div>
-      </div>
-   </li>
+*@               
+ 
+            </div>
+        </div>  
+    </li> 
+  </ul> 
 </div>
-   
-</ul> 
-      
+         
  </fieldset>
 
 
