@@ -8,14 +8,20 @@
 
 <fieldset>
     <legend>Litter</legend>
-
-    <div class="display-label">
+    <div class="container-fluid">
+   <div class="control-group">
          @Html.DisplayNameFor(model => model.DateOfBirth)
     </div>
-    <div class="display-field">
+    <div class="control-group">
         @Html.DisplayFor(model => model.DateOfBirth)
     </div>
-
+   <div class="control-group">
+        @Html.DisplayFor(model=> model.Reg_F)
+    </div>
+    <div class="control-group">
+        @Html.DisplayFor(model=> model.Reg_M)
+    </div>
+</div>
     
 </fieldset>
 <p>
