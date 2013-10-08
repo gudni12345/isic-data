@@ -14,8 +14,8 @@ using ISIC_DATA.Models;
 
 namespace ISIC_DATA.Controllers
 {
-    [Authorize]
-    [InitializeSimpleMembership]
+    [Authorize(Roles = "Admin")]
+    //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
         private DogContext db = new DogContext();
