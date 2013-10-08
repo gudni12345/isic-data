@@ -21,7 +21,7 @@ namespace ISIC_DATA
         {
             AreaRegistration.RegisterAllAreas();
 
-            //WebSecurity.InitializeDatabaseConnection("DogContext", "UserProfile", "UserId", "UserName", autoCreateTables: false);
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: false);
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -29,6 +29,19 @@ namespace ISIC_DATA
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+
+
+
+            //Add administrator
+            if (!Roles.RoleExists("Administrator"))
+            {
+                Roles.CreateRole("Administrator");
+            }
+            if (Membership.GetUser("Admin") == null)
+            {
+                Membership.CreateUser("Admin", "Hundur12345", "isey@hive.is");
+                Roles.AddUserToRole("Admin", "Administrator");
+            }
         }
     }
 }
