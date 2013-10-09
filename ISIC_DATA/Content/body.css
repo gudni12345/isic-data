@@ -6,68 +6,68 @@ body {
             padding-right: 40px;
                         
       }
+
 /*padding needed to adjust nav container to body*/
-.container-fluid 
-{
+.container-fluid {
 padding-left: 0px;
 padding-right: 0px;
 }
 
+.select, textarea, input[type="text"], input[type="search"]{
+    padding: 3px 0px;
+    margin-bottom: 0px;
+    margin-right: 3px;
+    vertical-align:bottom;
+}
+.alignSearch, p{
+    vertical-align: bottom;
+}
 
 /*padding to get the pic in the home page right*/
-.hero-unit
-{
+.hero-unit{
     padding-bottom: 0.7em;
     padding-top: 0.7em;
 }
 
 /*Adjustments to p on thumbnails on Home*/
-.span4 > p
-{
+.span4 > p{
     padding-left: 10px;
     padding-right: 10px;
     margin: 10px;
 }
-.span4 > h3
-{
+.span4 > h3{
     padding-left: 10px;
     padding-right: 10px;
     margin: 10px;
 }
 /*Adjustments Dog Detail thumbnail on Home*/
-.thumbnail > img 
-    {
+.thumbnail > img     {
          float:left;
          margin-left: 10px;
          margin-top: 10px;
          margin-bottom: 10px;
     }
 
-.ThumbnailPopularDogs
-    {
+.ThumbnailPopularDogs    {
         margin-left: 15px;
     }
 
 
 /*padding needed for the navigation bar*/
-.navbar .nav > li 
-    {
+.navbar .nav > li     {
         float: left;
     }
 /*padding for nav tabs*/
-.navbar .nav > li > a 
-    {
+.navbar .nav > li > a  {
         padding: 27px 20px;
     }
 /*padding for all nav bar (from logo)*/
-.navbar-inverse .brand
-    {
+.navbar-inverse .brand {
         width: 90px;
         height: 74px;
     }
 /*padding for fonts on nav bar*/
-.navbar-inverse .nav > li > a
-    {  
+.navbar-inverse .nav > li > a {  
         font-weight: bold; 
         font-size: 18px;
     }
