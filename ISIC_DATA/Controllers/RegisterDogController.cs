@@ -15,10 +15,10 @@ namespace ISIC_DATA.Controllers
         {
             var viewModel = new DogViewModel();
 
-            var Fathers = db.Dog.Where(d => d.Sex == "M").ToList();
-            var Mothers = db.Dog.Where(d => d.Sex == "F").ToList();
-            ViewBag.MotherId = new SelectList(Mothers, "Id", "Name");
-            ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
+            var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
+            var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
+            ViewBag.MotherId = new SelectList(Mothers, "Id", "Reg");
+            ViewBag.FatherId = new SelectList(Fathers, "Id", "Reg");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
 
             List<string> genderList = new List<string>() { "Male", "Female" };
@@ -30,10 +30,10 @@ namespace ISIC_DATA.Controllers
         [HttpPost]
         public ActionResult Index(DogViewModel viewModel)
         {
-            var Fathers = db.Dog.Where(d => d.Sex == "M").ToList();
-            var Mothers = db.Dog.Where(d => d.Sex == "F").ToList();
-            ViewBag.MotherId = new SelectList(Mothers, "Id", "Name");
-            ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
+            var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
+            var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
+            ViewBag.MotherId = new SelectList(Mothers, "Id", "Reg");
+            ViewBag.FatherId = new SelectList(Fathers, "Id", "Reg");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
 
             List<string> genderList = new List<string>() { "Male", "Female" };
