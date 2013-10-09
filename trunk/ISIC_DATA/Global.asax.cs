@@ -33,7 +33,7 @@ namespace ISIC_DATA
 
 
             //Add administrator
-            if (!Roles.RoleExists("Administrator"))
+   /*         if (!Roles.RoleExists("Administrator"))
             {
                 Roles.CreateRole("Administrator");
             }
@@ -42,6 +42,7 @@ namespace ISIC_DATA
                 Membership.CreateUser("Admin", "Hundur12345", "isey@hive.is");
                 Roles.AddUserToRole("Admin", "Administrator");
             }
+    */
         }
     }
 }
