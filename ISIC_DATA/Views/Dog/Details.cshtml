@@ -25,16 +25,16 @@
               
        </div>
             <div class="control-group">
-            <label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) <b>Gender:</b>@Html.DisplayFor(model => model.Sex) </label>
+            <label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) <b>Gender:</b> @Html.DisplayFor(model => model.Sex) </label>
             
            </div>
 
-            <div class="control-group">
+           <div class="control-group">
                 <label class="control-label"><b>Father:</b>  @Html.DisplayFor(model => model.Litter.Father.Name) </label>
                        
-            </div>
+           </div>
 
-                <div class="control-group">
+           <div class="control-group">
                     <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
            
                 </div>
@@ -121,9 +121,10 @@
 <td>
 <table BORDER CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF" >
 <tr>
-<td ROWSPAN="16"> @Html.DisplayFor(model => model.Name)<br><b>Reg: </b>@Html.DisplayFor(model => model.Reg)</td>
 
-<td ROWSPAN="8"> @Html.DisplayFor(model => model.Litter.Father.Name)</td>
+<td ROWSPAN="8"> @Html.DisplayFor(model => model.Litter.Father.Name)<br>
+                
+</td>
 
 <td ROWSPAN="4"> @Html.DisplayFor(model => model.Litter.Father.Litter.Father.Name)</td>
 
@@ -169,7 +170,7 @@
 </tr>
 
 <tr>
-<td ROWSPAN="8">@Html.DisplayFor(model => model.Litter.Mother.Name)<br><b>Reg: </b></td>
+<td ROWSPAN="8">@Html.DisplayFor(model => model.Litter.Mother.Name)<br></td>
 
 <td ROWSPAN="4"> @Html.DisplayFor(model => model.Litter.Mother.Litter.Father.Name)</td>
 
