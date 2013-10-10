@@ -11,6 +11,7 @@ namespace ISIC_DATA.Controllers
     {
         private DataAccess.DogContext db = new DataAccess.DogContext();
 
+       //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var viewModel = new DogViewModel();
