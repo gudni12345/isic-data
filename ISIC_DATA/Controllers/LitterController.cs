@@ -34,19 +34,19 @@ namespace ISIC_DATA.Controllers
             
             if (!String.IsNullOrEmpty(searchString))
             {
-                litters = litters.Where(d => d.Reg_F.ToUpper().Contains(searchString.ToUpper()));
+                litters = litters.Where(l => l.Father.Name.ToUpper().Contains(searchString.ToUpper()));
             }
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    litters = litters.OrderByDescending(d => d.Reg_F);
+                    litters = litters.OrderByDescending(l => l.Father.Name);
                     break;
                 case "Date":
-                    litters = litters.OrderBy(d => d.DateOfBirth);
+                    litters = litters.OrderBy(l => l.DateOfBirth);
                     break;
                 default:
-                    litters = litters.OrderByDescending(d => d.DateOfBirth);
+                    litters = litters.OrderByDescending(l => l.DateOfBirth);
                     break;
             }
 
