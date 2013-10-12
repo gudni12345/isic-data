@@ -13,6 +13,7 @@ namespace BootstrapSupport
                 "~/Scripts/jquery-migrate-{version}.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/bootstrap-datepicker.js",
+                "~/Scripts/typeahead.js",
                 "~/Scripts/jquery.validate.js",
                 "~/scripts/jquery.validate.unobtrusive.js",
                 "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"

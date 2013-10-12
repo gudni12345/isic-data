@@ -18,8 +18,8 @@ namespace ISIC_DATA.Controllers
 
             var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
             var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
-            ViewBag.MotherId = new SelectList(Mothers, "Id", "Reg");
-            ViewBag.FatherId = new SelectList(Fathers, "Id", "Reg");
+            ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
+            ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
 
             List<string> genderList = new List<string>() { "Male", "Female" };
@@ -33,8 +33,8 @@ namespace ISIC_DATA.Controllers
         {
             var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
             var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
-            ViewBag.MotherId = new SelectList(Mothers, "Id", "Reg");
-            ViewBag.FatherId = new SelectList(Fathers, "Id", "Reg");
+            ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
+            ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
 
             List<string> genderList = new List<string>() { "Male", "Female" };
@@ -81,15 +81,55 @@ namespace ISIC_DATA.Controllers
 
                     db.Dog.Add(d);
                     db.SaveChanges();   // saving Dog to DB 
-
-                }
-
-                
+                }    //end foreach DogAndPerson
                 return RedirectToAction("../Home");  // Success
-            }
+            } //end if Model state is valid
 
             return RedirectToAction("Index");
         }
+
+
+        public JsonResult FathersJson()
+        {
+            return this.Json( new {
+                   Result =  (from obj in db.Dog.Where(d => d.Sex == "M").OrderBy(d => d.Reg) 
+                              select new { Id = obj.Id, Reg = obj.Reg, Name = obj.Name }) }, JsonRequestBehavior.AllowGet );
+        }
+
+
+        public ActionResult AutoComplete(string term)
+        {
+            var Fathers = db
+                .Dog
+                .Where(d => d.Sex == "M")
+                .OrderBy(d => d.Reg)
+                .ToList();
+
+            // .Select(d => d.Reg)
+            return Json(Fathers, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult FetchFathers(string query) // IN USE
+        {
+            List<Dog> fatherList = db.Dog.Where(d => d.Sex == "M").Where(d => d.Reg.Contains("IS0")).ToList();
+             //.OrderBy(d => d.Reg).ToList();            
+         
+            var serialisedJson = from result in fatherList 
+                select new
+                {
+                    Reg = result.Reg,
+                    Name = result.Name,
+                    Id = result.Id     
+                };
+            return Json(serialisedJson , JsonRequestBehavior.AllowGet); 
+        }
+
+        public ActionResult All()
+        {
+            return Json(db.Dog.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }
