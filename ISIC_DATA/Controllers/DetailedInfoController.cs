@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
+using PagedList;
 
 namespace ISIC_DATA.Controllers
 {
@@ -17,9 +18,43 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /DetailedInfo/
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.DetailedInfo.ToList());
+              if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+              ViewBag.CurrentFilter = searchString;
+
+              var dogs = db.Dog.Include(i => i.Color).Include(i => i.DetailedInfo).Include(i => i.Person).Include(i => i.Country).Include(i => i.Litter);
+                  
+              if (!String.IsNullOrEmpty(searchString))
+              {
+                  dogs = dogs.Where(i => i.Name.ToUpper().Contains(searchString.ToUpper()));
+              }
+
+              switch (sortOrder)
+              {
+                  case "name_desc":
+                      dogs = dogs.OrderByDescending(i => i.Name);
+                      break;
+                  case "hd":
+                      dogs = dogs.OrderBy(i => i.DetailedInfo.Id);
+                      break;
+                  default:
+                      dogs = dogs.OrderByDescending(i => i.DetailedInfo.Id);
+                      break;
+              }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(dogs.ToPagedList(pageNumber, pageSize));
+            //return View(db.DetailedInfo.ToList());
         }
 
         //
