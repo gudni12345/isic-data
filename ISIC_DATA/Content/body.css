@@ -12,15 +12,15 @@ body {
 padding-left: 0px;
 padding-right: 0px;
 }
-
-.select, textarea, input[type="text"], input[type="search"]{
-    padding: 3px 0px;
-    margin-bottom: 0px;
-    margin-right: 3px;
-    vertical-align:bottom;
+/*to align search box and text in dogs*/
+.alignSearch form p input
+{
+    margin-bottom: 10px;
 }
-.alignSearch, p{
-    vertical-align: bottom;
+
+/*needs reset, this is 0 0 10 in bootstrap.css*/
+p {
+  margin: 0 0 0 0;
 }
 
 /*padding to get the pic in the home page right*/
