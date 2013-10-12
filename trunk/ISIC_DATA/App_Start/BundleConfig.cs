@@ -22,6 +22,7 @@ namespace ISIC_DATA
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
                         "~/Content/bootstrap.min.css",
                         "~/Content/bootstrap-responsive.min.css",
+                        "~/Content/typeahead.js-bootstrap.css",
                         "~/Content/bootstrap-datepicker.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
