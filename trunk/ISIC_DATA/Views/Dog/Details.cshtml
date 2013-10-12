@@ -87,21 +87,22 @@
 				<li class="nav-header">
 			   </li>
 				<li class="active">
-					<a href="#">Pedigree</a>
+					<a href="/Dog/Index">Pedigree</a>
 				</li>
 				<li>
 					<a href="#">Testmate(inbreeding)</a>
 				</li>
-				<li>
-					<a href="/DetailedInfo/Index">Health & apperance</a>
+				<li>	                   
+                   @Html.ActionLink("Health & apperance","../Detailedinfo/details/", new { id = Model.Id })                                       
+                                         
 				</li>
 				
 				<li>
-					<a href="/Litter/Index">Litter</a>
-                     
+				   @Html.ActionLink("Litter","../Litter/details/", new { id = Model.Id })
+                                                        
 				</li>
 				<li>
-					<a href="/Person/Index">Breeder</a>
+					@Html.ActionLink("Breeder","../Person/details/", new { id = Model.Id })
 				</li>
                 <li>
 					<a href="#">Pictures</a>

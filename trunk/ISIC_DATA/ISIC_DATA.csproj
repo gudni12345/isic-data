@@ -221,7 +221,7 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RegisterDogController.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Controllers\Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

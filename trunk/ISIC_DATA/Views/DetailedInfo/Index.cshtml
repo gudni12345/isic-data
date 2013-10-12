@@ -1,88 +1,55 @@
-﻿@model IEnumerable<ISIC_DATA.Models.DetailedInfo>
-
+﻿@model PagedList.IPagedList<ISIC_DATA.Models.Dog>
+@using PagedList.Mvc; 
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Health & Apperance";
 }
 
-<h2>Index</h2>
+<h2>Health & Apperance</h2>
+<div>
+<h5>Here you can choose between filters to find a certain dog with Health & Apperance information.</h5>
+<br />
+</div>
+
+<div class="alignSearch">
+@using (Html.BeginForm("Index", "DetailedInfo", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        <input type="submit" value="Search" />
+    </p>
+}
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OldColor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Eyes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hair)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HD2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NewReg)
-        </th>
-        <th></th>
+<table class="table table-hover">
+    <tr>   
+         
+        
+        <th>Reg</th>
+        <th>Dog Name</th>
+        <th>HD</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.OldColor)
+            @Html.DisplayFor(modelItem => item.Reg)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Eyes)
-        </td>
+            @Html.ActionLink(item.Name, "Details", new { id=item.Id })
+        </td>          
         <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
+            @Html.DisplayFor(modelItem => item.DetailedInfo.HD)
+        </td>        
         <td>
-            @Html.DisplayFor(modelItem => item.Hair)
+            @Html.DisplayFor(modelItem => item.DetailedInfo.NewReg)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HD2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NewReg)
-        </td>
-        <td>
+       
+         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
@@ -91,3 +58,6 @@
 }
 
 </table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )
