@@ -21,6 +21,7 @@ namespace BootstrapSupport
 
             bundles.Add(new StyleBundle("~/content/css").Include(
                 "~/Content/bootstrap.css",
+                "~/Content/typeahead.js-bootstrap.css",
                 "~/Content/bootstrap-datepicker.css",
                 "~/Content/body.css",
                 "~/Content/bootstrap-responsive.css",

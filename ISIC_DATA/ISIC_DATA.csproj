@@ -353,6 +353,7 @@
     <Content Include="Content\themes\ui-lightness\minified\jquery-ui.min.css" />
     <Content Include="Content\themes\ui-lightness\minified\jquery.ui.core.min.css" />
     <Content Include="Content\themes\ui-lightness\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\typeahead.js-bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="App_Start\_AppStart.cshtml" />
