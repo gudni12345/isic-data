@@ -9,82 +9,62 @@
 <fieldset>
     <legend>DetailedInfo</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.OldColor)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.OldColor)
-    </div>
+<div class="container-fluid">
+<ul class="thumbnails">
+<li class="span12 clearfix">
+  <div class="thumbnail clearfix">
+    
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Eyes)
+     <div class="control-group">
+        <label class="control-label"> <b>@Html.DisplayNameFor(model => model.OldColor):</b>  @Html.DisplayFor(model => model.OldColor)</label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Eyes)
-    </div>
+     
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Comment)
+     <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.Eyes):</b> @Html.DisplayFor(model => model.Eyes)</label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Comment)
+     
+    <div class="control-group">
+      <label class="control-label">  <b>@Html.DisplayNameFor(model => model.Comment):</b>  @Html.DisplayFor(model => model.Comment)</label>
     </div>
+    
+    <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.Hair):</b> @Html.DisplayFor(model => model.Hair)</label>
+    </div>    
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Hair)
+    <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.HD):</b> @Html.DisplayFor(model => model.HD)</label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Hair)
+   
+    <div class="control-group">
+       <label class="control-label">  <b>@Html.DisplayNameFor(model => model.HD2):</b> @Html.DisplayFor(model => model.HD2)</label>
+    </div> 
+   
+   <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.RS):</b>   @Html.DisplayFor(model => model.RS)</label>
     </div>
+    
+     <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.MT):</b>  @Html.DisplayFor(model => model.MT)</label>
+    </div>
+    
+    <div class="control-group">
+       <label class="control-label">  <b>@Html.DisplayNameFor(model => model.AD):</b> @Html.DisplayFor(model => model.AD)</label>
+    </div>
+    
+    <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.HT):</b> @Html.DisplayFor(model => model.HT)</label>
+    </div>
+    
+   <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.NewReg):</b> @Html.DisplayFor(model => model.NewReg)</label>
+    </div>
+   </div>
+    </li>
+  </ul>
+ </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.HD)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.HD)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.HD2)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.HD2)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.RS)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.RS)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MT)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MT)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AD)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AD)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.HT)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.HT)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NewReg)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NewReg)
-    </div>
+        
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
