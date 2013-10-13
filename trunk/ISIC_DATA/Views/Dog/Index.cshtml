@@ -16,9 +16,11 @@
 @using (Html.BeginForm("Index", "Dog", FormMethod.Get))
 {
     <p>
-        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        Find by name or Pedigreenumber: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
         <input type="submit" value="Search" />
+        
     </p>
+    
 }
 </div>
 
@@ -50,21 +52,10 @@
             @Html.ActionLink(item.Name, "Details", new { id=item.Id })
         </td>
         <td>
-            @if(item.Litter.Reg_F == null)
-            {
-                <script type="text/javascript">
-                     alert("Model empty");
-                </script>
-            }
-            else
-            {
-                 
-            <script type="text/javascript">
-                alert("Model exists");
-                </script>
-                 
+          
+       
             @Html.DisplayFor(modelItem => item.Litter.Father.Name)
-            }
+            
           </td>
          <td>
             @Html.DisplayFor(modelItem => item.Litter.Mother.Name)
