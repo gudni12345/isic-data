@@ -67,7 +67,7 @@ namespace ISIC_DATA.Controllers
             Litter litter = db.Litter.Find(id);
             if (litter == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(litter);
         }

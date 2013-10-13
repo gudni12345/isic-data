@@ -63,7 +63,7 @@ namespace ISIC_DATA.Controllers
             Person person = db.Person.Find(id);
             if (person == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(person);
         }

@@ -65,7 +65,7 @@ namespace ISIC_DATA.Controllers
             DetailedInfo detailedinfo = db.DetailedInfo.Find(id);
             if (detailedinfo == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(detailedinfo);
         }
