@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
+using PagedList;
 
 namespace ISIC_DATA.Controllers
 {
@@ -18,10 +19,11 @@ namespace ISIC_DATA.Controllers
         // GET: /Color/
 
         public ActionResult Index()
-        {
+        {         
+
+
             return View(db.Color.ToList());
         }
-
         //
         // GET: /Color/Details/5
 
@@ -30,7 +32,7 @@ namespace ISIC_DATA.Controllers
             Color color = db.Color.Find(id);
             if (color == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(color);
         }

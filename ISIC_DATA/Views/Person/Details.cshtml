@@ -1,43 +1,40 @@
 ﻿@model ISIC_DATA.Models.Person
-
+@using BootstrapSupport
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Owner & Breeder</h2>
 
 <fieldset>
     <legend>Person</legend>
-
+<div class="container-fluid">
+<ul class="thumbnails">
+<li class="span12 clearfix">
+  <div class="thumbnail clearfix">
+    <div class="control-group">
+         <label class="control-label"><b>@Html.DisplayNameFor(model => model.Name):</b> @Html.DisplayFor(model => model.Name)</label>
+    </div>
+    
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+         <label class="control-label"><b>@Html.DisplayNameFor(model => model.Address):</b> @Html.DisplayFor(model => model.Address)</label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-
+   
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Address)
+         <label class="control-label"><b>@Html.DisplayNameFor(model => model.Email):</b> @Html.DisplayFor(model => model.Email)</label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Address)
-    </div>
-
+   
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Email)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Country.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Country.Name)
-    </div>
+         <label class="control-label"><b>@Html.DisplayNameFor(model => model.Country.Name):</b> @Html.DisplayFor(model => model.Country.Name)</label>
+     </div>
+   </div>
+  </li>
+ </ul>
+ </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+     <button type= "button" class="btn btn-primary btn-lg pull-left ">
+         @Html.ActionLink("Edit", "Edit", new  { id=Model.Id  } )</button>    |   <button type= "button" class="btn btn-primary btn-lg pull-center "> @Html.ActionLink("Back to List", "Index")</button>
+    
+    
 </p>

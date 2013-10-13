@@ -30,7 +30,7 @@ namespace ISIC_DATA.Controllers
             Country country = db.Country.Find(id);
             if (country == null)
             {
-                return HttpNotFound();
+               return View( "Error" );
             }
             return View(country);
         }
