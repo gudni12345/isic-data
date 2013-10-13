@@ -67,7 +67,7 @@ namespace ISIC_DATA.Controllers
             Color color = db.Color.Find(id);
             if (color == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(color);
         }
