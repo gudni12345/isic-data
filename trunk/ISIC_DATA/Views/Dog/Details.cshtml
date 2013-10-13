@@ -131,7 +131,15 @@
 
 <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Id)})</td>
 
-<td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Id)});</td>
+<td ROWSPAN="2"> @if(Model.Litter.Father.Id == null)
+                 { <div>
+    @Model.Litter.FatherId
+ </div>}
+                 {
+                         @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Id)});</td>
+                 }
+
+
 
 <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Id)})</td>
 </tr>
