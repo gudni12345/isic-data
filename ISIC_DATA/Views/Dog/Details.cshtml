@@ -36,13 +36,19 @@
                                  <label class="control-label"> <b>Color comment:</b> @Html.DisplayFor(model => model.ColorComment)</label>
                            </div>
                            <div class="control-group">
-                                 <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
+                           @if (Model.PersonId != null) {
+                                <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
+                           }
+                           else {
+                                <b>Owner: </b><q> no owner registered. </q>
+                           }
                            </div>
                            @*Load Photo from Database*@
-                           <div >
-                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" /> 
+                           <div >       
+                             @if (@Model.PicturePath != null ) {                           
+                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                            }
                            </div>     
-                           
                            @*
                              <div class="control-group">
                                  <label class="control-label"> <b>Litter Id:</b>  @Html.DisplayFor(model => model.Litter.Id)</label>
@@ -64,6 +70,7 @@
         </div>
   </fieldset>
 
+herna
 
 <div class="container-fluid">
 	<div class="row">
