@@ -25,7 +25,7 @@
         <div class="editor-field">
             <label>Father:</label>
             <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="typeaheadFather">
-            @Html.HiddenFor(model => model.Litter.FatherId, new { @id ="returnDogId" })                     
+            @Html.HiddenFor(model => model.Litter.FatherId, new { @id ="returnFatherId" })                     
             <input type="text" id="fatherName" disabled>
             @Html.ValidationMessageFor(model => model.Litter.FatherId, null,  new { @class = "help-inline" })  
             
@@ -34,7 +34,9 @@
 
         <div class="editor-field">
             <label>Mother:</label>
-            @Html.DropDownListFor( model => model.Litter.MotherId, (SelectList)ViewBag.MotherReg,"Select mother")
+             <input type="text" placeholder="Mother's Reg" id="typeaheadMother" class="typeaheadMother">
+            @Html.HiddenFor(model => model.Litter.MotherId, new { @id ="returnMotherId" })                     
+            <input type="text" id="motherName" disabled>
             @Html.ValidationMessageFor(model => model.Litter.MotherId, null,  new { @class = "help-inline" })
         </div>
     </fieldset>
@@ -78,12 +80,30 @@
             valueKey: "Reg"
         }).on("typeahead:selected typeahead:autocompleted",
             function (e, datum) {
-                $('#returnDogId').val(datum.Id);
+                $('#returnFatherId').val(datum.Id);
                 $('#fatherName').val(datum.Name);
 
             }
         );
     });
+
+    $.getJSON("/registerdog/Fetchmothers/", null, function (response) {
+        $("#typeaheadMother").typeahead({
+            name: "Mother",
+            local: response,
+            limit: 5,
+            valueKey: "Reg"
+        }).on("typeahead:selected typeahead:autocompleted",
+            function (e, datum) {
+                $('#returnMotherId').val(datum.Id);
+                $('#motherName').val(datum.Name);
+
+            }
+        );
+    });
+
+
+
   
 
     var numOfDogs=1;

@@ -125,6 +125,21 @@ namespace ISIC_DATA.Controllers
             return Json(serialisedJson , JsonRequestBehavior.AllowGet); 
         }
 
+        public JsonResult FetchMothers(string query) // IN USE
+        {
+            List<Dog> motherList = db.Dog.Where(d => d.Sex == "F").OrderBy(d => d.Reg).ToList();
+
+            var serialisedJson = from result in motherList
+                                 select new
+                                 {
+                                     Reg = result.Reg,
+                                     Name = result.Name,
+                                     Id = result.Id
+                                 };
+            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
+        }
+
+
         public ActionResult All()
         {
             return Json(db.Dog.ToList(), JsonRequestBehavior.AllowGet);
