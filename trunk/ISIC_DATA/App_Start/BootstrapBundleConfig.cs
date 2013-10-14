@@ -25,7 +25,7 @@ namespace BootstrapSupport
                 "~/Content/bootstrap-datepicker.css",
                 "~/Content/body.css",
                 "~/Content/bootstrap-responsive.css",
-                "~/Content/bootstrap-mvc-validation.css"
+                "~/Content/validation.css"
                 ));
         }
     }

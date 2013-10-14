@@ -6,18 +6,29 @@
 <h2>Register Dog(s)</h2>
 @Styles.Render("~/Content/typeahead.js-bootstrap.css")
 
+@if (ViewData.ModelState.Any(x => x.Value.Errors.Any())) 
+{ 
+   <div class="alert alert-error"> 
+      <a class="close" data-dismiss="alert">&times;</a> 
+      @Html.ValidationSummary(true, "Errors: ")
+   </div>
+}
+
 @using (Html.BeginForm())
 {
+    
+    
+   
     @Html.AntiForgeryToken()
 
     <fieldset>
+           
         <legend>Litter details</legend>
 
-        
         <span class="editor-field">
             @Html.Label("Date of birth:", new { @class = "control-label" })
-            @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth"})
-            @Html.ValidationMessageFor(model => model.Litter.DateOfBirth, null,  new { @class = "help-inline" })
+            @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
+            @Html.ValidationMessageFor(model => model.Litter.DateOfBirth, null, new { @class = "help-inline" })
         </span>
        
         
@@ -25,9 +36,9 @@
         <div class="editor-field">
             <label>Father:</label>
             <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="typeaheadFather">
-            @Html.HiddenFor(model => model.Litter.FatherId, new { @id ="returnFatherId" })                     
-            <input type="text" id="fatherName" disabled>
-            @Html.ValidationMessageFor(model => model.Litter.FatherId, null,  new { @class = "help-inline" })  
+            @Html.HiddenFor(model => model.Litter.FatherId, new { @id = "returnFatherId" })                     
+             <input type="text" id="fatherName" disabled>
+            @Html.ValidationMessageFor(model => model.Litter.FatherId, null, new { @class = "help-inline" })  
             
         </div>
                 
@@ -35,9 +46,9 @@
         <div class="editor-field">
             <label>Mother:</label>
              <input type="text" placeholder="Mother's Reg" id="typeaheadMother" class="typeaheadMother">
-            @Html.HiddenFor(model => model.Litter.MotherId, new { @id ="returnMotherId" })                     
+            @Html.HiddenFor(model => model.Litter.MotherId, new { @id = "returnMotherId" })                     
             <input type="text" id="motherName" disabled>
-            @Html.ValidationMessageFor(model => model.Litter.MotherId, null,  new { @class = "help-inline" })
+            @Html.ValidationMessageFor(model => model.Litter.MotherId, null, new { @class = "help-inline" })
         </div>
     </fieldset>
 
