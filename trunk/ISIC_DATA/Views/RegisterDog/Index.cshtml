@@ -79,7 +79,12 @@
   
     $(document).ready(function () {
         $.validator.methods["date"] = function (value, element) { return true; }
-        $(".datePicker").datepicker({ format: 'dd/mm/yyyy' });
+        $(".datePicker").datepicker({
+            format: 'dd/mm/yyyy',
+            todayBtn: true,
+            orientation: "top auto",
+            autoclose: true
+        });
     });
 
 

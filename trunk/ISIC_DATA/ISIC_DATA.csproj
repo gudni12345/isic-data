@@ -246,6 +246,7 @@
   <ItemGroup>
     <Content Include="Admin\AdminPage.aspx" />
     <Content Include="Content\body.css" />
+    <Content Include="Content\bootstrap\bootstrap-datepicker.js" />
     <Content Include="Content\validation.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
