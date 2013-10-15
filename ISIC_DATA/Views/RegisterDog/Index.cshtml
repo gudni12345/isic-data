@@ -37,7 +37,7 @@
             <b><label>Father:</label></b>
             <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="ekkitil">
             @Html.HiddenFor(model => model.Litter.FatherId, new { @id = "returnFatherId" })                     
-             <input type="text" id="fatherName" disabled class="tt-hint">
+             <input type="text" id="fatherName" disabled class="form-control">
             @Html.ValidationMessageFor(model => model.Litter.FatherId, null, new { @class = "help-inline" })  
             
         </div>
@@ -47,7 +47,7 @@
             <b><label>Mother:</label></b>
              <input type="text" placeholder="Mother's Reg" id="typeaheadMother" class="ekkitil">
             @Html.HiddenFor(model => model.Litter.MotherId, new { @id = "returnMotherId" })                     
-            <input type="text" id="motherName" disabled class="tt-hint">
+            <input type="text" id="motherName" disabled class="form-control">
             @Html.ValidationMessageFor(model => model.Litter.MotherId, null, new { @class = "help-inline" })
         </div>
     </fieldset>
