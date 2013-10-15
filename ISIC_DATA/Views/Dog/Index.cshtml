@@ -2,6 +2,15 @@
 @using PagedList.Mvc; 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">  
+    <a class="close" data-dismiss="alert">×</a>  
+    <strong>Success: </strong>@TempData["Success"].ToString() 
+    </div>   
+}
+
+
 @{
     ViewBag.Title = "Registered Dogs";
 }
