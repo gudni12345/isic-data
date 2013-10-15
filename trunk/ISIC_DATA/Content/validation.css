@@ -1,23 +1,22 @@
-
-.field-validation-error {
-    color: #f00 !important;
+.validation-summary-errors ul
+{
+    list-style-type: none;
 }
 
-.field-validation-valid {
-    display: none;
-}
+// Validation CSS
 
-.input-validation-error {
-    border: 1px solid #f00 !important;
-    background-color: #fee !important;
+label.valid
+{
+    width: 24px;
+    height: 24px;
+    background: url(../Images/isic/valid.png) center center no-repeat;
+    display: inline-block;
+    text-indent: -9999px;
 }
-
-.validation-summary-errors {
+label.error
+{
     font-weight: bold;
-    color: #f00;
+    color: red;
+    padding: 2px 8px;
+    margin-top: 2px;
 }
-
-.validation-summary-valid {
-    display: none;
-}
-

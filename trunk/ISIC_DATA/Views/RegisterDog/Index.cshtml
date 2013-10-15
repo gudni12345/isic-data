@@ -26,7 +26,7 @@
         <legend>Litter details</legend>
 
         <span class="editor-field">
-            @Html.Label("Date of birth:", new { @class = "control-label" })
+            <b>@Html.Label("Date of birth:", new { @class = "control-label" }) </b>
             @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
             @Html.ValidationMessageFor(model => model.Litter.DateOfBirth, null, new { @class = "help-inline" })
         </span>
@@ -34,20 +34,20 @@
         
 
         <div class="editor-field">
-            <label>Father:</label>
-            <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="typeaheadFather">
+            <b><label>Father:</label></b>
+            <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="ekkitil">
             @Html.HiddenFor(model => model.Litter.FatherId, new { @id = "returnFatherId" })                     
-             <input type="text" id="fatherName" disabled>
+             <input type="text" id="fatherName" disabled class="tt-hint">
             @Html.ValidationMessageFor(model => model.Litter.FatherId, null, new { @class = "help-inline" })  
             
         </div>
                 
 
         <div class="editor-field">
-            <label>Mother:</label>
-             <input type="text" placeholder="Mother's Reg" id="typeaheadMother" class="typeaheadMother">
+            <b><label>Mother:</label></b>
+             <input type="text" placeholder="Mother's Reg" id="typeaheadMother" class="ekkitil">
             @Html.HiddenFor(model => model.Litter.MotherId, new { @id = "returnMotherId" })                     
-            <input type="text" id="motherName" disabled>
+            <input type="text" id="motherName" disabled class="tt-hint">
             @Html.ValidationMessageFor(model => model.Litter.MotherId, null, new { @class = "help-inline" })
         </div>
     </fieldset>
@@ -60,21 +60,31 @@
         <button data-bind="click: removePosition">Remove one</button>
     </fieldset>
     
+    
+  
+    
+    
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Save changes</button>
         @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
     </div>
-    
+   
+} <!-- end form -->
 
-    
-
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-error"> @ViewData["Error"].ToString()</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"].ToString()</div>
 }
 
 
 
-
-
 <script type="text/javascript">
+
+
 
   
     $(document).ready(function () {

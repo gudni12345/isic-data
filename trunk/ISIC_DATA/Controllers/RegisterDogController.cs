@@ -21,6 +21,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
             ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.successMessage = "";
 
             List<string> genderList = new List<string>() { "Male", "Female" };
             ViewBag.Gender = new SelectList(genderList);
@@ -36,6 +37,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
             ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.successMessage = "";
 
             List<string> genderList = new List<string>() { "Male", "Female" };
             ViewBag.Gender = new SelectList(genderList);
@@ -45,47 +47,60 @@ namespace ISIC_DATA.Controllers
 
             if (ModelState.IsValid)
             {
-                Litter l = new Litter()
+                try
                 {
-                    DateOfBirth = viewModel.Litter.DateOfBirth,
-                    FatherId = viewModel.Litter.FatherId,
-                    MotherId = viewModel.Litter.MotherId
-                };
-
-                db.Litter.Add(l);
-                db.SaveChanges();
-
-                foreach (DogAndPerson dp in viewModel.DogAndPersons)
-                {
-                    Person P = new Person()
+                    Litter l = new Litter()
                     {
-                        Name = dp.Person.Name,
-                        Address = dp.Person.Address,
-                        Email = dp.Person.Email,
+                        DateOfBirth = viewModel.Litter.DateOfBirth,
+                        FatherId = viewModel.Litter.FatherId,
+                        MotherId = viewModel.Litter.MotherId
                     };
 
-                    db.Person.Add(P);
-                    db.SaveChanges(); 
+                    db.Litter.Add(l);
+                    db.SaveChanges();
 
-                    Dog d = new Dog()
+                    foreach (DogAndPerson dp in viewModel.DogAndPersons)
                     {
-                        Name = dp.Dog.Name,
-                        Reg = dp.Dog.Reg,
-                        Sex = dp.Dog.Sex,
-                        Color = dp.Dog.Color,
-                        LitterId = l.Id,             // Dog linked with privious litter.
-                        PersonId = P.Id              // Dog linked with Owner/Person
-                    };
-                    if (d.Sex.Equals("Male")) d.Sex = "M";
-                    if (d.Sex.Equals("Female")) d.Sex = "F";
+                        Person P = new Person()
+                        {
+                            Name = dp.Person.Name,
+                            Address = dp.Person.Address,
+                            Email = dp.Person.Email,
+                        };
 
-                    db.Dog.Add(d);
-                    db.SaveChanges();   // saving Dog to DB 
-                }    //end foreach DogAndPerson
-                return RedirectToAction("../Home");  // Success
+                        db.Person.Add(P);
+                        db.SaveChanges();
+
+                        Dog d = new Dog()
+                        {
+                            Name = dp.Dog.Name,
+                            Reg = dp.Dog.Reg,
+                            Sex = dp.Dog.Sex,
+                            Color = dp.Dog.Color,
+                            LitterId = l.Id,             // Dog linked with privious litter.
+                            PersonId = P.Id              // Dog linked with Owner/Person
+                        };
+                        if (d.Sex.Equals("Male")) d.Sex = "M";
+                        if (d.Sex.Equals("Female")) d.Sex = "F";
+
+                        db.Dog.Add(d);
+                        db.SaveChanges();   // saving Dog to DB 
+                    }    //end foreach DogAndPerson
+                
+                    TempData["Success"] = "Data was successfully saved.";
+                } //end try
+                catch (Exception e)
+                {
+                 
+                    ViewData["Error"] = "Unable to save";
+                    return RedirectToAction("Error");
+                }
+
+                //System.Threading.Thread.Sleep(3000);  // sec sleep for showing success msg.
+                return RedirectToAction("Index","Dog");  // Success
             } //end if Model state is valid
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index"); 
         }
 
 
