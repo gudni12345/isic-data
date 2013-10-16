@@ -34,17 +34,17 @@
         
 
         <div class="editor-field">
-            <b><label>Father:</label></b>
+            <label>Father:</label>
             <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="ekkitil">
             @Html.HiddenFor(model => model.Litter.FatherId, new { @id = "returnFatherId" })                     
-             <input type="text" id="fatherName" disabled class="form-control">
+             <input type="text" id="fatherName" disabled class=".twitter-typeahead">
             @Html.ValidationMessageFor(model => model.Litter.FatherId, null, new { @class = "help-inline" })  
             
         </div>
                 
 
         <div class="editor-field">
-            <b><label>Mother:</label></b>
+            <label>Mother:</label>
              <input type="text" placeholder="Mother's Reg" id="typeaheadMother" class="ekkitil">
             @Html.HiddenFor(model => model.Litter.MotherId, new { @id = "returnMotherId" })                     
             <input type="text" id="motherName" disabled class="form-control">
