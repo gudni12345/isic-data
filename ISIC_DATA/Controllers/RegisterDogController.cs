@@ -11,7 +11,7 @@ namespace ISIC_DATA.Controllers
     {
         private DataAccess.DogContext db = new DataAccess.DogContext();
 
-       //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             var viewModel = new DogViewModel();
@@ -29,7 +29,7 @@ namespace ISIC_DATA.Controllers
             return this.View(viewModel);
         }
 
-        [HttpPost]
+        [HttpPost]        
         public ActionResult Index(DogViewModel viewModel)
         {
             var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();

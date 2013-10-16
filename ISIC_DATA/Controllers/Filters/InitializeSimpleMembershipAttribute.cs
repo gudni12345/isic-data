@@ -26,7 +26,7 @@ namespace ISIC_DATA.Filters
         {
             public SimpleMembershipInitializer()
             {
-               Database.SetInitializer<DogContext>(null);
+               Database.SetInitializer<DogContext>(null);               
 
                 try
                 {
