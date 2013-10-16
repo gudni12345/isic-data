@@ -30,9 +30,24 @@ namespace ISIC_DATA
             AuthConfig.RegisterAuth();
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
+            //Add administrators
+            if (Membership.GetUser("admin2") == null)
+            {
+                WebSecurity.CreateUserAndAccount("admin2", "password.123");
+            }
+
+            if (Membership.GetUser("test") == null)
+            {
+                WebSecurity.CreateUserAndAccount("test", "password.123");
+            }
+            if (!Roles.RoleExists("Administrator"))
+            {
+                Roles.CreateRole("Administrator");
+                Roles.AddUserToRole("admin2", "Administrator");
+            }
 
 
-            //Add administrator
+            
    /*         if (!Roles.RoleExists("Administrator"))
             {
                 Roles.CreateRole("Administrator");

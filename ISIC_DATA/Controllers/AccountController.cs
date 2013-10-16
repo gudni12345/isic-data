@@ -39,7 +39,8 @@ namespace ISIC_DATA.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToAction("Register", "Account");
+                //return RedirectToAction("Register", "Account");  No need to register Administrators...
+                return RedirectToAction("Index", "Dog");                        // ATH change later....
             }
 
             // If we got this far, something failed, redisplay form
