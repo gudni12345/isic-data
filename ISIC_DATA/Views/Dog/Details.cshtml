@@ -6,22 +6,20 @@
 }
 
 <h2>Dog Details Information</h2>
-
-<fieldset> 
-<legend></legend>   
-<div class="container-fluid">
-    <ul class="thumbnails">
-        <li class="span12 clearfix">
-            <div class="thumbnail clearfix">
-                @*<img src="@Url.Content(Model.PicturePath)" alt="ALT NAME" /> class="img-rounded  pull-left span2 clearfix" style ='margin-right:10px'>*@
-                
-                      
-                <div class="caption" "pull-right">
+  
+  <div class="row">
+      <div class="span6">
+         
+         <ul class="unstyled dog-details">
+             <li>
+                <div>
+                       
+                    <div>
                         <h4>      
                             <a href="#" >@Html.DisplayFor(model => model.Name)</a>
                         </h4>
                            <div class="control-group">
-                                <label class="control-label"><b>@Html.DisplayNameFor(Model => Model.Reg):</b> @Html.DisplayFor(model => model.Reg)</label>
+                                <label class="control-label"><b>@Html.DisplayNameFor(model => Model.Reg):</b> @Html.DisplayFor(model => Model.Reg)</label>
                            </div>
                            <div class="control-group">
                                  <label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) <b>Gender:</b> @Html.DisplayFor(model => model.Sex) </label>
@@ -40,15 +38,9 @@
                                 <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
                            }
                            else {
-                                <b>Owner: </b><q> no owner registered. </q>
+                                <b>Owner: </b><q> No owner registered </q>
                            }
                            </div>
-                           @*Load Photo from Database*@
-                           <div >       
-                             @if (@Model.PicturePath != null ) {                           
-                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
-                            }
-                           </div>     
                            @*
                              <div class="control-group">
                                  <label class="control-label"> <b>Litter Id:</b>  @Html.DisplayFor(model => model.Litter.Id)</label>
@@ -66,11 +58,20 @@
                      </div>
                    </div>  
                 </li> 
-            </ul> 
-        </div>
-  </fieldset>
 
-herna
+            </ul>
+          </div>
+            @*Load Photo from Database*@
+             <div class="span6">       
+                             @if (@Model.PicturePath != null ) {                           
+                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                            } 
+             </div>                    
+      </div>
+
+<div>
+
+</div>
 
 <div class="container-fluid">
 	<div class="row">
@@ -106,9 +107,8 @@ herna
 			</ul>
          </div>
 
-
+                
          @*Pedigree View*@
-
          <div class="span9">
             <table BORDER=0 CELLSPACING=12 CELLPADDING=0 WIDTH="100%" >
                 <tr>
@@ -193,12 +193,12 @@ herna
 
    
 
-<!--p>
+<p>
      
     <p class="btn btn-primary icon  pull-left ">
          @Html.ActionLink("Edit", "Edit", new  { id=Model.Id  } )  </p>  |  <p class="btn btn-primary icon  pull-center "> @Html.ActionLink("Back to List", "Index")</p>
     
-</!p-->
+</p>
 
 
 
