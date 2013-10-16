@@ -40,7 +40,21 @@ namespace ISIC_DATA.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToAction("Index", "Dog"); // No need to register Administrators...
+
+                //returnURL needs to be decoded
+                string decodedUrl = "";
+                if (!string.IsNullOrEmpty(returnUrl))
+                    decodedUrl = Server.UrlDecode(returnUrl);
+
+                if (Url.IsLocalUrl(decodedUrl))
+                {
+                    return Redirect(decodedUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Dog");
+                }
+
                // return RedirectToAction(returnUrl ?? Url.Action("Index", "Dog"));                        // ATH change later....
             }
 
