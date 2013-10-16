@@ -25,7 +25,7 @@
 @using (Html.BeginForm("Index", "Dog", FormMethod.Get))
 {
     <p>
-        Find by name or Pedigreenumber: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
         <input type="submit" value="Search" />
         
     </p>
@@ -70,11 +70,11 @@
             @Html.DisplayFor(modelItem => item.Litter.Mother.Name)
         </td>
 
-        <td>
+        <!--td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
+        </td-->
     </tr>
 }
 
