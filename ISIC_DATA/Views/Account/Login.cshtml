@@ -5,18 +5,18 @@
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>@ViewBag.Title</h1>
 </hgroup>
 
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
+
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Log in Form</legend>
-        <ul>
+        <legend>Please log in to continue</legend>
+        <ul class="unstyled">
             <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
