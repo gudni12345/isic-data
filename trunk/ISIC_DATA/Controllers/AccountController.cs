@@ -40,7 +40,7 @@ namespace ISIC_DATA.Controllers
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 //return RedirectToAction("Register", "Account");  No need to register Administrators...
-                return RedirectToAction("Index", "Dog");                        // ATH change later....
+                return RedirectToAction(returnUrl ?? Url.Action("Index", "Dog"));                        // ATH change later....
             }
 
             // If we got this far, something failed, redisplay form
@@ -331,7 +331,19 @@ namespace ISIC_DATA.Controllers
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
+/*
+        public bool Authenticate(string username, string password)
+        {
+            bool result = FormsAuthentication.Authenticate(username, password);
+            if (result)
+            {
+                FormsAuthentication.SetAuthCookie(username, false);
+            }
 
+            return result;
+
+        }
+ */
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {

@@ -8,7 +8,10 @@
                 @Html.AntiForgeryToken()
                 <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
             }
-            
+
+            @if(User.IsInRole("Administrator")) {
+               <q> Yes! you are in Administrator group</q>
+            }
          </ul>
     </div>
 }
@@ -17,6 +20,7 @@ else
     <div>
        <ul class="a">
         @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+       
        <!-- Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) -->
         </ul>
         </div>
