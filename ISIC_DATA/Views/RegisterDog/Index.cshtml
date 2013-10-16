@@ -56,8 +56,8 @@
         <legend>Dogs</legend>
         @Html.EditorFor(model => model.DogAndPersons)
 
-        <button data-bind="click: addPosition">Add one</button>
-        <button data-bind="click: removePosition">Remove one</button>
+        <button class="btn btn-success" data-bind="click: addPosition">Add one</button>
+        <button class="btn btn-danger" data-bind="click: removePosition">Remove one</button>
     </fieldset>
     
     
@@ -73,7 +73,7 @@
 
 @if (ViewData["Error"] != null)
 {
-    <div class="alert alert-error"> @ViewData["Error"].ToString()</div>
+    <div class="alert alert-error"> @ViewData["Error"].ToString()</div>8
 }
 @if (TempData["Success"] != null)
 {

@@ -89,7 +89,7 @@ namespace ISIC_DATA.Controllers
                 
                     TempData["Success"] = "Data was successfully saved.";
                 } //end try
-                catch (Exception e)
+                catch (Exception)
                 {
                  
                     ViewData["Error"] = "Unable to save";
@@ -127,7 +127,8 @@ namespace ISIC_DATA.Controllers
 
         public JsonResult FetchFathers(string query) // IN USE
         {
-            List<Dog> fatherList = db.Dog.Where(d => d.Sex == "M").Where(d => d.Reg.Contains("IS0")).ToList();
+            List<Dog> fatherList = db.Dog.Where(d => d.Sex == "M").OrderBy(d => d.Reg).ToList();               
+             //   Where(d => d.Reg.Contains("IS0")).ToList();
              //.OrderBy(d => d.Reg).ToList();            
          
             var serialisedJson = from result in fatherList 
