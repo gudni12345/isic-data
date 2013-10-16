@@ -30,34 +30,23 @@ namespace ISIC_DATA
             AuthConfig.RegisterAuth();
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
+
+            string userName = "adminice";
+            string password = "adminice123";
+            string role = "Administrator";
+
+
             //Add administrators
-            if (Membership.GetUser("admin2") == null)
-            {
-                WebSecurity.CreateUserAndAccount("admin2", "password.123");
-            }
+            if (!Roles.RoleExists(role))
+                Roles.CreateRole(role);
 
-            if (Membership.GetUser("test") == null)
-            {
-                WebSecurity.CreateUserAndAccount("test", "password.123");
-            }
-            if (!Roles.RoleExists("Administrator"))
-            {
-                Roles.CreateRole("Administrator");
-                Roles.AddUserToRole("admin2", "Administrator");
-            }
-
-
+            if (!WebSecurity.UserExists(userName))
+                WebSecurity.CreateUserAndAccount(userName, password);                
             
-   /*         if (!Roles.RoleExists("Administrator"))
-            {
-                Roles.CreateRole("Administrator");
-            }
-            if (Membership.GetUser("Admin") == null)
-            {
-                Membership.CreateUser("Admin", "Hundur12345", "isey@hive.is");
-                Roles.AddUserToRole("Admin", "Administrator");
-            }
-    */
+
+            if (!Roles.IsUserInRole(userName, role))
+                Roles.AddUserToRole(userName, role);
+
         }
     }
 }

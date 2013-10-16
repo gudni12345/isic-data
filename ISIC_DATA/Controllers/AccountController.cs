@@ -14,14 +14,15 @@ using ISIC_DATA.Models;
 
 namespace ISIC_DATA.Controllers
 {
-     [AllowAnonymous]
-    //[InitializeSimpleMembership]
+ //   [AllowAnonymous]
+    [Authorize]
+    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         private DogContext db = new DogContext();
         //
         // GET: /Account/Login
-        [Authorize(Roles = "Admin")]
+     //   [Authorize(Roles = "Admin")]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -39,8 +40,8 @@ namespace ISIC_DATA.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                //return RedirectToAction("Register", "Account");  No need to register Administrators...
-                return RedirectToAction(returnUrl ?? Url.Action("Index", "Dog"));                        // ATH change later....
+                return RedirectToAction("Index", "Dog"); // No need to register Administrators...
+               // return RedirectToAction(returnUrl ?? Url.Action("Index", "Dog"));                        // ATH change later....
             }
 
             // If we got this far, something failed, redisplay form
