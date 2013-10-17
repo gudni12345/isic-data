@@ -25,8 +25,8 @@
 @using (Html.BeginForm("Index", "Dog", FormMethod.Get))
 {
     <p>
-        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
-        <input type="submit" value="Search" />
+        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class="search-query" })  
+        <input type="submit" class="btn btn-primary" value="Search" />
         
     </p>
     
