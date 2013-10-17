@@ -14,11 +14,8 @@
    </div>
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(new { @class = "form-horizontal span9" }))
 {
-    
-    
-   
     @Html.AntiForgeryToken()
 
     <fieldset>
@@ -34,7 +31,7 @@
         <div class="editor-field">
             <label>Breeder:</label>
             <input type="text" placeholder="Breeder name" id="typeaheadBreeder" class="ekkitil">
-            @Html.HiddenFor(model => model.Litter.PersonId  , new { @id = "returnBreederId" })                                  
+            @Html.HiddenFor(model => model.Litter.PersonId, new { @id = "returnBreederId" })                                  
             @Html.ValidationMessageFor(model => model.Litter.PersonId, null, new { @class = "help-inline" })              
         </div>
 
