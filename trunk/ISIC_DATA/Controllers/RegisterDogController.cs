@@ -16,10 +16,13 @@ namespace ISIC_DATA.Controllers
         {
             var viewModel = new DogViewModel();
 
-            var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
+/*          var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
             var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
+            //var Breeders = db.Person.OrderBy(p => p.Name).Where(p => p.Breeder == true).ToList;
+            //ViewBag.Breeders = new SelectList(Breeders, "Id", "Name");
             ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
             ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
+  */
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.successMessage = "";
 
@@ -32,10 +35,11 @@ namespace ISIC_DATA.Controllers
         [HttpPost]        
         public ActionResult Index(DogViewModel viewModel)
         {
-            var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
+       /*     var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
             var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
             ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
             ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
+        */    
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.successMessage = "";
 
@@ -48,16 +52,17 @@ namespace ISIC_DATA.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {
+                {                                                         
                     Litter l = new Litter()
                     {
                         DateOfBirth = viewModel.Litter.DateOfBirth,
                         FatherId = viewModel.Litter.FatherId,
-                        MotherId = viewModel.Litter.MotherId
+                        MotherId = viewModel.Litter.MotherId,
+                        PersonId = viewModel.Litter.PersonId    // Breeder person.
                     };
 
                     db.Litter.Add(l);
-                    db.SaveChanges();
+                    db.SaveChanges();                           // Litter saved
 
                     foreach (DogAndPerson dp in viewModel.DogAndPersons)
                     {
@@ -68,7 +73,7 @@ namespace ISIC_DATA.Controllers
                             Email = dp.Person.Email,
                         };
 
-                        db.Person.Add(P);
+                        db.Person.Add(P);               // Person saved. Owner
                         db.SaveChanges();
 
                         Dog d = new Dog()
@@ -84,7 +89,7 @@ namespace ISIC_DATA.Controllers
                         if (d.Sex.Equals("Female")) d.Sex = "F";
 
                         db.Dog.Add(d);
-                        db.SaveChanges();   // saving Dog to DB 
+                        db.SaveChanges();   // Dog saved
                     }    //end foreach DogAndPerson
                 
                     TempData["Success"] = "Data was successfully saved.";
@@ -125,7 +130,7 @@ namespace ISIC_DATA.Controllers
         }
 
 
-        public JsonResult FetchFathers(string query) // IN USE
+        public JsonResult FetchFathers(string query)                                            //     Get all posible Fathers to json, used for typeAhead
         {
             List<Dog> fatherList = db.Dog.Where(d => d.Sex == "M").OrderBy(d => d.Reg).ToList();               
              //   Where(d => d.Reg.Contains("IS0")).ToList();
@@ -141,8 +146,8 @@ namespace ISIC_DATA.Controllers
             return Json(serialisedJson , JsonRequestBehavior.AllowGet); 
         }
 
-        public JsonResult FetchMothers(string query) // IN USE
-        {
+        public JsonResult FetchMothers(string query)                                             //     Get all posible Mothers to json, used for typeAhead
+        {                                                                                         // Ath að bæta við að eldri hundar en 15 ára komi ekki fram
             List<Dog> motherList = db.Dog.Where(d => d.Sex == "F").OrderBy(d => d.Reg).ToList();
 
             var serialisedJson = from result in motherList
@@ -154,6 +159,21 @@ namespace ISIC_DATA.Controllers
                                  };
             return Json(serialisedJson, JsonRequestBehavior.AllowGet);
         }
+
+
+        public JsonResult FetchBreeders(string query)                                            //     Get all posible Breeders to json, used for typeAhead
+        {
+            List<Person> breederList = db.Person.Where(p => p.Breeder == true).OrderBy(p => p.Name).ToList();
+
+            var serialisedJson = from result in breederList
+                                 select new
+                                 {                                     
+                                     Name = result.Name,
+                                     Id = result.Id
+                                 };
+            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
+        }
+
 
 
         public ActionResult All()

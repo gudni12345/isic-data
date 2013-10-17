@@ -26,21 +26,7 @@ namespace ISIC_DATA.Models
         public int FatherId { get; set; }
         public virtual Dog Father { get; set; }
 
-       
+        public Nullable<int> PersonId { get; set; }     //Breeder Person
+        public virtual Person Person { get; set; }
     }
 }
-
-
-//[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'MM'/'yy}")]
-
-/*       [DataType(DataType.Date)]
-       [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-       [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth is missing")]
- * 
- *         [DataType(DataType.Date)]
-       [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-       [Required(ErrorMessage = "Please enter a date")]
-
-
-
-*/

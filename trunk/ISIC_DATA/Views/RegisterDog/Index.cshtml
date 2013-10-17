@@ -31,17 +31,20 @@
             @Html.ValidationMessageFor(model => model.Litter.DateOfBirth, null, new { @class = "help-inline" })
         </span>
        
-        
+        <div class="editor-field">
+            <label>Breeder:</label>
+            <input type="text" placeholder="Breeder name" id="typeaheadBreeder" class="ekkitil">
+            @Html.HiddenFor(model => model.Person.Id  , new { @id = "returnBreederId" })                                  
+            @Html.ValidationMessageFor(model => model.Person.Id, null, new { @class = "help-inline" })              
+        </div>
 
         <div class="editor-field">
             <label>Father:</label>
             <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="ekkitil">
             @Html.HiddenFor(model => model.Litter.FatherId, new { @id = "returnFatherId" })                     
              <input type="text" id="fatherName" disabled class=".twitter-typeahead">
-            @Html.ValidationMessageFor(model => model.Litter.FatherId, null, new { @class = "help-inline" })  
-            
-        </div>
-                
+            @Html.ValidationMessageFor(model => model.Litter.FatherId, null, new { @class = "help-inline" })              
+        </div>                
 
         <div class="editor-field">
             <label>Mother:</label>
@@ -96,6 +99,20 @@
             autoclose: true
         });
     });
+
+    $.getJSON("/registerdog/Fetchbreeders/", null, function (response) {
+        $("#typeaheadBreeder").typeahead({
+            name: "Breeder",
+            local: response,
+            limit: 5,
+            valueKey: "Name"
+        }).on("typeahead:selected typeahead:autocompleted",
+            function (e, datum) {
+                $('#returnBreederId').val(datum.Id);                
+            }
+        );
+    })
+
 
 
     $.getJSON("/registerdog/Fetchfathers/", null, function (response) {
