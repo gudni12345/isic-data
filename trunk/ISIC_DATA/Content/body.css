@@ -1,6 +1,6 @@
 /*padding needed for all in the body*/
 body {
-            padding-top: 15px;
+            padding-top: 10px;
             padding-bottom: 40px;
             padding-left: 40px;
             padding-right: 40px;
@@ -9,8 +9,16 @@ body {
 
 /*padding needed to adjust nav container to body*/
 .container-fluid {
-padding-left: 0px;
-padding-right: 0px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+
+}
+.logomynd {
+    width: 80px;
+    height: 120px;
+    padding-bottom: 5px;
 }
 
 .dogPic {
@@ -30,6 +38,7 @@ padding-right: 0px;
 {
     font-size: 16px;
 }
+
 .doglist dt
 {
     text-align:left;
@@ -89,12 +98,12 @@ p {
     }
 /*padding for nav tabs*/
 .navbar .nav > li > a  {
-        padding: 27px 20px;
+        padding: 2px 20px;
     }
 /*padding for all nav bar (from logo)*/
 .navbar-inverse .brand {
         width: 90px;
-        height: 74px;
+        height: 20px;
     }
 /*padding for fonts on nav bar*/
 .navbar-inverse .nav > li > a {  
