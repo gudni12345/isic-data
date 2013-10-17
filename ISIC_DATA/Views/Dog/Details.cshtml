@@ -5,59 +5,38 @@
     ViewBag.Title = "Details";
 }
 
-<h2 class="dogTitle">@Html.DisplayFor(model => model.Name)</h2>
-  
-  <div class="row">
-      <div class="span6 dog-pedigree">
-           <ul class="unstyled dog-details">
-             <li>
-                <div>
-                     <div>
-                         <div class="control-group">
-                                <label class="control-label"><b>Registration Number:</b> @Model.Reg</label>
-                           </div>
-                           <div class="control-group">
-                                 <span><label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) 
-                                 in  @Html.DisplayFor(model => Model.Country.Name) </label></span>
-                           </div>
-                           <div class="control-group">
-                           @if (Model.Sex == "M") {<b>Gender: </b><q>Male </q>
+  <div class="row dog-details">
+      <div class="span6">
+          <h2 class="dogTitle">@Html.DisplayFor(model => model.Name)</h2>
+               <dl class="dl-horizontal doglist">
+                        <dt>Registration Nr:</dt><dd>@Model.Reg</dd>
+                        <dt> Born:</dt> <dd>@Html.DisplayFor(model => Model.Litter.DateOfBirth) 
+                                 in  @Html.DisplayFor(model => Model.Country.Name) </dd>
+                                                   
+                           @if (Model.Sex == "M") {<dt>Gender: </dt><dd>Male </dd>
                                 
                            }
                            else {
-                                <b>Gender: </b><q>Female </q>
+                                <dt>Gender: </dt><dd>Female </dd>
                            }
-                           </div>
-
-                           <div class="control-group">
-                                 <label class="control-label"><b>Father:</b>  @Html.DisplayFor(model => model.Litter.Father.Name) </label>
-                           </div>
-                           <div class="control-group">
-                                 <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
-                           </div>
-                           <div class="control-group">
-                                <label class="control-label"> <b>Breeder:</b> </label>
-                           </div>
-                           <div class="control-group">
-                           @if (Model.DetailedInfoId != null) {<b>HD: </b>@Html.DisplayFor(model => model.DetailedInfo.HD)
+                                                    <dt>Father:</dt> <dd> @Html.DisplayFor(model => model.Litter.Father.Name) </dd>
+                          <dt>Mother:</dt><dd> @Html.DisplayFor(model => model.Litter.Mother.Name)</dd> 
+                          <dt>Breeder:</dt><dd>xx</dd> 
+                           @if (Model.DetailedInfoId != null) {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD)</dd>
                             }
                            else
                            {
                                ;
                                 }
-                           </div>                       
-             
-                     </div>
-                   </div>  
-                </li> 
-
-            </ul>
-          </div>
+                 </dl>                           
+            </div>
             @*Load Photo from Database*@
              <div class="span6">       
+                 <div class="dogPic">
                              @if (@Model.PicturePath != null ) {                           
                                  <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             } 
+                  </div> 
              </div>                    
       </div>
 
