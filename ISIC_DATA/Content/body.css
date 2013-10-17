@@ -20,6 +20,11 @@ padding-right: 0px;
         border-radius: 5px; 
 }
 
+.dogTitle{
+        text-shadow: 1px 2px #d3d3d3;
+        color: #1a3362;
+}
+
 .dog-details{
     border: 1px solid #d3d3d3;
     border-radius: 5px 5px 5px 5px;

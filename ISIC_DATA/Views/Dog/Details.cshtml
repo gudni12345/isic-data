@@ -5,25 +5,30 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Dog Details Information</h2>
+<h2 class="dogTitle">@Html.DisplayFor(model => model.Name)</h2>
   
   <div class="row">
-      <div class="span6">
-         
-         <ul class="unstyled dog-details">
+      <div class="span6 dog-pedigree">
+           <ul class="unstyled dog-details">
              <li>
                 <div>
-                       
-                    <div>
-                        <h4>      
-                            <a href="#" >@Html.DisplayFor(model => model.Name)</a>
-                        </h4>
-                           <div class="control-group">
-                                <label class="control-label"><b>@Html.DisplayNameFor(model => Model.Reg):</b> @Html.DisplayFor(model => Model.Reg)</label>
+                     <div>
+                         <div class="control-group">
+                                <label class="control-label"><b>Registration Number:</b> @Model.Reg</label>
                            </div>
                            <div class="control-group">
-                                 <label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) <b>Gender:</b> @Html.DisplayFor(model => model.Sex) </label>
+                                 <span><label class="control-label"> <b>Born:</b>  @Html.DisplayFor(model => Model.Litter.DateOfBirth) 
+                                 in  @Html.DisplayFor(model => Model.Country.Name) </label></span>
                            </div>
+                           <div class="control-group">
+                           @if (Model.Sex == "M") {<b>Gender: </b><q>Male </q>
+                                
+                           }
+                           else {
+                                <b>Gender: </b><q>Female </q>
+                           }
+                           </div>
+
                            <div class="control-group">
                                  <label class="control-label"><b>Father:</b>  @Html.DisplayFor(model => model.Litter.Father.Name) </label>
                            </div>
@@ -31,30 +36,17 @@
                                  <label class="control-label"><b>Mother:</b> @Html.DisplayFor(model => model.Litter.Mother.Name)</label> 
                            </div>
                            <div class="control-group">
-                                 <label class="control-label"> <b>Color comment:</b> @Html.DisplayFor(model => model.ColorComment)</label>
+                                <label class="control-label"> <b>Breeder:</b> </label>
                            </div>
                            <div class="control-group">
-                           @if (Model.PersonId != null) {
-                                <label class="control-label"> <b>Owner:</b> @Html.DisplayFor(model => model.Person.Name)</label>
-                           }
-                           else {
-                                <b>Owner: </b><q> No owner registered </q>
-                           }
-                           </div>
-                           @*
-                             <div class="control-group">
-                                 <label class="control-label"> <b>Litter Id:</b>  @Html.DisplayFor(model => model.Litter.Id)</label>
-                             </div>
-                             <div class="control-group">
-                                 <label class="control-label"><b> Color:</b>@Html.DisplayFor(model => model.Color.ColorText) </label>
-                             </div>
-                             <div class="control-group">
-                                 <label class="control-label"><b>Owner: </b>@Html.DisplayFor(model => model.Person.Name)</label>                     
-                             </div>
-                             <div class="control-group">
-                                 <label class="control-label"><b>Old color:</b>@Html.DisplayFor(model => model.DetailedInfo.OldColor)</label>
-                            </div>
-                          *@               
+                           @if (Model.DetailedInfoId != null) {<b>HD: </b>@Html.DisplayFor(model => model.DetailedInfo.HD)
+                            }
+                           else
+                           {
+                               ;
+                                }
+                           </div>                       
+             
                      </div>
                    </div>  
                 </li> 
@@ -69,11 +61,9 @@
              </div>                    
       </div>
 
-<div>
 
-</div>
 
-<div class="container-fluid">
+<div class="container dogPedigree">
 	<div class="row">
 		<div class="span2">
 			<ul class="nav nav-list">
@@ -119,7 +109,7 @@
                     <tr>
                         <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Id) })</td>                
                         <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Id)})</td>
-                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Id)});</td>
+                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Id)})</td>
                                          
                         <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Id)})</td>
                     </tr>
