@@ -180,10 +180,9 @@
 
  <h3>Siblings from the same litter</h3>
  @foreach(var item in ViewBag.Siblings)
-  {            
+  {         
       <tr>    
-        <td>@item.Name</td><br>
-
+        <td>@Html.ActionLink((string)item.Name,"Details",new { id=item.Id })</td> <br>
       </tr>        
   }
 
