@@ -19,7 +19,7 @@
                            else {
                                 <dt>Gender: </dt><dd>Female </dd>
                            }
-                                                    <dt>Father:</dt> <dd> @Html.DisplayFor(model => model.Litter.Father.Name) </dd>
+                          <dt>Father:</dt><dd> @Html.DisplayFor(model => model.Litter.Father.Name) </dd>
                           <dt>Mother:</dt><dd> @Html.DisplayFor(model => model.Litter.Mother.Name)</dd> 
                           <dt>Breeder:</dt><dd>xx</dd> 
                            @if (Model.DetailedInfoId != null) {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD)</dd>
@@ -81,12 +81,19 @@
          <div class="span9">
             <table BORDER=0 CELLSPACING=12 CELLPADDING=0 WIDTH="100%" >
                 <tr>
-                <td>
-                    <table BORDER CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF" >
 
+                <td>
+                    <table BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF" >
+                        <th>Parents</td>
+                        <th>GrandParents</td>
+                        <th>Greate GrandParents</td>
+                        <th>Greate Greate GrandParents</td>
                     @*Fathers Pedigree*@           
                     <tr>
-                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Id) })</td>                
+                        
+                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Id) })
+                        
+                        </td>                
                         <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Id)})</td>
                         <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Id)})</td>
                                          
@@ -162,12 +169,12 @@
 
    
 
-<p>
+<!--p>
      
     <p class="btn btn-primary icon  pull-left ">
          @Html.ActionLink("Edit", "Edit", new  { id=Model.Id  } )  </p>  |  <p class="btn btn-primary icon  pull-center "> @Html.ActionLink("Back to List", "Index")</p>
     
-</p>
+</p-->
 
 
 
