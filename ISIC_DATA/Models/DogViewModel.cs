@@ -12,6 +12,6 @@ namespace ISIC_DATA.Models
 
         public Litter Litter { get; set; }
         public List<DogAndPerson> DogAndPersons { get; set; }
-
+        public Person Person { get; set; }
     }
 }
