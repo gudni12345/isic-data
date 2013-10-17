@@ -34,8 +34,8 @@
         <div class="editor-field">
             <label>Breeder:</label>
             <input type="text" placeholder="Breeder name" id="typeaheadBreeder" class="ekkitil">
-            @Html.HiddenFor(model => model.Person.Id  , new { @id = "returnBreederId" })                                  
-            @Html.ValidationMessageFor(model => model.Person.Id, null, new { @class = "help-inline" })              
+            @Html.HiddenFor(model => model.Litter.PersonId  , new { @id = "returnBreederId" })                                  
+            @Html.ValidationMessageFor(model => model.Litter.PersonId, null, new { @class = "help-inline" })              
         </div>
 
         <div class="editor-field">
@@ -108,7 +108,7 @@
             valueKey: "Name"
         }).on("typeahead:selected typeahead:autocompleted",
             function (e, datum) {
-                $('#returnBreederId').val(datum.Id);                
+                $('#returnBreederId').val(datum.Id);
             }
         );
     })
