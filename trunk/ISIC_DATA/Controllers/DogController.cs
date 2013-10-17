@@ -67,6 +67,14 @@ namespace ISIC_DATA.Controllers
             {
                 return HttpNotFound();
             }
+            else
+            {
+                
+                // get siblings from the same litter - þarf að fara í litter 
+                var Siblings = db.Dog.Where(d => d.LitterId == dog.LitterId).Where(d => d.Id != dog.Id).ToList();    // find all dogs that have same litterId as dog selected.
+                ViewBag.Siblings = Siblings;
+
+            }
             return View(dog);
         }
 
