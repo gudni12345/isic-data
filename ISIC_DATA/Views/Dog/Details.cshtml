@@ -33,7 +33,12 @@
             @*Load Photo from Database*@
              <div class="span6">       
                  <div class="dogPic">
-                             @if (@Model.PicturePath != null ) {                           
+                            @if (@Model.PicturePath == null)
+                            {
+                                <img src="~/Images/dogs/dog1.jpg" alt ="~/Images/dogs/dog1.jpg" />     
+                            }
+                            else
+                            {                           
                                  <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             } 
                   </div> 
