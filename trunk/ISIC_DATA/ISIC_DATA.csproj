@@ -352,6 +352,7 @@
     <Content Include="App_Start\_AppStart.cshtml" />
     <Content Include="Images\bgr315.png" />
     <Content Include="Images\calendar.gif" />
+    <Content Include="Images\favicon.ico" />
     <Content Include="Images\isic\bgr150.png" />
     <Content Include="Images\isic\bgr190.png" />
     <Content Include="Images\isic\bgr315.png" />
