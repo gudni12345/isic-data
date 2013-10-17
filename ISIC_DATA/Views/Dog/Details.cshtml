@@ -178,7 +178,17 @@
   </div>
 </div>
 
-   
+ <h3>Siblings from the same litter</h3>
+ @foreach(var item in ViewBag.Siblings)
+  {            
+      <tr>    
+        <td>@item.Name</td><br>
+
+      </tr>        
+  }
+
+
+
 
 <!--p>
      
