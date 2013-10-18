@@ -98,7 +98,7 @@
                         
                         <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Id) })
                             <br> @if (@Model.PicturePath != null ) {                           
-                                 <img src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 <img class="pedPhoto" src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             } 
                         </td>                
                         <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Id)})</td>
@@ -137,7 +137,7 @@
                     <tr>
                         <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Mother.Id) })<br>
                            @if (@Model.PicturePath != null ) {                           
-                                 <img src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 <img class="pedPhoto" src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                            }  
                         </td>
                         <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Mother.Litter.Father.Name, "Details", new {Id= (Model.Litter.Mother.Litter.Father.Id) })</td>
