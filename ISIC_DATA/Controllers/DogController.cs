@@ -79,6 +79,10 @@ namespace ISIC_DATA.Controllers
                 ViewBag.SiblingsFromFatherSide = db.Dog.Where(d => d.Litter.FatherId == dog.Litter.FatherId)
                                                 .Where(d => d.LitterId != dog.LitterId)
                                                 .Where(d => d.Id != dog.Id).ToList();
+                // Find all dogs that have the same mother
+                ViewBag.SiblingsFromMotherSide = db.Dog.Where(d => d.Litter.MotherId == dog.Litter.MotherId)
+                                                .Where(d => d.LitterId != dog.LitterId)
+                                                .Where(d => d.Id != dog.Id).ToList();
 
             }
             return View(dog);
