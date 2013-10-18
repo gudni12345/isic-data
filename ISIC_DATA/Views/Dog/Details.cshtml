@@ -180,7 +180,7 @@
 
 @if ( ViewBag.Siblings.Count > 0 ) 
 { 
-    <h3>Siblings from the same litter ( @ViewBag.Siblings.Count )</h3>
+    <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
     foreach(var item in ViewBag.Siblings)
     {         
    
@@ -191,7 +191,7 @@
 
 @if ( ViewBag.SiblingsFromFatherSide.Count > 0 ) 
 { 
-    <h3>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</h3>
+    <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
     foreach (var item in ViewBag.SiblingsFromFatherSide)
     {         
         
@@ -202,7 +202,7 @@
 
 @if ( ViewBag.SiblingsFromMotherSide.Count > 0 ) 
 {    
-    <h3>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </h3>
+    <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
     foreach (var item in ViewBag.SiblingsFromMotherSide)
     {         
     
