@@ -212,6 +212,18 @@
 }
 
 
+@if ( ViewBag.Puppies.Count > 0 ) 
+{    
+    <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
+    foreach (var item in ViewBag.Puppies)
+    {         
+    
+        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+          
+    }
+}
+
+
 <!--p>
      
     <p class="btn btn-primary icon  pull-left ">

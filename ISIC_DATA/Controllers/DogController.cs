@@ -84,6 +84,15 @@ namespace ISIC_DATA.Controllers
                                                 .Where(d => d.LitterId != dog.LitterId)
                                                 .Where(d => d.Id != dog.Id).ToList();
 
+
+                 //Find all puppies
+                if (dog.Sex.Equals("M"))  // if Dog is male
+                    ViewBag.Puppies = db.Dog.Where(d => d.Litter.FatherId == dog.Id).ToList();
+                else
+                    if (dog.Sex.Equals("F"))
+                        ViewBag.Puppies = db.Dog.Where(d => d.Litter.MotherId == dog.Id).ToList();
+
+
             }
             return View(dog);
         }
