@@ -178,29 +178,38 @@
   </div>
 </div>
 
- <h3>Siblings from the same litter</h3>
- @foreach(var item in ViewBag.Siblings)
-  {         
-      <tr>    
-        <td>@Html.ActionLink((string)item.Name,"Details",new { id=item.Id })</td> <br>
-      </tr>        
-  }
+@if ( ViewBag.Siblings.Count > 0 ) 
+{ 
+    <h3>Siblings from the same litter ( @ViewBag.Siblings.Count )</h3>
+    foreach(var item in ViewBag.Siblings)
+    {         
+   
+        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+          
+    }
+}
 
- <h3>Siblings with same father</h3>
- @foreach (var item in ViewBag.SiblingsFromFatherSide)
-  {         
-      <tr>    
-        <td>@Html.ActionLink((string)item.Name,"Details",new { id=item.Id })</td> <br>
-      </tr>        
-  }
+@if ( ViewBag.SiblingsFromFatherSide.Count > 0 ) 
+{ 
+    <h3>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</h3>
+    foreach (var item in ViewBag.SiblingsFromFatherSide)
+    {         
+        
+        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+            
+    }
+}
 
- <h3>Siblings with same mother</h3>
- @foreach (var item in ViewBag.SiblingsFromMotherSide)
-  {         
-      <tr>    
-        <td>@Html.ActionLink((string)item.Name,"Details",new { id=item.Id })</td> <br>
-      </tr>        
-  }
+@if ( ViewBag.SiblingsFromMotherSide.Count > 0 ) 
+{    
+    <h3>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </h3>
+    foreach (var item in ViewBag.SiblingsFromMotherSide)
+    {         
+    
+        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+          
+    }
+}
 
 
 <!--p>
