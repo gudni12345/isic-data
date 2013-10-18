@@ -186,6 +186,14 @@
       </tr>        
   }
 
+ <h3>Siblings with same father</h3>
+ @foreach (var item in ViewBag.SiblingsFromFatherSide)
+  {         
+      <tr>    
+        <td>@Html.ActionLink((string)item.Name,"Details",new { id=item.Id })</td> <br>
+      </tr>        
+  }
+
 
 
 

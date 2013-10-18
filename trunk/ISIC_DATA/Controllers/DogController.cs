@@ -71,10 +71,14 @@ namespace ISIC_DATA.Controllers
             }
             else
             {
+
+                // get siblings from the same litter // find all dogs that have same litterId as dog selected.
+                ViewBag.Siblings = db.Dog.Where(d => d.LitterId == dog.LitterId).Where(d => d.Id != dog.Id).ToList();    
                 
-                // get siblings from the same litter - þarf að fara í litter 
-                ViewBag.Siblings = db.Dog.Where(d => d.LitterId == dog.LitterId).Where(d => d.Id != dog.Id).ToList();    // find all dogs that have same litterId as dog selected.
-              
+                // Find all dogs that have the same father
+                ViewBag.SiblingsFromFatherSide = db.Dog.Where(d => d.Litter.FatherId == dog.Litter.FatherId)
+                                                .Where(d => d.LitterId != dog.LitterId)
+                                                .Where(d => d.Id != dog.Id).ToList();
 
             }
             return View(dog);
