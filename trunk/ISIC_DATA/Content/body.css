@@ -26,6 +26,12 @@ padding-bottom: 5px;
     padding-bottom: 1px;
 }
 
+.pedPhoto {
+    width: 160px;
+    height: 120px;
+    padding-bottom: 1px;
+}
+
 .logoff{
     float: right;
     padding-top: 60px;
@@ -124,6 +130,10 @@ p {
         font-size: 18px;
     }
 
-
+.span7  > h2{
+    
+    margin: 30px 10px;
+    font-family: Adobe Fangsong Std;
+}
 
 
