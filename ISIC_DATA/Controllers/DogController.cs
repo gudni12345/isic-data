@@ -52,6 +52,8 @@ namespace ISIC_DATA.Controllers
                     break;
             }
 
+            ViewBag.numberOfDogs = db.Dog.Count();
+
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(dogs.ToPagedList(pageNumber, pageSize));
