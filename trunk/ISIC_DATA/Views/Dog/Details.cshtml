@@ -28,12 +28,14 @@
                            {
                                <dt>Breeder: </dt><dd>No Breeder Registered</dd>
                            }
-                           @if (Model.DetailedInfoId != null) {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD)</dd>
-                            }
-                           else
-                           { 
-                               ;
-                                }
+                           @if (Model.DetailedInfoId != null) {
+                               if (Model.DetailedInfo.HD != null)
+                               {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD)</dd>
+                               }
+                               else
+                               {
+                                   ;
+                               }}
                  </dl>                           
             </div>
             @*Load Photo from Database*@
@@ -75,79 +77,81 @@
                     @*Fathers Pedigree*@           
                     <tr>
                         
-                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Id) })
-                            <br> @if (@Model.PicturePath != null ) {                           
+                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Id) })
+                            <br> @if (@Model.PicturePath != null)
+                                 {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
-                            } 
+                                 } 
                         </td>                
-                        <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Id)})</td>
-                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Id)})</td>
+                        <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Id) })</td>
+                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Id) })</td>
                                          
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id= (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Id)})</td>
+                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
+                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new{ Id= (Model.Litter.Father.Litter.Father.Litter.Mother.Id )})</td>
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { id= (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Id)})</td>
+                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
+                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { id = (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Id) })</td>
+                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Id) })</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Father.Litter.Mother.Id) })</td>
-                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new {Id=(Model.Litter.Father.Litter.Mother.Litter.Father.Id) })</td>
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new {Id= (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Id)})</td>
+                        <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Id) })</td>
+                        <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Id) })</td>
+                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Id)})</td>
+                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Id) })</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Id) })</td>
-                        <td>@Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new {Id=(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Id)})</td>
+                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Id) })</td>
+                        <td>@Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Id)})</td>
+                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
                     </tr>
                     
 
                      @*Mothers Pedigree*@    
                     <tr>
-                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Mother.Id) })<br>
-                           @if (@Model.PicturePath != null ) {                           
+                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Id) })<br>
+                           @if (@Model.PicturePath != null)
+                           {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                            }  
                         </td>
-                        <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Mother.Litter.Father.Name, "Details", new {Id= (Model.Litter.Mother.Litter.Father.Id) })</td>
-                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new {Id=(Model.Litter.Mother.Litter.Father.Litter.Father.Id) })</td>
-                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new {Id=(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Id)})</td>
+                        <td ROWSPAN="4"> @Html.ActionLink(Model.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Id) })</td>
+                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Id) })</td>
+                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
+                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new {Id=(Model.Litter.Mother.Litter.Father.Litter.Mother.Id) })</td>
-                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new {Id= (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Id) })</td>
+                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Id) })</td>
+                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                         <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new {Id=(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Id) })</td>
+                         <td>@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Id) })</td>
                     </tr>
 
                     <tr>
-                        <td ROWSPAN="4">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Name, "Details", new {Id=(Model.Litter.Mother.Litter.Mother.Id) })</td>
-                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new {Id=(Model.Litter.Mother.Litter.Mother.Litter.Father.Id) })</td>
-                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new {Id=(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Id)})</td>
+                        <td ROWSPAN="4">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Id) })</td>
+                        <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Id) })</td>
+                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Id) })</td>
+                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Id) })</td>
                     </tr>
                     <tr>
-                         <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new  {Id=(Model.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
-                         <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new{Id=(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Id) })</td>
+                         <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
+                         <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
+                        <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
                     </tr>
                  </table>
            	
@@ -163,47 +167,47 @@
               
       <div class="tab-pane" id="litter">
           
-            @if ( ViewBag.Siblings.Count > 0 ) 
+            @if (ViewBag.Siblings.Count > 0)
             { 
                 <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
-                foreach(var item in ViewBag.Siblings)
+                foreach (var item in ViewBag.Siblings)
                 {         
    
-                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
           
                 }
             }
 
-            @if ( ViewBag.SiblingsFromFatherSide.Count > 0 ) 
+            @if (ViewBag.SiblingsFromFatherSide.Count > 0)
             { 
                 <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
                 foreach (var item in ViewBag.SiblingsFromFatherSide)
                 {         
         
-                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
             
                 }
             }
 
-            @if ( ViewBag.SiblingsFromMotherSide.Count > 0 ) 
+            @if (ViewBag.SiblingsFromMotherSide.Count > 0)
             {    
                 <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
                 foreach (var item in ViewBag.SiblingsFromMotherSide)
                 {         
     
-                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
           
                 }
             }
 
 
-            @if ( ViewBag.Puppies.Count > 0 ) 
+            @if (ViewBag.Puppies.Count > 0)
             {    
                 <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
                 foreach (var item in ViewBag.Puppies)
                 {         
     
-                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
           
                 }
             }
@@ -219,7 +223,7 @@
 <!--p>
      
     <p class="btn btn-primary icon  pull-left ">
-         @Html.ActionLink("Edit", "Edit", new  { id=Model.Id  } )  </p>  |  <p class="btn btn-primary icon  pull-center "> @Html.ActionLink("Back to List", "Index")</p>
+         @Html.ActionLink("Edit", "Edit", new { id = Model.Id })  </p>  |  <p class="btn btn-primary icon  pull-center "> @Html.ActionLink("Back to List", "Index")</p>
     
 </p-->
 
