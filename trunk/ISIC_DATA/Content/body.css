@@ -8,7 +8,8 @@ body {
             padding-left: 40px;
             padding-right: 40px;
             max-width: 1100px;
-            margin-left: 30px;
+            margin-left: auto;
+            margin-right:auto;
                         
       }
 
@@ -16,18 +17,20 @@ body {
 .container-fluid {
 max-width: 1100px;
 padding-left: 0px;
-
+padding-right: 0px;
 }
+
+
+/*needs reset, this is 0 0 10 in bootstrap.css*/
+p {
+  margin: 0 0 0 0;
+}
+
 
 /*************************/
 /*for Layout and Nav Bar*/
 /*************************/
 
-.navbaradjustment
-{
-    padding-top: 6px;
-    padding-left: 8px;
-}
 
 .top_of_page{
    width:auto;
@@ -39,76 +42,120 @@ padding-left: 0px;
     padding-bottom: 1px;
 }
 
-.pedPhoto {
-    width: 160px;
-    height: 120px;
-    padding-bottom: 1px;
-}
-
 .logoff{
     float: right;
     padding-top: 60px;
     margin-bottom: 2px;  
 }
 
+/*padding for nav tabs*/
+.navbar .nav > li > a  {
+        padding: 5px 27px;
+    }
+.navOffset{
+    padding-left:0px;
+    padding-right:0px;
+}
+.navbar-inverse .nav > li > a {  
+        font-weight: bold; 
+        font-size: 18px;
+}
+.navbaradjustment{
+    padding-top: 6px;
+    padding-left: 8px;
+}
+
+/*Heading on frontpage*/
+.span7  > h2{
+    margin: 30px 10px;
+    font-family: Adobe Fangsong Std;
+}
+
+
+
 /*************************/
 /*for Home Page*/
 /*************************/
-.carousel inner, img
-{
+.carousel inner, img{
     border-radius: 4px;
 }
+
+#myCarousel{
+    max-width: 1100px;
+}
+
+
+
+
+/*************************/
+/*for Database tab (Search dog)*/
+/*************************/
+
+/*to align search box and text in dogs*/
+.alignSearch form p input{
+    margin-bottom: 10px;
+}
+
+input.search-query{
+    border-radius: 6px;
+}
+
+
+
 
 /*************************/
 /*for Details Page in DOGS*/
 /*************************/
 
-.dogPic {
+.pedPhoto { /*within pedigree*/
+    width: 160px;
+    height: 120px;
+    padding-top:3px;
+    padding-bottom: 1px;
+}
+
+.dogPic { /*top of Details page*/
         max-width: 360px;
         max-height: 260px;     
         border-radius: 5px; 
         padding: 20px;
 }
 
+/*Adjustments for upper part of details*/
 .dogTitle{
         text-shadow: 1px 2px #d3d3d3;
         color: #1a3362;
         padding-left: 20px;
 }
-
-.doglist
-{
+.doglist{
     font-size: 16px;
-}
-
-.doglist dt
-{
+ }
+.doglist dt{
     text-align:left;
     padding-left: 20px;
+    line-height: 25px;
 }
-
+.doglist dd{
+    line-height: 25px;
+}
 .dog-details{
-    margin-bottom: 30px;
+    padding-bottom: 15px;   
+}
+
+
+/* left tabs*/
+.bs-sidebar .nav > .active > ul {
+    display: block;
+    margin-bottom: 8px;
    }
-
-
-/*to align search box and text in dogs*/
-.alignSearch form p input
-{
-    margin-bottom: 10px;
+.nav-pills>.active>a, .nav-pills>.active>a:hover, .nav-pills>.active>a:focus {
+color: #fff;
+background-color: #1a3362;
 }
 
-/*needs reset, this is 0 0 10 in bootstrap.css*/
-p {
-  margin: 0 0 0 0;
-}
 
-/*padding to get the pic in the home page right*/
-.hero-unit{
-    padding-bottom: 0.7em;
-    padding-top: 0.7em;
-}
 
+/*STILL TO CLEAN UP*/
 /*Adjustments to p on thumbnails on Home*/
 .span4 > p{
     padding-left: 10px;
@@ -136,41 +183,10 @@ p {
         margin-bottom: 15px;
         }
 
-#myCarousel
-{
-    max-width: 1100px;
-}
 
 
 
-/*padding needed for the navigation bar*/
-.navbar .nav > li     {
-        float: left;
-    }
-/*padding for nav tabs*/
-.navbar .nav > li > a  {
-        padding: 5px 15px;
-    }
-/*padding for all nav bar (from logo)*/
-.navbar-inverse .brand {
-        width: 90px;
-        height: 20px;
-    }
-/*padding for fonts on nav bar*/
-.navbar-inverse .nav > li > a {  
-        font-weight: bold; 
-        font-size: 18px;
-    }
 
-.span7  > h2{
-    margin: 30px 10px;
-    font-family: Adobe Fangsong Std;
-}
 
-/* left tabs*/
-.bs-sidebar .nav > .active > ul {
-    display: block;
-    margin-bottom: 8px;
-}
 
 
