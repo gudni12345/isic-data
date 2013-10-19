@@ -39,7 +39,7 @@
                  </dl>                           
             </div>
             @*Load Photo from Database*@
-             <div class="span6">       
+             <div class="span5">       
                  <div class="dogPic">
                             @if (@Model.PicturePath == null)
                             {
@@ -53,19 +53,20 @@
              </div>                    
       </div>
 
-<div class="row">
+
+<div class="row lightgrey">
   <!-- Navigation Buttons -->
   <div class="span2">
     <ul class="nav nav-pills nav-stacked" id="myTabs">
       <li class="active"><a href="#pedigree">Pedigree</a></li>
       <li><a href="#litter">Litter</a></li>
-      <li><a href="#testmate">Testmate(inbreeding)</a></li>
+      <li><a href="#testmate">Testmate (inbreeding)</a></li>
       <li><a href="#health">Health & apperance</a></li>
     </ul>
   </div>
 
   <!-- Content -->
-  <div class="span8">
+  <div class="span7 offset1">
     <div class="tab-content">
       <div class="tab-pane active" id="pedigree">      
           
@@ -158,11 +159,11 @@
       </div>
 
       <div class="tab-pane" id="testmate">
-          Testmate(inbreeding) hérna 
+          Testmate (inbreeding) in construction
       </div>
       
       <div class="tab-pane" id="health">
-          Health & apperance hérna
+          Health & apperance in construction
       </div>
               
       <div class="tab-pane" id="litter">
@@ -214,6 +215,8 @@
       </div>
     </div>
   </div>
+</div>
+
 </div>
 
 
