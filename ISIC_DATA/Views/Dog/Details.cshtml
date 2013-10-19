@@ -45,49 +45,22 @@
              </div>                    
       </div>
 
+<div class="row">
+  <!-- Navigation Buttons -->
+  <div class="span2">
+    <ul class="nav nav-pills nav-stacked" id="myTabs">
+      <li class="active"><a href="#pedigree">Pedigree</a></li>
+      <li><a href="#litter">Litter</a></li>
+      <li><a href="#testmate">Testmate(inbreeding)</a></li>
+      <li><a href="#health">Health & apperance</a></li>
+    </ul>
+  </div>
 
-
-<div class="container dogPedigree">
-	<div class="row">
-		<div class="span2">
-			<ul class="nav nav-list">
-				<li class="nav-header">
-			    </li>
-				<li class="active">
-					<a href="/Dog/Index">Pedigree</a>
-				</li>
-				<li>
-					<a href="#">Testmate(inbreeding)</a>
-				</li>
-				<li>	                   
-                   @Html.ActionLink("Health & apperance","../Detailedinfo/details/", new { id = Model.Id })                                       
-                </li>
-				<li>
-				   @Html.ActionLink("Litter","../Litter/details/", new { id = Model.Id })                                       
-				</li>
-				<li>
-					@Html.ActionLink("Breeder","../Person/details/", new { id = Model.Id })
-				</li>
-                <li>
-					<a href="#">Pictures</a>
-				</li>
-                <li>
-					<a href="/Home/About">More Info</a>
-				</li>
-                <li>
-					<a href="http://blog.is/forsida/">Blog</a>
-				</li>
-					
-			</ul>
-         </div>
-
-                
-         @*Pedigree View*@
-         <div class="span9">
-            <table BORDER=0 CELLSPACING=12 CELLPADDING=0 WIDTH="100%" >
-                <tr>
-
-                <th>
+  <!-- Content -->
+  <div class="span8">
+    <div class="tab-content">
+      <div class="tab-pane active" id="pedigree">      
+          
                     <table BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF" >
                         <th>Parents</th>
                         <th>GrandParents</th>
@@ -171,58 +144,71 @@
                         <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new {Id= (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
                     </tr>
                  </table>
-             </td>
-          </tr>
-       </table>   
-    </div> 	
+           	
+      </div>
+
+      <div class="tab-pane" id="testmate">
+          Testmate(inbreeding) hérna 
+      </div>
+      
+      <div class="tab-pane" id="health">
+          Health & apperance hérna
+      </div>
+              
+      <div class="tab-pane" id="litter">
+          
+            @if ( ViewBag.Siblings.Count > 0 ) 
+            { 
+                <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
+                foreach(var item in ViewBag.Siblings)
+                {         
+   
+                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+          
+                }
+            }
+
+            @if ( ViewBag.SiblingsFromFatherSide.Count > 0 ) 
+            { 
+                <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
+                foreach (var item in ViewBag.SiblingsFromFatherSide)
+                {         
+        
+                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+            
+                }
+            }
+
+            @if ( ViewBag.SiblingsFromMotherSide.Count > 0 ) 
+            {    
+                <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
+                foreach (var item in ViewBag.SiblingsFromMotherSide)
+                {         
+    
+                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+          
+                }
+            }
+
+
+            @if ( ViewBag.Puppies.Count > 0 ) 
+            {    
+                <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
+                foreach (var item in ViewBag.Puppies)
+                {         
+    
+                    @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
+          
+                }
+            }
+      </div>
+    </div>
   </div>
 </div>
 
-@if ( ViewBag.Siblings.Count > 0 ) 
-{ 
-    <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
-    foreach(var item in ViewBag.Siblings)
-    {         
-   
-        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
-          
-    }
-}
-
-@if ( ViewBag.SiblingsFromFatherSide.Count > 0 ) 
-{ 
-    <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
-    foreach (var item in ViewBag.SiblingsFromFatherSide)
-    {         
-        
-        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
-            
-    }
-}
-
-@if ( ViewBag.SiblingsFromMotherSide.Count > 0 ) 
-{    
-    <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
-    foreach (var item in ViewBag.SiblingsFromMotherSide)
-    {         
-    
-        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
-          
-    }
-}
 
 
-@if ( ViewBag.Puppies.Count > 0 ) 
-{    
-    <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
-    foreach (var item in ViewBag.Puppies)
-    {         
-    
-        @Html.ActionLink((string)item.Name,"Details",new { id=item.Id }) <br>
-          
-    }
-}
-
+              
 
 <!--p>
      
@@ -231,6 +217,17 @@
     
 </p-->
 
+
+
+<script type="text/javascript">
+
+  $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+
+
+</script>
 
 
 

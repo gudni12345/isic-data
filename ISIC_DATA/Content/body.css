@@ -136,4 +136,10 @@ p {
     font-family: Adobe Fangsong Std;
 }
 
+/* left tabs*/
+.bs-sidebar .nav > .active > ul {
+    display: block;
+    margin-bottom: 8px;
+}
+
 
