@@ -18,6 +18,14 @@ body {
 max-width: 1100px;
 padding-left: 0px;
 padding-right: 0px;
+
+}
+.bodyContainer {
+max-width: 1072px;
+padding-left: 10px;
+padding-right: 10px;
+margin-left: 20px;
+margin-right: 20px;
 }
 
 /*needs reset, this is 0 0 10 in bootstrap.css*/
@@ -67,6 +75,10 @@ p {
     margin: 30px 10px;
     font-family: Adobe Fangsong Std;
 }
+.span{
+    margin: 0;
+    
+}
 
 
 
@@ -79,6 +91,7 @@ p {
 
 #myCarousel{
     max-width: 1100px;
+    margin-left:-30px;
 }
 
 
@@ -104,6 +117,14 @@ input.search-query{
 /*for Details Page in DOGS*/
 /*************************/
 
+.pedigree /*for lower part of Details page*/
+{
+    margin-top: 25px;
+    padding-top: 25px;
+    background-color:#f2f2f2;
+    padding-bottom: 25px;
+    border-radius: 5px;
+}
 .pedPhoto { /*within pedigree*/
     width: 160px;
     height: 120px;
@@ -112,8 +133,8 @@ input.search-query{
 }
 
 .dogPic { /*top of Details page*/
-        max-width: 360px;
-        max-height: 260px;     
+        max-width: 380px;
+        max-height: 280px;     
         border-radius: 5px; 
         padding: 20px;
 }
@@ -136,7 +157,9 @@ input.search-query{
     line-height: 25px;
 }
 .dog-details{
-    padding-bottom: 15px;   
+    padding: 15px;   
+    background-color:#f2f2f2;
+    border-radius: 5px;
 }
 
 
