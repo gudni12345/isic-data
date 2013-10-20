@@ -17,7 +17,8 @@ namespace ISIC_DATA.DataAccess
         public DbSet<DetailedInfo> DetailedInfo { get; set; }
         public DbSet<Person> Person { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
-
+        public DbSet<NewsArticle> NewsArticle  {get; set;}
+       
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Litter>()
