@@ -48,9 +48,11 @@ namespace ISIC_DATA.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.HtmlContent = model.Content;
+                              
                 db.NewsArticle.Add(model);
                 db.SaveChanges();
-                ViewBag.HtmlContent = model.Content;
+                
                 return RedirectToAction("Index");
             }
             return View(model);
