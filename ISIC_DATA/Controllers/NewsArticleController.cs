@@ -20,6 +20,7 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Index()
         {
+           
             return View();
         }
 
@@ -33,28 +34,33 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /NewsArticle/Create
-
+        [HttpGet]
         public ActionResult CreateNews()
         {
-            return View();
+            var model = new NewsArticle();
+            model.Date = DateTime.Now;
+            return View(model);
         }
 
         //
         // POST: /NewsArticle/Create
 
-        //[HttpPost]
-        [HttpPost, ActionName("Create")]
-         public ActionResult CreateNews(NewsArticle model) 
+        [HttpPost]
+        //[HttpPost, ActionName("Create")]
+        public ActionResult CreateNews(NewsArticle model) 
         {
             if (ModelState.IsValid)
             {
+
                 ViewBag.HtmlContent = model.Content;
-                              
+                //model.Date = DateTime.Now;
                 db.NewsArticle.Add(model);
                 db.SaveChanges();
-                
+               // ViewBag.HtmlContent = model.Content;
                 return RedirectToAction("Index");
+
             }
+         
             return View(model);
         }
          
@@ -62,7 +68,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /NewsArticle/Edit/5
 
-        public ActionResult Edit(int id=0)
+        public ActionResult EditNews(int id=0)
         {
             NewsArticle news = db.NewsArticle.Find(id);
             if (news == null)
@@ -77,7 +83,7 @@ namespace ISIC_DATA.Controllers
 
         
         [HttpPost]
-        public ActionResult Edit(NewsArticle news)
+        public ActionResult EditNews(NewsArticle news)
         {
                 // TODO: Add update logic here
                 if (ModelState.IsValid)
