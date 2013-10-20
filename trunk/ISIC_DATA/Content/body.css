@@ -20,7 +20,6 @@ padding-left: 0px;
 padding-right: 0px;
 }
 
-
 /*needs reset, this is 0 0 10 in bootstrap.css*/
 p {
   margin: 0 0 0 0;
@@ -30,8 +29,6 @@ p {
 /*************************/
 /*for Layout and Nav Bar*/
 /*************************/
-
-
 .top_of_page{
    width:auto;
 }
@@ -151,6 +148,18 @@ input.search-query{
 .nav-pills>.active>a, .nav-pills>.active>a:hover, .nav-pills>.active>a:focus {
 color: #fff;
 background-color: #1a3362;
+}
+
+
+/*************************/
+/*for Admin navbar*/
+/*************************/
+
+.nav admin { 
+    
+    padding-top:3px;
+    padding-bottom: 1px;
+    margin: 20px;
 }
 
 

@@ -204,6 +204,7 @@
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
@@ -527,6 +528,9 @@
     <Content Include="Views\DetailedInfo\Create.cshtml" />
     <Content Include="Views\DetailedInfo\Edit.cshtml" />
     <Content Include="Views\DetailedInfo\Delete.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\RegisterDog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
