@@ -1,4 +1,5 @@
-﻿@using BootstrapSupport
+﻿
+@using BootstrapSupport
 @model ISIC_DATA.Models.Dog
 
 @{
@@ -13,29 +14,34 @@
                         <dt> Born:</dt> <dd>@Html.DisplayFor(model => Model.Litter.DateOfBirth) 
                                  in  @Html.DisplayFor(model => Model.Country.Name) </dd>
                                                    
-                           @if (Model.Sex == "M") {<dt>Gender: </dt><dd>Male </dd>
+                           @if (Model.Sex == "M")
+                           {<dt>Gender: </dt><dd>Male </dd>
                                 
                            }
-                           else {
+                           else
+                           {
                                 <dt>Gender: </dt><dd>Female </dd>
                            }
                           <dt>Father:</dt><dd> @Html.DisplayFor(model => model.Litter.Father.Name) </dd>
                           <dt>Mother:</dt><dd> @Html.DisplayFor(model => model.Litter.Mother.Name)</dd> 
-                           @if (Model.Litter.PersonId != null) {<dt>Breeder: </dt>
+                           @if (Model.Litter.PersonId != null)
+                           {<dt>Breeder: </dt>
                                                          <dd>@Html.DisplayFor(model => model.Litter.Person.Name)</dd>
-                            }
+                           }
                            else
                            {
                                <dt>Breeder: </dt><dd>No Breeder Registered</dd>
                            }
-                           @if (Model.DetailedInfoId != null) {
+                           @if (Model.DetailedInfoId != null)
+                           {
                                if (Model.DetailedInfo.HD != null)
                                {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD)</dd>
                                }
                                else
                                {
                                    ;
-                               }}
+                               }
+                           }
                  </dl>                           
             </div>
             @*Load Photo from Database*@
@@ -86,7 +92,7 @@
                       <tr>
                         
                         <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Id) })
-                            <br> @if (@Model.Litter.Father.PicturePath != "~/Images/dogs/dog1.jpg"& @Model.Litter.Father.PicturePath != null )
+                            <br> @if (@Model.Litter.Father.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Father.PicturePath != null)
                                  {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                                  } 
@@ -126,7 +132,7 @@
                      @*Mothers Pedigree*@    
                     <tr>
                         <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Id) })<br>
-                           @if ( @Model.Litter.Mother.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Mother.PicturePath != null)
+                           @if (@Model.Litter.Mother.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Mother.PicturePath != null)
                            {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                            }  
@@ -179,47 +185,116 @@
             @if (ViewBag.Siblings.Count > 0)
             { 
                 <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
-                foreach (var item in ViewBag.Siblings)
-                {         
-   
-                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
-          
-                }
+                <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Date</th>
+				    </tr>
+			        </thead>
+                    <tbody>		        
+                            @foreach (var item in ViewBag.Siblings)
+                            {    
+                                <tr>     
+                                <td> @item.Reg </td>
+                                <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                                <td> @item.Litter.Father.Name </td>
+                                <td> @item.Litter.Mother.Name</td>
+                                <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                                </tr>
+                            }               
+                    </tbody>
+                </table>              
             }
 
             @if (ViewBag.SiblingsFromFatherSide.Count > 0)
             { 
                 <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
-                foreach (var item in ViewBag.SiblingsFromFatherSide)
-                {         
-        
-                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
-            
-                }
+                <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Date</th>
+				    </tr>
+			        </thead>
+                    <tbody>	
+                    @foreach (var item in ViewBag.SiblingsFromFatherSide)
+                    {         
+                    <tr>     
+                        <td> @item.Reg </td>
+                        <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                        <td> @item.Litter.Father.Name </td>
+                        <td> @item.Litter.Mother.Name</td>
+                        <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                    </tr>            
+                    }
+                    </tbody>
+                </table>
             }
 
             @if (ViewBag.SiblingsFromMotherSide.Count > 0)
             {    
                 <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
-                foreach (var item in ViewBag.SiblingsFromMotherSide)
-                {         
-    
-                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
-          
-                }
+                <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Date</th>
+				    </tr>
+			        </thead>
+                    <tbody>	
+                    @foreach (var item in ViewBag.SiblingsFromMotherSide)
+                    {         
+                    <tr>     
+                        <td> @item.Reg </td>
+                        <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                        <td> @item.Litter.Father.Name </td>
+                        <td> @item.Litter.Mother.Name</td>
+                        <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
             }
 
 
             @if (ViewBag.Puppies.Count > 0)
             {    
                 <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
-                foreach (var item in ViewBag.Puppies)
+                   <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Date</th>
+				    </tr>
+			        </thead>
+                    <tbody>
+                @foreach (var item in ViewBag.Puppies)
                 {         
-    
-                    @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) <br>
-          
+                <tr>     
+                    <td> @item.Reg </td>
+                    <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                    <td> @item.Litter.Father.Name </td>
+                    <td> @item.Litter.Mother.Name</td>
+                    <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                </tr>
                 }
+                </tbody>
+             </table>
             }
+
       </div>
     </div>
   </div>

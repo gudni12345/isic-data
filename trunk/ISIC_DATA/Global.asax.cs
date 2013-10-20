@@ -31,6 +31,26 @@ namespace ISIC_DATA
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
 
+
+            string superName = "superadmin";
+            string superPassword = "kopurfrafitjamyri"; 
+            string superRole = "SuperAdministrator";
+
+
+            //Add administrators
+            if (!Roles.RoleExists(superRole))
+                Roles.CreateRole(superRole);
+
+            if (!WebSecurity.UserExists(superName))
+                WebSecurity.CreateUserAndAccount(superName, superPassword);
+
+
+            if (!Roles.IsUserInRole(superName, superRole))
+                Roles.AddUserToRole(superName, superRole);
+            
+            //---------------------------------------------
+
+
             string userName = "adminice";
             string password = "adminice123";
             string role = "Administrator";
@@ -46,6 +66,9 @@ namespace ISIC_DATA
 
             if (!Roles.IsUserInRole(userName, role))
                 Roles.AddUserToRole(userName, role);
+
+            if (!Roles.IsUserInRole(superName, role))
+                Roles.AddUserToRole(superName, role);
 
         }
     }
