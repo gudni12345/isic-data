@@ -1,8 +1,12 @@
 ﻿@using BootstrapSupport
 @model ISIC_DATA.Models.DogViewModel
 
-<br />
-<br />
+@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ViewBag.Title = "Index";
+}
+
+
 <h2>Register Dog(s)</h2>
 @Styles.Render("~/Content/typeahead.js-bootstrap.css")
 
