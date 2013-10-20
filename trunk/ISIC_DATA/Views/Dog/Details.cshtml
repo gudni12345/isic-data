@@ -6,7 +6,7 @@
 }
 
   <div class="row dog-details">
-      <div class="span6">
+      <div class="span5">
           <h2 class="dogTitle">@Html.DisplayFor(model => model.Name)</h2>
                <dl class="dl-horizontal doglist">
                         <dt>Registration Nr:</dt><dd>@Model.Reg</dd>
@@ -54,7 +54,7 @@
       </div>
 
 
-<div class="row lightgrey">
+<div class="row pedigree">
   <!-- Navigation Buttons -->
   <div class="span2">
     <ul class="nav nav-pills nav-stacked" id="myTabs">
@@ -69,17 +69,24 @@
   <div class="span7 offset1">
     <div class="tab-content">
       <div class="tab-pane active" id="pedigree">      
+         
+  
           
-                    <table BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF" >
-                        <th>Parents</th>
-                        <th>Grandparents</th>
-                        <th>Great Grandparents</th>
-                        <th>Great Great Grandparents</th>
-                    @*Fathers Pedigree*@           
-                    <tr>
+         <table BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF"">
+           <thead>
+             <tr>
+                <th>Parents</th>
+                <th>Grandparents</th>
+                <th>Great Grandparents</th>
+                <th>Great Great Grandparents</th>
+             </tr>
+              </thead>
+                @*Fathers Pedigree*@           
+                  <tbody>
+                      <tr>
                         
                         <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Id) })
-                            <br> @if (@Model.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.PicturePath != null)
+                            <br> @if (@Model.Litter.Father.PicturePath != "~/Images/dogs/dog1.jpg"& @Model.Litter.Father.PicturePath != null )
                                  {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                                  } 
@@ -119,7 +126,7 @@
                      @*Mothers Pedigree*@    
                     <tr>
                         <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Id) })<br>
-                           @if (@Model.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.PicturePath != null )
+                           @if ( @Model.Litter.Mother.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Mother.PicturePath != null)
                            {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                            }  
@@ -154,6 +161,7 @@
                     <tr>
                         <td>@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
                     </tr>
+                   </tbody>
                  </table>
            	
       </div>
