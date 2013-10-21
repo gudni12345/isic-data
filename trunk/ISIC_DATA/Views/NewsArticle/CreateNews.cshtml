@@ -14,13 +14,7 @@ ViewBag.Title = "Create News";
     <fieldset>
         <legend>NewsArticle</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
-        </div>
+
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
@@ -38,21 +32,8 @@ ViewBag.Title = "Create News";
             @Html.ValidationMessageFor(model => model.Valid)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.AdminId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.AdminId)
-            @Html.ValidationMessageFor(model => model.AdminId)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DogId)
-        </div>
-        
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DogId)
-            @Html.ValidationMessageFor(model => model.DogId)
-        </div>
+
+
         
         <div class="editor-label">
             @Html.LabelFor(model => model.Content)

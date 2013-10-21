@@ -38,7 +38,8 @@ namespace ISIC_DATA.Controllers
         public ActionResult CreateNews()
         {
             var model = new NewsArticle();
-            model.Date = DateTime.Now;
+
+            ViewBag.HtmlContent = model.Content;
             return View(model);
         }
 
@@ -46,18 +47,18 @@ namespace ISIC_DATA.Controllers
         // POST: /NewsArticle/Create
 
         [HttpPost]
-        //[HttpPost, ActionName("Create")]
         public ActionResult CreateNews(NewsArticle model) 
         {
-            if (ModelState.IsValid)
-            {
+            ViewBag.HtmlContent = model.Content;
+            model.Date = DateTime.Now;
 
-                ViewBag.HtmlContent = model.Content;
-                //model.Date = DateTime.Now;
+            if (ModelState.IsValid)
+            {                
+                
                 db.NewsArticle.Add(model);
                 db.SaveChanges();
-               // ViewBag.HtmlContent = model.Content;
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Dog");  // Success
+                //return RedirectToAction("Index");  þessi er ekki til ennþá.
 
             }
          
