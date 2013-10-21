@@ -1,10 +1,11 @@
 ﻿@model ISIC_DATA.Models.Person
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditPeople";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h4>Edit the information of the person below</h4>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)

@@ -1,10 +1,11 @@
 ﻿@model ISIC_DATA.Models.Country
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditCountry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h3>Edit a Country</h3>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)

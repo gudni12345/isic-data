@@ -1,10 +1,11 @@
 ﻿@model ISIC_DATA.Models.Color
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditColor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h3>Edit color</h3>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)

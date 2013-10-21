@@ -1,10 +1,11 @@
 ﻿@model ISIC_DATA.Models.DetailedInfo
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditHealth";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h3>Edit Health Information of this dog</h3>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
