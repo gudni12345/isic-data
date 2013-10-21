@@ -177,7 +177,43 @@
       </div>
       
       <div class="tab-pane" id="health">
-          Health & apperance in construction
+          
+          <dl class="dl-horizontal doglist">
+                      @if (Model.DetailedInfoId != null){   
+                           if (Model.PersonId != null)
+                           {<dt>Owner: </dt>
+                                                         <dd>@Html.DisplayFor(model => model.Person.Name)</dd>
+                           }
+                           else
+                           {
+                               ;
+                           }  
+                           if (Model.ColorComment != null)
+                           {<dt>Color: </dt>
+                                                         <dd>@Html.DisplayFor(model => model.ColorComment)</dd>
+                           }
+                           else
+                           {
+                               ;
+                           }
+
+                           if (Model.DetailedInfo.Hair != null)
+                           {
+                               if (Model.DetailedInfo.HD != null)
+                               {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd>
+                               }
+                               else
+                               {
+                                   ;
+                               }
+                           }
+                      }
+                      else
+                      {
+                         <dt> There is no Health information available</dt>
+                      }
+                 </dl>                           
+          
       </div>
               
       <div class="tab-pane" id="litter">
