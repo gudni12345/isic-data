@@ -3,10 +3,11 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "List of Owners and Breeders";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>List of Owners and Breeders</h2>
+<h3>List of Owners and Breeders</h3>
 
 <div class="alignSearch">
 @using (Html.BeginForm("Index", "DetailedInfo", FormMethod.Get))

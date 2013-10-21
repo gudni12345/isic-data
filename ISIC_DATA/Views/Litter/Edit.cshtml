@@ -1,10 +1,11 @@
 ﻿@model ISIC_DATA.Models.Litter
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditLitter";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h4>Edit the litter below</h4>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

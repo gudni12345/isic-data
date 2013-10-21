@@ -1,10 +1,10 @@
 ﻿@model ISIC_DATA.Models.Country
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CreateCountry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Create</h2>
+<h3>Create a new Country</h3>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
