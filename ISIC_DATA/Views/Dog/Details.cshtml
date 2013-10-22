@@ -276,7 +276,7 @@
                         <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
                         <td> @item.Litter.Father.Name </td>
                         <td> @item.Litter.Mother.Name</td>
-                        <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                        <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
                     </tr>            
                     }
                     </tbody>
@@ -304,7 +304,7 @@
                         <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
                         <td> @item.Litter.Father.Name </td>
                         <td> @item.Litter.Mother.Name</td>
-                        <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                        <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
                     </tr>
                     }
                     </tbody>
@@ -333,7 +333,7 @@
                     <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
                     <td> @item.Litter.Father.Name </td>
                     <td> @item.Litter.Mother.Name</td>
-                    <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                    <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
                 </tr>
                 }
                 </tbody>
