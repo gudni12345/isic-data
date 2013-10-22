@@ -1,9 +1,5 @@
 ﻿@model ISIC_DATA.Models.LoginModel
 
-@{
-    ViewBag.Title = "Log in";
-}
-
 <hgroup class="title">
     <h1>@ViewBag.Title</h1>
 </hgroup>
@@ -14,26 +10,24 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Please log in to continue</legend>
-        <ul class="unstyled">
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>
-        </ul>
-        <input type="submit" value="Log in" />
-   </fieldset>
+    <div class="container">
+    <div class="row">
+		<div class="span4 offset4 well">
+			<legend>Please Sign In</legend>
+          	<div class="alert alert-error">
+                <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
+            </div>
+			<form method="POST" action="" accept-charset="UTF-8">
+			<input type="text" id="username" class="span4" name="username" placeholder="Username">
+			<input type="password" id="password" class="span4" name="password" placeholder="Password">
+            <label class="checkbox">
+            	<input type="checkbox" name="remember" value="1"> Remember Me
+            </label>
+			<button type="submit" name="submit" class="btn btn-info btn-block">Sign in</button>
+			</form>    
+		</div>
+	</div>
+</div>
 }
 </section>
 @section Scripts {
