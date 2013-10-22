@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<ISIC_DATA.Models.Dog>
 @using PagedList.Mvc; 
+@using BootstrapSupport;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @if (TempData["Success"] != null)
@@ -9,7 +10,6 @@
     <strong>Success: </strong>@TempData["Success"].ToString() 
     </div>   
 }
-
 
 @{
     ViewBag.Title = "Registered Dogs";
@@ -33,22 +33,16 @@
 }
 </div>
 
-<table class="table table-hover">
-    <tr>
-        <th>
-            Reg
-        </th>
-        <th>
-            Name 
-        </th>
-
-        <th>
-            Father
-        </th>
-        <th>
-            Mother
-        </th>        
-    </tr>
+<table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Born</th>
+				    </tr>
+			        </thead>
 
 @foreach (var item in Model) {
     <tr>
@@ -67,7 +61,10 @@
          <td>
             @Html.DisplayFor(modelItem => item.Litter.Mother.Name)
         </td>
-
+         <td>
+            @Html.DisplayFor(modelItem => item.Litter.DateOfBirth) 
+        </td>
+        
 
         <!--td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
