@@ -78,7 +78,7 @@
          
   
           
-         <table BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF"">
+         <table  BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF"">
            <thead>
              <tr>
                 <th>Parents</th>
@@ -103,7 +103,15 @@
                         <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Id) })</td>
                     </tr>
                     <tr>
-                        <td> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
+                        <td> @if  (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name == "Not known" )
+                             {
+                                 <a>Not known</a>  
+                             }
+                             else
+                             {
+                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Id) })
+                             }
+                             </td>
                     </tr>
                     <tr>
                         <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
@@ -179,34 +187,35 @@
       <div class="tab-pane" id="health">
           
           <dl class="dl-horizontal doglist">
-                      @if (Model.DetailedInfoId != null){   
-                           if (Model.PersonId != null)
-                           {<dt>Owner: </dt>
+                      @if (Model.DetailedInfoId != null)
+                      {
+                          if (Model.PersonId != null)
+                          {<dt>Owner: </dt>
                                                          <dd>@Html.DisplayFor(model => model.Person.Name)</dd>
-                           }
-                           else
-                           {
-                               ;
-                           }  
-                           if (Model.ColorComment != null)
-                           {<dt>Color: </dt>
+                          }
+                          else
+                          {
+                              ;
+                          }
+                          if (Model.ColorComment != null)
+                          {<dt>Color: </dt>
                                                          <dd>@Html.DisplayFor(model => model.ColorComment)</dd>
-                           }
-                           else
-                           {
-                               ;
-                           }
+                          }
+                          else
+                          {
+                              ;
+                          }
 
-                           if (Model.DetailedInfo.Hair != null)
-                           {
-                               if (Model.DetailedInfo.HD != null)
-                               {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd>
-                               }
-                               else
-                               {
-                                   ;
-                               }
-                           }
+                          if (Model.DetailedInfo.Hair != null)
+                          {
+                              if (Model.DetailedInfo.HD != null)
+                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd>
+                              }
+                              else
+                              {
+                                  ;
+                              }
+                          }
                       }
                       else
                       {
@@ -239,7 +248,7 @@
                                 <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
                                 <td> @item.Litter.Father.Name </td>
                                 <td> @item.Litter.Mother.Name</td>
-                                <td> @item.Litter.DateOfBirth.ToString("MM/dd/yyyy") </td>
+                                <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
                                 </tr>
                             }               
                     </tbody>
