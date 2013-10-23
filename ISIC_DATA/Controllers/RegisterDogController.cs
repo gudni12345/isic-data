@@ -41,10 +41,8 @@ namespace ISIC_DATA.Controllers
             {
                 try
                 {
-                   // SessionHelpers.UserInfo = db.userProfiles.Single(x => x.userId == userId);
-                  //  var notandi = WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
-                    int uId = (int)WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
-               //     MembershipUser user = Membership.GetUser(User.Identity.Name);
+
+                    int uId = (int)WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);               
                     Litter l = new Litter()
                     {
                         DateOfBirth = viewModel.Litter.DateOfBirth,
@@ -95,8 +93,7 @@ namespace ISIC_DATA.Controllers
                     ViewData["Error"] = "Unable to save";
                     return RedirectToAction("Error");
                 }
-
-                //System.Threading.Thread.Sleep(3000);  // sec sleep for showing success msg.
+                
                 return RedirectToAction("Index","Dog");  // Success
             } //end if Model state is valid
 
@@ -109,19 +106,6 @@ namespace ISIC_DATA.Controllers
             return this.Json( new {
                    Result =  (from obj in db.Dog.Where(d => d.Sex == "M").OrderBy(d => d.Reg) 
                               select new { Id = obj.Id, Reg = obj.Reg, Name = obj.Name }) }, JsonRequestBehavior.AllowGet );
-        }
-
-
-        public ActionResult AutoComplete(string term)
-        {
-            var Fathers = db
-                .Dog
-                .Where(d => d.Sex == "M")
-                .OrderBy(d => d.Reg)
-                .ToList();
-
-            // .Select(d => d.Reg)
-            return Json(Fathers, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -167,13 +151,6 @@ namespace ISIC_DATA.Controllers
                                      Id = result.Id
                                  };
             return Json(serialisedJson, JsonRequestBehavior.AllowGet);
-        }
-
-
-
-        public ActionResult All()
-        {
-            return Json(db.Dog.ToList(), JsonRequestBehavior.AllowGet);
         }
 
 
