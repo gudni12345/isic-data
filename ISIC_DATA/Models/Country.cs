@@ -12,5 +12,8 @@ namespace ISIC_DATA.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public virtual ICollection<Dog> BornInCountry { get; set; }
+        public virtual ICollection<Dog> LivesInCountry { get; set; }
     }
 }

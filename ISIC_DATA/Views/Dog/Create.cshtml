@@ -78,11 +78,19 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CountryId, "Country")
+            @Html.LabelFor(model => model.BornInCountryId, "Country")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("CountryId", String.Empty)
-            @Html.ValidationMessageFor(model => model.CountryId)
+            @Html.DropDownList("BornInCountryId", String.Empty)
+            @Html.ValidationMessageFor(model => model.BornInCountryId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LivesInCountryId, "Country")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("LivesInCountryId", String.Empty)
+            @Html.ValidationMessageFor(model => model.LivesInCountryId)
         </div>
 
         <p>
