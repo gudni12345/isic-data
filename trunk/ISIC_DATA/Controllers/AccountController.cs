@@ -16,13 +16,12 @@ namespace ISIC_DATA.Controllers
 {
  //   [AllowAnonymous]
     [Authorize]
-    [InitializeSimpleMembership]
+    // [InitializeSimpleMembership]         // Stopping the standard webmatrix creation of the membership tables
     public class AccountController : Controller
     {
         private DogContext db = new DogContext();
         //
         // GET: /Account/Login
-     //   [Authorize(Roles = "Admin")]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -75,9 +74,82 @@ namespace ISIC_DATA.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        //---------------------------------------------------------------------------
+        [Authorize(Roles = "SuperAdministrator")] 
+        public ActionResult Index()
+        {
+            return View(db.Users.ToList());
+        }
+
+
+        [Authorize(Roles = "SuperAdministrator")]   // Register Admins
+        public ActionResult RegisterAdmin()
+        {
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+
+            return View();
+        }
+
+        [Authorize(Roles = "SuperAdministrator")]   
+        [HttpPost]
+        public ActionResult RegisterAdmin(RegisterModel model)
+        {
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+            string email = model.email;
+            string userName = model.UserName;
+            string FullName = model.Name;
+            int cId = (int)model.CountryId;
+
+            var User = new { UserEmail = email, Name = FullName, RegisterDate = DateTime.Now, CountryId = cId };
+
+            if (ModelState.IsValid)
+            {
+                // Attempt to register the user
+                try
+                {
+                    WebSecurity.CreateUserAndAccount(userName, model.Password, User);
+                    Roles.AddUserToRoles(model.UserName, new[] { "Administrator" });
+                    WebSecurity.Login(model.Name, model.Password);
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [Authorize(Roles = "SuperAdministrator")]   
+        public ActionResult Delete(int id = 0)
+        {
+            Users users = db.Users.Find(id);            
+            if (users == null)
+            {
+                return HttpNotFound();
+            }
+            return View(users);
+        }
+
+        
+        // POST: 
+        [Authorize(Roles = "SuperAdministrator")]   
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Users users = db.Users.Find(id);               
+            db.Users.Remove(users);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //------------------------------------------------------------------------------------
+
         //
         // GET: /Account/Register
-
+/*
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -114,7 +186,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // POST: /Account/Disassociate
-
+*/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Disassociate(string provider, string providerUserId)

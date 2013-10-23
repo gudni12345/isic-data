@@ -22,11 +22,8 @@ namespace ISIC_DATA.Models
                         
         public bool Valid { get; set; }
         
-        public Nullable <int> AdminId { get; set; }
-        public virtual Person Person { get; set; }
-
-        public Nullable<int> DogId { get; set; }
-        public virtual Dog Dog { get; set; }
+        public Nullable <int> UsersId { get; set; }
+        public virtual Users Users { get; set; }        
 
        [UIHint("tinymce_full"), AllowHtml]
         public string Content { get; set; }

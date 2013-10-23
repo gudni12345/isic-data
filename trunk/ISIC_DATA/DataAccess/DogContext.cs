@@ -18,8 +18,11 @@ namespace ISIC_DATA.DataAccess
         public DbSet<Person> Person { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<NewsArticle> NewsArticle  {get; set;}
-       
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+        public DbSet<Users> Users { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)  
         {
             modelBuilder.Entity<Litter>()
                         .HasRequired(f => f.Father)
@@ -32,7 +35,13 @@ namespace ISIC_DATA.DataAccess
                         .WithMany(d => d.Mother)
                         .HasForeignKey(f => f.MotherId)
                         .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);         //Removing pluralisation, needed for the custom Users. 
+            modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
+
         }
+
+
   
     }
 
