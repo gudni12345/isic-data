@@ -45,7 +45,7 @@ namespace ISIC_DATA.Controllers
                 if (!string.IsNullOrEmpty(returnUrl))
                     decodedUrl = Server.UrlDecode(returnUrl);
 
-                if (Url.IsLocalUrl(decodedUrl))
+                if (Url.IsLocalUrl(decodedUrl))                 //Redirect user back to where he came from. 
                 {
                     return Redirect(decodedUrl);
                 }
@@ -75,7 +75,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //---------------------------------------------------------------------------
-        [Authorize(Roles = "SuperAdministrator")] 
+        [Authorize(Roles = "SuperAdministrator")]                                       // Only SuperAdminstrator can list/create/delete Admins
         public ActionResult Index()
         {
             return View(db.Users.ToList());
@@ -293,7 +293,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // POST: /Account/ExternalLogin
-
+/*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -418,6 +418,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
+ */
 /*
         public bool Authenticate(string username, string password)
         {

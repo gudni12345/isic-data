@@ -38,11 +38,5 @@ namespace ISIC_DATA.Models
         public Nullable<int> CountryId { get; set; }
         public virtual Country Country { get; set; }
 
-      /*  public int ID { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Role { get; set; }
-        public int Picture { get; set; }*/
     }
 }

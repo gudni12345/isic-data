@@ -44,6 +44,13 @@
             @Html.ValidationMessageFor(model => model.CountryId)
         </div>
 
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Breeder, "Breeder")
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Breeder)
+            @Html.ValidationMessageFor(model => model.CountryId)
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>
