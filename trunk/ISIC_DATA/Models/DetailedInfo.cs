@@ -27,6 +27,10 @@ namespace ISIC_DATA.Models
         public string AD { get; set; }
         public string HT { get; set; }
         public string NewReg { get; set; }
+
+        public float Inbreeding { get; set; }
+        public string Reg { get; set; }
+        public float Size { get; set; }
     }
 
 }

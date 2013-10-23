@@ -31,7 +31,7 @@ namespace ISIC_DATA.Controllers
 
               ViewBag.CurrentFilter = searchString;
 
-              var dogs = db.Dog.Include(i => i.Color).Include(i => i.DetailedInfo).Include(i => i.Person).Include(i => i.Country).Include(i => i.Litter);
+              var dogs = db.Dog.Include(i => i.Color).Include(i => i.DetailedInfo).Include(i => i.Person).Include(i => i.BornInCountry).Include(i => i.Litter);
                   
               if (!String.IsNullOrEmpty(searchString))
               {

@@ -36,8 +36,20 @@ namespace ISIC_DATA.DataAccess
                         .HasForeignKey(f => f.MotherId)
                         .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Dog>()
+                        .HasOptional(d => d.BornInCountry)
+                        .WithMany(c => c.BornInCountry)
+                        .HasForeignKey(d => d.BornInCountryId)
+                        .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Dog>()
+                        .HasOptional(d => d.LivesInCountry)
+                        .WithMany(c => c.LivesInCountry)
+                        .HasForeignKey(d => d.LivesInCountryId)
+                        .WillCascadeOnDelete(false);
+            
             base.OnModelCreating(modelBuilder);         //Removing pluralisation, needed for the custom Users. 
-            modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
+            //modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
 
         }
 

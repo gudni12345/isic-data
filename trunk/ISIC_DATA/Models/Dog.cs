@@ -37,8 +37,11 @@ namespace ISIC_DATA.Models
         public Nullable<int> PersonId { get; set; }
         public virtual Person Person { get; set; }
 
-        public Nullable<int> CountryId { get; set; }
-        public virtual Country Country { get; set; }
+        public Nullable<int> BornInCountryId { get; set; }
+        public virtual Country BornInCountry { get; set; }
+
+        public Nullable<int> LivesInCountryId { get; set; }
+        public virtual Country LivesInCountry { get; set; }
 
         public virtual ICollection<Litter> Father { get; set; }
         public virtual ICollection<Litter> Mother { get; set; }

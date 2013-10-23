@@ -32,7 +32,7 @@ namespace ISIC_DATA.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            var dogs = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.Country).Include(d => d.Litter);
+            var dogs = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.BornInCountry).Include(d => d.Litter);
             if (!String.IsNullOrEmpty(searchString))
             {
                 dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper())
@@ -133,7 +133,8 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor");
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name");
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+            ViewBag.BornInCountryId = new SelectList(db.Country, "Id", "Name");
+            ViewBag.LivesInCountryId = new SelectList(db.Country, "Id", "Name");
             return View();
         }
 
@@ -155,7 +156,8 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
+            ViewBag.BornInCountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
+            ViewBag.LivesInCountryId = new SelectList(db.Country, "Id", "Name", dog.LivesInCountryId);
             return View(dog);
         }
 
@@ -173,7 +175,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
             return View(dog);
         }
 
@@ -194,7 +196,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
             return View(dog);
         }
 

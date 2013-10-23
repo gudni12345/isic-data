@@ -16,7 +16,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Country/
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]  
         public ActionResult Index()
         {
             return View(db.Country.ToList());
@@ -24,7 +24,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Country/Details/5
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]     
         public ActionResult Details(int id = 0)
         {
             Country country = db.Country.Find(id);
@@ -37,7 +37,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Country/Create
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]             
         public ActionResult Create()
         {
             return View();
@@ -47,7 +47,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Country/Create
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]     
         public ActionResult Create(Country country)
         {
             if (ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Country/Edit/5
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]     
         public ActionResult Edit(int id = 0)
         {
             Country country = db.Country.Find(id);
@@ -77,7 +77,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Country/Edit/5
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]     
         public ActionResult Edit(Country country)
         {
             if (ModelState.IsValid)
@@ -91,7 +91,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Country/Delete/5
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]  
         public ActionResult Delete(int id = 0)
         {
             Country country = db.Country.Find(id);
@@ -106,7 +106,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Country/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")]   
         public ActionResult DeleteConfirmed(int id)
         {
             Country country = db.Country.Find(id);
