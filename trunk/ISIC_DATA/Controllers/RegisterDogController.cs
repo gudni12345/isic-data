@@ -15,14 +15,6 @@ namespace ISIC_DATA.Controllers
         public ActionResult Index()
         {
             var viewModel = new DogViewModel();
-
-/*          var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
-            var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
-            //var Breeders = db.Person.OrderBy(p => p.Name).Where(p => p.Breeder == true).ToList;
-            //ViewBag.Breeders = new SelectList(Breeders, "Id", "Name");
-            ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
-            ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
-  */
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.successMessage = "";
 
@@ -34,12 +26,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]        
         public ActionResult Index(DogViewModel viewModel)
-        {
-       /*     var Fathers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "M").ToList();
-            var Mothers = db.Dog.OrderBy(d => d.Reg).Where(d => d.Sex == "F").ToList();
-            ViewBag.MotherReg = new SelectList(Mothers, "Id", "Reg");
-            ViewBag.FatherReg = new SelectList(Fathers, "Id", "Reg");
-        */    
+        {   
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.successMessage = "";
 
@@ -52,13 +39,15 @@ namespace ISIC_DATA.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {                                                         
+                {
+                    int uId = (int)WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
                     Litter l = new Litter()
                     {
                         DateOfBirth = viewModel.Litter.DateOfBirth,
                         FatherId = viewModel.Litter.FatherId,
                         MotherId = viewModel.Litter.MotherId,
-                        PersonId = viewModel.Litter.PersonId    // Breeder person.
+                        PersonId = viewModel.Litter.PersonId,    // Breeder person.
+                        UsersId = uId  // User logged in
                     };
 
                     db.Litter.Add(l);
@@ -76,6 +65,10 @@ namespace ISIC_DATA.Controllers
                         db.Person.Add(P);               // Person saved. Owner
                         db.SaveChanges();
 
+               //         int cId=0;
+               //         if (l.UsersId != null)
+               //             cId = (int)l.Users.CountryId;
+
                         Dog d = new Dog()
                         {
                             Name = dp.Dog.Name,
@@ -83,7 +76,8 @@ namespace ISIC_DATA.Controllers
                             Sex = dp.Dog.Sex,
                             Color = dp.Dog.Color,
                             LitterId = l.Id,             // Dog linked with privious litter.
-                            PersonId = P.Id              // Dog linked with Owner/Person
+                            PersonId = P.Id,              // Dog linked with Owner/Person    
+              //              CountryId = cId  // Dog gets same Country as the Admin.
                         };
                         if (d.Sex.Equals("Male")) d.Sex = "M";
                         if (d.Sex.Equals("Female")) d.Sex = "F";
@@ -95,8 +89,7 @@ namespace ISIC_DATA.Controllers
                     TempData["Success"] = "Data was successfully saved.";
                 } //end try
                 catch (Exception)
-                {
-                 
+                {                 
                     ViewData["Error"] = "Unable to save";
                     return RedirectToAction("Error");
                 }
