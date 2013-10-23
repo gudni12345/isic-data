@@ -34,7 +34,7 @@ namespace ISIC_DATA.Controllers
         // GET: /NewsArticle/Create
 
         [HttpGet]
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult CreateNews()
         {
             var model = new NewsArticle();
@@ -47,7 +47,7 @@ namespace ISIC_DATA.Controllers
         // POST: /NewsArticle/Create
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult CreateNews(NewsArticle model) 
         {
             ViewBag.HtmlContent = model.Content;
@@ -71,7 +71,7 @@ namespace ISIC_DATA.Controllers
         
         //
         // GET: /NewsArticle/Edit/5
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult EditNews(int id=0)
         {
             NewsArticle news = db.NewsArticle.Find(id);
@@ -87,7 +87,7 @@ namespace ISIC_DATA.Controllers
 
         
         [HttpPost]
-        [Authorize(Roles = "Administrator")]   
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult EditNews(NewsArticle news)
         {
                 // TODO: Add update logic here
@@ -107,7 +107,7 @@ namespace ISIC_DATA.Controllers
               
         //
         // GET: /NewsArticle/Delete/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
         {
 
@@ -122,8 +122,8 @@ namespace ISIC_DATA.Controllers
 
         //
         // POST: /NewsArticle/Delete/5
-
-       [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
+        [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             NewsArticle news = db.NewsArticle.Find(id);

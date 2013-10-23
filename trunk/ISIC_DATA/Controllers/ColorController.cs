@@ -18,15 +18,15 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Color/
 
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Index()
         {         
-
-
             return View(db.Color.ToList());
         }
         //
         // GET: /Color/Details/5
 
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Details(int id = 0)
         {
             Color color = db.Color.Find(id);
@@ -40,6 +40,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Color/Create
 
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create()
         {
             return View();
@@ -49,6 +50,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Color/Create
 
         [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create(Color color)
         {
             if (ModelState.IsValid)
@@ -63,7 +65,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Color/Edit/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(int id = 0)
         {
             Color color = db.Color.Find(id);
@@ -78,6 +80,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Color/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(Color color)
         {
             if (ModelState.IsValid)
@@ -91,7 +94,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Color/Delete/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
         {
             Color color = db.Color.Find(id);
@@ -106,6 +109,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Color/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
         {
             Color color = db.Color.Find(id);

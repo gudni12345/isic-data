@@ -17,7 +17,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Litter/
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
 
@@ -61,7 +61,7 @@ namespace ISIC_DATA.Controllers
 
         //h
         // GET: /Litter/Details/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Details(int id = 0)
         {
             Litter litter = db.Litter.Find(id);
@@ -74,7 +74,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Litter/Create
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create()
         {
 
@@ -93,6 +93,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create(Litter litter)
         {
             if (ModelState.IsValid)
@@ -107,7 +108,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Litter/Edit/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(int id = 0)
         {
             Litter litter = db.Litter.Find(id);
@@ -124,6 +125,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(Litter litter)
         {
             if (ModelState.IsValid)
@@ -138,7 +140,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Litter/Delete/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
         {
             Litter litter = db.Litter.Find(id);
@@ -154,6 +156,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
         {
             Litter litter = db.Litter.Find(id);
