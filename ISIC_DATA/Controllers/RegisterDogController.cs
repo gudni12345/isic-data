@@ -41,14 +41,17 @@ namespace ISIC_DATA.Controllers
             {
                 try
                 {
+                   // SessionHelpers.UserInfo = db.userProfiles.Single(x => x.userId == userId);
+                  //  var notandi = WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
                     int uId = (int)WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
+               //     MembershipUser user = Membership.GetUser(User.Identity.Name);
                     Litter l = new Litter()
                     {
                         DateOfBirth = viewModel.Litter.DateOfBirth,
                         FatherId = viewModel.Litter.FatherId,
                         MotherId = viewModel.Litter.MotherId,
                         PersonId = viewModel.Litter.PersonId,    // Breeder person.
-                        UsersId = uId  // User logged in
+                        UsersId =  uId                          // User logged in
                     };
 
                     db.Litter.Add(l);
@@ -66,9 +69,7 @@ namespace ISIC_DATA.Controllers
                         db.Person.Add(P);               // Person saved. Owner
                         db.SaveChanges();
 
-               //         int cId=0;
-               //         if (l.UsersId != null)
-               //             cId = (int)l.Users.CountryId;
+                        Users u = db.Users.Find(uId);
 
                         Dog d = new Dog()
                         {
@@ -77,8 +78,8 @@ namespace ISIC_DATA.Controllers
                             Sex = dp.Dog.Sex,
                             Color = dp.Dog.Color,
                             LitterId = l.Id,             // Dog linked with privious litter.
-                            PersonId = P.Id,              // Dog linked with Owner/Person    
-              //              CountryId = cId  // Dog gets same Country as the Admin.
+                            PersonId = P.Id,           // Dog linked with Owner/Person    
+                            BornInCountryId = u.CountryId // Dog gets same Country as the Admin.
                         };
                         if (d.Sex.Equals("Male")) d.Sex = "M";
                         if (d.Sex.Equals("Female")) d.Sex = "F";
