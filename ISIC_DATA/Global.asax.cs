@@ -8,7 +8,11 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Security.Principal;
+using ISIC_DATA.DataAccess;
+using System.Data.Entity;
 using WebMatrix.WebData;
+using ISIC_DATA.Migrations;
+using ISIC_DATA.Models;
 
 namespace ISIC_DATA
 {
@@ -21,7 +25,8 @@ namespace ISIC_DATA
         {
             AreaRegistration.RegisterAllAreas();
 
-            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: false);
+            //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "Users", "UserId", "UserName", autoCreateTables: false);
+           // WebSecurity.InitializeDatabaseConnection("DogContext", "Users", "Id", "UserName", autoCreateTables: false);
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -30,45 +35,45 @@ namespace ISIC_DATA
             AuthConfig.RegisterAuth();
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DogContext, Configuration>());
+            new DogContext().Users.Find(1);
 
 
             string superName = "superadmin";
             string superPassword = "kopurfrafitjamyri"; 
             string superRole = "SuperAdministrator";
+            string Role = "Administrator";
 
+            var superUser = new { UserEmail = "superadmin@gmail.com", Name = "Super administrator", RegisterDate = DateTime.Now };
 
             //Add administrators
             if (!Roles.RoleExists(superRole))
                 Roles.CreateRole(superRole);
 
-            if (!WebSecurity.UserExists(superName))
-                WebSecurity.CreateUserAndAccount(superName, superPassword);
+            if (!Roles.RoleExists(Role))
+                Roles.CreateRole(Role);
 
+            if (!WebSecurity.UserExists(superName))
+                WebSecurity.CreateUserAndAccount(superName, superPassword, superUser);
 
             if (!Roles.IsUserInRole(superName, superRole))
                 Roles.AddUserToRole(superName, superRole);
-            
-            //---------------------------------------------
 
 
-            string userName = "adminice";
-            string password = "adminice123";
-            string role = "Administrator";
+    /*
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string UserEmail { get; set; }               
+        public string Name { get; set; }
+        public Nullable<int> CountryId { get; set; }
+    */
+           // WebSecurity.CreateUserAndAccount(model.UserName, model.Password,
+   //propertyValues: new { FirstName = model.FirstName, LastName = model.LastName }, false);
 
-
-            //Add administrators
-            if (!Roles.RoleExists(role))
-                Roles.CreateRole(role);
-
-            if (!WebSecurity.UserExists(userName))
-                WebSecurity.CreateUserAndAccount(userName, password);                
             
 
-            if (!Roles.IsUserInRole(userName, role))
-                Roles.AddUserToRole(userName, role);
 
-            if (!Roles.IsUserInRole(superName, role))
-                Roles.AddUserToRole(superName, role);
+
 
         }
     }

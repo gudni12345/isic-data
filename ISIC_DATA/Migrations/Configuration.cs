@@ -18,25 +18,28 @@ namespace ISIC_DATA.Migrations
         {
             WebSecurity.InitializeDatabaseConnection(
                         "DogContext",
-                        "UserProfile",
-                        "UserId",
+                        "Users",
+                        "Id",
                         "UserName", autoCreateTables: true);
-
+            
+            
+            /*
             if (!Roles.RoleExists("Administrator"))
                 Roles.CreateRole("Administrator");
 
             if (!Roles.RoleExists("Disabled"))
                 Roles.CreateRole("Disabled");
 
-            if (!WebSecurity.UserExists("Admin"))
+            if (!WebSecurity.UserExists("adminice"))
                 WebSecurity.CreateUserAndAccount(
-                    "Admin",
-                    "password"
+                    "adminice",
+                    "adminice123",1
                    );
         
 
             if (!Roles.GetRolesForUser("Admin").Contains("Administrator"))
                 Roles.AddUsersToRoles(new[] { "Admin" }, new[] { "Administrator" });
+            */
         }
     }
 }

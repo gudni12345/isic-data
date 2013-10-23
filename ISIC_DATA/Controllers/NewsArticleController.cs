@@ -16,12 +16,10 @@ namespace ISIC_DATA.Controllers
         private DogContext db = new DogContext();
        // private int displayNewsArticles = 10;
         //
-        // GET: /NewsArticle/
-
+        // GET: /NewsArticle/        
         public ActionResult Index()
         {
-           
-            return View();
+            return View(db.NewsArticle.ToList());
         }
 
         //
@@ -34,7 +32,9 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /NewsArticle/Create
+
         [HttpGet]
+        [Authorize(Roles = "Administrator")]   
         public ActionResult CreateNews()
         {
             var model = new NewsArticle();
@@ -47,17 +47,20 @@ namespace ISIC_DATA.Controllers
         // POST: /NewsArticle/Create
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]   
         public ActionResult CreateNews(NewsArticle model) 
         {
             ViewBag.HtmlContent = model.Content;
             model.Date = DateTime.Now;
+
+            model.UsersId = WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
 
             if (ModelState.IsValid)
             {                
                 
                 db.NewsArticle.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Dog");  // Success
+                return RedirectToAction("Index", "NewsArticle");  // Success
                 //return RedirectToAction("Index");  þessi er ekki til ennþá.
 
             }
@@ -68,7 +71,7 @@ namespace ISIC_DATA.Controllers
         
         //
         // GET: /NewsArticle/Edit/5
-
+        [Authorize(Roles = "Administrator")]   
         public ActionResult EditNews(int id=0)
         {
             NewsArticle news = db.NewsArticle.Find(id);
@@ -84,6 +87,7 @@ namespace ISIC_DATA.Controllers
 
         
         [HttpPost]
+        [Authorize(Roles = "Administrator")]   
         public ActionResult EditNews(NewsArticle news)
         {
                 // TODO: Add update logic here
