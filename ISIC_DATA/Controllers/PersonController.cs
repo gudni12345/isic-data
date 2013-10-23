@@ -16,7 +16,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Person/
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             if (searchString != null)
@@ -57,7 +57,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Person/Details/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Details(int id = 0)
         {
             Person person = db.Person.Find(id);
@@ -70,7 +70,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Person/Create
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create()
         {
             ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
@@ -81,6 +81,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Person/Create
 
         [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create(Person person)
         {
             if (ModelState.IsValid)
@@ -96,7 +97,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Person/Edit/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(int id = 0)
         {
             Person person = db.Person.Find(id);
@@ -112,6 +113,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Person/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(Person person)
         {
             if (ModelState.IsValid)
@@ -126,7 +128,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Person/Delete/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
         {
             Person person = db.Person.Find(id);
@@ -141,6 +143,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Person/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
         {
             Person person = db.Person.Find(id);

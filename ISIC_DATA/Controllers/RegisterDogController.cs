@@ -11,7 +11,7 @@ namespace ISIC_DATA.Controllers
     {
         private DataAccess.DogContext db = new DataAccess.DogContext();
 
-        [Authorize(Roles = "Administrator")]                                 // User must have the Administrator Role
+        [Authorize(Roles = "Administrator,SuperAdministrator")]                            // User must have the Administrator Role
         public ActionResult Index()
         {
             var viewModel = new DogViewModel();
@@ -24,7 +24,8 @@ namespace ISIC_DATA.Controllers
             return this.View(viewModel);
         }
 
-        [HttpPost]        
+        [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Index(DogViewModel viewModel)
         {   
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");

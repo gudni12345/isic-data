@@ -73,6 +73,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /DetailedInfo/Create
 
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create()
         {
             return View();
@@ -82,6 +83,7 @@ namespace ISIC_DATA.Controllers
         // POST: /DetailedInfo/Create
 
         [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create(DetailedInfo detailedinfo)
         {
             if (ModelState.IsValid)
@@ -96,7 +98,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /DetailedInfo/Edit/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(int id = 0)
         {
             DetailedInfo detailedinfo = db.DetailedInfo.Find(id);
@@ -111,6 +113,7 @@ namespace ISIC_DATA.Controllers
         // POST: /DetailedInfo/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(DetailedInfo detailedinfo)
         {
             if (ModelState.IsValid)
@@ -124,7 +127,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /DetailedInfo/Delete/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
         {
             DetailedInfo detailedinfo = db.DetailedInfo.Find(id);
@@ -139,6 +142,7 @@ namespace ISIC_DATA.Controllers
         // POST: /DetailedInfo/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
         {
             DetailedInfo detailedinfo = db.DetailedInfo.Find(id);

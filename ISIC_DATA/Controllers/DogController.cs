@@ -99,7 +99,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Dog/RegisterDogs
-
+/*
         public ActionResult RegisterDogs()
         {
             var Fathers = db.Dog.Where(d => d.Sex == "M").ToList();
@@ -123,10 +123,11 @@ namespace ISIC_DATA.Controllers
 
             return View(dog);
         }
-
+*/
         //
         // GET: /Dog/Create
 
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create()
         {
             ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id");
@@ -143,6 +144,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create(Dog dog)
         {
             if (ModelState.IsValid)
@@ -163,7 +165,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Dog/Edit/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
@@ -184,6 +186,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(Dog dog)
         {
             if (ModelState.IsValid)
@@ -202,7 +205,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Dog/Delete/5
-
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
@@ -218,6 +221,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
         {
             Dog dog = db.Dog.Find(id);
