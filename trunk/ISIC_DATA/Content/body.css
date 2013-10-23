@@ -176,6 +176,15 @@ color: #fff;
 background-color: #1a3362;
 }
 
+.healthInfo, p{
+    
+    padding-top: 13px;
+    font-size: 16px;
+}
+.healthInfo{
+   border-top: solid 1px lightgrey
+}
+
 
 /*************************/
 /*for Admin navbar*/

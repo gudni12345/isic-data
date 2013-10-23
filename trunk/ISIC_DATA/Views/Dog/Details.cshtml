@@ -187,41 +187,63 @@
       <div class="tab-pane" id="health">
           
           <dl class="dl-horizontal doglist">
-                      @if (Model.DetailedInfoId != null)
-                      {
-                          if (Model.PersonId != null)
-                          {<dt>Owner: </dt>
-                                                         <dd>@Html.DisplayFor(model => model.Person.Name)</dd>
+                          @if (Model.ColorId != null)
+                          {<dt>Color-Group: </dt><dd>@Html.DisplayFor(model => model.Color.ColorText)</dd>}
+                              else { ;
                           }
-                          else
-                          {
-                              ;
+                          @if (Model.ColorComment != null)
+                          {<dt>Original Color: </dt><dd>@Html.DisplayFor(model => model.ColorComment)</dd>}
+                          else { ;
+                          } 
+                          @if (Model.PersonId != null)
+                          {<dt>Owner: </dt><dd>@Html.DisplayFor(model => model.Person.Name)</dd> }
+                          else {  ;
                           }
-                          if (Model.ColorComment != null)
-                          {<dt>Color: </dt>
-                                                         <dd>@Html.DisplayFor(model => model.ColorComment)</dd>
-                          }
-                          else
-                          {
-                              ;
-                          }
-
-                          if (Model.DetailedInfo.Hair != null)
-                          {
-                              if (Model.DetailedInfo.HD != null)
-                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd>
+            </dl>
+            <div class="healthInfo">
+                    @if (Model.DetailedInfoId != null)
+                          {<dl class="dl-horizontal doglist">
+                              @if (Model.DetailedInfo.Hair != null)
+                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd> }
+                              else {  ;
                               }
-                              else
-                              {
-                                  ;
+                               @if (Model.DetailedInfo.Eyes != null)
+                              {<dt>Eyes: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Eyes)</dd> }
+                              else {  ;
                               }
+                               @if (Model.DetailedInfo.AD != null)
+                              {<dt>AD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.AD)</dd> }
+                              else {  ;
+                              }
+                               @if (Model.DetailedInfo.HT != null)
+                              {<dt>HT: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HT)</dd> }
+                              else {  ;
+                              }
+                               @if (Model.DetailedInfo.NewReg != null)
+                              {<dt>New Registration Number: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.NewReg)</dd> }
+                              else {  ;
+                              }
+                               @if (Model.DetailedInfo.OldColor != null)
+                              {<dt>Old Color: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.OldColor)</dd> }
+                              else {  ;
+                              }
+                               @if (Model.DetailedInfo.MT != null)
+                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.MT)</dd> }
+                              else {  ;
+                              }
+                              @if (Model.DetailedInfo.Comment != null)
+                              {<dt>More Information: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Comment)</dd> }
+                              else {  ;
+                              }
+                           </dl>           
+                                          
+                          
                           }
+                     else                       {
+                         <p> There is no further <b>Health Information</b> available</p>
                       }
-                      else
-                      {
-                         <dt> There is no Health information available</dt>
-                      }
-                 </dl>                           
+              </div>
+                                            
           
       </div>
               
