@@ -14,7 +14,7 @@ namespace ISIC_DATA.Models
         public int Id { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'.'MM'.'yyyy}")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth is missing")]
+   //     [Required(AllowEmptyStrings = false, ErrorMessage = "Date of birth is missing")]
         public Nullable<DateTime> DateOfBirth { get; set; }   // Nullable required for the import.  
 
         public string Reg_F { get; set; }
