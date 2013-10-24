@@ -122,6 +122,35 @@ namespace ISIC_DATA.Controllers
             return View(model);
         }
 
+     /*   [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult Edit(int id = 0)
+        {
+            Users users = db.Users.Find(id);
+            if (users == null)
+            {
+                return View("Error");
+            }
+            return View(users);
+        }
+
+        //
+        // POST: /Color/Edit/5
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult Edit(Users users)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(users).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(users);
+        }
+        */
+
+
         [Authorize(Roles = "SuperAdministrator")]   
         public ActionResult Delete(int id = 0)
         {
