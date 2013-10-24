@@ -28,9 +28,9 @@ namespace ISIC_DATA.Models
         public string HT { get; set; }
         public string NewReg { get; set; }
 
-        public float Inbreeding { get; set; }
+        public Nullable<float> Inbreeding { get; set; }
         public string Reg { get; set; }
-        public float Size { get; set; }
+        public Nullable<float> Size { get; set; }
     }
 
 }
