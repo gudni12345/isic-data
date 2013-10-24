@@ -10,7 +10,7 @@
 <h3>List of Owners and Breeders</h3>
 
 <div class="alignSearch">
-@using (Html.BeginForm("Index", "DetailedInfo", FormMethod.Get))
+@using (Html.BeginForm("Index", "Person", FormMethod.Get))
 {
     <p>
         Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
