@@ -11,6 +11,7 @@ using WebMatrix.WebData;
 using ISIC_DATA.DataAccess;
 using ISIC_DATA.Filters;
 using ISIC_DATA.Models;
+using System.Data;
 
 namespace ISIC_DATA.Controllers
 {
@@ -75,7 +76,7 @@ namespace ISIC_DATA.Controllers
         }
 
         //---------------------------------------------------------------------------
-        [Authorize(Roles = "SuperAdministrator")]                                       // Only SuperAdminstrator can list/create/delete Admins
+        [Authorize(Roles = "SuperAdministrator")]                                       // Only SuperAdminstrator can list/create Admins
         public ActionResult Index()
         {
             return View(db.Users.ToList());
@@ -122,9 +123,10 @@ namespace ISIC_DATA.Controllers
             return View(model);
         }
 
-     /*   [Authorize(Roles = "Administrator,SuperAdministrator")]
-        public ActionResult Edit(int id = 0)
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult EditAdmin(int id = 0)
         {
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
             Users users = db.Users.Find(id);
             if (users == null)
             {
@@ -138,8 +140,9 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator,SuperAdministrator")]
-        public ActionResult Edit(Users users)
+        public ActionResult EditAdmin(Users users)
         {
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
             if (ModelState.IsValid)
             {
                 db.Entry(users).State = EntityState.Modified;
@@ -148,9 +151,9 @@ namespace ISIC_DATA.Controllers
             }
             return View(users);
         }
-        */
+     
 
-
+/*
         [Authorize(Roles = "SuperAdministrator")]   
         public ActionResult Delete(int id = 0)
         {
@@ -173,6 +176,7 @@ namespace ISIC_DATA.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+    */
 
         //------------------------------------------------------------------------------------
 
@@ -227,7 +231,7 @@ namespace ISIC_DATA.Controllers
             if (ownerAccount == User.Identity.Name)
             {
                 // Use a transaction to prevent the user from deleting their last login credential
-                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.Serializable }))
                 {
                     bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
                     if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
