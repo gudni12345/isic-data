@@ -15,20 +15,20 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Admin/
 
-        [Authorize(Roles = "Administrator")]  
+        [Authorize(Roles = "Administrator,SuperAdministrator")]   
         public ActionResult Index()
         {
             return View();
         }
 
-        [Authorize(Roles = "Administrator")]  
+        [Authorize(Roles = "Administrator,SuperAdministrator")]   
         public ActionResult RegisterDog()
         {
 
             return View();
         }
 
-        [Authorize(Roles = "Administrator")]  
+        [Authorize(Roles = "Administrator,SuperAdministrator")]   
         public ActionResult EditNews()
         {
 

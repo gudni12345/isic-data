@@ -123,7 +123,7 @@ namespace ISIC_DATA.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        [Authorize(Roles = "SuperAdministrator")]
         public ActionResult EditAdmin(int id = 0)
         {
             ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
@@ -139,7 +139,7 @@ namespace ISIC_DATA.Controllers
         // POST: /Color/Edit/5
 
         [HttpPost]
-        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        [Authorize(Roles = "SuperAdministrator")]
         public ActionResult EditAdmin(Users users)
         {
             ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
