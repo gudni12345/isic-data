@@ -38,11 +38,8 @@ namespace ISIC_DATA.Controllers
 
             return View();
         }
-        
-        
-        
-
-        [Authorize(Roles = "Administrator")]
+                                      
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Users()
         {
                  return View(db.UserProfiles.ToList());
