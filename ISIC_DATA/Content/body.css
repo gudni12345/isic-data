@@ -176,6 +176,8 @@ color: #fff;
 background-color: #1a3362;
 }
 
+
+/* health info*/
 .healthInfo, p{
     
     padding-top: 13px;
@@ -184,19 +186,32 @@ background-color: #1a3362;
 .healthInfo{
    border-top: solid 1px lightgrey
 }
-
+.colorThumb{
+   margin-top: 30px;
+   margin-bottom: 15px;
+   border-color: white;
+   margin-left: 10px;
+   background-color: #bebebe;
+   padding-left:20px;
+   padding-right:20px;
+   padding-bottom:20px;
+}
+.colorThumb > p{
+   color: #f2f2f2;
+   font-size: 13px;
+   border-radius: 5px;
+}
 
 /*************************/
 /*for Admin navbar*/
 /*************************/
 
 .nav admin { 
-    
+    color: white;
     padding-top:3px;
     padding-bottom: 1px;
-    margin: 20px;
+    margin: 20px;    
 }
-
 
 
 /*STILL TO CLEAN UP*/
