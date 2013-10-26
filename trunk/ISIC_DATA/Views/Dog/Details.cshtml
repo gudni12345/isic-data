@@ -3,7 +3,7 @@
 @model ISIC_DATA.Models.Dog
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Dog Details";
 }
 
   <div class="row dog-details">
@@ -75,9 +75,7 @@
   <div class="span7 offset1">
     <div class="tab-content">
       <div class="tab-pane active" id="pedigree">      
-         
-  
-          
+                   
          <table  BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF"">
            <thead>
              <tr>
@@ -180,12 +178,15 @@
            	
       </div>
 
+      <!-- FOR THE Inbreeding TAB -->   
       <div class="tab-pane" id="testmate">
           Testmate (inbreeding) in construction
       </div>
       
+      <!-- FOR THE Health Information TAB --> 
       <div class="tab-pane" id="health">
           
+             
           <dl class="dl-horizontal doglist">
                           @if (Model.ColorId != null)
                           {<dt>Color-Group: </dt><dd>@Html.DisplayFor(model => model.Color.ColorText)</dd>}
@@ -200,9 +201,19 @@
                           else {  ;
                           }
             </dl>
+
+                
             <div class="healthInfo">
                     @if (Model.DetailedInfoId != null)
                           {<dl class="dl-horizontal doglist">
+                              @if (Model.DetailedInfo.Comment != null)
+                              {<dt>More Information: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Comment)</dd> }
+                              else {  ;
+                              }
+                              @if (Model.DetailedInfo.NewReg != null)
+                              {<dt>New Registr. Nr: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.NewReg)</dd> }
+                              else {  ;
+                              }
                               @if (Model.DetailedInfo.Hair != null)
                               {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd> }
                               else {  ;
@@ -211,16 +222,24 @@
                               {<dt>Eyes: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Eyes)</dd> }
                               else {  ;
                               }
+                              @if (Model.DetailedInfo.Size != null)
+                              {<dt>Size: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Size)</dd> }
+                              else {  ;
+                              }
                                @if (Model.DetailedInfo.AD != null)
                               {<dt>AD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.AD)</dd> }
+                              else {  ;
+                              }
+                               @if (Model.DetailedInfo.RS != null)
+                              {<dt>RS: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.RS)</dd> }
                               else {  ;
                               }
                                @if (Model.DetailedInfo.HT != null)
                               {<dt>HT: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HT)</dd> }
                               else {  ;
                               }
-                               @if (Model.DetailedInfo.NewReg != null)
-                              {<dt>New Registration Number: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.NewReg)</dd> }
+                               @if (Model.DetailedInfo.HD2 != null)
+                              {<dt>HD 2: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD2)</dd> }
                               else {  ;
                               }
                                @if (Model.DetailedInfo.OldColor != null)
@@ -228,25 +247,30 @@
                               else {  ;
                               }
                                @if (Model.DetailedInfo.MT != null)
-                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.MT)</dd> }
+                              {<dt>Mental Test: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.MT)</dd> }
                               else {  ;
                               }
-                              @if (Model.DetailedInfo.Comment != null)
-                              {<dt>More Information: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Comment)</dd> }
+                               @if (Model.DetailedInfo.Inbreeding != null)
+                              {<dt>Inbreeding: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Inbreeding)</dd> }
                               else {  ;
                               }
-                           </dl>           
-                                          
-                          
-                          }
-                     else                       {
+                          </dl>           
+                            }
+                     else {
                          <p> There is no further <b>Health Information</b> available</p>
-                      }
-              </div>
-                                            
-          
+                          }
+                </div>
+
+                <div class="thumbnail colorThumb">
+                    <h5>The Icelandic Sheepdogs and their colors</h5>
+                    <p> One of the most special attributes of the Icelandic dog is his color. To embrace the diffrenent approaches and keep the 
+                        varity alive, the <b>"Orignial-Color"</b> shows how the dog was registered, often in their original language.<br />
+                        The <b>"Color-Group"</b> shows which main color group the dog belongs to with two important rules: White is always part of the color, and dogs
+                        which are black are always registered as tricolor dogs.</p>
+                </div>
       </div>
-              
+
+      <!-- FOR THE LITTER TAB -->      
       <div class="tab-pane" id="litter">
           
             @if (ViewBag.Siblings.Count > 0)
