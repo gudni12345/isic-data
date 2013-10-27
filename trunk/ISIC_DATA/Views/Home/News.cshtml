@@ -1,4 +1,4 @@
-﻿@model ISIC_DATA.Models.NewsArticle
+﻿@model IEnumerable<ISIC_DATA.Models.NewsArticle>
 
 @{
     ViewBag.Title = "News";
@@ -8,59 +8,23 @@
     <h3>News</h3>
     <h4>Here you can see news and blogs from all of the ISIC countries</h4>
 </div>
- @*@{
-            var sk = 0;
-            for (int m = 0; m < Model.counter; m++)
-  {
-<table>
-        <caption></caption>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Date</th>
-                <th>Title/th>
-                <th>Author (admin)</th>
-                
-            </tr>
-        </thead>
-        <tbody>    
 
-        
-    @foreach (var n in Model.NewsArticle.Skip(sk).Take(Model.displayNewsArticle))
-    {
-        DateTime temp = n.Date;
-        <tr>
-            <td>
+<article class="head">
+
+</article>
+    
+@foreach (var item in Model) 
+    
+{
+    <article class="single">
+         
+                   
+         <h3>@Html.DisplayFor(modelItem => item.Title )</h3>
+    
             @Html.DisplayFor(modelItem => item.Content)
-            </td>
-        <td>
-            @Html.ActionLink(item.Content, "Details", new { id=item.Id })
-        </td>
-       <td>
-    </tr>
-    }
+  
+    
 
-     </tr>
-            }        
-        </tbody>
-    </table> *@
 
-<article>
-    <div>         
-        ....
-        <h5 class="dateNews">10.9.2013</h5>
-        <h4 class="NewsTitle">Constructing Web and Database</h4>
-        <p> We are coming closer to our goal, soon you will get all possible information 
-            about the Icelandic Sheepdogs registered in all of the 10 ISIC countries.</p>
-       </div>  
-       
-        <div>         
-        ....
- 
-        <h5 class="dateNews">7.5.2013</h5>
-        <h4 class="NewsTitle">Welcome</h4>
-        <p> Welcome to the ISIC Database web.......</p>
-        </div>
-
-    </article>
- 
+</article>
+} 

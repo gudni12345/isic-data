@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
+using PagedList;
+
 namespace ISIC_DATA.Controllers
 {
     public class HomeController : Controller
@@ -29,8 +31,9 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult News()
         {
-
-            return View();
+           
+            return View(db.NewsArticle.ToList());
+           
         }
 
         public ActionResult Contact()
