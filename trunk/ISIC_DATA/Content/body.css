@@ -173,6 +173,12 @@ input.search-query{
     padding-bottom: 1px;
 }
 
+.pedNotknow {
+    color:red;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
 .dogPic { /*top of Details page*/
         max-width: 380px;
         max-height: 280px;     
