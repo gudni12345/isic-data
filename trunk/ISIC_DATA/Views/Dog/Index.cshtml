@@ -31,7 +31,7 @@
         <input type="submit" class="btn btn-primary" value="Search" />
         
     </p>
-    
+
 }
 </div>
 
@@ -83,4 +83,13 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 @Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )
 
 @ViewBag.numberOfDogs dogs are registered in the database.
+@ViewBag.numberOfDogsIceland born in Iceland.
+@ViewBag.numberOfDogsGermany born in Germany.
+@ViewBag.numberOfDogsHolland born in Holland.
+@ViewBag.numberOfDogsUSA born in USA.
+@ViewBag.numberOfDogsFinland born in Finland.
+@ViewBag.numberOfDogsNorway born in Norway.
+@ViewBag.numberOfDogsHolland born in Holland.
+@ViewBag.numberOfDogsSweden born in Sweden.
+@ViewBag.numberOfDogsDenmark born in Denmark.
 
