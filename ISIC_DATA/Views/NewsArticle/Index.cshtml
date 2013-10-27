@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<ISIC_DATA.Models.NewsArticle>
+@using PagedList.Mvc; 
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
 Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -53,3 +55,4 @@ ViewBag.Title = "News Overview";
 }
 
 </table>
+
