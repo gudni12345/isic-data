@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ISIC_DATA.Models.NewsArticle>
+﻿@model PagedList.IPagedList<ISIC_DATA.Models.NewsArticle>
 @using PagedList.Mvc; 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
@@ -30,3 +30,6 @@
 </article>
 } 
 
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort }) )
