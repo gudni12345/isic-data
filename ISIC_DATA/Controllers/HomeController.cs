@@ -34,7 +34,7 @@ namespace ISIC_DATA.Controllers
         public ActionResult News(string sortOrder, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+           // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
 
             var usernewsarticles = db.NewsArticle.Include(p => p.Users);
@@ -42,9 +42,7 @@ namespace ISIC_DATA.Controllers
            
             switch (sortOrder)
             {               
-                case "date_desc":
-                    usernewsarticles = usernewsarticles.OrderByDescending(p => p.Date);
-                    break;
+                
                 case "Date":
                     usernewsarticles = usernewsarticles.OrderBy(p => p.Date);
                     break;
