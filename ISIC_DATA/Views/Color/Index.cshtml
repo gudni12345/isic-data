@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<ISIC_DATA.Models.Color>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Colors";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h3>List of Colors</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    @Html.ActionLink("Add a color", "Create")
+</p><br/>
 <table class="table table-hover">
     <tr>
         <th>
@@ -24,9 +24,7 @@
             @Html.DisplayFor(modelItem => item.ColorText)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
         </td>
     </tr>
 }

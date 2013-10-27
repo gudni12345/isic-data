@@ -3,15 +3,12 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Litter Overview";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h4>The list of litters</h4>
+<h4>Litter overview - to add a new one go to 'Register Dog'</h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 @using (Html.BeginForm("Index", "Litter", FormMethod.Get))
 {
@@ -48,9 +45,8 @@
             @Html.DisplayFor(modelItem => item.Mother.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+           
         </td>
     </tr>
 }
