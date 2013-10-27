@@ -251,15 +251,51 @@ background-color: #1a3362;
     margin: 20px;    
 }
 
-.adminThumb {
-   margin-top: 30px;
-   border-color: white;
-   margin-left: 10px;
-   background-color:#99E6FF;
-   padding-left:20px;
-   padding-right:20px;
-   border: solid 1px lightgrey;
-  }
+.adminThumb1{
+    margin-top: 30px;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: solid 3px red;
+    color: red;
+}
+
+.adminThumb2{
+    margin-top: 30px;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: solid 3px blue;
+    color:blue;
+}
+
+.adminThumb3{
+    margin-top: 30px;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: solid 3px orange;
+    color:orange;
+}
+
+.adminThumb4{
+    margin-top: 30px;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: solid 3px green;
+    color:green;
+}
+
+.adminThumb5{
+    margin-top: 30px;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: solid 3px purple;
+    color:purple;
+}
+   
 
 
 
