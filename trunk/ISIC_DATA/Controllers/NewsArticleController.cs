@@ -7,19 +7,60 @@ using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
+using PagedList;
 
 namespace ISIC_DATA.Controllers
 {
+    [Authorize(Roles = "Administrator,SuperAdministrator")] 
     public class NewsArticleController : Controller
     {
 
         private DogContext db = new DogContext();
-       // private int displayNewsArticles = 10;
-        //
+         //
         // GET: /NewsArticle/        
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.NewsArticle.ToList());
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            
+            ViewBag.CurrentFilter = searchString;
+           
+
+            var newsarticles = db.NewsArticle.Include(p =>p.Users);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                    newsarticles = newsarticles.Where(p => p.Title.ToUpper().Contains(searchString.ToUpper())
+                                   || p.Users.Name.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "date_dec":
+                    newsarticles = newsarticles.OrderByDescending(p => p.Date);
+                    break;
+
+                case "Date":
+                    newsarticles = newsarticles.OrderBy(p => p.Date);
+                    break;
+                case "name_dec":
+                    newsarticles = newsarticles.OrderBy(p => p.Users.Name);
+                    break;
+                                                   
+                default:
+                    newsarticles = newsarticles.OrderByDescending(p => p.Date);
+                    break; 
+                
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(newsarticles.ToPagedList(pageNumber, pageSize));
+            //return View(db.NewsArticle.ToList());
         }
 
         //
@@ -60,8 +101,8 @@ namespace ISIC_DATA.Controllers
                 
                 db.NewsArticle.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index", "NewsArticle");  // Success
-                //return RedirectToAction("Index");  þessi er ekki til ennþá.
+                return RedirectToAction("Index");
+                //return RedirectToAction("Index", "NewsArticle");  // Success
 
             }
          
