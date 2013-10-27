@@ -6,7 +6,15 @@ ViewBag.Title = "News Overview";
 }
 
 <h3>List of NewsArticles</h3>
-
+<div class="alignSearch">
+@using (Html.BeginForm("Index", "NewsArticle", FormMethod.Get))
+{
+    <p>
+        Find by Title or Author: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        <input type="submit" value="Search" />
+    </p>
+}
+</div>
 <p>
     @Html.ActionLink("Add a new Post to News", "CreateNews")
 </p>
@@ -17,6 +25,9 @@ ViewBag.Title = "News Overview";
         </th>
          <th>
             @Html.DisplayNameFor(model => model.Users.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
         </th>
         <th></th>
     </tr>
@@ -29,6 +40,10 @@ ViewBag.Title = "News Overview";
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Users.Name)
+        </td>
+
+         <td>
+            @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id })  |  
