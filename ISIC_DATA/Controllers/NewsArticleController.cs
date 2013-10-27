@@ -11,13 +11,14 @@ using PagedList;
 
 namespace ISIC_DATA.Controllers
 {
-    [Authorize(Roles = "Administrator,SuperAdministrator")] 
+   
     public class NewsArticleController : Controller
     {
 
         private DogContext db = new DogContext();
          //
-        // GET: /NewsArticle/        
+        // GET: /NewsArticle/  
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             if (searchString != null)
