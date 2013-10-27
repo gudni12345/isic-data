@@ -1,17 +1,50 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>From here you get to all the editing pages</h3>
+<h4 class="heading4">Please use the admin navigation bar above and the links below. </h4>
 
-
-<p>            
-                <a class="btn" href="Color">Edit or Create new Color»</a><br /><br />
-                <a class="btn" href="Country">Edit or Create new Country»</a><br /><br />
-               
-            	<a class="btn" href="Litter">Edit Litter»</a><br /><br />
-                <a class="btn" href="DetailedInfo">Edit Health and Appearance»</a><br /><br />
-                
-				<a class="btn" href="Person">Edit People»</a><br /><br />
-            </p>      		
+<div class="row">
+   <div class="span3">
+       <div class="thumbnail adminThumb">
+            <p>Here you can <b>Edit a Litter</b> you created:</p><br />
+            <a class="btn" href="Litter">Edit Litter»</a><br /><br />
+        </div><br />
+       </div>
+     
+    <div class="span3">
+        <div class="thumbnail adminThumb">
+            <p> <b>Add or Edit a Breeder</b> of your country:</p><br />
+            <a class="btn" href="Person">Edit People»</a><br /><br />
+        </div><br />
+      </div>
+       
+    <div class="span3">
+        <div class="thumbnail adminThumb">
+            <p><b>Add or Edit info about the health and appearance</b> of a dog:
+            </p><br />
+            <a class="btn" href="DetailedInfo">Edit Health and Appearance»</a><br /><br />
+        </div><br />
+     </div>
+  
+  </div>
+   
+  <div class="row">
+   
+     <div class="span3">
+       <div class="thumbnail adminThumb">
+            <p>Here you can <b>Add a Country</b> to the list:</p><br />
+              <a class="btn" href="Color">Edit or Create new Color»</a><br /><br />
+        </div><br />
+      </div>
+      <div class="span3">
+       <div class="thumbnail adminThumb">
+            <p>If you want to <b>Edit a Color</b> click here:</p><br />
+              <a class="btn" href="Color">Edit or Create new Color»</a><br /><br />
+        </div><br />
+      </div>
+   </div>
+       
+       
+    

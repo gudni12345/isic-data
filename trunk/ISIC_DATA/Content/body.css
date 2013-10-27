@@ -32,9 +32,30 @@ p {
   margin: 0 0 0 0;
 }
 
-.containerLeftMargin {
-margin-left: -30px;
+.containerLeftMargin{
+    margin-left: -30px;
 }
+
+/*Adjustments needed on p/h3 on thumbnails on Home*/
+
+.span4 > p {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+}
+
+.span4 > h3{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+}
+
+.heading4 {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+
 
 
 /*************************/
@@ -48,6 +69,7 @@ margin-left: -30px;
     width: 80px;
     height: 120px;
     padding-bottom: 1px;
+    margin-left: -6px;
 }
 
 .logoff{
@@ -55,6 +77,7 @@ margin-left: -30px;
     padding-top: 60px;
     margin-bottom: 2px;  
 }
+
 
 /*padding for nav tabs*/
 .navbar .nav > li > a  {
@@ -97,6 +120,21 @@ margin-left: -30px;
     margin-left:-30px;
 }
 
+/*Adjustments Dog Detail thumbnail on Home*/
+.thumbnail > img     {
+         float:left;
+         margin-left: 10px;
+         margin-top: 10px;
+         margin-bottom: 10px;
+    }
+
+.ThumbnailPopularDogs    {
+        margin: 15px;
+        }
+
+.ThumbnailPopularDogs .img    {
+        margin-bottom: 15px;
+        }
 
 
 
@@ -213,34 +251,15 @@ background-color: #1a3362;
     margin: 20px;    
 }
 
-
-/*STILL TO CLEAN UP*/
-/*Adjustments to p on thumbnails on Home*/
-.span4 > p{
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 10px;
-}
-.span4 > h3{
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 10px;
-}
-/*Adjustments Dog Detail thumbnail on Home*/
-.thumbnail > img     {
-         float:left;
-         margin-left: 10px;
-         margin-top: 10px;
-         margin-bottom: 10px;
-    }
-
-.ThumbnailPopularDogs    {
-        margin: 15px;
-        }
-
-.ThumbnailPopularDogs .img    {
-        margin-bottom: 15px;
-        }
+.adminThumb {
+   margin-top: 30px;
+   border-color: white;
+   margin-left: 10px;
+   background-color:#99E6FF;
+   padding-left:20px;
+   padding-right:20px;
+   border: solid 1px lightgrey;
+  }
 
 
 

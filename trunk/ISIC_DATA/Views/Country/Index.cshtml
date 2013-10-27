@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<ISIC_DATA.Models.Country>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Country";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h3>List of Countries</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add a Country", "Create")
 </p>
 <table class="table table-hover">
     <tr>
@@ -25,9 +25,8 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+           
         </td>
     </tr>
 }

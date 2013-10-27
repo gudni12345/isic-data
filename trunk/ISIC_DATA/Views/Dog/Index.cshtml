@@ -12,8 +12,10 @@
 }
 
 @{
-    ViewBag.Title = "Registered Dogs";
+  ViewBag.Title = "Registered Dogs";
 }
+
+
 
 <div>
 <h5>Here you can choose between filters to find a certain dog or a list of dogs.</h5>
@@ -69,8 +71,6 @@
         @if(User.IsInRole("Administrator"))  {
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
-         <!--   Html.ActionLink("Details", "Details", new { id = item.Id }) |
-           Html.ActionLink("Delete", "Delete", new { id = item.Id }) -->
         </td>
         }
     </tr>
