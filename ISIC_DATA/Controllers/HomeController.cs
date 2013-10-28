@@ -17,11 +17,59 @@ namespace ISIC_DATA.Controllers
         
         private DogContext db = new DogContext();
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-           
 
-            return View();
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var dogs = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.BornInCountry).Include(d => d.Litter);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper())
+                                      || d.Reg.ToUpper().Contains(searchString.ToUpper()));
+            }
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.successMessage = "";
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    dogs = dogs.OrderByDescending(d => d.Name);
+                    break;
+                case "Date":
+                    dogs = dogs.OrderBy(d => d.Litter.DateOfBirth);
+                    break;
+                default:
+                    dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth);
+                    break;
+            }
+
+
+            ViewBag.numberOfDogs = db.Dog.Count();
+            ViewBag.numberOfDogsIceland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 1).ToList().Count;
+            ViewBag.numberOfDogsGermany = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 2).ToList().Count;
+            ViewBag.numberOfDogsHolland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 3).ToList().Count;
+            ViewBag.numberOfDogsUSA = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 4).ToList().Count;
+            ViewBag.numberOfDogsFinland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 5).ToList().Count;
+            ViewBag.numberOfDogsNorway = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 6).ToList().Count;
+            ViewBag.numberOfDogsSweden = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 7).ToList().Count;
+            ViewBag.numberOfDogsDenmark = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 8).ToList().Count;
+            ViewBag.numberOfDogsAustria = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 9).ToList().Count;
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(dogs.ToPagedList(pageNumber, pageSize));
+            // return View(dogs.Take(10));
+
+
+
         }
 
         public ActionResult About()

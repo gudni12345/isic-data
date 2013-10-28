@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
 using PagedList;
+using PagedList.Mvc;
 
 
 namespace ISIC_DATA.Controllers
@@ -55,7 +56,7 @@ namespace ISIC_DATA.Controllers
 
 
             ViewBag.numberOfDogs = db.Dog.Count();
-            ViewBag.numberOfDogsIceland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 1).ToList().Count;
+           ViewBag.numberOfDogsIceland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 1).ToList().Count;
             ViewBag.numberOfDogsGermany = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 2).ToList().Count;
             ViewBag.numberOfDogsHolland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 3).ToList().Count;
             ViewBag.numberOfDogsUSA = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 4).ToList().Count;
