@@ -53,6 +53,15 @@ namespace ISIC_DATA.Controllers
             }
 
             ViewBag.numberOfDogs = db.Dog.Count();
+            ViewBag.numberOfDogsIceland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 1).ToList().Count;
+            ViewBag.numberOfDogsGermany = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 2).ToList().Count;
+            ViewBag.numberOfDogsHolland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 3).ToList().Count;
+            ViewBag.numberOfDogsUSA = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 4).ToList().Count;
+            ViewBag.numberOfDogsFinland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 5).ToList().Count;
+            ViewBag.numberOfDogsNorway = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 6).ToList().Count;
+            ViewBag.numberOfDogsSweden = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 7).ToList().Count;
+            ViewBag.numberOfDogsDenmark = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 8).ToList().Count;
+            ViewBag.numberOfDogsAustria = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 9).ToList().Count;
 
             int pageSize = 10;
             int pageNumber = (page ?? 1);
