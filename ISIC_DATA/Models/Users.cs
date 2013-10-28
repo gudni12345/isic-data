@@ -29,6 +29,8 @@ namespace ISIC_DATA.Models
         public string ConfirmPassword { get; set; }
         */
 
+        public string Password { get; set; }
+
         public string UserEmail { get; set; }               
         public string Name { get; set; }
 
