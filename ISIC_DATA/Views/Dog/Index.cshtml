@@ -82,14 +82,16 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
 @Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )
 
-@ViewBag.numberOfDogs dogs are registered in the database.
-@ViewBag.numberOfDogsIceland born in Iceland.
-@ViewBag.numberOfDogsGermany born in Germany.
-@ViewBag.numberOfDogsHolland born in Holland.
-@ViewBag.numberOfDogsUSA born in USA.
-@ViewBag.numberOfDogsFinland born in Finland.
-@ViewBag.numberOfDogsNorway born in Norway.
-@ViewBag.numberOfDogsSweden born in Sweden.
-@ViewBag.numberOfDogsDenmark born in Denmark.
-@ViewBag.numberOfDogsAustria born in Austria.
 
+                <ul class="countList">
+                <li>@ViewBag.numberOfDogs dogs are registered in the database.</li>
+                <li>@ViewBag.numberOfDogsIceland born in Iceland.</li>
+                <li>@ViewBag.numberOfDogsGermany born in Germany.</li>
+                <li>@ViewBag.numberOfDogsHolland born in Holland.</li>
+                <li>@ViewBag.numberOfDogsUSA born in USA.</li>
+                <li>@ViewBag.numberOfDogsFinland born in Finland</li>
+                <li>@ViewBag.numberOfDogsNorway born in Norway.</li>
+                <li>@ViewBag.numberOfDogsSweden born in Sweden.</li>
+                <li>@ViewBag.numberOfDogsDenmark born in Denmark.</li>
+                <li>@ViewBag.numberOfDogsAustria born in Austria.</li>
+			</ul>
