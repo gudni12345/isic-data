@@ -132,6 +132,7 @@ namespace ISIC_DATA.Controllers
             {
                 return View("Error");
             }
+
             return View(users);
         }
 
@@ -145,6 +146,12 @@ namespace ISIC_DATA.Controllers
             ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
             if (ModelState.IsValid)
             {
+                if (!users.Password.Equals(""))
+                {
+                    var token = WebSecurity.GeneratePasswordResetToken(users.UserName);
+                    WebSecurity.ResetPassword(token, users.Password);
+                    users.Password = null; //password cleared.  we will not keep password cleartext in db.
+                }
                 db.Entry(users).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

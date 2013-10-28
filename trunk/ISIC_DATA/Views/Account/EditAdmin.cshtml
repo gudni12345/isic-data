@@ -25,6 +25,10 @@
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
             </li>
+             <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.TextBoxFor(m => m.Password)
+            </li>
             <li>
                 @Html.LabelFor(m => m.CountryId)
                 @Html.DropDownListFor( m => m.CountryId, (SelectList)ViewBag.CountryId)                

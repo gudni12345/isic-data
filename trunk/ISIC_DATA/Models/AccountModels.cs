@@ -85,6 +85,8 @@ namespace ISIC_DATA.Models
         public virtual Country Country { get; set; }
 
         public string email { get; set; }
+
+        public int id { get; set; }
     }
 
     public class ExternalLogin
