@@ -38,7 +38,8 @@ namespace ISIC_DATA.Controllers
                 dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper())
                                       || d.Reg.ToUpper().Contains(searchString.ToUpper()));
             }
-
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.successMessage = "";
             switch (sortOrder)
             {
                 case "name_desc":
@@ -51,6 +52,7 @@ namespace ISIC_DATA.Controllers
                     dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth);
                     break;
             }
+
 
             ViewBag.numberOfDogs = db.Dog.Count();
             ViewBag.numberOfDogsIceland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 1).ToList().Count;
@@ -67,6 +69,9 @@ namespace ISIC_DATA.Controllers
             int pageNumber = (page ?? 1);
             return View(dogs.ToPagedList(pageNumber, pageSize));
            // return View(dogs.Take(10));
+                           
+
+           
         }
         //
         // GET: /Dog/Details/5
