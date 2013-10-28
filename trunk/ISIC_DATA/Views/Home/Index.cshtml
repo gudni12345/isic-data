@@ -1,5 +1,8 @@
-﻿@using BootstrapSupport
-@model ISIC_DATA.Models.Dog
+﻿@model PagedList.IPagedList<ISIC_DATA.Models.Dog>
+@using PagedList.Mvc; 
+@using BootstrapSupport;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
     ViewBag.Title = "Home";
 }
@@ -75,7 +78,7 @@
             <h3>
 				The ISIC database
 			</h3>
-            <ul class="countList">
+              <ul class="countList">
                 <li>@ViewBag.numberOfDogs dogs are registered in the database.</li>
                 <li>@ViewBag.numberOfDogsIceland born in Iceland.</li>
                 <li>@ViewBag.numberOfDogsGermany born in Germany.</li>
@@ -86,7 +89,7 @@
                 <li>@ViewBag.numberOfDogsSweden born in Sweden.</li>
                 <li>@ViewBag.numberOfDogsDenmark born in Denmark.</li>
                 <li>@ViewBag.numberOfDogsAustria born in Austria.</li>
-			</ul>
+			  </ul>
 		</div>
 				
         <div class="span4">

@@ -55,8 +55,7 @@
             @Html.ActionLink(item.Name, "Details", new { id=item.Id })
         </td>
         <td>
-          
-       
+             
             @Html.DisplayFor(modelItem => item.Litter.Father.Name)
             
           </td>
@@ -78,20 +77,3 @@
 
 </table>
 
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )
-
-
-                <ul class="countList">
-                <li>@ViewBag.numberOfDogs dogs are registered in the database.</li>
-                <li>@ViewBag.numberOfDogsIceland born in Iceland.</li>
-                <li>@ViewBag.numberOfDogsGermany born in Germany.</li>
-                <li>@ViewBag.numberOfDogsHolland born in Holland.</li>
-                <li>@ViewBag.numberOfDogsUSA born in USA.</li>
-                <li>@ViewBag.numberOfDogsFinland born in Finland</li>
-                <li>@ViewBag.numberOfDogsNorway born in Norway.</li>
-                <li>@ViewBag.numberOfDogsSweden born in Sweden.</li>
-                <li>@ViewBag.numberOfDogsDenmark born in Denmark.</li>
-                <li>@ViewBag.numberOfDogsAustria born in Austria.</li>
-			</ul>
