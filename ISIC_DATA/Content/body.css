@@ -54,6 +54,9 @@ p {
     margin-left: 10px;
     margin-bottom: 20px;
 }
+.countList {
+        list-style-type: none;
+}
 
 
 
