@@ -82,6 +82,17 @@ namespace ISIC_DATA.Controllers
             return View(db.Users.ToList());
         }
 
+        [Authorize(Roles = "SuperAdministrator")]
+        public ActionResult Details(int id = 0)
+        {
+            Users user = db.Users.Find(id);           
+            if (user == null)
+            {
+                return View("Error");
+            }
+            return View(user);
+        }
+
 
         [Authorize(Roles = "SuperAdministrator")]   // Register Admins
         public ActionResult RegisterAdmin()

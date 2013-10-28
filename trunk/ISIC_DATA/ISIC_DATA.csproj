@@ -796,6 +796,7 @@
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\NewsArticle\Index.cshtml" />
     <Content Include="Views\Account\EditAdmin.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
