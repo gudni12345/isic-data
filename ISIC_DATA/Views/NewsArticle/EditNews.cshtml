@@ -1,11 +1,12 @@
 ﻿@model ISIC_DATA.Models.NewsArticle
-
+@using BootstrapSupport
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "EditNews";
 }
 
 <h2>EditNews</h2>
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -17,11 +18,12 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
+            @Html.LabelFor(model => model.Date, new { @class = "control-label" })
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
+           
+            @Html.TextBoxFor(model => model.Date, new {@class = "datePicker", data_bind = "value: date"})
+            @Html.ValidationMessageFor(model => model.Date, null, new { @class = "help-inline" })
         </div>
 
         <div class="editor-label">
@@ -58,6 +60,21 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<script type="text/javascript">
+ 
+    $(document).ready(function () {
+        $.validator.methods["date"] = function (value, element) { return true; }
+        $(".datePicker").datepicker({
+            format: 'dd/mm/yyyy',
+            todayBtn: true,
+            orientation: "top auto",
+            autoclose: true
+        });
+    });
+
+</script>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
