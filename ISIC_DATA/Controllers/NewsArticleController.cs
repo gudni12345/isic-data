@@ -114,10 +114,12 @@ namespace ISIC_DATA.Controllers
         
         //
         // GET: /NewsArticle/Edit/5
+        [HttpGet]
         [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult EditNews(int id=0)
         {
             NewsArticle news = db.NewsArticle.Find(id);
+           
             if (news == null)
             {
                 return View("Error");
@@ -134,6 +136,7 @@ namespace ISIC_DATA.Controllers
         public ActionResult EditNews(NewsArticle news)
         {
                 // TODO: Add update logic here
+                news.UsersId = WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
                 if (ModelState.IsValid)
                 {
                     db.Entry(news).State = EntityState.Modified;
