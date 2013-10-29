@@ -79,15 +79,18 @@ namespace ISIC_DATA.Controllers
         }
 
 
-        public ActionResult News(string sortOrder, int? page)
-        {
+        public ActionResult News(string sortOrder, int? page , int? id)
+        {                                      
+
             ViewBag.CurrentSort = sortOrder;
-           // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
 
             var usernewsarticles = db.NewsArticle.Include(p => p.Users);
-            
-           
+            usernewsarticles = from p in db.NewsArticle //only show valid news in users News View
+                               where p.Valid == true
+                               select p;
+
             switch (sortOrder)
             {               
                 
