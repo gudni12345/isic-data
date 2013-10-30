@@ -215,6 +215,9 @@ namespace ISIC_DATA.Controllers
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
             ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
+
+
+
             return View(dog);
         }
 
