@@ -25,8 +25,8 @@
                           <dt>Father:</dt><dd> @Html.DisplayFor(model => model.Litter.Father.Name) </dd>
                           <dt>Mother:</dt><dd> @Html.DisplayFor(model => model.Litter.Mother.Name)</dd> 
                            @if (Model.Litter.PersonId != null)
-                           {<dt>Breeder: </dt>
-                                                         <dd>@Html.DisplayFor(model => model.Litter.Person.Name)</dd>
+                           {
+                               <dt>Breeder: </dt><dd>@Html.DisplayFor(model => model.Litter.Person.Name)</dd>
                            }
                            else
                            {
