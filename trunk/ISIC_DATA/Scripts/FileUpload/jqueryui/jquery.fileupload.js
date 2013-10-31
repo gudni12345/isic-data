@@ -1054,7 +1054,7 @@
             if (this._trigger('dragover', e) === false) {
                 return false;
             }
-            if (dataTransfer && $.inArray('Files', dataTransfer.types) !== -1) {
+            if (dataTransfer && $.inArray('Photos', dataTransfer.types) !== -1) {
                 dataTransfer.dropEffect = 'copy';
                 e.preventDefault();
             }
