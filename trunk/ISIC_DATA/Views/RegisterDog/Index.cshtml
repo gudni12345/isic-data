@@ -32,11 +32,16 @@ ViewBag.Title = "Register Dog";
             @Html.ValidationMessageFor(model => model.Litter.DateOfBirth, null, new { @class = "help-inline" })
         </span>
        
-        <div class="editor-field">
+    <div class="editor-field">
             <label>Breeder:</label>
-            <input type="text" placeholder="Breeder name" id="typeaheadBreeder" class="ekkitil">
+            <input type="text" placeholder="Breeder name"  id="Breeder_typeahead">
             @Html.HiddenFor(model => model.Litter.PersonId, new { @id = "returnBreederId" })                                  
             @Html.ValidationMessageFor(model => model.Litter.PersonId, null, new { @class = "help-inline" })              
+                        
+            @Html.ActionLink("Add","CreateBreeder","Person",null, new { id = "btnCreate", @class = "btn btn-success" })                       
+            <div id='dialogDiv' class='modal hide fade in'>
+                <div id='dialogContent'></div>
+            </div>            
         </div>
 
         <div class="editor-field">
@@ -87,11 +92,45 @@ ViewBag.Title = "Register Dog";
 
 
 <script type="text/javascript">
+                                                        //MODAL for adding breeder
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $('#btnCreate').click(function () {                 // Open the Modal
+            $('#dialogContent').load(this.href, function () {
+                $('#dialogDiv').modal({
+                    backdrop: 'static',
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {           // if data was saved successfully we close the modal.
+                        $('#dialogDiv').modal('hide');
+                        //Refresh: location.reload();
+
+                    } else {
+                        $('#dialogContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
 
 
-
-  
-    $(document).ready(function () {
+                                                        // DatePicker
+    $(document).ready(function () {                 
         $.validator.methods["date"] = function (value, element) { return true; }
         $(".datePicker").datepicker({
             format: 'dd/mm/yyyy',
@@ -100,19 +139,19 @@ ViewBag.Title = "Register Dog";
             autoclose: true
         });
     });
-
-    $.getJSON("/registerdog/Fetchbreeders/", null, function (response) {
-        $("#typeaheadBreeder").typeahead({
+                                                // Type-a-head for Breeder
+    $(document).ready(function () {
+        $('#Breeder_typeahead').typeahead({
             name: "Breeder",
-            local: response,
+            remote: 'Registerdog/FetchBreeders?q=%QUERY',
             limit: 5,
-            valueKey: "Name"
+            valueKey: "Name",
         }).on("typeahead:selected typeahead:autocompleted",
             function (e, datum) {
                 $('#returnBreederId').val(datum.Id);
             }
         );
-    })
+    });
 
 
 
@@ -199,6 +238,6 @@ ViewBag.Title = "Register Dog";
         var viewModel = createViewModel();
         ko.applyBindings(viewModel);
     });
-
+    
 </script>
 
