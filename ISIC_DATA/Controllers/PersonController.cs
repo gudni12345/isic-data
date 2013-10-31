@@ -95,6 +95,47 @@ namespace ISIC_DATA.Controllers
             return View(person);
         }
 
+
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult CreateBreeder()
+        {
+            ViewBag.ReturnUrl = Request.UrlReferrer;
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+            return PartialView("CreateBreeder");
+        }
+
+        //
+        // POST: /Person/Create
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult CreateBreeder(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    person.Breeder = true;
+                    db.Person.Add(person);
+                    db.SaveChanges();
+                    //return Json(new { Message = "success" });
+                    return Json(new { success = true });
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
+            }
+
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", person.CountryId);
+            return PartialView("CreateBreeder", person);
+        }
+
+
+
+
+
+
         //
         // GET: /Person/Edit/5
         [Authorize(Roles = "Administrator,SuperAdministrator")] 

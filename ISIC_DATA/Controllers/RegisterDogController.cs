@@ -140,18 +140,16 @@ namespace ISIC_DATA.Controllers
         }
 
 
-        public JsonResult FetchBreeders(string query)                                            //     Get all posible Breeders to json, used for typeAhead
+        public JsonResult FetchBreeders(string q)                                   //     Get all posible Breeders to json, used for typeAhead
         {
-            List<Person> breederList = db.Person.Where(p => p.Breeder == true).OrderBy(p => p.Name).ToList();
-
+            List<Person> breederList = db.Person.Where(p => p.Breeder == true).Where(p => p.Name.ToLower().StartsWith(q.ToLower())).ToList();
             var serialisedJson = from result in breederList
-                                 select new
-                                 {                                     
-                                     Name = result.Name,
-                                     Id = result.Id
-                                 };
+                                 select new { Name = result.Name, Id = result.Id };
+
             return Json(serialisedJson, JsonRequestBehavior.AllowGet);
         }
+
+
 
 
     }
