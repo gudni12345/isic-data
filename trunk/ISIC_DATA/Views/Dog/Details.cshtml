@@ -103,7 +103,7 @@
                                          
                         <td> @if (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {                            
@@ -114,7 +114,7 @@
                     <tr>
                         <td> @if (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {
@@ -126,7 +126,7 @@
                         <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Id) })</td>
                         <td>@if (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
                              {
-                                <p class="pedNotknow">Not known</p>
+                                <p></p>
                              }
                              else
                              { 
@@ -137,7 +137,7 @@
                     <tr>
                         <td>@if (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              { 
@@ -150,7 +150,7 @@
                         <td ROWSPAN="2"> @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Id) })</td>
                         <td> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              { 
@@ -161,7 +161,7 @@
                     <tr>
                         <td> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -173,7 +173,7 @@
                         <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Id) })</td>
                         <td>  @if (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
                             {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                             }
                             else
                             {  
@@ -184,7 +184,7 @@
                     <tr>
                         <td> @if (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -206,7 +206,7 @@
                         <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Id) })</td>
                        <td>  @if (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not know</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -217,7 +217,7 @@
                     <tr>
                         <td>  @if (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -229,7 +229,7 @@
                         <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Id) })</td>
                         <td>  @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -238,9 +238,9 @@
                         </td>
                     </tr>
                     <tr>
-                         <td>  @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name == "Not known")
+                         <td>  @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -254,7 +254,7 @@
                         <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Id) })</td>
                         <td>  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
                              {
-                                 <p class="pedNotknow">not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -265,7 +265,7 @@
                     <tr>
                         <td>  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -275,9 +275,9 @@
                     </tr>
                     <tr>
                          <td ROWSPAN="2">@Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Id) })</td>
-                         <td>  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name == "Not known")
+                         <td>  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
@@ -286,9 +286,9 @@
                          </td>
                     </tr>
                     <tr>
-                        <td>  @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name == "Not known")
+                        <td>  @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
                              {
-                                 <p class="pedNotknow">Not known</p>  
+                                 <p></p>  
                              }
                              else
                              {  
