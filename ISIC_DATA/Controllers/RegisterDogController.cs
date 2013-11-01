@@ -115,9 +115,10 @@ namespace ISIC_DATA.Controllers
         }
 
 
-        public JsonResult FetchFathers(string query)                                            //     Get all posible Fathers to json, used for typeAhead
+        public JsonResult FetchFathers(string q)                                            //     Get all posible Fathers to json, used for typeAhead
         {
-            List<Dog> fatherList = db.Dog.Where(d => d.Sex == "M").OrderBy(d => d.Reg).ToList();               
+            List<Dog> fatherList = db.Dog.Where(d => d.Sex == "M").Where(d => d.Reg.ToLower().StartsWith(q.ToLower())).ToList();
+              //  .OrderBy(d => d.Reg).ToList();               
              //   Where(d => d.Reg.Contains("IS0")).ToList();
              //.OrderBy(d => d.Reg).ToList();            
          
@@ -131,17 +132,12 @@ namespace ISIC_DATA.Controllers
             return Json(serialisedJson , JsonRequestBehavior.AllowGet); 
         }
 
-        public JsonResult FetchMothers(string query)                                             //     Get all posible Mothers to json, used for typeAhead
+        public JsonResult FetchMothers(string q)                                             //     Get all posible Mothers to json, used for typeAhead
         {                                                                                         // Ath að bæta við að eldri hundar en 15 ára komi ekki fram
-            List<Dog> motherList = db.Dog.Where(d => d.Sex == "F").OrderBy(d => d.Reg).ToList();
-
+         //   List<Dog> motherList = db.Dog.Where(d => d.Sex == "F").OrderBy(d => d.Reg).ToList();
+            List<Dog> motherList = db.Dog.Where(d => d.Sex == "F").Where(d => d.Reg.ToLower().StartsWith(q.ToLower())).ToList();
             var serialisedJson = from result in motherList
-                                 select new
-                                 {
-                                     Reg = result.Reg,
-                                     Name = result.Name,
-                                     Id = result.Id
-                                 };
+                                 select new { Reg = result.Reg, Name = result.Name, Id = result.Id };
             return Json(serialisedJson, JsonRequestBehavior.AllowGet);
         }
 
