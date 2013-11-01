@@ -188,7 +188,7 @@ namespace ISIC_DATA.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
+          //  ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
@@ -210,7 +210,7 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
+         //   ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.DetailedInfoId = new SelectList(db.DetailedInfo, "Id", "OldColor", dog.DetailedInfoId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);

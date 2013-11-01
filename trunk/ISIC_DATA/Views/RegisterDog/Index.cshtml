@@ -36,31 +36,40 @@ ViewBag.Title = "Register Dog";
        
     <div class="editor-field">
             <label>Breeder:</label>
+            <div class="CustomTemplate">
             <input type="text" placeholder="Breeder name"  id="Breeder_typeahead">
             @Html.HiddenFor(model => model.Litter.PersonId, new { @id = "returnBreederId" })                                  
-            @Html.ValidationMessageFor(model => model.Litter.PersonId, null, new { @class = "help-inline" })              
-                        
+            @Html.ValidationMessageFor(model => model.Litter.PersonId, null, new { @class = "help-inline" })                                      
             @Html.ActionLink("Add","CreateBreeder","Person",null, new { id = "btnCreate", @class = "btn btn-success" })                       
+            </div>
             <div id='dialogDiv' class='modal hide fade in'>
                 <div id='dialogContent'></div>
             </div>            
         </div>
 
+ 
         <div class="editor-field">
             <label>Father:</label>
-            <input type="text" placeholder="Father's Reg" id="typeaheadFather" class="ekkitil">
+            <div class="CustomTemplate">
+                <input type="text" placeholder="Father's Reg" id="typeaheadFather">
+            
             @Html.HiddenFor(model => model.Litter.FatherId, new { @id = "returnFatherId" })                     
              <input type="text" id="fatherName" disabled class=".twitter-typeahead">
+            </div>
             @Html.ValidationMessageFor(model => model.Litter.FatherId, null, new { @class = "help-inline" })              
         </div>                
 
         <div class="editor-field">
             <label>Mother:</label>
-             <input type="text" placeholder="Mother's Reg" id="typeaheadMother" class="ekkitil">
+            <div class="CustomTemplate">
+                <input type="text" placeholder="Mother's Reg" id="typeaheadMother">
+            
             @Html.HiddenFor(model => model.Litter.MotherId, new { @id = "returnMotherId" })                     
             <input type="text" id="motherName" disabled class="form-control">
+            </div>
             @Html.ValidationMessageFor(model => model.Litter.MotherId, null, new { @class = "help-inline" })
         </div>
+     
     </fieldset>
 
     <fieldset>
@@ -91,7 +100,7 @@ ViewBag.Title = "Register Dog";
     <div class="alert alert-success">@TempData["Success"].ToString()</div>
 }
 
-
+<script type="text/javascript" src="http://twitter.github.io/typeahead.js/js/hogan-2.0.0.js"></script>
 
 <script type="text/javascript">
                                                         //MODAL for adding breeder
@@ -160,7 +169,10 @@ ViewBag.Title = "Register Dog";
             name: "Father", 
             remote: 'Registerdog/FetchFathers?q=%QUERY',
             limit: 5,
-            valueKey: "Reg"
+            valueKey: "Reg",
+            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',
+            ].join(''),
+            engine: Hogan
         }).on("typeahead:selected typeahead:autocompleted",
             function (e, datum) {
                 $('#returnFatherId').val(datum.Id);
@@ -175,7 +187,9 @@ ViewBag.Title = "Register Dog";
             name: "Mother",
             remote: 'Registerdog/FetchMothers?q=%QUERY',
             limit: 5,
-            valueKey: "Reg"
+            valueKey: "Reg",
+            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',].join(''),
+            engine: Hogan
         }).on("typeahead:selected typeahead:autocompleted",
             function (e, datum) {
                 $('#returnMotherId').val(datum.Id);

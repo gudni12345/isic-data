@@ -93,3 +93,30 @@
 .tt-suggestion p {
     margin: 0;
 }
+
+
+/*************************/
+/*for Type-a-Head custom template*/
+/*************************/ 
+
+
+.CustomTemplate .tt-suggestion {
+  padding: 8px 20px;
+}
+
+.CustomTemplate .tt-suggestion + .tt-suggestion {
+  border-top: 1px solid #ccc;
+}
+
+.CustomTemplate .repo-id {
+  float: right;
+  font-style: italic;
+}
+
+.CustomTemplate .repo-reg {
+  font-weight: bold;
+}
+
+.CustomTemplate .repo-name {
+  font-size: 12px;
+}
