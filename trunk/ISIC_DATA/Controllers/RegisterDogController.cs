@@ -27,7 +27,13 @@ namespace ISIC_DATA.Controllers
         [HttpPost]
         [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Index(DogViewModel viewModel)
-        {   
+        {
+            if (viewModel.Litter.PersonId == null)
+            {
+                ModelState.AddModelError("PersonId", "Breeder is required.");
+            }           
+
+
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
             ViewBag.successMessage = "";
 
