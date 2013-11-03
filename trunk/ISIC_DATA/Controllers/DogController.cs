@@ -20,7 +20,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /Dog/
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, int? CountryId)
         {
 
             if (searchString != null)
@@ -33,13 +33,18 @@ namespace ISIC_DATA.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
+
             var dogs = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.BornInCountry).Include(d => d.Litter);
+
+            if (CountryId != null)  // If country is selected                
+                dogs = dogs.Where(d => d.BornInCountryId == CountryId);        
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper())
                                       || d.Reg.ToUpper().Contains(searchString.ToUpper()));
             }
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            
             ViewBag.successMessage = "";
             switch (sortOrder)
             {
@@ -54,25 +59,26 @@ namespace ISIC_DATA.Controllers
                     break;
             }
 
-
+     /*
             ViewBag.numberOfDogs = db.Dog.Count();
-           ViewBag.numberOfDogsIceland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 1).ToList().Count;
+            ViewBag.numberOfDogsIceland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 1).ToList().Count;
             ViewBag.numberOfDogsGermany = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 2).ToList().Count;
             ViewBag.numberOfDogsHolland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 3).ToList().Count;
-            ViewBag.numberOfDogsUSA = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 4).ToList().Count;
+            ViewBag.numberOfDogsUSA     = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 4).ToList().Count;
             ViewBag.numberOfDogsFinland = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 5).ToList().Count;
             ViewBag.numberOfDogsNorway = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 6).ToList().Count;
             ViewBag.numberOfDogsSweden = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 7).ToList().Count;
             ViewBag.numberOfDogsDenmark = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 8).ToList().Count;
             ViewBag.numberOfDogsAustria = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 9).ToList().Count;
+    */
+
+            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+            ViewBag.numberOfDogsSelected = dogs.Count();
 
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            return View(dogs.ToPagedList(pageNumber, pageSize));
-           // return View(dogs.Take(10));
-                           
-
-           
+            return View(dogs.ToPagedList(pageNumber, pageSize));                                            
         }
         //
         // GET: /Dog/Details/5
@@ -92,11 +98,9 @@ namespace ISIC_DATA.Controllers
                 
                 // Find all dogs that have the same father
                 ViewBag.SiblingsFromFatherSide = db.Dog.Where(d => d.Litter.FatherId == dog.Litter.FatherId)
-                                          //      .Where(d => d.LitterId != dog.LitterId)
-                                                .Where(d => d.Id != dog.Id).ToList();
+                                                  .Where(d => d.Id != dog.Id).ToList();
                 // Find all dogs that have the same mother
-                ViewBag.SiblingsFromMotherSide = db.Dog.Where(d => d.Litter.MotherId == dog.Litter.MotherId)
-                                          //      .Where(d => d.LitterId != dog.LitterId)
+                ViewBag.SiblingsFromMotherSide = db.Dog.Where(d => d.Litter.MotherId == dog.Litter.MotherId)                                          
                                                 .Where(d => d.Id != dog.Id).ToList();
 
 
@@ -112,33 +116,7 @@ namespace ISIC_DATA.Controllers
             return View(dog);
         }
 
-        //
-        // GET: /Dog/RegisterDogs
-/*
-        public ActionResult RegisterDogs()
-        {
-            var Fathers = db.Dog.Where(d => d.Sex == "M").ToList();
-            var Mothers = db.Dog.Where(d => d.Sex == "F").ToList();
-            ViewBag.MotherId = new SelectList(Mothers, "Id", "Name");
-            ViewBag.FatherId = new SelectList(Fathers, "Id", "Name");
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult RegisterDogs(Litter litter, Dog dog)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Litter.Add(litter);
-                db.Dog.Add(dog);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(dog);
-        }
-*/
+ 
         //
         // GET: /Dog/Create
 

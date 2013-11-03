@@ -26,12 +26,16 @@
 <div class="alignSearch">
 @using (Html.BeginForm("Index", "Dog", FormMethod.Get))
 {
+    <fieldset class="filtering">
+        <legend>Search filter</legend>
     <p>
         Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class="search-query" })  
-        <input type="submit" class="btn btn-primary" value="Search" />
         
+        @Html.DropDownList("CountryId", "--- All countries ---")     
+        
+        <input type="submit" class="btn btn-primary" value="apply filter" />  
     </p>
-
+    </fieldset>
 }
 </div>
 
@@ -49,26 +53,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Reg)
-        </td>
+            @Html.DisplayFor(modelItem => item.Reg)</td>
         <td>
-            @Html.ActionLink(item.Name, "Details", new { id=item.Id })
-        </td>
+            @Html.ActionLink(item.Name, "Details", new { id=item.Id })</td>
         <td>
-             
-            @Html.DisplayFor(modelItem => item.Litter.Father.Name)
-            
-          </td>
-         <td>
-            @Html.DisplayFor(modelItem => item.Litter.Mother.Name)
-        </td>
-         <td>
-            @Html.DisplayFor(modelItem => item.Litter.DateOfBirth) 
-        </td>
+            @Html.DisplayFor(modelItem => item.Litter.Father.Name)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Litter.Mother.Name)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Litter.DateOfBirth)</td>
         
-
-
-         @if(User.IsInRole("Administrator"))  {
+        @if(User.IsInRole("Administrator"))  {
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
         </td>
@@ -81,3 +76,5 @@
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )
+
+<strong>Number of dogs selected = @ViewBag.numberOfDogsSelected</strong>
