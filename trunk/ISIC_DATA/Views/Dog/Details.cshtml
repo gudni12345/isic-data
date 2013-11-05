@@ -97,8 +97,15 @@
                   <tbody>
                       <tr>
                         
-                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Id) })
-                            <br> @if (@Model.Litter.Father.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Father.PicturePath != null)
+                        <td ROWSPAN="8"> @if (Model.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Id) })
+                             }
+                                <br> @if (@Model.Litter.Father.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Father.PicturePath != null)
                                  {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                                  } 
@@ -249,11 +256,19 @@
 
                      @*Mothers Pedigree*@    
                     <tr>
-                        <td ROWSPAN="8">@Html.ActionLink(Model.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Id) })<br>
-                           @if (@Model.Litter.Mother.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Mother.PicturePath != null)
-                           {                           
+                        <td ROWSPAN="8"> @if (Model.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Id) })
+                             }
+                             <br>
+                             @if (@Model.Litter.Mother.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Mother.PicturePath != null)
+                             {                           
                                  <img class="pedPhoto" src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
-                           }  
+                             }  
                         </td>
                         <td ROWSPAN="4"> @if (Model.Litter.Mother.Litter.Father.Name == "not known")
                              {
