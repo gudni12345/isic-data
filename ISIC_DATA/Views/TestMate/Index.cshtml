@@ -5,6 +5,7 @@ Layout = "~/Views/Shared/_AdminLayout.cshtml";
 ViewBag.Title = "Test mate";
 }
 <h2>Test mate</h2>
+@Styles.Render("~/Content/typeahead.js-bootstrap.css")
 
 @using (Html.BeginForm(new { @class = "form-horizontal span9" }))
 {
