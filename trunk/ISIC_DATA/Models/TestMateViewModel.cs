@@ -10,5 +10,6 @@ namespace ISIC_DATA.Models
         public Dog Father { get; set; }
         public Dog Mother { get; set; }
         
+
     }
 }
