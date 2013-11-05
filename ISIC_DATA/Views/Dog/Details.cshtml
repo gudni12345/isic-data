@@ -497,8 +497,10 @@
 
       <!-- FOR THE LITTER TAB -->      
       <div class="tab-pane" id="litter">
-          
-            @if (ViewBag.Siblings.Count > 0)
+          <!-- <strong>Hérna er litterId => Model.LitterId  </strong> -->
+
+          @if (ViewBag.Siblings != null) {
+            if (ViewBag.Siblings.Count > 0)
             { 
                 <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
                 <table class="table table-striped">
@@ -525,8 +527,10 @@
                     </tbody>
                 </table>              
             }
+          }
 
-            @if (ViewBag.SiblingsFromFatherSide.Count > 0)
+          @if (ViewBag.SiblingsFromFatherSide != null) {
+            if (ViewBag.SiblingsFromFatherSide.Count > 0)
             { 
                 <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
                 <table class="table table-striped">
@@ -553,8 +557,10 @@
                     </tbody>
                 </table>
             }
+          }
 
-            @if (ViewBag.SiblingsFromMotherSide.Count > 0)
+          @if (ViewBag.SiblingsFromMotherSide != null) {
+            if (ViewBag.SiblingsFromMotherSide.Count > 0)
             {    
                 <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
                 <table class="table table-striped">
@@ -581,9 +587,10 @@
                     </tbody>
                 </table>
             }
+          }
 
-
-            @if (ViewBag.Puppies.Count > 0)
+          @if (ViewBag.Puppies != null) {
+            if (ViewBag.Puppies.Count > 0)
             {    
                 <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
                    <table class="table table-striped">
@@ -610,7 +617,7 @@
                 </tbody>
              </table>
             }
-
+          }
       </div>
     </div>
   </div>

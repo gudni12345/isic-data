@@ -9,6 +9,7 @@ using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
 using PagedList;
 using PagedList.Mvc;
+using System.IO;
 
 
 namespace ISIC_DATA.Controllers
@@ -86,6 +87,8 @@ namespace ISIC_DATA.Controllers
                 return HttpNotFound();
             }
             else
+            if (dog.LitterId != 1) 
+            if ((dog.Litter.Father.LitterId != 1 ) || (dog.Litter.Mother.LitterId != 1))
             {
 
                 // get siblings from the same litter // find all dogs that have same litterId as dog selected.
@@ -220,6 +223,26 @@ namespace ISIC_DATA.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+        [HttpPost]
+        public ActionResult Upload()
+        {
+            var file = Request.Files[0];
+
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/Photos/"), fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("UploadDocument");
+        }
+
+
+
 
         protected override void Dispose(bool disposing)
         {
