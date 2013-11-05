@@ -42,6 +42,11 @@
                                    ;
                                }
                            }
+                           @if (Model.LivesInCountryId != null){
+                              <dt>Living in: </dt><dd>@Html.DisplayFor(model => model.LivesInCountry.Name)</dd> }
+                              else {  ;
+                            } 
+
                  </dl>                           
             </div>
             @*Load Photo from Database*@
@@ -67,7 +72,7 @@
       <li class="active"><a href="#pedigree">Pedigree</a></li>
       <li><a href="#litter">Litter</a></li>
       <li><a href="#testmate">Testmate (inbreeding)</a></li>
-      <li><a href="#health">Health & apperance</a></li>
+      <li><a href="#health">More Information</a></li>
     </ul>
   </div>
 
@@ -433,6 +438,7 @@
                               {<dt>New Registr. Nr: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.NewReg)</dd> }
                               else {  ;
                               }
+                              
                               @if (Model.DetailedInfo.Hair != null)
                               {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd> }
                               else {  ;
