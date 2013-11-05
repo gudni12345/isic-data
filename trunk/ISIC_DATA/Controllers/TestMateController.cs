@@ -36,7 +36,16 @@ namespace ISIC_DATA.Controllers
             {
                 result = 0.5;
             }
-            else result = 0.0;
+            else
+                if ((Father.Litter.FatherId == Mother.Litter.FatherId) &&
+                    (Father.Litter.MotherId == Mother.Litter.MotherId)) // Sömu foreldrar
+                {
+                    result = 0.5;
+                }
+
+
+                else
+                    result = 0.0;
 
             ViewBag.Result = result;
             viewModel.Father.Name = Father.Name;
