@@ -15,6 +15,9 @@
   ViewBag.Title = "Registered Dogs";
 }
 
+<div>
+<h5>Here you can choose between filters to find a certain dog or a list of dogs.</h5>
+</div>
 
 <div class="alignSearch">
 @using (Html.BeginForm("Index", "Dog", FormMethod.Get))
@@ -68,6 +71,6 @@
 
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, CountryId=ViewBag.currentCountry }) )
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )
 
 <strong>Number of dogs = @ViewBag.numberOfDogsSelected</strong>
