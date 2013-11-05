@@ -1,0 +1,82 @@
+﻿@model ISIC_DATA.Models.TestMateViewModel
+
+@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ViewBag.Title = "Test mate";
+}
+<h2>Test mate</h2>
+
+@using (Html.BeginForm(new { @class = "form-horizontal span9" }))
+{
+    <fieldset>
+           
+        <legend>details</legend>
+
+ 
+        <div class="editor-field">
+            <label>Father:</label>
+            <div class="CustomTemplate">                
+            @Html.TextBoxFor(model => model.Father.Reg, new { placeholder="Father's Reg", id="typeaheadFather" })
+            @Html.HiddenFor(model => model.Father.Id, new { @id = "returnFatherId" })                     
+            @Html.TextBoxFor(model => model.Father.Name, new { id="fatherName", disabled = "disabled"  }) 
+            </div>
+        </div>
+        <div class="editor-field">
+            <label>Mother:</label>
+            <div class="CustomTemplate">                
+            @Html.TextBoxFor(model => model.Mother.Reg, new {placeholder="Mother's Reg", id="typeaheadMother" })
+            @Html.HiddenFor(model => model.Mother.Id, new { @id = "returnMotherId" })     
+            @Html.TextBoxFor(model => model.Mother.Name, new { id="motherName", disabled = "disabled", @class="form-control" })    
+            </div>  
+        </div>            
+    </fieldset>
+
+    <strong>Niðurstaða: @ViewBag.Result</strong>
+  
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Check</button>
+        @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
+    </div>
+   
+} <!-- end form -->
+
+
+<script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
+<script type="text/javascript">
+  
+    $(document).ready(function () {
+        $("#typeaheadFather").typeahead({
+            name: "Father", 
+            remote: 'Registerdog/FetchFathers?q=%QUERY',
+            limit: 5,
+            valueKey: "Reg",
+            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',
+            ].join(''),
+            engine: Hogan
+        }).on("typeahead:selected typeahead:autocompleted",
+            function (e, datum) {
+                $('#returnFatherId').val(datum.Id);
+                $('#fatherName').val(datum.Name);
+
+            }
+        );
+    });
+
+    $(document).ready(function () {
+        $("#typeaheadMother").typeahead({
+            name: "Mother",
+            remote: 'Registerdog/FetchMothers?q=%QUERY',
+            limit: 5,
+            valueKey: "Reg",
+            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',].join(''),
+            engine: Hogan
+        }).on("typeahead:selected typeahead:autocompleted",
+            function (e, datum) {
+                $('#returnMotherId').val(datum.Id);
+                $('#motherName').val(datum.Name);
+
+            }
+        );
+    });
+
+</script>
