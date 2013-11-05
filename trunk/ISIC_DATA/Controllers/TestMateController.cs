@@ -14,17 +14,17 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /TestMate/
 
-        [Authorize(Roles = "Administrator,SuperAdministrator")] 
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
         public ActionResult Index()
         {
-           
+
 
 
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator,SuperAdministrator")] 
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
         public ActionResult Index(TestMateViewModel viewModel)
         {
             // We only get Id of the Dog backfrom the viewModel.
