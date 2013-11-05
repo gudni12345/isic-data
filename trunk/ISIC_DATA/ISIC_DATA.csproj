@@ -215,6 +215,7 @@
     <Compile Include="Controllers\NewsArticleController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RegisterDogController.cs" />
+    <Compile Include="Controllers\TestMateController.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
     <Compile Include="Controllers\Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -799,6 +800,7 @@
     <Content Include="Views\Account\EditAdmin.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Person\CreateBreeder.cshtml" />
+    <Content Include="Views\TestMate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
