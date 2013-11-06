@@ -14,7 +14,6 @@ namespace ISIC_DATA.DataAccess
         public DbSet<Litter> Litter { get; set; }
 
         public DbSet<Country> Country { get; set; }
-        public DbSet<DetailedInfo> DetailedInfo { get; set; }
         public DbSet<Person> Person { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<NewsArticle> NewsArticle  {get; set;}
