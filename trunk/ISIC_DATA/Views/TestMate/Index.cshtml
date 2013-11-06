@@ -1,4 +1,5 @@
-﻿@model ISIC_DATA.Models.TestMateViewModel
+﻿@using BootstrapSupport
+@model ISIC_DATA.Models.TestMateViewModel
 
 @{
 Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -12,9 +13,6 @@ ViewBag.Title = "Test mate";
     <fieldset>
            
         <legend>details</legend>
-
-
- 
         <div class="editor-field">
             <label>Father:</label>
             <div class="CustomTemplate">                
@@ -28,7 +26,7 @@ ViewBag.Title = "Test mate";
             <div class="CustomTemplate">                
             @Html.TextBoxFor(model => model.Mother.Reg, new {placeholder="Mother's Reg", id="typeaheadMother" })
             @Html.HiddenFor(model => model.Mother.Id, new { @id = "returnMotherId" })     
-            @Html.TextBoxFor(model => model.Mother.Name, new { id="motherName", disabled = "disabled", @class="form-control" })    
+            @Html.TextBoxFor(model => model.Mother.Name, new { id = "motherName", disabled = "disabled" })    
             </div>  
         </div>            
     </fieldset>
@@ -50,7 +48,7 @@ ViewBag.Title = "Test mate";
         $("#typeaheadFather").typeahead({
             name: "Father", 
             remote: 'Registerdog/FetchFathers?q=%QUERY',
-            limit: 5,
+            limit: 3,
             valueKey: "Reg",
             template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',
             ].join(''),
@@ -68,7 +66,7 @@ ViewBag.Title = "Test mate";
         $("#typeaheadMother").typeahead({
             name: "Mother",
             remote: 'Registerdog/FetchMothers?q=%QUERY',
-            limit: 5,
+            limit: 3,
             valueKey: "Reg",
             template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',].join(''),
             engine: Hogan
