@@ -52,7 +52,7 @@ namespace ISIC_DATA.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Dog");
+                    return RedirectToAction("Index", "Admin");   // IF login successful. The Administrator page is opened.
                 }
 
                // return RedirectToAction(returnUrl ?? Url.Action("Index", "Dog"));                        // ATH change later....
