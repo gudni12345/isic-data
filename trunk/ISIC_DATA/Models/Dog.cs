@@ -32,11 +32,8 @@ namespace ISIC_DATA.Models
         public Nullable<int> ColorId { get; set; }
         public virtual Color Color { get; set; }
 
-        public Nullable<int> DetailedInfoId { get; set; }
-        public virtual DetailedInfo DetailedInfo { get; set; }
-
-        public Nullable<int> PersonId { get; set; }
-        public virtual Person Person { get; set; }
+       public Nullable<int> PersonId { get; set; }
+        public virtual Person Person { get; set; } 
 
         public Nullable<int> BornInCountryId { get; set; }
         public virtual Country BornInCountry { get; set; }
@@ -46,6 +43,22 @@ namespace ISIC_DATA.Models
 
         public virtual ICollection<Litter> Father { get; set; }
         public virtual ICollection<Litter> Mother { get; set; }
+        
+        public String Eyes { get; set; }
+        public string Comment { get; set; }
+        public string Hair { get; set; }
+
+        [MaxLength(20)]
+        public string HD { get; set; }
+
+        [MaxLength(20)]
+        public string HD2 { get; set; }
+
+        public string MT { get; set; }
+        public string NewReg { get; set; }
+
+        public Nullable<float> Inbreeding { get; set; }
+        public Nullable<float> Size { get; set; }
 
     }
 }

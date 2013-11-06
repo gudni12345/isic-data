@@ -205,10 +205,10 @@
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BackloadDemoController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
-    <Compile Include="Controllers\DetailedInfoController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LitterController.cs" />
@@ -226,7 +226,6 @@
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\DogAndPerson.cs" />
     <Compile Include="Models\Country.cs" />
-    <Compile Include="Models\DetailedInfo.cs" />
     <Compile Include="Models\Dog.cs" />
     <Compile Include="Models\DogViewModel.cs" />
     <Compile Include="Models\Litter.cs" />
@@ -785,11 +784,6 @@
     <Content Include="Views\Shared\EditorTemplates\Person.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DogAndPerson.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
-    <Content Include="Views\DetailedInfo\Index.cshtml" />
-    <Content Include="Views\DetailedInfo\Details.cshtml" />
-    <Content Include="Views\DetailedInfo\Create.cshtml" />
-    <Content Include="Views\DetailedInfo\Edit.cshtml" />
-    <Content Include="Views\DetailedInfo\Delete.cshtml" />
     <Content Include="Views\NewsArticle\CreateNews.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full_compressed.cshtml" />
@@ -801,6 +795,8 @@
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Person\CreateBreeder.cshtml" />
     <Content Include="Views\TestMate\Index.cshtml" />
+    <Content Include="Views\BackLoadDemo\Index.cshtml" />
+    <Content Include="Views\BackLoadDemo\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

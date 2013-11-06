@@ -30,7 +30,7 @@ namespace ISIC_DATA.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            var dogs = db.Dog.Include(d => d.Color).Include(d => d.DetailedInfo).Include(d => d.Person).Include(d => d.BornInCountry).Include(d => d.Litter);
+            var dogs = db.Dog.Include(d => d.Color).Include(d => d.Person).Include(d => d.BornInCountry).Include(d => d.Litter);
             if (!String.IsNullOrEmpty(searchString))
             {
                 dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper())

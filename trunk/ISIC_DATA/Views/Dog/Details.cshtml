@@ -32,16 +32,13 @@
                            {
                                <dt>Breeder: </dt><dd>No Breeder Registered</dd>
                            }
-                           @if (Model.DetailedInfoId != null)
-                           {
-                               if (Model.DetailedInfo.HD != null)
-                               {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD)</dd>
+                           @if (Model.HD != null)
+                               {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.HD)</dd>
                                }
                                else
                                {
                                    ;
                                }
-                           }
                            @if (Model.LivesInCountryId != null){
                               <dt>Living in: </dt><dd>@Html.DisplayFor(model => model.LivesInCountry.Name)</dd> }
                               else {  ;
@@ -443,63 +440,43 @@
 
                 
             <div class="healthInfo">
-                    @if (Model.DetailedInfoId != null)
+                    
                           {<dl class="dl-horizontal doglist">
-                              @if (Model.DetailedInfo.Comment != null)
-                              {<dt>More Information: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Comment)</dd> }
+                              @if (Model.Comment != null)
+                              {<dt>More Information: </dt><dd>@Html.DisplayFor(model => model.Comment)</dd> }
                               else {  ;
                               }
-                              @if (Model.DetailedInfo.NewReg != null)
-                              {<dt>New Registr. Nr: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.NewReg)</dd> }
+                              @if (Model.NewReg != null)
+                              {<dt>New Registr. Nr: </dt><dd>@Html.DisplayFor(model => model.NewReg)</dd> }
                               else {  ;
                               }
                               
-                              @if (Model.DetailedInfo.Hair != null)
-                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Hair)</dd> }
+                              @if (Model.Hair != null)
+                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.Hair)</dd> }
                               else {  ;
                               }
-                               @if (Model.DetailedInfo.Eyes != null)
-                              {<dt>Eyes: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Eyes)</dd> }
+                               @if (Model.Eyes != null)
+                              {<dt>Eyes: </dt><dd>@Html.DisplayFor(model => model.Eyes)</dd> }
                               else {  ;
                               }
-                              @if (Model.DetailedInfo.Size != null)
-                              {<dt>Size: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Size)</dd> }
+                              @if (Model.Size != null)
+                              {<dt>Size: </dt><dd>@Html.DisplayFor(model => model.Size)</dd> }
                               else {  ;
                               }
-                               @if (Model.DetailedInfo.AD != null)
-                              {<dt>AD: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.AD)</dd> }
+                              @if (Model.HD2 != null)
+                              {<dt>HD 2: </dt><dd>@Html.DisplayFor(model => model.HD2)</dd> }
                               else {  ;
                               }
-                               @if (Model.DetailedInfo.RS != null)
-                              {<dt>RS: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.RS)</dd> }
+                              @if (Model.MT != null)
+                              {<dt>Mental Test: </dt><dd>@Html.DisplayFor(model => model.MT)</dd> }
                               else {  ;
                               }
-                               @if (Model.DetailedInfo.HT != null)
-                              {<dt>HT: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HT)</dd> }
-                              else {  ;
-                              }
-                               @if (Model.DetailedInfo.HD2 != null)
-                              {<dt>HD 2: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.HD2)</dd> }
-                              else {  ;
-                              }
-                               @if (Model.DetailedInfo.OldColor != null)
-                              {<dt>Old Color: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.OldColor)</dd> }
-                              else {  ;
-                              }
-                               @if (Model.DetailedInfo.MT != null)
-                              {<dt>Mental Test: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.MT)</dd> }
-                              else {  ;
-                              }
-                               @if (Model.DetailedInfo.Inbreeding != null)
-                              {<dt>Inbreeding: </dt><dd>@Html.DisplayFor(model => model.DetailedInfo.Inbreeding)</dd> }
+                               @if (Model.Inbreeding != null)
+                              {<dt>Inbreeding: </dt><dd>@Html.DisplayFor(model => model.Inbreeding)</dd> }
                               else {  ;
                               }
                           </dl>           
-                            }
-                     else {
-                         <p> There is no further <b>Health Information</b> available</p>
-                          }
-                </div>
+                     </div>
 
                 <div class="thumbnail colorThumb">
                     <h5>The Icelandic Sheepdogs and their colors</h5>
