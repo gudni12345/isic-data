@@ -28,6 +28,32 @@ namespace ISIC_DATA.Controllers
         [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Index(DogViewModel viewModel)
         {
+            if (viewModel.Litter.FatherId != 0)  // The name of the father is displayed in form. the following code is to clear false positive validation errors
+            {
+                Dog father = db.Dog.Find(viewModel.Litter.FatherId);
+                viewModel.Litter.Father.Name = father.Name;
+                viewModel.Litter.Father.Sex = "M";
+                if (ModelState.ContainsKey("Litter.Father.Sex"))
+                    ModelState["Litter.Father.Sex"].Errors.Clear();
+                if (ModelState.ContainsKey("Litter.Father.Name"))
+                    ModelState["Litter.Father.Name"].Errors.Clear();
+            }
+
+            if (viewModel.Litter.MotherId != 0)
+            {
+                Dog mother = db.Dog.Find(viewModel.Litter.MotherId);
+                viewModel.Litter.Mother.Name = mother.Name;
+                viewModel.Litter.Mother.Sex = "F";
+                if (ModelState.ContainsKey("Litter.Mother.Sex"))
+                    ModelState["Litter.Mother.Sex"].Errors.Clear();
+                if (ModelState.ContainsKey("Litter.Mother.Name"))
+                    ModelState["Litter.Mother.Name"].Errors.Clear();
+            }
+
+            if (viewModel.Litter.DateOfBirth == null)
+            {
+                ModelState.AddModelError("DateOfBirth", "Date is required.");
+            }
             if (viewModel.Litter.PersonId == null)
             {
                 ModelState.AddModelError("PersonId", "Breeder is required.");
