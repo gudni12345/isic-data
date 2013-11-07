@@ -28,7 +28,7 @@ namespace ISIC_DATA.Models
         public int FatherId { get; set; }
         public virtual Dog Father { get; set; }
 
-  //      [Required(ErrorMessage = "Breeder is required.")]
+        //      [Required(ErrorMessage = "Breeder is required.")]  // Nullable required for the import.  
         public Nullable<int> PersonId { get; set; }     //Breeder Person
         public virtual Person Person { get; set; }
 
