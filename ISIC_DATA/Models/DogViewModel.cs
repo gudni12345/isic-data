@@ -7,10 +7,10 @@ namespace ISIC_DATA.Models
     {
         public DogViewModel()
         {
-            this.DogAndPersons = new List<DogAndPerson>() { new DogAndPerson() };            
+            this.Dogs = new List<Dog>() { new Dog() };            
         }
 
         public Litter Litter { get; set; }
-        public List<DogAndPerson> DogAndPersons { get; set; }
+        public List<Dog> Dogs { get; set; }
     }
 }
