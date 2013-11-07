@@ -23,7 +23,7 @@ namespace ISIC_DATA.Models
 
         public string PicturePath { get; set; }
 
-        [Required, MaxLength(10)]
+        [Required(ErrorMessage = "Gender is required."), MaxLength(10)]
         public string Sex { get; set; }
 
         public Nullable<int> LitterId { get; set; }

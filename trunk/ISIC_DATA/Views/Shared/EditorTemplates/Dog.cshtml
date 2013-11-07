@@ -3,7 +3,7 @@
 
 <!-- ko foreach: positions -->
 <fieldset>
-    @Html.ValidationSummary(true)
+    
     <div class="control-group">
 			<label class="control-label">Dog: </label>
 			<div class="controls">
@@ -15,7 +15,7 @@
                         @Html.TextBoxFor(model => model.Reg, new { data_bind = "value: reg, namePath: true", placeholder="Reg", @class = "input-block-level" })                       					
 					</div>
 					<div class="span2">
-                        @Html.DropDownListFor( model => model.Sex, (SelectList)ViewBag.Gender ,new { data_bind = "value: sex, namePath: true", @class = "input-block-level"})				
+                        @Html.DropDownListFor( model => model.Sex, (SelectList)ViewBag.Gender ,new { data_bind = "value: sex, namePath: true", @class = "input-block-level", required = false})				
 					</div>
 					<div class="span2">
                         @Html.DropDownListFor( model => model.ColorId, (SelectList)ViewBag.ColorId ,new { data_bind = "value: colorId, namePath: true", @class="input-block-level"})
