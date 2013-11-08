@@ -8,7 +8,7 @@
 }
 
 <h2>Register Dog(s)</h2>
-<!-- Styles.Render("~/Content/typeahead.js-bootstrap.css")  -->
+
 
 @if (ViewData.ModelState.Keys.Any(k=> ViewData.ModelState[k].Errors.Count() > 0)) { 
 	<div class="alert alert-danger">
@@ -82,8 +82,7 @@
 	<div class="alert alert-success">@TempData["Success"].ToString()</div>
 }
 
-<script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
+@section scripts{ <script src="~/registerBundle"></script> }
 
 
-@section scripts{ <script src="~/Scripts/Registerdog.js"></script> }
 
