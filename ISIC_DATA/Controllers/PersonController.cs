@@ -111,6 +111,17 @@ namespace ISIC_DATA.Controllers
         [Authorize(Roles = "Administrator,SuperAdministrator")]
         public ActionResult CreateBreeder(Person person)
         {
+            if (person.Name == null)
+            {
+                ModelState.AddModelError("Name", "Name is required.");
+            }
+
+            if (person.CountryId == null)
+            {
+                ModelState.AddModelError("CountryId", "Country is required.");
+            }
+
+
             if (ModelState.IsValid)
             {
                 try
