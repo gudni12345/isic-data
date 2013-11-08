@@ -8,7 +8,7 @@
         @using (Html.BeginForm("CreateBreeder", "Person", FormMethod.Post, new { @class = "modal-form", @id = "breeder", @name = "breeder" }))
         {
         @Html.ValidationSummary(true)
-
+        <div class="modal-body">
         <div>
             @Html.LabelFor(model => model.Name)
             @Html.EditorFor(model => model.Name)
@@ -32,7 +32,7 @@
             @Html.DropDownList("CountryId", String.Empty)
             @Html.ValidationMessageFor(model => model.CountryId)
         </div>
-        
+        </div>
      <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" id="save" class="btn btn-primary">Save</button>  
