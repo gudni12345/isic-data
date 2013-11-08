@@ -64,14 +64,15 @@ namespace ISIC_DATA.Controllers
                         result = 12.5;
                     }
                     else  // Check for no 4.  Uncle/niece or aunt/nephew → 12.5% (1⁄8)   
-                        if ((A.Litter.FatherId == B.Litter.Father.Litter.FatherId) ||    // Uncle/niece 
-                            (A.Litter.FatherId == B.Litter.Mother.Litter.FatherId) ||    // Uncle/niece                             
-                            (A.Litter.MotherId == B.Litter.Father.Litter.MotherId) ||    // Uncle/niece 
-                            (A.Litter.MotherId == B.Litter.Mother.Litter.MotherId) ||    // Uncle/niece 
-                            (A.Litter.Father.Litter.FatherId == B.Litter.FatherId) ||   // aunt/nephew
-                            (A.Litter.Mother.Litter.FatherId == B.Litter.FatherId) ||   // aunt/nephew
-                            (A.Litter.Father.Litter.MotherId == B.Litter.MotherId) ||   // aunt/nephew
-                            (A.Litter.Mother.Litter.MotherId == B.Litter.MotherId))     // aunt/nephew
+                        if (((A.Litter.FatherId == B.Litter.Father.Litter.FatherId) &&    // Uncle/niece
+                             (A.Litter.MotherId == B.Litter.Father.Litter.MotherId))  ||
+                             ((A.Litter.FatherId == B.Litter.Mother.Litter.FatherId) &&  // Uncle/niece
+                              (A.Litter.MotherId == B.Litter.Mother.Litter.MotherId)) ||
+ 
+                            ((A.Litter.Father.Litter.FatherId == B.Litter.FatherId) &&   // aunt/nephew
+                            (A.Litter.Father.Litter.MotherId == B.Litter.MotherId)) ||
+                            ((A.Litter.Mother.Litter.FatherId == B.Litter.FatherId) &&   // aunt/nephew  
+                            (A.Litter.Mother.Litter.MotherId == B.Litter.MotherId))  )    
                         {
                             result = 12.5;
                         }
