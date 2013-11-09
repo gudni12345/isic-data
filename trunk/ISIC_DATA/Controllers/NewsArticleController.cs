@@ -9,7 +9,6 @@ using System.Web.Security;
 using ISIC_DATA.Models;
 using ISIC_DATA.DataAccess;
 using PagedList;
-
 namespace ISIC_DATA.Controllers
 {
    
@@ -81,8 +80,9 @@ namespace ISIC_DATA.Controllers
         public ActionResult CreateNews()
         {
             var model = new NewsArticle();
-
-            ViewBag.HtmlContent = model.Content;
+            var categories = from CategoriesEnum s in Enum.GetValues(typeof(CategoriesEnum))
+                             select new { Name = s.ToString().Replace('_', ' ') };
+            ViewBag.CategoriesName = new SelectList(categories, "Name", "Name");
             return View(model);
         }
 
@@ -99,8 +99,9 @@ namespace ISIC_DATA.Controllers
             model.UsersId = WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
 
             if (ModelState.IsValid)
-            {                
+            {
                 
+
                 db.NewsArticle.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -119,7 +120,15 @@ namespace ISIC_DATA.Controllers
         public ActionResult EditNews(int id=0)
         {
             NewsArticle news = db.NewsArticle.Find(id);
-           
+            var categories = from CategoriesEnum s in Enum.GetValues(typeof(CategoriesEnum))
+                           select new { Name = s.ToString().Replace('_', ' ') };
+            string selected = (from sub in db.NewsArticle
+                               where sub.Id == id
+                               select sub.CategoriesName).First();
+            ViewBag.CategoriesName = new SelectList(categories, "Name", "Name", selected);
+
+
+
             if (news == null)
             {
                 return View("Error");
