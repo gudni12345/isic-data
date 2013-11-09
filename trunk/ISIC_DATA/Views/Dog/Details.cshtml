@@ -421,27 +421,22 @@
       
       <!-- FOR THE Health Information TAB --> 
       <div class="tab-pane" id="health">
-          
-             
-          <dl class="dl-horizontal doglist">
-                          @if (Model.ColorId != null)
-                          {<dt>Color-Group: </dt><dd>@Html.DisplayFor(model => model.Color.ColorText)</dd>}
+          <div class="row">
+            <div class="span6">
+            <div class ="thumbnail">
+               <dl class="dl-horizontal doglist">
+                              @if (Model.ColorId != null)
+                              {<dt>Color-Group: </dt><dd>@Html.DisplayFor(model => model.Color.ColorText)</dd>}
+                                  else { ;
+                              }
+                              @if (Model.ColorComment != null)
+                              {<dt>Original Color: </dt><dd>@Html.DisplayFor(model => model.ColorComment)</dd>}
                               else { ;
-                          }
-                          @if (Model.ColorComment != null)
-                          {<dt>Original Color: </dt><dd>@Html.DisplayFor(model => model.ColorComment)</dd>}
-                          else { ;
-                          } 
-                          @if (Model.PersonId != null)
-                          {<dt>Owner: </dt><dd>@Html.DisplayFor(model => model.Person.Name)</dd> }
-                          else {  ;
-                          }
-            </dl>
-
-                
-            <div class="healthInfo">
-                    
-                          {<dl class="dl-horizontal doglist">
+                              } 
+                              @if (Model.PersonId != null)
+                              {<dt>Owner: </dt><dd>@Html.DisplayFor(model => model.Person.Name)</dd> }
+                              else {  ;
+                              } 
                               @if (Model.Comment != null)
                               {<dt>More Information: </dt><dd>@Html.DisplayFor(model => model.Comment)</dd> }
                               else {  ;
@@ -477,7 +472,9 @@
                               }
                           </dl>           
                      </div>
-
+                </div>
+          
+               <div class="span4">
                 <div class="thumbnail colorThumb">
                     <h5>The Icelandic Sheepdogs and their colors</h5>
                     <p> One of the most special attributes of the Icelandic dog is his color. To embrace the diffrenent approaches and keep the 
@@ -485,7 +482,9 @@
                         The <b>"Color-Group"</b> shows which main color group the dog belongs to with two important rules: White is always part of the color, and dogs
                         which are black are always registered as tricolor dogs.</p>
                 </div>
-      </div>
+                   </div>
+              </div>
+        </div>
 
       <!-- FOR THE LITTER TAB -->      
       <div class="tab-pane" id="litter">
