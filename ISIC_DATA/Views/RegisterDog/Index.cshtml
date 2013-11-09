@@ -27,7 +27,7 @@
             <div class="controls">
 
                 <b>@Html.Label("Date of birth:", new { @class = "control-label" }) </b>
-                @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @class = "datePicker", data_bind = "value: birth" })
+                @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { id="dateOfBirth", @class = "datePicker", data_bind = "value: birth" })
 
                 <label>Breeder:</label>              
                 @Html.TextBoxFor(model => model.Litter.Person.Name, new { placeholder="Breeder name", @id="Breeder_typeahead"})
