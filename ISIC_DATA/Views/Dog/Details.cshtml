@@ -348,7 +348,7 @@
                                 @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Id) })
                              }
                         </td>
-                        <td ROWSPAN="2">  @if (Model.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
+                        <td ROWSPAN="2">  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
                              {
                                  <p></p>  
                              }
