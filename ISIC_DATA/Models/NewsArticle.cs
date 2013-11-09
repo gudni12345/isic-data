@@ -21,13 +21,18 @@ namespace ISIC_DATA.Models
         public string Title { get; set; }
                         
         public bool Valid { get; set; }
-        
+        public string CategoriesName { get; set; }
+
         public Nullable <int> UsersId { get; set; }
         public virtual Users Users { get; set; }        
 
        [UIHint("tinymce_full"), AllowHtml]
         public string Content { get; set; }
 
+       public enum CategoriesEnum
+       {
+           News, Contacts, About
+       }
         
     }
 }
