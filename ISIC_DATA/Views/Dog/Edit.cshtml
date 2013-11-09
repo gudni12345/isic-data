@@ -23,7 +23,7 @@
 
                     <div class="editor-label">
                         Inbreeding
-                        <a href="#" id="hd" class="btn btn-danger" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
+                        <a href="#" id="inbreeding" class="btn btn-danger" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.Inbreeding)
@@ -187,18 +187,36 @@
         <!-- Photo -->
         <fieldset class="scheduler-border">
             <legend class="scheduler-border">Photo</legend>
-                <div class="control-group">
+            <div class="row">
+            <div class="span3"> 
+            <div class="control-group">
                     <div class="editPhoto">
+                            Current Photo
                             @if (@Model.PicturePath == null)
                             {
-                                <img src="~/Images/dogs/dog1.jpg" alt ="~/Images/dogs/dog1.jpg" />     
+                                <img src="~/Images/dogs/dog2.jpg" alt ="~/Images/dogs/dog2.jpg" />     
                             }
                             else
                             {                           
                                  <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             }
-                      </div>
-                  </div>
+                    </div>
+                    <div class="uploadPhoto">
+                                <div class="input-group-btn">
+						        <button class="btn btn-primary btn-file">
+							    Select picture:<input type="file" name="file">
+						        </button>
+					            </div>
+					            
+                                <p><input type="text" class="form-control" readonly="true"></p>
+                                
+                                
+                                <button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>
+                                <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>
+                                
+				            	                                    			
+			       </div>
+                </div>
         </fieldset>
         </div>  <!--  span3 -->
         </div>  <!--  span12 --> 
@@ -207,7 +225,7 @@
         <input type="submit" value="Save" />
     </p>
     
- }
+}
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -227,5 +245,31 @@ $(function ()
 {
     $("#newreg").popover();
     $("#hd").popover();
+    $("#inbreeding").popover();
 });
 </script>
+
+<script type="text/javascript">
+    $(document)
+        .on('change', '.btn-file :file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+    $(document).ready(function () {
+        $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+            var input = $(this).parents('.input-group').find(':text'),
+					log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+        });
+    });
+
+
+</script>
+
