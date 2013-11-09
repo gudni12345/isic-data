@@ -1,10 +1,10 @@
-﻿@model ISIC_DATA.Models.Dog
+﻿@using BootstrapSupport
+@model ISIC_DATA.Models.Dog
 
 @{
     ViewBag.Title = "Edit Dog";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 
 
 @using (Html.BeginForm()) {
@@ -13,125 +13,175 @@
 
     <div class="row">
         <div class="span5">
-    <fieldset>
-        <legend>Edit information of <b>@Html.DisplayFor(model => model.Name)</b></legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Reg)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Reg)
-            @Html.ValidationMessageFor(model => model.Reg)
-        </div>
+        <!-- Ownership -->
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Ownership</legend>
+                <div class="row">
+                    <div class="span4">
+                        <div class="row-fluid">
+                          <div class="span6">
+                                @Html.LabelFor(model => model.Person.Owner)
+                                @Html.EditorFor(model => model.Person.Name)
+                                @Html.ValidationMessageFor(model => model.Person.Name)
+                          </div>
+                          <div class="span6">         
+                                @Html.LabelFor(model => model.NewReg)
+                                @Html.EditorFor(model => model.NewReg)
+                                @Html.ValidationMessageFor(model => model.NewReg)
+                          </div>
+                        </div> 
+                       </div>
+                    </div>
+                 </fieldset>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+          <!--Health and appreance-->
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Health and appreance</legend>
+                <div class="control-group">
+                    <div class="row">
+                    <div class="span4">
+                        <div class="row-fluid">
+                            <div class="span6">
+                                Color
+                                @Html.EditorFor(model => model.ColorComment)
+                                @Html.ValidationMessageFor(model => model.ColorComment)
+                            </div>
+                            <div class="span6">
+                                Color
+                                @Html.DropDownList("ColorId", String.Empty)
+                                @Html.ValidationMessageFor(model => model.ColorId)
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span6">
+                                HD
+                                @Html.EditorFor(model => model.HD)
+                                @Html.ValidationMessageFor(model => model.HD)
+                            </div>
+                            <div class="span6">
+                                Dew claws
+                                @Html.TextBoxFor(model => model.MT)
+                                @Html.ValidationMessageFor(model => model.MT)
+                            </div>
+                        </div>
+                            <div class="row-fluid">
+                            <div class="span6">
+                                Eyes
+                                @Html.EditorFor(model => model.Eyes, new {style  = "width:550px", @class = "form-control"})
+                                @Html.ValidationMessageFor(model => model.Eyes)
+                            </div>
+                            <div class="span6">
+                                Hair
+                                @Html.EditorFor(model => model.Hair)
+                                @Html.ValidationMessageFor(model => model.Hair)
+                            </div>
+                         </div>
+                           <div class="row-fluid">
+                           <div class="span6">
+                                HD2
+                                @Html.EditorFor(model => model.HD2)
+                                @Html.ValidationMessageFor(model => model.HD2)
+                           </div>
+                           <div class="span6">
+                               Size
+                               @Html.EditorFor(model => model.Size)
+                               @Html.ValidationMessageFor(model => model.Size)
+                            </div>
+                            <div class="row-fluid">
+                            <div class="span6">
+                              Comment
+                               @Html.TextBoxFor(model => model.Comment, new { style = "height: 80px;" })
+                               @Html.ValidationMessageFor(model => model.Comment)
+                       </div>
+                    </div>
+                </div>
+           </div>
+        </fieldset>  
+   
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            Color
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ColorComment)
-            @Html.ValidationMessageFor(model => model.ColorComment)
-        </div>
-
-        <div class="editor-label">
-            Gender
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Sex)
-            @Html.ValidationMessageFor(model => model.Sex)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ColorId, "Color")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ColorId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ColorId)
-        </div>
-        <div class="editor-label">
-            Breeder
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("PersonId", String.Empty)
-            @Html.ValidationMessageFor(model => model.PersonId)
-        </div>
-
-        <!--vantar country-->
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.HD)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.HD)
-            @Html.ValidationMessageFor(model => model.HD)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Comment)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Comment, new { style = "height: 80px;" })
-            @Html.ValidationMessageFor(model => model.Comment)
-        </div>
-
-        </fieldset>
-     </div>
-
 
         <div class="span5">
-    <fieldset>
-        <legend>Edit Health and Apperance</legend>
-
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Photo</legend>
+                <div class="control-group">
+                    <div class="pedPhoto">
+                            @if (@Model.PicturePath == null)
+                            {
+                                <img src="~/Images/dogs/dog1.jpg" alt ="~/Images/dogs/dog1.jpg" />     
+                            }
+                            else
+                            {                           
+                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                            }
+                      </div>
+                  </div>
+        </fieldset>
         
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Eyes)
+        <!--Original data-->
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Original Data</legend>
+                <div class="control-group">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                    <div class="controls bootstrap-timepicker">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reg)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reg)
+                        @Html.ValidationMessageFor(model => model.Reg)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.LitterId)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.LitterId)
+                        @Html.ValidationMessageFor(model => model.LitterId)
+                    </div>
+                    <div class="editor-label">
+                        Gender
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Sex)
+                        @Html.ValidationMessageFor(model => model.Sex)
+                    </div>
+                    <div class="editor-label">
+                        Born in
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.BornInCountry.Name)
+                        @Html.ValidationMessageFor(model => model.BornInCountry.Name)
+                    </div>
+                    <div class="editor-label">
+                        Birthdate
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Litter.DateOfBirth)
+                        @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
+                    </div>
+                    <div class="editor-label">
+                    Breeder
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Person.Breeder)
+                        @Html.ValidationMessageFor(model => model.Person.Breeder)
+                    </div>
+                </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Eyes)
-            @Html.ValidationMessageFor(model => model.Eyes)
-        </div>
-        
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Hair)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Hair)
-            @Html.ValidationMessageFor(model => model.Hair)
-        </div>
-
-        
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.HD2)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.HD2)
-            @Html.ValidationMessageFor(model => model.HD2)
-        </div>
-
-       
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NewReg)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NewReg)
-            @Html.ValidationMessageFor(model => model.NewReg)
+        </fieldset>
         </div>
 
         <p>
             <input type="submit" value="Save" />
         </p>
-    </fieldset>
-     </div>
-
-   </div>
-}
+    </div> 
+ }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
