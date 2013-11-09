@@ -23,7 +23,7 @@
 
                     <div class="editor-label">
                         Inbreeding
-                        <a href="#" id="inbreeding" class="btn btn-danger" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
+                        <a href="#" id="inbreeding" class="btn btn-success" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.Inbreeding)
@@ -176,7 +176,7 @@
                     </div>
                     <div class="editor-label">        
                        New Registration number
-                       <a href="#" id="newreg" class="btn btn-danger" rel="popover" data-content="If the dog has moved to another country he sometimes gets a new registration number. This number can be saved here" data-original-title="New Reg Nr.">i</a>
+                       <a href="#" id="newreg" class="btn btn-warning" rel="popover" data-content="If the dog has moved to another country he sometimes gets a new registration number. This number can be saved here" data-original-title="New Reg Nr.">i</a>
                     </div>
                     <div class="editor-field">
                        @Html.EditorFor(model => model.NewReg)
@@ -187,11 +187,14 @@
         <!-- Photo -->
         <fieldset class="scheduler-border">
             <legend class="scheduler-border">Photo</legend>
-            <div class="row">
-            <div class="span3"> 
-            <div class="control-group">
-                    <div class="editPhoto">
-                            Current Photo
+            <div class="span4"> 
+            
+                   <dl class="dl-horizontal uploadlist">
+                        <dt>Current Photo:</dt><dd><div class="btn btn-primary btn-file">
+							Select picture<input type="file" name="file"></div>
+						</dd>
+                        <dt>            
+                                                  
                             @if (@Model.PicturePath == null)
                             {
                                 <img src="~/Images/dogs/dog2.jpg" alt ="~/Images/dogs/dog2.jpg" />     
@@ -199,24 +202,22 @@
                             else
                             {                           
                                  <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
-                            }
-                    </div>
-                    <div class="uploadPhoto">
-                                <div class="input-group-btn">
-						        <button class="btn btn-primary btn-file">
-							    Select picture:<input type="file" name="file">
-						        </button>
-					            </div>
-					            
-                                <p><input type="text" class="form-control" readonly="true"></p>
-                                
-                                
-                                <button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>
-                                <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>
-                                
-				            	                                    			
-			       </div>
-                </div>
+                            } 
+                        </dt>
+                        <dd><input type="text" class="form-control" readonly="true"></dd>
+                        <dt></dt><dd>Preview</dd>
+                        <dt></dt><dd><button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>                    
+                        <button type="reset" class="btn btn-warning cancel">Cancel upload</button></dd>    
+                          
+                    
+                    
+                        
+                    
+                          
+                          
+
+                 </dl>        
+            </div>
         </fieldset>
         </div>  <!--  span3 -->
         </div>  <!--  span12 --> 
@@ -243,12 +244,18 @@
 <script>
 $(function ()
 {
-    $("#newreg").popover();
+    $("#newreg").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
     $("#hd").popover({
         trigger: 'hover',
         'placement': 'top'
     });
-    $("#inbreeding").popover();
+    $("#inbreeding").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
 });
 </script>
 
@@ -272,7 +279,5 @@ $(function ()
             }
         });
     });
-
-
 </script>
 
