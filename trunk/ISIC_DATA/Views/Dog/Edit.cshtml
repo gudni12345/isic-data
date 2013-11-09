@@ -46,7 +46,7 @@
                     </div>
                     <div class="editor-label">
                         HD
-                        <a href="#" id="hd" class="btn btn-danger" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
+                        <a href="#" id="hd" class="btn btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
                         </div>
                     <div class="editor-field">
                        @Html.EditorFor(model => model.HD)
@@ -244,7 +244,10 @@
 $(function ()
 {
     $("#newreg").popover();
-    $("#hd").popover();
+    $("#hd").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
     $("#inbreeding").popover();
 });
 </script>
