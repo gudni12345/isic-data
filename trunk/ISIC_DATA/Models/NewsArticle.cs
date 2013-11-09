@@ -29,10 +29,12 @@ namespace ISIC_DATA.Models
        [UIHint("tinymce_full"), AllowHtml]
         public string Content { get; set; }
 
-       public enum CategoriesEnum
-       {
-           News, Contacts, About
-       }
+       
         
+    }
+
+    public enum CategoriesEnum
+    {
+        News, Contacts, About
     }
 }
