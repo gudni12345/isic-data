@@ -6,8 +6,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "Dog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -25,11 +25,13 @@
                 <div class="row-fluid">
                     <div class="span6">
                         <!--HERE WE NEED A TYPE AHEAD LIST-->
-                        <div class="editor-label">@Html.LabelFor(model => model.Person.Owner)</div>    
+                   <!--     <div class="editor-label">Html.LabelFor(model => model.Person.Owner)</div>    
                         <div class="editor-field">    
-                        @Html.EditorFor(model => model.Person.Name)
-                        @Html.ValidationMessageFor(model => model.Person.Name)
+                        Html.EditorFor(model => model.Person.Name)
+                        Html.ValidationMessageFor(model => model.Person.Name)
+                    
                         </div>
+                    -->
                         <div class="editor-label">New Registration number
                         <a href="#" id="newreg" class="btn-mini btn-warning" rel="popover" data-content="If the dog has moved to another country he sometimes gets a new registration number. This number can be saved here" data-original-title="New Reg Nr.">i</a>
                         </div>
@@ -39,16 +41,17 @@
                         </div>
                     </div>
                     <!--first row left second column-->
-                    <div class="span6">
+                <!--    <div class="span6">
                          <div>Owner (should be read only here)<br />
-                         @Html.DisplayFor(model => model.Person.Name)
+                         Html.DisplayFor(model => model.Person.Name)
                          </div><br />
                         <div class="editor-label">Living in</div>
                         <div class="editor-field">
-                        @Html.DropDownList("CountryId", String.Empty)
-                        @Html.ValidationMessageFor(model => model.LivesInCountryId)
+                        Html.DropDownList("CountryId", String.Empty)
+                        Html.ValidationMessageFor(model => model.LivesInCountryId)
                     </div>
                     </div>
+                -->
                 </div>
             </div>
          </div>
@@ -73,22 +76,24 @@
                     <!--first row right - first column-->
                         <div class="uploadPhoto">
                         <div class="input-group-btn">
-					    <button class="btn btn-primary btn-file">
-					     Select picture:<input type="file" name="file">
-					    </button>
-					    </div>
+					  
+                      
+					     Select picture:<input type="file" name="file"  class="btn btn-primary btn-file">
+					     <p><input type="text" class="form-control" readonly="true"></p>
+					<!--    </div>
 					        <p><input type="text" class="form-control" readonly="true"></p>
                                                            
                             <button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>
                             <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>
                                   	                                    			
-			            </div>
+			            </div> -->
                     
                    </div>
                 </div>
             </div>
          </div>
-
+    </div>
+            </div>
         
 
         <div class="row-fluid">
@@ -180,6 +185,7 @@
                 <div class="thumbnail edit-dog">
                       <div class="editor-label">
                         @Html.LabelFor(model => model.Name, new { title = "Your Tooltip text goes here" })
+                        @Html.HiddenFor(model => model.LitterId)
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.Name)
@@ -207,16 +213,17 @@
                     </div>
 
                      <!-- From Littertable, modification dangerous -->  
-                    <div class="editor-label">Birthdate</div>
+                <!--    <div class="editor-label">Birthdate</div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.Litter.DateOfBirth)
-                        @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
+                        Html.EditorFor(model => model.Litter.DateOfBirth)
+                        Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
                     </div>
                     <div class="editor-label">Breeder</div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.Litter.Person.Name)
-                        @Html.ValidationMessageFor(model => model.Litter.Person.Name)
+                        Html.EditorFor(model => model.Litter.Person.Name)
+                        Html.ValidationMessageFor(model => model.Litter.Person.Name)
                     </div>
+                -->
                 </div>
         </div>
                 </div>
@@ -241,14 +248,7 @@
                         @Html.ValidationMessageFor(model => model.Name)
                     </div>
                     <div class="controls bootstrap-timepicker">
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Reg)
                     </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.Reg)
-                        @Html.ValidationMessageFor(model => model.Reg)
-                    </div>
-                   
 
                     
                     
@@ -273,19 +273,19 @@
                     </div>
                     <div class="uploadPhoto">
                                 <div class="input-group-btn">
-						        <button class="btn btn-primary btn-file">
-							    Select picture:<input type="file" name="file">
-						        </button>
+						        
+							    Select picture:<input type="file" name="file" class="btn btn-primary btn-file">
+						      
 					            </div>
 					            
-                                <p><input type="text" class="form-control" readonly="true"></p>
+                           <!--     <p><input type="text" class="form-control" readonly="true"></p>
                                 
                                 
                                 <button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>
-                                <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>
-                                
-				            	                                    			
+                                <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>      -->                           				           	                                    			
 			       </div>
+                </div>
+                </div>
                 </div>
         </fieldset>
         </div>  <!--  span3 -->
@@ -313,14 +313,21 @@
 <script>
 $(function ()
 {
-    $("#newreg").popover();
+    $("#newreg").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
     $("#hd").popover({
         trigger: 'hover',
         'placement': 'top'
     });
-    $("#inbreeding").popover();
+    $("#inbreeding").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
 });
 </script>
+
 
 <script type="text/javascript">
     $(document)
@@ -345,4 +352,5 @@ $(function ()
 
 
 </script>
+   
 

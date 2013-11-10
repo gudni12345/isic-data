@@ -10,6 +10,7 @@ using ISIC_DATA.DataAccess;
 using PagedList;
 using PagedList.Mvc;
 using System.IO;
+using System.Text.RegularExpressions;
 
 
 namespace ISIC_DATA.Controllers
@@ -163,6 +164,7 @@ namespace ISIC_DATA.Controllers
         public ActionResult Edit(int id = 0)
         {
             Dog dog = db.Dog.Find(id);
+            
             if (dog == null)
             {
                 return HttpNotFound();
@@ -179,11 +181,29 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator,SuperAdministrator")] 
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
         public ActionResult Edit(Dog dog)
         {
+     
             if (ModelState.IsValid)
             {
+                string fileName=null;
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        // var fileName = Path.GetFileName(file.FileName);
+                        var extension = Path.GetExtension(file.FileName);
+                        fileName = Regex.Replace(dog.Reg, @"[\[\]\\\^\$\.\|\?\*\+\(\)\{\}%,;><!@#&\-\+/]", "");
+                        fileName = fileName + extension;
+                        var path = Path.Combine(Server.MapPath("~/Photos/"), fileName);
+                        file.SaveAs(path);
+                    }
+                }
+
+                if (fileName != null)
+                    dog.PicturePath = "~/Photos/"+fileName;
                 db.Entry(dog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
