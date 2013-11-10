@@ -24,6 +24,7 @@ ViewBag.Title = "News Overview";
     <tr>   
         <th>Title</th>
         <th>Author</th>
+        <th>Categories</th>
         <th>Date</th>
         <th></th>
         
@@ -37,6 +38,10 @@ ViewBag.Title = "News Overview";
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Users.Name)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriesName)
         </td>
 
          <td>
