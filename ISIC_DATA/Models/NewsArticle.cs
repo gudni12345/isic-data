@@ -35,6 +35,6 @@ namespace ISIC_DATA.Models
 
     public enum CategoriesEnum
     {
-        News, Contacts, About
+        News, About
     }
 }
