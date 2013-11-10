@@ -7,7 +7,8 @@
 }
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("uploadTest", "Backloaddemo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -171,12 +172,12 @@
                        @Html.LabelFor(model => model.Person.Owner)
                     </div>    
                     <div class="editor-field">    
-                       @Html.EditorFor(model => model.Person.Name)
+                       @Html.EditorFor(model => model.Person.Name, new { size = "50em;" })
                        @Html.ValidationMessageFor(model => model.Person.Name)
                     </div>
                     <div class="editor-label">        
                        New Registration number
-                       <a href="#" id="newreg" class="btn btn-warning" rel="popover" data-content="If the dog has moved to another country he sometimes gets a new registration number. This number can be saved here" data-original-title="New Reg Nr.">i</a>
+                        <a href="#" id="newreg" class="btn btn-warning" rel="popover" data-content="If the dog has moved to another country he sometimes gets a new registration number. This number can be saved here" data-original-title="New Reg Nr.">i</a>
                     </div>
                     <div class="editor-field">
                        @Html.EditorFor(model => model.NewReg)
@@ -188,9 +189,10 @@
         <fieldset class="scheduler-border">
             <legend class="scheduler-border">Photo</legend>
             <div class="span4"> 
-            
+                <div class="input-group">
                    <dl class="dl-horizontal uploadlist">
-                        <dt>Current Photo:</dt><dd><div class="btn btn-primary btn-file">
+                        
+                       <dt>Current Photo:</dt><dd><div class="btn btn-primary btn-file">
 							Select picture<input type="file" name="file"></div>
 						</dd>
                         <dt>            
@@ -204,20 +206,16 @@
                                  <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             } 
                         </dt>
-                        <dd><input type="text" class="form-control" readonly="true"></dd>
+                        <dd><input type="text" class="input-medium" readonly="true"></dd>
+                
                         <dt></dt><dd>Preview</dd>
                         <dt></dt><dd><button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>                    
                         <button type="reset" class="btn btn-warning cancel">Cancel upload</button></dd>    
-                          
-                    
-                    
-                        
-                    
-                          
-                          
-
-                 </dl>        
+                       
+                            
+                   </dl>        
             </div>
+                </div>
         </fieldset>
         </div>  <!--  span3 -->
         </div>  <!--  span12 --> 
