@@ -159,6 +159,10 @@ p {
         margin-bottom: 15px;
        }
 
+.edit-dog    {
+        background-color:lightgrey;
+        padding: 15px;
+        }
 
 /*************************/
 /*for Database tab (Search dog)*/
