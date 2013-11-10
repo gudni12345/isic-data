@@ -21,7 +21,7 @@
         <!--first row left - first column-->
         <div class="span6">
             <h4>Ownership</h4>
-            <div class="thumbnail">
+            <div class="thumbnail edit-dog">
                 <div class="row-fluid">
                     <div class="span6">
                         <!--HERE WE NEED A TYPE AHEAD LIST-->
@@ -29,7 +29,7 @@
                         <div class="editor-field">    
                         @Html.EditorFor(model => model.Person.Name)
                         @Html.ValidationMessageFor(model => model.Person.Name)
-                    </div>
+                        </div>
                         <div class="editor-label">New Registration number
                         <a href="#" id="newreg" class="btn-mini btn-warning" rel="popover" data-content="If the dog has moved to another country he sometimes gets a new registration number. This number can be saved here" data-original-title="New Reg Nr.">i</a>
                         </div>
@@ -40,8 +40,14 @@
                     </div>
                     <!--first row left second column-->
                     <div class="span6">
-                        owner<br />
-                        Living in
+                         <div>Owner (should be read only here)<br />
+                         @Html.DisplayFor(model => model.Person.Name)
+                         </div><br />
+                        <div class="editor-label">Living in</div>
+                        <div class="editor-field">
+                        @Html.DropDownList("CountryId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.LivesInCountryId)
+                    </div>
                     </div>
                 </div>
             </div>
@@ -49,9 +55,10 @@
         <div class="span6">
           <!--first row right - first column-->
             <h4>Photo</h4>
-            <div class="thumbnail">
+            <div class="thumbnail edit-dog">
                 <div class="row-fluid">
                     <div class="span4">
+                        
                         <p>Current Photo</p>
                             @if (@Model.PicturePath == null)
                             {
@@ -76,18 +83,23 @@
                             <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>
                                   	                                    			
 			            </div>
-                    </div>
-
+                    
+                   </div>
                 </div>
             </div>
          </div>
 
         
+
+        <div class="row-fluid">
+            <div class="span12"> </div>
+        </div>
+
         <div class="row-fluid">
         <!--second row left - first column-->
         <div class="span6">
             <h4>Health & Appearance</h4>
-            <div class="thumbnail">
+            <div class="thumbnail edit-dog">
                 <div class="row-fluid">
                     <div class="span6">
                         <div class="editor-label">HD
@@ -165,7 +177,7 @@
          <!--second row right - first column-->
         <div class="span6">
             <h4>Original Data</h4>
-                <div class="thumbnail">
+                <div class="thumbnail edit-dog">
                       <div class="editor-label">
                         @Html.LabelFor(model => model.Name, new { title = "Your Tooltip text goes here" })
                     </div>
@@ -190,8 +202,8 @@
                     </div>
                     <div class="editor-label">Born in</div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.BornInCountry.Name)
-                        @Html.ValidationMessageFor(model => model.BornInCountry.Name)
+                        @Html.DropDownList("CountryId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.BornInCountryId)
                     </div>
 
                      <!-- From Littertable, modification dangerous -->  
@@ -202,8 +214,8 @@
                     </div>
                     <div class="editor-label">Breeder</div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.Person.Name)
-                        @Html.ValidationMessageFor(model => model.Person.Name)
+                        @Html.EditorFor(model => model.Litter.Person.Name)
+                        @Html.ValidationMessageFor(model => model.Litter.Person.Name)
                     </div>
                 </div>
         </div>
@@ -213,33 +225,7 @@
 
     
   
-        <!--STILL TO REVEIEW-->
-        
-        
-        
-        <div class="row">
-        <div class="span12">
-           <div class="span3">
-                
-        
-        <!--Health and appreance-->
-        <fieldset class="scheduler-border">
-            <legend class="scheduler-border">Health and appreance</legend>
-                <div class="control-group">
-
-                    
-
-                   
-                   
-                    
-                </div>
-            </div>
-          </div>
-
-
-    
-   </div> <!-- Div span3 -->
-
+             
         
         
         <!--Original data-->
@@ -263,39 +249,6 @@
                         @Html.ValidationMessageFor(model => model.Reg)
                     </div>
                    
-                   
-                    <div class="editor-label">Gender</div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.Sex)
-                        @Html.ValidationMessageFor(model => model.Sex)
-                    </div>
-                    <div class="editor-label">Born in</div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.BornInCountry.Name)
-                        @Html.ValidationMessageFor(model => model.BornInCountry.Name)
-                    </div>
-
-                     <!-- From Littertable, modification dangerous -->  
-                    <div class="editor-label">Birthdate</div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.Litter.DateOfBirth)
-                        @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
-                    </div>
-                    <div class="editor-label">Breeder</div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.Person.Name)
-                        @Html.ValidationMessageFor(model => model.Person.Name)
-                    </div>
-                </div>
-        </div>
-        </fieldset>
-        </div>
-        <!-- Ownership -->    
-        <div class="span4">
-        
-        <fieldset class="scheduler-border">
-             <legend class="scheduler-border">Ownership</legend>
-                 <div class="control-group">
 
                     
                     
