@@ -6,8 +6,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+{
+
 @using (Html.BeginForm("Edit", "Dog", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -61,11 +64,11 @@
             <div class="thumbnail edit-dog">
                 <div class="row-fluid">
                     <div class="span4">
-                        
+                                
                         <p>Current Photo</p>
                             @if (@Model.PicturePath == null)
                             {
-                                <img src="~/Images/dogs/dog1.jpg" alt ="photo missing" />     
+                                <img src="~/Images/dogs/dog2.jpg" alt ="photo missing" />     
                             }
                             else
                             {                           
@@ -109,10 +112,14 @@
                     <div class="span6">
                         <div class="editor-label">HD
                         <a href="#" id="hd" class="btn-mini btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HD2
+                        <a href="#" id="hd2" class="btn-mini btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
                         </div>
                         <div class="editor-field">
-                       @Html.EditorFor(model => model.HD)
-                       @Html.ValidationMessageFor(model => model.HD)
+                        @Html.TextBoxFor(model => model.HD,new {style="width: 80px;" } )
+                        @Html.ValidationMessageFor(model => model.HD)
+                        @Html.TextBoxFor(model => model.HD2,new {style="width: 80px;" } )
+                        @Html.ValidationMessageFor(model => model.HD2)    
                        </div>
                         <div class="editor-label">Inbreeding
                         <a href="#" id="inbreeding" class="btn-mini btn-danger" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
@@ -121,26 +128,19 @@
                         @Html.EditorFor(model => model.Inbreeding)
                         @Html.ValidationMessageFor(model => model.Inbreeding)
                         </div>
-                        <div class="editor-label">
-                        Eyes
-                        </div>
+                        <div class="editor-label">Eyes</div>
                         <div class="editor-field">
                         @Html.EditorFor(model => model.HD)
                         @Html.ValidationMessageFor(model => model.HD)
                         </div>
-                         <div class="editor-label">Dew Claws</div>
+                        <div class="editor-label">Eyes</div>      
                         <div class="editor-field">
                             @Html.TextBoxFor(model => model.MT)
                             @Html.ValidationMessageFor(model => model.MT)
                        </div>
-                    
-                        <div class="editor-label">HD2</div>
-                        <div class="editor-field">
-                           @Html.EditorFor(model => model.HD2)
-                           @Html.ValidationMessageFor(model => model.HD2)
-                        </div>
-                        <div class="editor-label">
+                       <div class="editor-label">
                             Size
+                        <a href="#" id="size" class="btn-mini btn-danger" rel="popover" data-content="Please enter the size of the dog in centemeters" data-original-title="Size:">i</a>
                         </div>
                         <div class="editor-field">
                            @Html.EditorFor(model => model.Size)
@@ -166,13 +166,13 @@
                         @Html.TextBoxFor(model => model.Comment, new { style = "height: 80px;" })
                         @Html.ValidationMessageFor(model => model.Comment)
                         </div>
-                        <div class="editor-label">Hair<div class="editor-field">
+                        <div class="editor-label">Hair
+                        <a href="#" id="hair" class="btn-mini btn-danger" rel="popover" data-content="Please state here if the dog  long or short hair" data-original-title="Hair:">i</a>
+                        </div>
+                        <div class="editor-field">
                         @Html.EditorFor(model => model.Hair)
                         @Html.ValidationMessageFor(model => model.Hair)
-
                         
-                    </div>
-
                     </div>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
             <h4>Original Data</h4>
                 <div class="thumbnail edit-dog">
                       <div class="editor-label">
-                        @Html.LabelFor(model => model.Name, new { title = "Your Tooltip text goes here" })
+                        @Html.LabelFor(model => model.Name)
                         @Html.HiddenFor(model => model.LitterId)
                     </div>
                     <div class="editor-field">
@@ -229,68 +229,7 @@
                 </div>
             </div>
          </div>
-
-    
-  
-             
-        
-        
-        <!--Original data-->
-        <div class="span3">
-        <fieldset class="scheduler-border">
-            <legend class="scheduler-border">Original Data</legend>
-                <div class="control-group">
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Name, new { title = "Your Tooltip text goes here" })
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.Name)
-                        @Html.ValidationMessageFor(model => model.Name)
-                    </div>
-                    <div class="controls bootstrap-timepicker">
-                    </div>
-
-                    
-                    
-                 </div> 
-        </fieldset>
-        <!-- Photo -->
-        <fieldset class="scheduler-border">
-            <legend class="scheduler-border">Photo</legend>
-            <div class="row">
-            <div class="span3"> 
-            <div class="control-group">
-                    <div class="editPhoto">
-                            Current Photo
-                            @if (@Model.PicturePath == null)
-                            {
-                                <img src="~/Images/dogs/dog1.jpg" alt ="photo missing" />     
-                            }
-                            else
-                            {                           
-                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
-                            }
-                    </div>
-                    <div class="uploadPhoto">
-                                <div class="input-group-btn">
-						        
-							    Select picture:<input type="file" name="file" class="btn btn-primary btn-file">
-						      
-					            </div>
-					            
-                           <!--     <p><input type="text" class="form-control" readonly="true"></p>
-                                
-                                
-                                <button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>
-                                <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>      -->                           				           	                                    			
-			       </div>
-                </div>
-                </div>
-                </div>
-        </fieldset>
-        </div>  <!--  span3 -->
-      
-    
+     
     <p>
         <input type="submit" value="Save" />
     </p>
@@ -304,11 +243,6 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-tooltip.js"></script>
-<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-popover.js"></script>
-
 
 <script>
 $(function ()
@@ -325,6 +259,19 @@ $(function ()
         trigger: 'hover',
         'placement': 'top'
     });
+    $("#size").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
+    $("#hair").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
+    $("#inbreeding").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
+
 });
 </script>
 
