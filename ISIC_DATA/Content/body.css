@@ -123,22 +123,41 @@ p {
     margin-left:-30px;
 }
 
+
+.table ,bornInCountry{
+    
+    background-color:#f2f2f2;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #dddddd ;
+    }
+
+.table ,bornInCountry ,td:first-child
+{
+    text-align:right;
+}
+
+.homeText
+{
+    text-align: justify;
+    padding-right: 20px;
+}
+
 /*Adjustments Dog Detail thumbnail on Home*/
 .thumbnail > img     {
          float:left;
          margin-left: 10px;
          margin-top: 10px;
          margin-bottom: 10px;
-    }
+         }
 
 .ThumbnailPopularDogs    {
         margin: 15px;
         }
 
-.ThumbnailPopularDogs .img    {
+.ThumbnailPopularDogs > img    {
         margin-bottom: 15px;
-        }
-
+       }
 
 
 /*************************/
