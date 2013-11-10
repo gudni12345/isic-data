@@ -76,7 +76,7 @@ namespace ISIC_DATA.Controllers
         {
             
             var aboutnewsarticle = from a in db.NewsArticle
-                                   where a.CategoriesName =="About"
+                                   where a.Valid == true && a.CategoriesName =="About"
                                    select a;
 
             return View(aboutnewsarticle);
@@ -92,7 +92,7 @@ namespace ISIC_DATA.Controllers
 
             var usernewsarticles = db.NewsArticle.Include(p => p.Users);
             usernewsarticles = from p in db.NewsArticle //only show valid news in users News View
-                               where p.Valid == true
+                               where p.Valid == true && p.CategoriesName =="News"
                                select p;
 
             switch (sortOrder)
