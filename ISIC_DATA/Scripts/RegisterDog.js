@@ -4,8 +4,8 @@
 // Added client validation. Required in the regform. Litter model doesn't the requirement for those fields for import purpose.
 $('#regform').validate({
     rules: {
-        dateOfBirth: { required: true },
-        returnBreederId: { required: true }
+        dateOfBirth: { required: true , class: "input-validation-error" },
+        returnBreederId: { required: true, class: "input-validation-error" }
     },
     messages: {
         dateOfBirth: { required: "Date of Birth is required." },
@@ -14,35 +14,6 @@ $('#regform').validate({
 });
 
 
-// Validation - Warning Red color on Field that wasn't validated. Also removing the red then field is Validated.
-$('span.field-validation-valid, span.field-validation-error').each(function () {
-    $(this).addClass('help-inline');
-});
-
-$('regform').submit(function () {
-    if ($(this).valid()) {
-        $(this).find('div.control-group').each(function () {
-            if ($(this).find('span.field-validation-error').length == 0) {
-                $(this).removeClass('error');
-            }
-        });
-    }
-    else {
-        $(this).find('div.control-group').each(function () {
-            if ($(this).find('span.field-validation-error').length > 0) {
-                $(this).addClass('error');
-            }
-        });
-    }
-});
-
-$('regform').each(function () {
-    $(this).find('div.control-group').each(function () {
-        if ($(this).find('span.field-validation-error').length > 0) {
-            $(this).addClass('error');
-        }
-    });
-});
 
 
 
