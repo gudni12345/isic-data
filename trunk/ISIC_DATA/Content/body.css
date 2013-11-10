@@ -132,7 +132,7 @@ p {
     border: 1px solid #dddddd ;
     }
 
-.table ,bornInCountry ,td:first-child
+.table .bornInCountry .td:first-child
 {
     text-align:right;
 }
