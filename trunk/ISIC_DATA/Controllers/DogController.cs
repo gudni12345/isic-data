@@ -203,7 +203,7 @@ namespace ISIC_DATA.Controllers
                 }
 
                 if (fileName != null)
-                    dog.PicturePath = "~/Photos/"+fileName;
+                    dog.PicturePath = "~/Photos/"+fileName;                
                 db.Entry(dog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
