@@ -75,7 +75,11 @@ namespace ISIC_DATA.Controllers
         public ActionResult About()
         {
             
-            return View();
+            var aboutnewsarticle = from a in db.NewsArticle
+                                   where a.CategoriesName =="About"
+                                   select a;
+
+            return View(aboutnewsarticle);
         }
 
 
