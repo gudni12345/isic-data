@@ -31,40 +31,34 @@
                     <div class="span6">
                         <div class="editor-label">HD
                         <a href="#" id="hd" class="btn-mini btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HD2
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HD2
                         <a href="#" id="hd2" class="btn-mini btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
                         </div>
                         <div class="editor-field">
-                        @Html.TextBoxFor(model => model.HD,new {style="width: 80px;" } )
+                        @Html.TextBoxFor(model => model.HD,new {style="width: 92px;" } ) @Html.TextBoxFor(model => model.HD2,new {style="width: 92px;" } )
                         @Html.ValidationMessageFor(model => model.HD)
-                        @Html.TextBoxFor(model => model.HD2,new {style="width: 80px;" } )
                         @Html.ValidationMessageFor(model => model.HD2)    
                        </div>
                         <div class="editor-label">Inbreeding
                         <a href="#" id="inbreeding" class="btn-mini btn-danger" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size
+                        <a href="#" id="size" class="btn-mini btn-danger" rel="popover" data-content="Please enter the size of the dog in centemeters" data-original-title="Size:">i</a>
                         </div>
                         <div class="editor-field">
-                        @Html.EditorFor(model => model.Inbreeding)
-                        @Html.ValidationMessageFor(model => model.Inbreeding)
+                         @Html.TextBoxFor(model => model.Inbreeding,new {style="width: 92px;" } ) @Html.TextBoxFor(model => model.Size,new {style="width: 92px;" } )
+                         @Html.ValidationMessageFor(model => model.Inbreeding)
                         </div>
                         <div class="editor-label">Eyes</div>
                         <div class="editor-field">
-                        @Html.EditorFor(model => model.HD)
-                        @Html.ValidationMessageFor(model => model.HD)
+                        @Html.EditorFor(model => model.Eyes)
+                        @Html.ValidationMessageFor(model => model.Eyes)
                         </div>
-                        <div class="editor-label">Eyes</div>      
+                        <div class="editor-label">Dew Claws</div>      
                         <div class="editor-field">
                             @Html.TextBoxFor(model => model.MT)
                             @Html.ValidationMessageFor(model => model.MT)
                        </div>
-                       <div class="editor-label">
-                            Size
-                        <a href="#" id="size" class="btn-mini btn-danger" rel="popover" data-content="Please enter the size of the dog in centemeters" data-original-title="Size:">i</a>
-                        </div>
-                        <div class="editor-field">
-                           @Html.EditorFor(model => model.Size)
-                           @Html.ValidationMessageFor(model => model.Size)
-                        </div>
+                                             
                     </div>
                     <!--second row left - second column-->
                     <div class="span6">
@@ -194,7 +188,7 @@
             <h4>Photo</h4>
             <div class="thumbnail edit-dog">
                 <div class="row-fluid">
-                    <div class="span4">
+                     <div class="span4">
                                 
                         <p>Current Photo</p>
                             @if (@Model.PicturePath == null)
@@ -205,36 +199,42 @@
                             {                           
                                  <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             }
-                    </div>
-                    <div class="span8">
-                    <!--first row right - first column-->
-                        <div class="uploadPhoto">
-                        <div class="input-group-btn">
-					  
-                      
-					     Select picture:<input type="file" name="file"  class="btn btn-primary btn-file">
-					     <p><input type="text" class="form-control" readonly="true"></p>
-					<!--    </div>
-					        <p><input type="text" class="form-control" readonly="true"></p>
-                                                           
-                            <button type="submit" class="btn btn-primary" name="Submit" id="Submit">Upload</button>
-                            <p><button type="reset" class="btn btn-warning cancel">Cancel upload</button></p>
-                                  	                                    			
-			            </div> -->
+                     </div>
                     
-                   </div>
+                     <div class="span12">
+                     <!--first row right - first column-->
+                                                   
+				             <div class="input-group">
+					            <span class="input-group-btn">
+						            <span class="btn btn-primary btn-file">
+							            Add new:<input type="file" name="file">
+                                 </span>
+					                <input type="text" class="form-control input-sm" placeholder="New photo here" readonly="true"></span>
+                                    <button type="reset" class="btn btn-warning cancel"><span>Cancel upload</span></button>
+					            </div>
+
+                          <!-- The loading indicator is shown during file processing -->
+                             <span class="fileupload-loading"></span>
+                    
+                <!-- The global progress information -->
+                <div class="span5 fileupload-progress fade">
+                    <!-- The global progress bar -->
+                    <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                        <div class="bar" style="width:0%;"></div>
+                    </div>
+                    <!-- The extended global progress information -->
+                    <div class="progress-extended">&nbsp;</div>
+                </div>
+            </div>
+            <!-- The table listing the files available for upload/download -->
+            <table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+        
+                             </div>
                 </div>
             </div>
          </div>
-    </div>
-   </div>
-   </div>     
-
-    
-    
-    
-    
-         
+ 
+        
     <p>
         <input type="submit" value="Save" />
     </p>
@@ -301,8 +301,74 @@ $(function ()
             }
         });
     });
-
-
 </script>
-   
 
+<!-- The template to display files available for upload -->
+        <script id="template-upload" type="text/x-tmpl">
+        {% for (var i=0, file; file=o.files[i]; i++) { %}
+            <tr class="template-upload fade">
+                <td>
+                    <span class="preview"></span>
+                </td>
+                <td>
+                    <p class="name">{%=file.name%}</p>
+                    {% if (file.error) { %}
+                        <div><span class="label label-important">Error</span> {%=file.error%}</div>
+                    {% } %}
+                </td>
+                <td>
+                    <p class="size">{%=o.formatFileSize(file.size)%}</p>
+                    {% if (!o.files.error) { %}
+                        <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
+                    {% } %}
+                </td>
+                <td>
+                    {% if (!o.files.error && !i && !o.options.autoUpload) { %}
+                        <button class="btn btn-primary start">
+                            <i class="icon-upload icon-white"></i>
+                            <span>Start</span>
+                        </button>
+                    {% } %}
+                    {% if (!i) { %}
+                        <button class="btn btn-warning cancel">
+                            <i class="icon-ban-circle icon-white"></i>
+                            <span>Cancel</span>
+                        </button>
+                    {% } %}
+                </td>
+            </tr>
+        {% } %}
+        </script>
+   
+       <!-- The template to display files available for download -->
+        <script id="template-download" type="text/x-tmpl">
+        {% for (var i=0, file; file=o.files[i]; i++) { %}
+            <tr class="template-download fade">
+                <td>
+                    <span class="preview">
+                        {% if (file.thumbnail_url) { %}
+                            <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
+                        {% } %}
+                    </span>
+                </td>
+                <td>
+                    <p class="name">
+                        <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+                    </p>
+                    {% if (file.error) { %}
+                        <div><span class="label label-important">Error</span> {%=file.error%}</div>
+                    {% } %}
+                </td>
+                <td>
+                    <span class="size">{%=o.formatFileSize(file.size)%}</span>
+                </td>
+                <td>
+                    <button class="btn btn-danger delete" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                        <i class="icon-trash icon-white"></i>
+                        <span>Delete</span>
+                    </button>
+                    <input type="checkbox" name="delete" value="1" class="toggle">
+                </td>
+            </tr>
+        {% } %}
+        </script>    
