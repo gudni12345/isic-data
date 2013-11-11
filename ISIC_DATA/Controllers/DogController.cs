@@ -11,6 +11,7 @@ using PagedList;
 using PagedList.Mvc;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Web.Helpers;
 
 
 namespace ISIC_DATA.Controllers
@@ -188,20 +189,34 @@ namespace ISIC_DATA.Controllers
      
             if (ModelState.IsValid)
             {
-                string fileName=null;
-                if (Request.Files.Count > 0)
-                {
-                    var file = Request.Files[0];
-                    if (file != null && file.ContentLength > 0)
+                string fileName = null;
+                try  // Try to save picture
+                {                    
+                    if (Request.Files.Count > 0)
                     {
-                        // var fileName = Path.GetFileName(file.FileName);
-                        var extension = Path.GetExtension(file.FileName);
-                        fileName = Regex.Replace(dog.Reg, @"[\[\]\\\^\$\.\|\?\*\+\(\)\{\}%,;><!@#&\-\+/]", "");
-                        fileName = fileName + extension;
-                        var path = Path.Combine(Server.MapPath("~/Photos/"), fileName);
-                        file.SaveAs(path);
-                        TempData["Success"] = "Picture for the "+ dog.Name + " was successfully saved.";
+                        var file = Request.Files[0];
+
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            // var fileName = Path.GetFileName(file.FileName);
+
+                            WebImage img = new WebImage(file.InputStream);   // Making sure the picture is of rigth size
+                            if (img.Width > 500)
+                                img.Resize(500, 315);
+
+                            var extension = Path.GetExtension(file.FileName);
+                            fileName = Regex.Replace(dog.Reg, @"[\[\]\\\^\$\.\|\?\*\+\(\)\{\}%,;><!@#&\-\+/]", "");
+                            fileName = fileName + extension;
+                            var path = Path.Combine(Server.MapPath("~/Photos/"), fileName);
+                            //file.SaveAs(path);
+                            img.Save(path);
+                            TempData["Success"] = "Picture for the " + dog.Name + " was successfully saved.";
+                        }
                     }
+                }
+                catch (Exception)
+                {
+                    ViewData["Error"] = "Unable to save picture";
                 }
 
                 if (fileName != null)
