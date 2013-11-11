@@ -172,7 +172,7 @@ namespace ISIC_DATA.Controllers
           //  ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
+            ViewBag.BornInCountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
             return View(dog);
         }
 

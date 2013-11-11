@@ -121,7 +121,7 @@
                     </div>
                     <div class="editor-label">Born in</div>
                     <div class="editor-field">
-                        @Html.DropDownList("CountryId", String.Empty)
+                        @Html.DropDownList("BornInCountryId", String.Empty)
                         @Html.ValidationMessageFor(model => model.BornInCountryId)
                     </div>
 
@@ -203,7 +203,7 @@
                     
                      <div class="span12">
                      <!--first row right - first column-->
-                                                   
+                             @Html.HiddenFor(model => model.PicturePath)                                                   
 				             <div class="input-group">
 					            <span class="input-group-btn">
 						            <span class="btn btn-primary btn-file">
@@ -236,7 +236,7 @@
  
         
     <p>
-        <input type="submit" value="Save" />
+        <input type="submit" class="btn btn-primary" value="Save" />
     </p>
     
 }
