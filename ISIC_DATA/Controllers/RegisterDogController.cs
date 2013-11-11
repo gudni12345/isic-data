@@ -159,6 +159,14 @@ namespace ISIC_DATA.Controllers
             return Json(serialisedJson, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult FetchOwners(string q)                                   //     Get all posible Owners to json, used for typeAhead
+        {
+            List<Person> ownerList = db.Person.Where(p => p.Name.ToLower().StartsWith(q.ToLower())).ToList();
+            var serialisedJson = from result in ownerList
+                                 select new { Name = result.Name, Id = result.Id };
+
+            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
+        }
 
 
 
