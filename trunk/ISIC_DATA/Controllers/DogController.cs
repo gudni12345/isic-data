@@ -172,6 +172,7 @@ namespace ISIC_DATA.Controllers
           //  ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
             ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
             ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
+            ViewBag.Owner = dog.Person.Name;
             ViewBag.BornInCountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
             return View(dog);
         }
@@ -199,6 +200,7 @@ namespace ISIC_DATA.Controllers
                         fileName = fileName + extension;
                         var path = Path.Combine(Server.MapPath("~/Photos/"), fileName);
                         file.SaveAs(path);
+                        TempData["Success"] = "Picture for the "+ dog.Name + " was successfully saved.";
                     }
                 }
 
@@ -270,5 +272,17 @@ namespace ISIC_DATA.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+        public JsonResult FetchOwners(string q)                                   //     Get all posible Owners to json, used for typeAhead
+        {
+            List<Person> ownerList = db.Person.Where(p => p.Name.ToLower().StartsWith(q.ToLower())).ToList();
+            var serialisedJson = from result in ownerList
+                                 select new { Name = result.Name, Id = result.Id };
+
+            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

@@ -40,9 +40,9 @@
                         @Html.ValidationMessageFor(model => model.HD2)    
                        </div>
                         <div class="editor-label">Inbreeding
-                        <a href="#" id="inbreeding" class="btn-mini btn-danger" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
+                        <a href="#" id="inbreeding" class="btn-mini btn-warning" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size
-                        <a href="#" id="size" class="btn-mini btn-danger" rel="popover" data-content="Please enter the size of the dog in centemeters" data-original-title="Size:">i</a>
+                        <a href="#" id="size" class="btn-minibtn-warning" rel="popover" data-content="Please enter the size of the dog in centemeters" data-original-title="Size:">i</a>
                         </div>
                         <div class="editor-field">
                          @Html.TextBoxFor(model => model.Inbreeding,new {style="width: 92px;" } ) @Html.TextBoxFor(model => model.Size,new {style="width: 92px;" } )
@@ -80,7 +80,7 @@
                         @Html.ValidationMessageFor(model => model.Comment)
                         </div>
                         <div class="editor-label">Hair
-                        <a href="#" id="hair" class="btn-mini btn-danger" rel="popover" data-content="Please state here if the dog  long or short hair" data-original-title="Hair:">i</a>
+                        <a href="#" id="hair" class="btn-minibtn-warning" rel="popover" data-content="Please state here if the dog  long or short hair" data-original-title="Hair:">i</a>
                         </div>
                         <div class="editor-field">
                         @Html.EditorFor(model => model.Hair)
@@ -153,6 +153,16 @@
                 <div class="row-fluid">
                     <div class="span6">
                         <!--HERE WE NEED A TYPE AHEAD LIST-->
+                        <label>Owner:</label>              
+                        @Html.TextBox("Owner",(string)ViewBag.Owner, new { placeholder="Owner name", @id="Owner_typeahead"})
+                        @Html.HiddenFor(model => model.PersonId, new { @id = "returnOwnerId" })
+                        <div>
+                            @Html.ActionLink("Add", "CreateOwner", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
+                        </div>
+                        <div id='dialogDiv' class='modal hide fade in'>
+                            <div id='dialogContent'></div>
+                        </div>
+
                    <!--     <div class="editor-label">Html.LabelFor(model => model.Person.Owner)</div>    
                         <div class="editor-field">    
                         Html.EditorFor(model => model.Person.Name)
@@ -205,12 +215,13 @@
                      <!--first row right - first column-->
                              @Html.HiddenFor(model => model.PicturePath)                                                   
 				             <div class="input-group">
-					            <span class="input-group-btn">
-						            <span class="btn btn-primary btn-file">
+					            <span class="input-group-btn">                                    
+						            <span class="btn btn-success btn-file">
 							            Add new:<input type="file" name="file">
                                  </span>
 					                <input type="text" class="form-control input-sm" placeholder="New photo here" readonly="true"></span>
                                     <button type="reset" class="btn btn-warning cancel"><span>Cancel upload</span></button>
+                                 
 					            </div>
 
                           <!-- The loading indicator is shown during file processing -->
@@ -278,6 +289,24 @@ $(function ()
     });
 
 });
+
+    // Typeahead for the owner
+$(document).ready(function () {
+    $('#Owner_typeahead').typeahead({
+        name: "Owner",
+        remote: '/RegisterDog/FetchOwners?q=%QUERY',
+        limit: 5,
+        valueKey: "Name",
+    }).on("typeahead:selected typeahead:autocompleted",
+        function (e, datum) {
+            $('#returnOwnerId').val(datum.Id);
+        }
+    );
+});
+
+
+
+
 </script>
 
 

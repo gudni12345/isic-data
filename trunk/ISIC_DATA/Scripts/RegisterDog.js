@@ -1,7 +1,7 @@
 ﻿
 
 
-// Added client validation. Required in the regform. Litter model doesn't the requirement for those fields for import purpose.
+// Added client validation. Required in the regform. Litter model doesn't have the requirement for those fields for import purpose.
 $('#regform').validate({
     rules: {
         dateOfBirth: { required: true , class: "input-validation-error" },
