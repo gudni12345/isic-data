@@ -143,6 +143,55 @@ namespace ISIC_DATA.Controllers
         }
 
 
+        // Create owner
+
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult CreateOwner()
+        {
+            ViewBag.ReturnUrl = Request.UrlReferrer;
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+            return PartialView("CreateOwner");
+        }
+
+        //
+        // POST: /Person/Create
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult CreateOwner(Person person)
+        {
+            if (person.Name == null)
+            {
+                ModelState.AddModelError("Name", "Name is required.");
+            }
+
+            if (person.CountryId == null)
+            {
+                ModelState.AddModelError("CountryId", "Country is required.");
+            }
+
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    person.Owner = true;
+                    db.Person.Add(person);
+                    db.SaveChanges();
+                    //return Json(new { Message = "success" });
+                    return Json(new { success = true });
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
+            }
+
+            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", person.CountryId);
+            return PartialView("CreateOwner", person);
+        }
+
+
 
 
 
