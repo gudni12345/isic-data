@@ -109,6 +109,30 @@ namespace ISIC_DATA.Controllers
                                     {
                                         result = 6.25;
                                     }
+                                    
+                                    
+                                    else // 8.  Half First cousins → 3.125% (1⁄32) - Either grandma og grandpa the same
+                                        if (((A.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.FatherId) ||  //  Same grandfather
+                                              (A.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.FatherId) ||
+                                              (A.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.FatherId) ||
+                                              (A.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.FatherId)) ||
+
+                                              ((A.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.MotherId) ||  //  Same grandmother
+                                              (A.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.MotherId) ||
+                                              (A.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.MotherId) ||
+                                              (A.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.MotherId)))
+                                        {
+                                            result = 3.125;
+                                        }
+
+                                     else // 9.  → 6,25% (1⁄32) - Great Grandma is the mother (Great-uncle/ neice and Great-aunt/ uncle)
+                                            if (((A.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.MotherId) ||
+                                                 (A.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.FatherId)))
+                                            {
+                                                result = 3.125;
+                                            }
+
+
 
             return result;
         }
