@@ -798,6 +798,7 @@
     <Content Include="Views\BackLoadDemo\Index.cshtml" />
     <Content Include="Views\BackLoadDemo\Test.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.Home.cshtml" />
+    <Content Include="Views\Person\CreateOwner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
