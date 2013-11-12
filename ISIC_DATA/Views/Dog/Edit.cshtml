@@ -72,11 +72,11 @@
                         @Html.LabelFor(model => model.ColorComment)
                         </div>
                         <div class="editor-field">
-                        @Html.TextBoxFor(model => model.ColorComment, new { style = "height: 50px;" })
+                        @Html.TextAreaFor(model => model.ColorComment, new { style = "height: 50px;"  })
                         @Html.ValidationMessageFor(model => model.ColorComment)
                         <div class="editor-label"> Comment</div>
                         <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Comment, new { style = "height: 80px;" })
+                        @Html.TextAreaFor(model => model.Comment, new { style = "height: 80px;" })
                         @Html.ValidationMessageFor(model => model.Comment)
                         </div>
                         <div class="editor-label">Hair
