@@ -32,7 +32,7 @@
                         <div class="editor-label">HD
                         <a href="#" id="hd" class="btn-mini btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HD2
-                        <a href="#" id="hd2" class="btn-mini btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
+                        <a href="#" id="hd2" class="btn-mini btn-warning" rel="popover" data-content="If the dog have had another HD value state it here" data-original-title="HD2:">i</a>
                         </div>
                         <div class="editor-field">
                         @Html.TextBoxFor(model => model.HD,new {style="width: 92px;" } ) @Html.TextBoxFor(model => model.HD2,new {style="width: 92px;" } )
@@ -112,8 +112,7 @@
                         @Html.EditorFor(model => model.Reg)
                         @Html.ValidationMessageFor(model => model.Reg)
                     </div>
-                   
-                   
+                                    
                     <div class="editor-label">Gender</div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.Sex)
@@ -138,12 +137,10 @@
                     </div>
                 -->
                 </div>
-        </div>
-                </div>
-            </div>
-
-
-    
+          </div>
+      </div>
+   </div>
+       
     
         <div class="row-fluid">
         <!--first row left - first column-->
@@ -239,17 +236,15 @@
             </div>
             <!-- The table listing the files available for upload/download -->
             <table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
-        
-                             </div>
-                </div>
-            </div>
          </div>
- 
-        
+      </div>
+    </div>
+  </div>
+         
     <p>
         <input type="submit" class="btn btn-primary" value="Save" />
     </p>
-    
+   
 }
 
 <div>
@@ -284,6 +279,10 @@ $(function ()
         'placement': 'top'
     });
     $("#inbreeding").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
+    $("#hd2").popover({
         trigger: 'hover',
         'placement': 'top'
     });
