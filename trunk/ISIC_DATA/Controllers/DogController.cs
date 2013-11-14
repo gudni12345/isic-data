@@ -51,7 +51,8 @@ namespace ISIC_DATA.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 dogs = dogs.Where(d => d.Name.ToUpper().Contains(searchString.ToUpper())
-                                      || d.Reg.ToUpper().Contains(searchString.ToUpper()));
+                                      || d.Reg.ToUpper().Contains(searchString.ToUpper())
+                                      || d.NewReg.ToUpper().Contains(searchString.ToUpper()));
             }
             
             ViewBag.successMessage = "";
