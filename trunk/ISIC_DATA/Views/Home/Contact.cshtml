@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model IQueryable<ISIC_DATA.Models.Users>
+
+@{
+    ViewBag.Title = "Contact us";
 }
 
 <hgroup class="title">
@@ -7,44 +9,153 @@
     <h2>@ViewBag.Message</h2>
 </hgroup>
 
-<section class="contact">
-    <header>
-        <h3>Phone</h3>
-    </header>
-    <p>
-        <span class="label">Main:</span>
-        <span>425.555.0100</span>
-    </p>
-    <p>
-        <span class="label">After Hours:</span>
-        <span>425.555.0199</span>
-    </p>
-</section>
-
-<section class="contact">
-    <header>
-        <h3>Email</h3>
-    </header>
-    <p>
-        <span class="label">Support:</span>
-        <span><a href="mailto:Support@example.com">Support@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">Marketing:</span>
-        <span><a href="mailto:Marketing@example.com">Marketing@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">General:</span>
-        <span><a href="mailto:General@example.com">General@example.com</a></span>
-    </p>
-</section>
-
-<section class="contact">
-    <header>
-        <h3>Address</h3>
-    </header>
-    <p>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399
-    </p>
-</section>
+<table border="0" cellpadding="0" cellspacing="0" width="99%">
+	<tbody style="border:none;">
+		<tr>
+			<td align="left" style="border-top:1px solid #ccc;" valign="top" width="33%">&nbsp;
+				</td>
+			<td align="left" style="border-top:1px solid #ccc;" valign="top" width="33%">&nbsp;
+				</td>
+			<td align="left" style="border-top:1px solid #ccc;" valign="top" width="33%">&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td align="left" valign="top">
+				<h2><strong>Scandinavia</strong></h2>
+			</td>
+			
+		</tr>
+			
+		<tr>
+			<td align="left" valign="top">
+				<p><strong><strong>Iceland</strong></strong></p>
+				<p>Guðni Ágústsson<br />
+				   Brunastöðum 5<br />
+                   112 Reykjavík<br />
+                   Email: <a href="mailto:isey@hive.is">isey@hive.is</a> <br />
+				</p>
+				
+			</td>
+			<td align="left" valign="top" width="33%">
+				<p><strong>Finland</strong></p>
+				<p>Anne Vaskio<br />
+				   Email: <a href="mailto:anne.vaskio@gmail.com  ">anne.vaskio@gmail.com  </a> <br />
+			</td>
+			<td align="left" valign="top"><p><strong>Denmark</strong></p>
+		<p>Else Westermann   <br />
+           Email: <a href="mailto:westmann@post12.tele.dk">westmann@post12.tele.dk</a> <br />
+				
+                </td>
+		</tr>
+		<tr>
+			<td align="left" valign="top" width="33%">&nbsp;
+				</td>
+			<td align="left" valign="top" width="33%">&nbsp;
+				</td>
+			<td align="left" valign="top" width="33%">&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td align="left" valign="top">
+				<p><strong>Sweden</strong></p>
+				<p>May Britt Sannerholtd<br />	
+				   Email: <a href="mailto:avel@islandshunden.sek">avel@islandshunden.se</a> <br />
+					
+			</td>
+			<td align="left" valign="top" width="33%">
+				<p><strong>Norway</strong></p>
+				<p>
+					Lill-Hege Nygaard <br />
+                    Email: <a href="mailto:lh.nygaard@online.no">lh.nygaard@online.no</a> <br />
+					
+			</td>
+			<td align="left" valign="top" width="33%">&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td align="left" valign="top">&nbsp;
+				</td>
+			<td align="left" valign="top">&nbsp;
+				</td>
+			<td align="left" valign="top">&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td align="left" style="border-top:1px solid #ccc;" valign="top">
+				
+				<h2>
+					<strong>Europe</strong></h2>
+			</td>
+			<td align="left" style="border-top:1px solid #ccc;" valign="top">&nbsp;
+				</td>
+			<td align="left" height="30" style="text-align:right;border-top:1px solid #ccc;" valign=" bottom">
+				<a href="#top">go to top</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+				
+		<tr>
+			<td align="left" valign="top">
+				<p><strong>Austria</strong></p>
+				<p> Susanne E. Götzinger  <br />
+				<p style="padding-bottom:0; margin-bottom:0;">Email: <a href="mailto: susanne@ulfur.net"> susanne@ulfur.net</a> <br />
+				
+			</td>
+			<td align="left" valign="top">
+				<p><strong>Germany</strong></p>
+				<p>Susanne Schürre <br />
+				   Email: <a href="mailto:Susanne-Schuette@t-online.de">Susanne-Schuette@t-online.de</a> <br />
+			</td>
+			<td align="left" valign="top">
+				<p><strong>Netherland</strong></p>
+				<p>Helma van Rijswijk<br />
+				   Email: <a href="mailto:t.rijswijk@chello.nl">t.rijswijk@chello.nl</a> <br />
+					
+			</td>
+		</tr>
+        <tr>
+			<td align="left" valign="top">&nbsp;
+				</td>
+			<td align="left" valign="top">&nbsp;
+				</td>
+			<td align="left" valign="top">&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td align="left" style="border-top:1px solid #ccc;" valign="top">&nbsp;
+				</td>
+			<td align="left" style="border-top:1px solid #ccc;" valign="top">&nbsp;
+				</td>
+			<td align="left" height="30" style="text-align:right;border-top:1px solid #ccc;">
+				<a href="#top">go to top</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>		
+	
+		<tr>
+			<td align="left" valign="top">
+				<h2>
+					<strong>USA</strong></h2>
+			</td>
+			<td align="left" valign="top">&nbsp;
+				</td>
+			<td align="left" valign="top">&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td align="left" valign="top">
+				<p><strong>North America</strong></p>
+				<p>Terry Warnock<br />
+				   Email: <a href="mailto:isaabrcc@gmail.com">isaabrcc@gmail.com</a> <br />
+			</td>
+			
+			<td align="left" valign="top">&nbsp;
+				</td>
+		</tr>
+		
+		<tr style="">
+			<td align="left" valign="top">&nbsp;
+				</td>
+			<td align="left" valign="top">&nbsp;
+				</td>
+			<td align="left" height="30" style="text-align:right">
+				<a href="#top">go to top</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
