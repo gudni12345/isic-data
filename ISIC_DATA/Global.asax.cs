@@ -34,6 +34,8 @@ namespace ISIC_DATA
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+            
+            ViewEngines.Engines.Add(new RazorViewEngine());
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DogContext, Configuration>());
             new DogContext().Users.Find(1);
