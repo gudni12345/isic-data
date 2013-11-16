@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using PagedList;
 
 namespace ISIC_DATA.Models
 {
@@ -10,7 +13,10 @@ namespace ISIC_DATA.Models
         public Dog Father { get; set; }
         public Dog Mother { get; set; }
 
-        public Litter litter { get; set; }        
+        public Nullable<int> LitterId { get; set; }
+        public virtual Litter Litter { get; set; }
+
+        //public virtual ICollection<Litter> Litter { get; set; }
 
 
     }
