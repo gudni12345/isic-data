@@ -108,98 +108,12 @@ namespace ISIC_DATA.DataAccess
             db.Litter.Remove(litter);
         }
 
-        /*      public DbSet<Models.Color> Color
-              {
-                  get
-                  {
-                      throw new NotImplementedException();
-                  }
-                  set
-                  {
-                      throw new NotImplementedException();
-                  }
-              }
+        public int countAllDogs()
+        {
+            return allDogs.Count();
+        }
 
-              public DbSet<Models.Country> Country
-              {
-                  get
-                  {
-                      throw new NotImplementedException();
-                  }
-                  set
-                  {
-                      throw new NotImplementedException();
-                  }
-              }
 
-              public DbSet<Models.Dog> Dog
-              {
-                  get
-                  {
-                      throw new NotImplementedException();
-                  }
-                  set
-                  {
-                      throw new NotImplementedException();
-                  }
-              }
-
-              public DbSet<Models.Litter> Litter { }
-    
-
-              public DbSet<Models.NewsArticle> NewsArticle
-              {
-                  get
-                  {
-                      throw new NotImplementedException();
-                  }
-                  set
-                  {
-                      throw new NotImplementedException();
-                  }
-              }
-
-              public DbSet<Models.Person> Person
-              {
-                  get
-                  {
-                      throw new NotImplementedException();
-                  }
-                  set
-                  {
-                      throw new NotImplementedException();
-                  }
-              }
-
-              public DbSet<Models.UserProfile> UserProfiles
-              {
-                  get
-                  {
-                      throw new NotImplementedException();
-                  }
-                  set
-                  {
-                      throw new NotImplementedException();
-                  }
-              }
-
-              public DbSet<Models.Users> Users
-              {
-                  get
-                  {
-                      throw new NotImplementedException();
-                  }
-                  set
-                  {
-                      throw new NotImplementedException();
-                  }
-              }
-
-              public DbEntityEntry Entry(object o)
-              {
-                  throw new NotImplementedException();
-              }
-      */
         public void Dispose()
         {
             db.Dispose();           
