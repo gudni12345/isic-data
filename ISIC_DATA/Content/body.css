@@ -58,6 +58,9 @@ p {
         list-style-type: none;
 }
 
+.span12 > h3{
+    padding-left: 15px;
+}
 
 
 
@@ -124,24 +127,25 @@ p {
 }
 
 
-.table ,bornInCountry{
-    
-    background-color:#f2f2f2;
-    margin-top: 20px;
-    border-radius: 5px;
-    border: 1px solid #dddddd ;
-    }
-
-.bornInCountry > td:first-child
-{
-    text-align:right;
-}
 
 .homeText
 {
     text-align: justify;
-    padding-right: 20px;
+    padding-right: 10px;
+    padding-left: 15px;
 }
+
+.dogCountText
+{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.country-list
+{
+    line-height: 22px;
+}
+
+
 
 /*Adjustments Dog Detail thumbnail on Home*/
 .thumbnail > img     {
@@ -153,11 +157,21 @@ p {
 
 .ThumbnailPopularDogs    {
         margin: 15px;
+        background-color: white;
         }
 
 .ThumbnailPopularDogs > img    {
         margin-bottom: 15px;
        }
+
+.home-details{
+    background-color:#f2f2f2;
+   }
+.backg-white
+{
+    background-color: white;
+}
+
 
 
 /*************************/
@@ -217,7 +231,7 @@ input.search-query{
 .doglist{
     font-size: 16px;
  }
-.doglist dt{
+.doglist > dt{
     text-align:left;
     padding-left: 20px;
     line-height: 25px;
