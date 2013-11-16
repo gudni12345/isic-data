@@ -18,7 +18,19 @@ namespace ISIC_DATA.Controllers
 {
     public class DogController : Controller
     {
-        private DogContext db = new DogContext();
+   //    private DogRepository db = new DogRepository();
+
+        DogRepository db;
+
+        public DogController()
+            : this(new DogRepository()) {
+        }
+
+        public DogController(DogRepository repository) {
+            db = repository;
+        }
+
+        
 
         //
         // GET: /Dog/
@@ -36,9 +48,9 @@ namespace ISIC_DATA.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
+            ViewBag.CountryId = new SelectList(db.allCountries, "Id", "Name");
 
-            var dogs = db.Dog.Include(d => d.Color).Include(d => d.Person).Include(d => d.BornInCountry).Include(d => d.Litter);
+            var dogs = db.allDogs.Include(d => d.Color).Include(d => d.Person).Include(d => d.BornInCountry).Include(d => d.Litter);
 
             if (CountryId != null)
             {// If country is selected                
@@ -71,7 +83,7 @@ namespace ISIC_DATA.Controllers
 
 
 
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
+            ViewBag.ColorId = new SelectList(db.allColors, "Id", "ColorText");
             
             ViewBag.numberOfDogsSelected = dogs.Count();
 
@@ -89,7 +101,7 @@ namespace ISIC_DATA.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Dog dog = db.Dog.Find(id);
+            Dog dog = db.FindDog(id);
             if (dog == null)
             {
                 return HttpNotFound();
@@ -100,22 +112,22 @@ namespace ISIC_DATA.Controllers
             {
 
                 // get siblings from the same litter // find all dogs that have same litterId as dog selected.
-                ViewBag.Siblings = db.Dog.Where(d => d.LitterId == dog.LitterId).Where(d => d.Id != dog.Id).ToList();    
+                ViewBag.Siblings = db.allDogs.Where(d => d.LitterId == dog.LitterId).Where(d => d.Id != dog.Id).ToList();    
                 
                 // Find all dogs that have the same father
-                ViewBag.SiblingsFromFatherSide = db.Dog.Where(d => d.Litter.FatherId == dog.Litter.FatherId)
+                ViewBag.SiblingsFromFatherSide = db.allDogs.Where(d => d.Litter.FatherId == dog.Litter.FatherId)
                                                   .Where(d => d.Id != dog.Id).ToList();
                 // Find all dogs that have the same mother
-                ViewBag.SiblingsFromMotherSide = db.Dog.Where(d => d.Litter.MotherId == dog.Litter.MotherId)                                          
+                ViewBag.SiblingsFromMotherSide = db.allDogs.Where(d => d.Litter.MotherId == dog.Litter.MotherId)                                          
                                                 .Where(d => d.Id != dog.Id).ToList();
 
 
                  //Find all puppies
                 if (dog.Sex.Equals("M"))  // if Dog is male
-                    ViewBag.Puppies = db.Dog.Where(d => d.Litter.FatherId == dog.Id).ToList();
+                    ViewBag.Puppies = db.allDogs.Where(d => d.Litter.FatherId == dog.Id).ToList();
                 else
                     if (dog.Sex.Equals("F"))
-                        ViewBag.Puppies = db.Dog.Where(d => d.Litter.MotherId == dog.Id).ToList();
+                        ViewBag.Puppies = db.allDogs.Where(d => d.Litter.MotherId == dog.Id).ToList();
 
 
             }
@@ -129,11 +141,11 @@ namespace ISIC_DATA.Controllers
         [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Create()
         {
-            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id");
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText");
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name");
-            ViewBag.BornInCountryId = new SelectList(db.Country, "Id", "Name");
-            ViewBag.LivesInCountryId = new SelectList(db.Country, "Id", "Name");
+            ViewBag.LitterId = new SelectList(db.allLitters, "Id", "Id");
+            ViewBag.ColorId = new SelectList(db.allColors, "Id", "ColorText");
+            ViewBag.PersonId = new SelectList(db.allPersons, "Id", "Name");
+            ViewBag.BornInCountryId = new SelectList(db.allCountries, "Id", "Name");
+            ViewBag.LivesInCountryId = new SelectList(db.allCountries, "Id", "Name");
             return View();
         }
 
@@ -147,16 +159,17 @@ namespace ISIC_DATA.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Dog.Add(dog);
+                db.InsertOrUpdateDog(dog);
+               // db.Dog.Add(dog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.BornInCountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
-            ViewBag.LivesInCountryId = new SelectList(db.Country, "Id", "Name", dog.LivesInCountryId);
+            ViewBag.LitterId = new SelectList(db.allLitters, "Id", "Id", dog.LitterId);
+            ViewBag.ColorId = new SelectList(db.allColors, "Id", "ColorText", dog.ColorId);
+            ViewBag.PersonId = new SelectList(db.allPersons, "Id", "Name", dog.PersonId);
+            ViewBag.BornInCountryId = new SelectList(db.allCountries, "Id", "Name", dog.BornInCountryId);
+            ViewBag.LivesInCountryId = new SelectList(db.allCountries, "Id", "Name", dog.LivesInCountryId);
             return View(dog);
         }
 
@@ -164,20 +177,20 @@ namespace ISIC_DATA.Controllers
         // GET: /Dog/Edit/5
         [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Edit(int id = 0)
-        {
-            Dog dog = db.Dog.Find(id);
+        {            
+            Dog dog = db.FindDog(id);
             
             if (dog == null)
             {
                 return HttpNotFound();
             }
           //  ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
+            ViewBag.ColorId = new SelectList(db.allColors, "Id", "ColorText", dog.ColorId);
+            ViewBag.PersonId = new SelectList(db.allPersons, "Id", "Name", dog.PersonId);
 
             if (dog.PersonId != null)
                 ViewBag.Owner = dog.Person.Name;
-            ViewBag.BornInCountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
+            ViewBag.BornInCountryId = new SelectList(db.allCountries, "Id", "Name", dog.BornInCountryId);
             return View(dog);
         }
 
@@ -223,15 +236,16 @@ namespace ISIC_DATA.Controllers
                 }
 
                 if (fileName != null)
-                    dog.PicturePath = "~/Photos/"+fileName;                
-                db.Entry(dog).State = EntityState.Modified;
+                    dog.PicturePath = "~/Photos/"+fileName;
+                db.InsertOrUpdateDog(dog);
+               // db.Entry(dog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
          //   ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
-            ViewBag.ColorId = new SelectList(db.Color, "Id", "ColorText", dog.ColorId);
-            ViewBag.PersonId = new SelectList(db.Person, "Id", "Name", dog.PersonId);
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name", dog.BornInCountryId);
+            ViewBag.ColorId = new SelectList(db.allColors, "Id", "ColorText", dog.ColorId);
+            ViewBag.PersonId = new SelectList(db.allPersons, "Id", "Name", dog.PersonId);
+            ViewBag.CountryId = new SelectList(db.allCountries, "Id", "Name", dog.BornInCountryId);
 
 
 
@@ -242,8 +256,8 @@ namespace ISIC_DATA.Controllers
         // GET: /Dog/Delete/5
         [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
-        {
-            Dog dog = db.Dog.Find(id);
+        {           
+            Dog dog = db.FindDog(id);
             if (dog == null)
             {
                 return HttpNotFound();
@@ -258,9 +272,10 @@ namespace ISIC_DATA.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
-        {
-            Dog dog = db.Dog.Find(id);
-            db.Dog.Remove(dog);
+        {            
+         //   Dog dog = db.FindDog(id);
+            db.DeleteDog(id);
+            //db.Dog.Remove(dog);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -294,7 +309,7 @@ namespace ISIC_DATA.Controllers
 
         public JsonResult FetchOwners(string q)                                   //     Get all posible Owners to json, used for typeAhead
         {
-            List<Person> ownerList = db.Person.Where(p => p.Name.ToLower().StartsWith(q.ToLower())).ToList();
+            List<Person> ownerList = db.allPersons.Where(p => p.Name.ToLower().StartsWith(q.ToLower())).ToList();
             var serialisedJson = from result in ownerList
                                  select new { Name = result.Name, Id = result.Id };
 
