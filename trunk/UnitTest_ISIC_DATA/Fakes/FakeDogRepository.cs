@@ -56,6 +56,11 @@ namespace ISIC_DATA.Tests.Fakes
             context.Add(dog);
         }
 
+        public int NumberOfDogs()
+        {
+            return context.Count();
+        }
+
         public void Save()
         {
         }

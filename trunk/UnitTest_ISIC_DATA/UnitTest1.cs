@@ -25,14 +25,12 @@ namespace UnitTest_ISIC_DATA
         }
 
         [TestMethod]
-        public void TestMethod1()
-        {
-            List<Dog> dogs = new List<Dog>();
-            Dog dog = new Dog { Name = "Rakki", Reg = "IS1", Sex = "M" };
-
-            dogs.Add(dog);
-
-            Assert.AreEqual(dog.Name, "Rakki");
+        public void Test_Dog_Model()
+        {            
+            Dog dogcorrect = new Dog { Name = "Rakki", Reg = "IS1", Sex = "M" };
+            Dog dogincorrect = new Dog { Name = "Rakki", Reg = "IS1" }; //missing Gender
+       
+            Assert.AreEqual(dogcorrect.Name, "Rakki");
         }
 
 
@@ -50,15 +48,14 @@ namespace UnitTest_ISIC_DATA
             var controller = CreateDogController();
             var testData = FakePedigree.CreateTestDogs();
             FakeDogRepository fakeDb = new FakeDogRepository(testData);
-                        
 
-            //int numberOfDogs = fakeDb.c
-       //     Assert.AreEqual(numberOfDogs, 3);
+            int numberOfDogs = fakeDb.NumberOfDogs();
+            Assert.AreEqual(numberOfDogs, 3);
 
             Dog dog = fakeDb.Find(3);
             Assert.AreEqual(dog.Name, "Rakki");
             Assert.AreEqual(dog.LitterId, 1);
-            
+          
             
 
 
