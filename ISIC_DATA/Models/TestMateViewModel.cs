@@ -12,9 +12,10 @@ namespace ISIC_DATA.Models
     {
         public Dog Father { get; set; }
         public Dog Mother { get; set; }
+        public Dog Dog { get; set; }
 
-        public Nullable<int> LitterId { get; set; }
-        public virtual Litter Litter { get; set; }
+        //public Nullable<int> LitterId { get; set; }
+        //public virtual Litter Litter { get; set; }
 
         //public virtual ICollection<Litter> Litter { get; set; }
 

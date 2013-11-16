@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
 using System.Diagnostics;
+using System.Data;
+using System.Data.Entity;
 
 namespace ISIC_DATA.Controllers
 {
@@ -18,11 +20,36 @@ namespace ISIC_DATA.Controllers
         [Authorize(Roles = "Administrator,SuperAdministrator")]
         public ActionResult Index()
         {
-
-
-
+      
             return View();
         }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        public ActionResult Index(TestMateViewModel viewModel)
+        {         
+            double vresult = 0.0;
+
+            // We only get Id of the Dog backfrom the viewModel.
+            Dog FatherA = db.Dog.Find(viewModel.Father.Id);
+            Dog MotherB = db.Dog.Find(viewModel.Mother.Id);
+
+            viewModel.Father.LitterId = FatherA.LitterId;           //We add litter info to the ViewModel.
+            viewModel.Mother.LitterId = MotherB.LitterId;
+            viewModel.Father.Litter = FatherA.Litter;
+            viewModel.Mother.Litter = MotherB.Litter;
+
+            vresult = Inbreeding(FatherA, MotherB);
+
+            ViewBag.Result = vresult;
+            viewModel.Father.Name = FatherA.Name;
+            viewModel.Mother.Name = MotherB.Name;
+            ModelState.Clear();
+            return View(viewModel);
+        }
+
+
 
         public double Inbreeding(Dog A, Dog B)
         {
@@ -125,27 +152,6 @@ namespace ISIC_DATA.Controllers
 
 
 
-        [HttpPost]
-        [Authorize(Roles = "Administrator,SuperAdministrator")]
-        public ActionResult Index(TestMateViewModel viewModel)
-        {
-
-            
-            double vresult = 0.0;
- 
-            // We only get Id of the Dog backfrom the viewModel.
-            Dog FatherA = db.Dog.Find(viewModel.Father.Id);
-            Dog MotherB = db.Dog.Find(viewModel.Mother.Id);
-
-            vresult = Inbreeding(FatherA, MotherB);
-
-
-            ViewBag.Result = vresult;
-            viewModel.Father.Name = FatherA.Name;
-            viewModel.Mother.Name = MotherB.Name;
-            ModelState.Clear();
-            return View(viewModel);
-        }
 
     }
 }
