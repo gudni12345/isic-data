@@ -218,6 +218,8 @@
     <Compile Include="Controllers\TestMateController.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
     <Compile Include="Controllers\Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="DataAccess\DogRepository.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
