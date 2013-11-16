@@ -11,12 +11,20 @@
     </div>   
 }
 
-@{
-  ViewBag.Title = "Registered Dogs";
-}
+@if (User.IsInRole("Administrator"))  
+    {
+      ViewBag.Title = "Registered Dogs";
+      Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else 
+    {
+        ViewBag.Title = "Registered Dogs";
+    }
 
 <div>
-<h5>Here you can choose between filters to find a certain dog or a list of dogs.</h5>
+    <p>If looking for a certain dog, you can enter the whole name or part of it. 
+    <a href="#" id="search" class="btn-mini btn-warning" rel="popover" data-content="If you enter the letter 'k' and press 'apply filter' you will get a list of all dog names that conatin the letter 'k'. You can also use both the Name filter and Country filter together." data-original-title="">i</a>
+    </p><br />
 </div>
 
 <div class="alignSearch">
@@ -74,3 +82,14 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 @Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, CountryId=ViewBag.currentCountry }) )
 
 <strong>Number of dogs = @ViewBag.numberOfDogsSelected</strong>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#search").popover({
+                trigger: 'hover',
+                'placement': 'top'
+        });
+    });
+</script>
+

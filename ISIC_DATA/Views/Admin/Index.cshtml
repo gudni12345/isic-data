@@ -5,53 +5,53 @@
 
 <h4 class="heading4">Please use the admin navigation bar above and the links below. </h4>
 
-<div class="row">
+<div class="row-fluid">
 
 
-   <div class="span3">
-       <div class="thumbnail adminThumb1">
-            <p>Here you can <b>Edit a Litter</b> you created:</p><br />
-            <a class="btn" href="Litter">Edit Litter»</a><br /><br />
-        </div><br />
-       </div>
      
-    <div class="span3">
-        <div class="thumbnail adminThumb2">
-            <p> <b>Add or Edit a Breeder</b> of your country:</p><br />
-            <a class="btn" href="Person">Edit People»</a><br /><br />
+    <div class="span4">
+        <div class="thumbnail adminThumb1">
+            <p> <b>Add or Edit a Person</b> of your country (Breeder or Owner):</p><br />
+            <a class="btn btn-success" href="Person">Edit People»</a><br /><br />
         </div><br />
       </div>
        
-    <div class="span3">
-        <div class="thumbnail adminThumb3">
-            <p><b>Add info about the health and appearance</b> of a dog:
-            </p><br />
-            <a class="btn" href="Dog">Edit information about dog»</a><br /><br />
+    <div class="span4">
+        <div class="thumbnail adminThumb1">
+            <p>Add or edit information of a <b>certain dog</b> (use also link above)</p><br />
+            <a class="btn btn-success" href="Dog">Edit dog»</a><br /><br />
         </div><br />
      </div>
-  
-  </div>
-   
-  <div class="row">
-   
-     <div class="span3">
-       <div class="thumbnail adminThumb4">
+     <div class="span4">
+       <div class="thumbnail adminThumb1">
             <p>Here you can <b>Add a Country</b> to the list:</p><br />
-              <a class="btn" href="Country">Edit or Add new Country»</a><br /><br />
+              <a class="btn btn-success" href="Country">Add new Country»</a><br /><br />
         </div><br />
       </div>
-      <div class="span3">
-       <div class="thumbnail adminThumb5">
+  </div>
+   
+  <div class="row-fluid">
+   
+    @if(User.IsInRole("SuperAdministrator"))  {
+     <div class="span4">
+       <div class="thumbnail adminThumb1">
+            <p>Edit the <b>birthday<br /> of a whole litter here:</p><br />
+            <a class="btn btn-success" href="Litter">Edit Litter»</a><br /><br />
+        </div><br />
+       </div>
+    
+      <div class="span4">
+       <div class="thumbnail adminThumb1">
             <p>If you want to <b>Edit a Color</b> click here:</p><br />
-              <a class="btn" href="Color">Edit or Add a new Color»</a><br /><br />
+              <a class="btn btn-success" href="Color">Edit or Add a new Color»</a><br /><br />
         </div><br />
       </div>
 
-      @if(User.IsInRole("SuperAdministrator"))  {
-          <div class="span3">
+      
+          <div class="span4">
            <div class="thumbnail adminThumb1">
                 <p>Administrators control:</p><br />
-                  <a class="btn" href="Account">Administrators Edit/Create»</a><br /><br />
+                  <a class="btn btn-error" href="Account">Administrators Edit/Create»</a><br /><br />
             </div><br />
           </div>
       }

@@ -62,7 +62,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Country/Edit/5
-        [Authorize(Roles = "Administrator,SuperAdministrator")]     
+        [Authorize(Roles = "SuperAdministrator")]     
         public ActionResult Edit(int id = 0)
         {
             Country country = db.Country.Find(id);

@@ -132,7 +132,7 @@ p {
     border: 1px solid #dddddd ;
     }
 
-.table .bornInCountry .td:first-child
+.bornInCountry > td:first-child
 {
     text-align:right;
 }
@@ -159,10 +159,6 @@ p {
         margin-bottom: 15px;
        }
 
-.edit-dog    {
-        background-color:lightgrey;
-        padding: 15px;
-        }
 
 /*************************/
 /*for Database tab (Search dog)*/
@@ -278,50 +274,24 @@ background-color: #1a3362;
     margin: 20px;    
 }
 
+.adminColor
+{
+    color: green;
+    background-color: #003D00;
+}
+
+/*************************/
+/*for Admin overview*/
+/*************************/
+
 .adminThumb1{
     margin-top: 30px;
     margin-left: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: solid 3px red;
-    color: red;
+    padding: 10px 20px;
+    border: solid 3px  #003D00;
+    background-color: lightgrey;
 }
 
-.adminThumb2{
-    margin-top: 30px;
-    margin-left: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: solid 3px blue;
-    color:blue;
-}
-
-.adminThumb3{
-    margin-top: 30px;
-    margin-left: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: solid 3px orange;
-    color:orange;
-}
-
-.adminThumb4{
-    margin-top: 30px;
-    margin-left: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: solid 3px green;
-    color:green;
-}
-
-.adminThumb5{
-    margin-top: 30px;
-    margin-left: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: solid 3px purple;
-    color:purple;
-}
    
 /*************************/
 /*for Upload button*/
@@ -353,8 +323,15 @@ input[readonly] {
 
 
 
+/*************************/
+/*for Edit Dog*/
+/*************************/
 
 
+.edit-dog    {
+        background-color:lightgrey;
+        padding: 15px;
+        }
 
 
 
