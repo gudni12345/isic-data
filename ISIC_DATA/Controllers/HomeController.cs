@@ -47,7 +47,7 @@ namespace ISIC_DATA.Controllers
                     dogs = dogs.OrderBy(d => d.Litter.DateOfBirth);
                     break;
                 default:
-                    dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth);
+                    dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth).Where(d => d.PicturePath !="");
                     break;
             }
 
@@ -63,10 +63,12 @@ namespace ISIC_DATA.Controllers
             ViewBag.numberOfDogsDenmark = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 8).ToList().Count;
             ViewBag.numberOfDogsAustria = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 9).ToList().Count;
 
-            int pageSize = 10;
+             
+            
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(dogs.ToPagedList(pageNumber, pageSize));
-            // return View(dogs.Take(10));
+            // return View(dogs.Take(5));
 
 
 
@@ -126,6 +128,11 @@ namespace ISIC_DATA.Controllers
         public ActionResult Users()
         {
                  return View(db.UserProfiles.ToList());
+        }
+
+        public ActionResult Details()
+        {
+            return View("../Dog/Details");
         }
     }
 }
