@@ -184,7 +184,7 @@ namespace ISIC_DATA.Controllers
             {
                 return HttpNotFound();
             }
-          //  ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
+          
             ViewBag.ColorId = new SelectList(db.allColors, "Id", "ColorText", dog.ColorId);
             ViewBag.PersonId = new SelectList(db.allPersons, "Id", "Name", dog.PersonId);
 
@@ -214,8 +214,6 @@ namespace ISIC_DATA.Controllers
 
                         if (file != null && file.ContentLength > 0)
                         {
-                            // var fileName = Path.GetFileName(file.FileName);
-
                             WebImage img = new WebImage(file.InputStream);   // Making sure the picture is of rigth size
                             if (img.Width > 500)
                                 img.Resize(500, 315);
@@ -224,7 +222,7 @@ namespace ISIC_DATA.Controllers
                             fileName = Regex.Replace(dog.Reg, @"[\[\]\\\^\$\.\|\?\*\+\(\)\{\}%,;><!@#&\-\+/]", "");
                             fileName = fileName + extension;
                             var path = Path.Combine(Server.MapPath("~/Photos/"), fileName);
-                            //file.SaveAs(path);
+                            
                             img.Save(path);
                             TempData["Success"] = "Picture for the " + dog.Name + " was successfully saved.";
                         }
@@ -242,12 +240,10 @@ namespace ISIC_DATA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-         //   ViewBag.LitterId = new SelectList(db.Litter, "Id", "Id", dog.LitterId);
+         
             ViewBag.ColorId = new SelectList(db.allColors, "Id", "ColorText", dog.ColorId);
             ViewBag.PersonId = new SelectList(db.allPersons, "Id", "Name", dog.PersonId);
             ViewBag.CountryId = new SelectList(db.allCountries, "Id", "Name", dog.BornInCountryId);
-
-
 
             return View(dog);
         }
