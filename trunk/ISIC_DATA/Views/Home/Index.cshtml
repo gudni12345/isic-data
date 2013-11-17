@@ -117,7 +117,8 @@
                             @foreach (var item in Model) {
                             <table>
                             <tr>
-                            <td>@Html.ActionLink(item.Name, "Details", new { id=item.Id })</td>
+                            <td>@Html.ActionLink(item.Name, "Details", "Dog", new { id=item.Id }, null)</td>
+                           
                             </tr>   
                             </table>
                              } 
@@ -125,6 +126,7 @@
 			             </div>
                </div> 
              </div>
+
          </div>
         </div>
      </div>
