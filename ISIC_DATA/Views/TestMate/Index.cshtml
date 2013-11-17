@@ -67,44 +67,44 @@ ViewBag.Title = "Test mate";
                         <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Father.Name)</td>
                         <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Name)</td>
                                          
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => Model.Father.Litter.Father.Litter.Father.Litter.Father.Name)</td>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Father.Name)</td>
                      </tr>              
                     <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Name)</td>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Name)</td>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
+                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Mother.Name)</td>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Name)</td>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
+                        <td  style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Name)</td>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
                     </tr>
                     
 
                      @*Mothers Pedigree*@    
                     <tr>
                         <td ROWSPAN="8"> @Html.DisplayFor(model => model.Mother.Name)</td>
-                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Name)</td>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
-                       <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name)</td>
+                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Mother.Litter.Father.Name)</td>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Name)</td>
+                       <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Father.Name)</td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
                     </tr>
                     <tr>
                         <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
@@ -115,19 +115,19 @@ ViewBag.Title = "Test mate";
                     </tr>
 
                     <tr>
-                        <td ROWSPAN="4">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Name)</td>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
-                        <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
+                        <td ROWSPAN="4">@Html.DisplayFor(model => model.Mother.Litter.Mother.Name)</td>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Name)</td>
+                        <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name)</t>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name)</t>
                     </tr>
                     <tr>
                          <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
-                         <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
+                         <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
                     </tr>
                    </tbody>
                  </table>
