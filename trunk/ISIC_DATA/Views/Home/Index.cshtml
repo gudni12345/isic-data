@@ -112,16 +112,17 @@
            <div class="span3" style ="margin-left: 10px; margin-right: 10px;">
            <div class="thumbnail backg-white">
                <div class="ThumbnailPopularDogs">
-                   <img src="/Photos/IS0887505.jpg" alt="ALT NAME" class="img-rounded  pull-left " style ='margin-right:10px'> 
-                   
-                        @* Still to do: needs to be dynamic, not hardcoded*@
                          <div class="caption">
-                         <h4>Popular Dogs </h4>
-                         
-				         <p>  Kersins Garpur - IS08875/05</p><br />
-			             <a class="btn btn-info" href="Dog/Details/6700">Details about this dog»</a><br />
-                            
-                   </div>
+                         <h4>Latest Photos </h4>
+                            @foreach (var item in Model) {
+                            <table>
+                            <tr>
+                            <td>@Html.ActionLink(item.Name, "Details", new { id=item.Id })</td>
+                            </tr>   
+                            </table>
+                             } 
+                                  
+			             </div>
                </div> 
              </div>
          </div>
