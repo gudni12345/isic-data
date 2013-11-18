@@ -219,16 +219,18 @@
                       <div class="editor-label">
                       Date of birth  
                       </div>
-                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @readonly="readonly" })
+                     <div class="editor-field">                        
+                        @Html.DisplayFor(model => model.Litter.DateOfBirth)                        
                     </div>
                       </div>             
                     <div class="editor-label">
                         Born in
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.BornInCountry.Name,new { @readonly="readonly" })
-                    </div>
+                        @Html.DisplayFor(model => model.BornInCountry.Name,new { @readonly="readonly" })
+                    </div>                    
+                        @Html.HiddenFor(model => model.Sex)
+                    
                  </div>     
            </div>
         </div>
@@ -250,6 +252,12 @@
 }
 
 <script>
+
+    // Disable client date validation.  Browser regional setting could cause problems.
+    $(function () {
+        $.validator.methods["date"] = function (value, element) { return true; }
+    });
+
 $(function ()
 {
     $("#newreg").popover({

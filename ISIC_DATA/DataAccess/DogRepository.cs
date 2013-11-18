@@ -34,6 +34,13 @@ namespace ISIC_DATA.DataAccess
             }
         }
 
+        public void UpdateDog(Dog dog)
+        {
+            db.Entry(dog).State = EntityState.Modified;
+        }
+
+
+
         public IQueryable<Dog> allDogs
         {
             get { return db.Dog; }
