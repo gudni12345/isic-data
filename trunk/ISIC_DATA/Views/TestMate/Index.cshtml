@@ -62,31 +62,31 @@ ViewBag.Title = "Test mate";
                 @*Fathers Pedigree*@           
                   <tbody>
                       <tr>
-                        
                         <td ROWSPAN="8"> @Html.DisplayFor(model => model.Father.Name)
                         <br>             @Html.DisplayFor(model => model.Father.Reg)
                         </td>                
                         <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Father.Name)
                         <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
                         </td>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Name)</td>
-                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
-                                         
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Father.Name)</td>
-                     </tr>              
-                    <tr>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Reg)
+                         </td>                
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Father.Name)
+                        </td>
+                        <tr>
                         <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
-                    </tr>
-                    <tr>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Name)</td>
+                        <tr>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Name)
+                        <br>            @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Reg) 
+                        </td>
                         <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
-                    </tr>
-                    <tr>
+                        </tr>
+                        <tr>
                         <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
-                    </tr>
-                    <tr>
+                        </tr>
+                        <tr>
                         <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Mother.Name)
-                         <br>
+                         <br>            @Html.DisplayFor(model => model.Father.Litter.Mother.Reg)
                         </td>
                         <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Name)</td>
                         <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
@@ -106,9 +106,12 @@ ViewBag.Title = "Test mate";
                      @*Mothers Pedigree*@    
                     <tr>
                         <td ROWSPAN="8"> @Html.DisplayFor(model => model.Mother.Name)
-                        <br>             @Html.DisplayFor(model => model.Father.Reg)
+                        <br>             @Html.DisplayFor(model => model.Mother.Reg)
                         </td>
-                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Mother.Litter.Father.Name)</td>
+                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Mother.Litter.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
+                        </td>
+
                         <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Name)</td>
                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Father.Name)</td>
                     </tr>
@@ -124,7 +127,9 @@ ViewBag.Title = "Test mate";
                     </tr>
 
                     <tr>
-                        <td ROWSPAN="4">@Html.DisplayFor(model => model.Mother.Litter.Mother.Name)</td>
+                        <td ROWSPAN="4">@Html.DisplayFor(model => model.Mother.Litter.Mother.Name)
+                        <br>            @Html.DisplayFor(model => model.Mother.Litter.Mother.Reg)
+                        </td>
                         <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Name)</td>
                         <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
                     </tr>
