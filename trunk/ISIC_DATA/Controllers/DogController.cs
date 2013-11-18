@@ -235,7 +235,7 @@ namespace ISIC_DATA.Controllers
 
                 if (fileName != null)
                     dog.PicturePath = "~/Photos/"+fileName;
-                db.InsertOrUpdateDog(dog);
+                db.UpdateDog(dog);
                // db.Entry(dog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
