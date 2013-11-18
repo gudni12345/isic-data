@@ -6,6 +6,13 @@
     ViewBag.Title = "Dog Details";
 }
 
+  @if(User.IsInRole("Administrator"))
+  {
+      <td>
+          @Html.ActionLink("Edit dog", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+      </td>
+  } 
+
   <div class="row dog-details">
       <div class="span5">
           <h2 class="dogTitle">@Html.DisplayFor(model => model.Name)</h2>
