@@ -4,12 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ISIC_DATA.Models;
+using System.Diagnostics;
+using System.Data;
+using System.Data.Entity;
 
 namespace ISIC_DATA.Controllers
 {
     public class RegisterDogController : Controller
     {
         private DataAccess.DogContext db = new DataAccess.DogContext();
+
+
+        //
+        // GET: /RegisterDog/
 
         [Authorize(Roles = "Administrator,SuperAdministrator")]                            // User must have the Administrator Role
         public ActionResult Index()
