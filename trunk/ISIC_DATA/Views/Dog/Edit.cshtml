@@ -40,9 +40,9 @@
                         @Html.ValidationMessageFor(model => model.HD2)    
                        </div>
                         <div class="editor-label">Inbreeding
-                        <a href="#" id="inbreeding" class="btn-mini btn-warning" rel="popover" data-content="You can put the result of the inbreeding calculation here. Manu dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
+                        <a href="#" id="inbreeding" class="btn-mini btn-warning" rel="popover" data-content="You can put the result of the inbreeding calculation here. Many dogs has a calculation iported to the system(calculated elsewhere)" data-original-title="Inbreeding:">i</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size
-                        <a href="#" id="size" class="btn-mini btn-warning" rel="popover" data-content="Please enter the size of the dog in centemeters" data-original-title="Size:">i</a>
+                        <a href="#" id="size" class="btn-mini btn-warning" rel="popover" data-content="Please enter the size of the dog in centimeters" data-original-title="Size:">i</a>
                         </div>
                         <div class="editor-field">
                          @Html.TextBoxFor(model => model.Inbreeding,new {style="width: 92px;" } ) @Html.TextBoxFor(model => model.Size,new {style="width: 92px;" } )
@@ -62,25 +62,27 @@
                     </div>
                     <!--second row left - second column-->
                     <div class="span6">
-                        <div class="editor-label">Color</div>
+                        <div class="editor-label">Color-Group</div>
                         <div class="editor-field">
                         @Html.DropDownList("ColorId", String.Empty)
                         @Html.ValidationMessageFor(model => model.ColorId)
                         </div>
 
                         <div class="editor-label">
-                        @Html.LabelFor(model => model.ColorComment)
+                        Color
                         </div>
                         <div class="editor-field">
                         @Html.TextAreaFor(model => model.ColorComment, new { style = "height: 50px;"  })
                         @Html.ValidationMessageFor(model => model.ColorComment)
-                        <div class="editor-label"> Comment</div>
+                        <div class="editor-label"> Comment
+                        <a href="#" id="comment" class="btn-mini btn-warning" rel="popover" data-content="Here you can mention any additional data you have about the dog" data-original-title="Comment:">i</a>
+                        </div>
                         <div class="editor-field">
                         @Html.TextAreaFor(model => model.Comment, new { style = "height: 80px;" })
                         @Html.ValidationMessageFor(model => model.Comment)
                         </div>
                         <div class="editor-label">Hair
-                        <a href="#" id="hair" class="btn-mini btn-warning" rel="popover" data-content="Please state here if the dog  long or short hair" data-original-title="Hair:">i</a>
+                        <a href="#" id="hair" class="btn-mini btn-warning" rel="popover" data-content="Please state here if the dog has long or short hair" data-original-title="Hair:">i</a>
                         </div>
                         <div class="editor-field">
                         @Html.EditorFor(model => model.Hair)
@@ -107,19 +109,20 @@
                             }
                             else
                             {                           
-                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" style="margin-left: 15px" />                            
                             }
                      </div>
-                    
+                     <div class="span12">
+                     </div>
                      <div class="span12">
                      <!--first row right - first column-->
                              @Html.HiddenFor(model => model.PicturePath)                                                   
 				             <div class="input-group">
 					            <span class="input-group-btn">                                    
 						            <span class="btn btn-success btn-file">
-							            Add new:<input type="file" name="file">
+							         Change Photo<input type="file" name="file">
                                  </span>
-					                <input type="text" class="form-control input-sm" placeholder="New photo here" readonly="true"></span>
+					                <input type="text" class="form-control input-sm" placeholder="New Photo's Name" readonly="true" style="margin-bottom: 0"></span>
                                     <button type="reset" class="btn btn-warning cancel"><span>Cancel upload</span></button>
                                  
 					            </div>
@@ -143,6 +146,10 @@
       </div>
     </div>
  </div>
+        <div class="row-fluid">
+            <div class="span12">
+            </div>
+        </div>
     
         <div class="row-fluid">
         <!--first row left - first column-->
@@ -156,8 +163,9 @@
                         @Html.TextBox("Owner",(string)ViewBag.Owner, new { placeholder="Owner name", @id="Owner_typeahead"})
                         @Html.HiddenFor(model => model.PersonId, new { @id = "returnOwnerId" })
                         <div>
-                            @Html.ActionLink("Add", "CreateOwner", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
+                            @Html.ActionLink("Add to list", "CreateOwner", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
                         </div>
+                        <br>
                         <div id='dialogDiv' class='modal hide fade in'>
                             <div id='dialogContent'></div>
                         </div>
@@ -214,20 +222,22 @@
                     <div class="editor-field">
                         @Html.TextBoxFor(model => model.Reg,new { @readonly="readonly" })
                     </div>
+                    <br /><br />
+
                       <div class="row-fluid">
                     <div class="span6">
                       <div class="editor-label">
                       Date of birth  
-                      </div>
+                      </div><br />
                      <div class="editor-field">                        
-                        @Html.DisplayFor(model => model.Litter.DateOfBirth)                        
+                        <b>@Html.DisplayFor(model => model.Litter.DateOfBirth)</b>                        
                     </div>
                       </div>             
                     <div class="editor-label">
                         Born in
-                    </div>
+                    </div><br />
                     <div class="editor-field">
-                        @Html.DisplayFor(model => model.BornInCountry.Name,new { @readonly="readonly" })
+                        <b>@Html.DisplayFor(model => model.BornInCountry.Name)</b>
                     </div>                    
                         @Html.HiddenFor(model => model.Sex)
                     
@@ -237,11 +247,11 @@
 
    </div>
 </div>
-         
+    <br>    
     <p>
-        <input type="submit" class="btn btn-primary" value="Save" />
+        <input type="submit" class="btn btn-primary" value="Save all" />
     </p>
- }
+}
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -285,6 +295,10 @@ $(function ()
         'placement': 'top'
     });
     $("#hd2").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
+    $("#comment").popover({
         trigger: 'hover',
         'placement': 'top'
     });

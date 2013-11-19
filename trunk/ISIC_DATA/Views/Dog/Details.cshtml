@@ -42,13 +42,9 @@
                            @if (Model.LivesInCountryId != null){
                               <dt>Living in: </dt><dd>@Html.DisplayFor(model => model.LivesInCountry.Name)</dd> }
                               else {  ;
-                            } 
-                            
-                           @if(User.IsInRole("Administrator"))
-                           {
-                              <dt> @Html.ActionLink("Edit dog", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" }) </dt>
-                           }
-                 </dl>                           
+                            }                    
+                 </dl>  
+                 
             </div>
             @*Load Photo from Database*@
              <div class="span5">       
@@ -62,7 +58,18 @@
                                  <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             } 
                   </div> 
-             </div>                    
+                 
+             </div> 
+      
+             <div class="span1" style="margin-left: -25px; padding-top: 20px" >
+                  @if(User.IsInRole("Administrator"))
+                           {
+                              @Html.ActionLink("Edit dog", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+                           }
+             </div>   
+      
+             
+                        
       </div>
 
 
@@ -74,6 +81,7 @@
       <li><a href="#litter">Litter</a></li>
       <li><a href="#health">More Information</a></li>
     </ul>
+
   </div>
 
   <!-- Content -->
