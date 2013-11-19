@@ -20,7 +20,7 @@
 @using (Html.BeginForm(new { @class = "form-horizontal span9" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true
+    @Html.ValidationSummary(true)
     <fieldset>
     <legend>Litter</legend>
         <div class="control-group">
@@ -82,6 +82,7 @@
 	<div class="alert alert-success">@TempData["Success"].ToString()</div>
 }
 
+<script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
 @section scripts{ <script src="~/registerBundle"></script> }
 
 

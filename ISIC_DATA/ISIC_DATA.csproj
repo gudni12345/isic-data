@@ -355,6 +355,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="App_Start\_AppStart.cshtml" />
+    <Content Include="HomePhotos\1.jpg" />
+    <Content Include="HomePhotos\2.jpg" />
+    <Content Include="HomePhotos\3.jpg" />
+    <Content Include="HomePhotos\4.JPG" />
+    <Content Include="HomePhotos\5.jpg" />
+    <Content Include="HomePhotos\6.jpg" />
+    <Content Include="HomePhotos\7.jpg" />
+    <Content Include="HomePhotos\8.jpg" />
     <Content Include="Images\bgr315.png" />
     <Content Include="Images\calendar.gif" />
     <Content Include="Images\favicon.ico" />
@@ -369,6 +377,9 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Photos\IS1329709.jpg" />
+    <Content Include="Photos\IS1807913.JPG" />
+    <Content Include="Photos\IS444444.jpg" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -801,6 +812,8 @@
     <Content Include="Views\BackLoadDemo\Test.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.Home.cshtml" />
     <Content Include="Views\Person\CreateOwner.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\RegisterDog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
