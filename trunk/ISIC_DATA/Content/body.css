@@ -347,5 +347,12 @@ input[readonly] {
         padding: 15px;
         }
 
+/****************************************************/
+/*Navigation Bar - Background color should be blue*/
+/*****************************************************/
 
+.navbar-inverse .navbar-inner {
+  background-color: #1a3362;
+  background-image: none;
+}
 
