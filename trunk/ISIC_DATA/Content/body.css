@@ -159,14 +159,15 @@ p {
         background-color: white;
         }
 
-.ThumbnailPopularDogs > img    {
+.ThumbnailPopularDogs > img {
         margin-bottom: 15px;
        }
 
 .home-details{
     background-color:#f2f2f2;
-    border-radius: 5px;
-   }
+    padding-bottom: 10px;
+ }
+
 .backg-white
 {
     background-color: white;
@@ -369,6 +370,7 @@ input[readonly] {
     border-radius: 5px;
     padding: 20px;
     margin-top:15px;
+    margin-bottom: 40px;
 }
 
 
