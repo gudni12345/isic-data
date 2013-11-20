@@ -18,6 +18,8 @@ namespace ISIC_DATA
 
             routes.MapNavigationRoute("Dog-navigation", "Database", "Dog", new { controller = "Dog", action = "Index" });
 
+            routes.MapNavigationRoute("TestMate-navigation", "Test Mate", "TestMate", new { controller = "TestMate", action = "Index" });
+            
             routes.MapNavigationRoute("News-navigation", "News", "News", new { controller = "Home", action = "News" });
             //This is the second Navigation route
             //                          RouteName        DisplayName    Url   Defaults
