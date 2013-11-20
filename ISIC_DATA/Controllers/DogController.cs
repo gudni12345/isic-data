@@ -206,6 +206,10 @@ namespace ISIC_DATA.Controllers
             if (ModelState.IsValid)
             {
                 string fileName = null;
+                dog.BornInCountry = null;      // Link to Country table dismissed in this change. the field is not changeable in the view.
+                
+                dog.Litter = null;
+
                 try  // Try to save picture
                 {                    
                     if (Request.Files.Count > 0)
