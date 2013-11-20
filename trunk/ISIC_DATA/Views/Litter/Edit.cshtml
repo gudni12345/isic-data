@@ -14,16 +14,22 @@
     <fieldset>
         <legend>Litter</legend>
 
-        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Id) 
+        @Html.HiddenFor(model => model.FatherId) 
+        @Html.HiddenFor(model => model.MotherId) 
+            
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DateOfBirth)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateOfBirth)
-            @Html.ValidationMessageFor(model => model.DateOfBirth)
-        </div>
+        <b>@Html.Label("Date of birth:", new { @class = "control-label" }) </b>
+        @Html.TextBoxFor(model => model.DateOfBirth, new { id="dateOfBirth", @class = "datePicker", data_bind = "value: birth" })
 
+        <label>Breeder:</label>              
+        @Html.TextBoxFor(model => model.Person.Name, new { placeholder="Breeder name", @id="Breeder_typeahead"})
+        @Html.HiddenFor(model => model.PersonId, new { @id = "returnBreederId" })
+        @Html.ActionLink("Add", "CreateBreeder", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
+
+        <div id='dialogDiv' class='modal hide fade in'>
+            <div id='dialogContent'></div>
+        </div>
 
         <p>
             <input type="submit" value="Save" />
@@ -38,3 +44,70 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script>
+
+//MODAL for adding breeder
+$(function () {
+    $.ajaxSetup({ cache: false });
+    $('#btnCreate').click(function () {                 // Open the Modal
+        $('#dialogContent').load(this.href, function () {
+            $('#dialogDiv').modal({
+                backdrop: 'static',
+                keyboard: true
+            }, 'show');
+            bindForm(this);
+        });
+        return false;
+    });
+});
+
+function bindForm(dialog) {
+    $('form', dialog).submit(function () {
+        $.ajax({
+            url: this.action,
+            type: this.method,
+            data: $(this).serialize(),
+            success: function (result) {
+                if (result.success) {           // if data was saved successfully we close the modal.
+                    $('#dialogDiv').modal('hide');
+                    //Refresh: location.reload();
+
+                } else {
+                    $('#dialogContent').html(result);
+                    bindForm();
+                }
+            }
+        });
+        return false;
+    });
+}
+
+
+// DatePicker
+$(document).ready(function () {
+    $.validator.methods["date"] = function (value, element) { return true; }
+    $(".datePicker").datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: true,
+        orientation: "top auto",
+        autoclose: true
+    });
+});
+
+
+
+
+// Type-a-head for Breeder
+$(document).ready(function () {
+    $('#Breeder_typeahead').typeahead({
+        name: "Breeder",
+        remote: '/Litter/FetchBreeders?q=%QUERY',
+        limit: 5,
+        valueKey: "Name",
+    }).on("typeahead:selected typeahead:autocompleted",
+        function (e, datum) {
+            $('#returnBreederId').val(datum.Id);
+        }
+    );
+});
+</script>
