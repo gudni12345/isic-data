@@ -130,6 +130,10 @@ namespace ISIC_DATA.Controllers
         {
             if (ModelState.IsValid)
             {
+                litter.Person = null; // No need to save any data to person table.  personId will be saved to litter.
+                int uId = (int)WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);
+                litter.UsersId = uId;                               // Saving User that changed the litter.
+
                 db.Entry(litter).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -169,6 +173,16 @@ namespace ISIC_DATA.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public JsonResult FetchBreeders(string q)                                   //     Get all posible Breeders to json, used for typeAhead
+        {
+            //  List<Person> breederList = db.Person.Where(p => p.Breeder == true).Where(p => p.Name.ToLower().StartsWith(q.ToLower())).ToList();
+            List<Person> breederList = db.Person.Where(p => p.Name.ToLower().StartsWith(q.ToLower())).ToList();
+            var serialisedJson = from result in breederList
+                                 select new { Name = result.Name, Id = result.Id };
+
+            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
         }
     }
 
