@@ -8,20 +8,19 @@
     ViewBag.Title = "News";
  }
 
-<div id="PageTitle">
-    <h3>News</h3>
-    <h4>Here you can see news and blogs from all of the ISIC countries</h4>
+<div class="container-fluid containerLeftMargin">
+<div class="row-fluid">
+   <h4>Here you can see news and blogs from all of the ISIC countries</h4>
 </div>
 
-<article class="head">
-
-</article>
     
 @foreach (var item in Model) 
     
 {
-      <article>
-       <h3>@Html.DisplayFor(modelItem => item.Title )</h3>
+      <article class="news-details">
+      
+       <span><b>@Html.DisplayFor(modelItem => item.Date)</b>&ensp; from @Html.DisplayFor(modelItem => item.Users.Name)</span>
+       <h4>@Html.DisplayFor(modelItem => item.Title )</h4>
        
         <div class="more">
             
@@ -34,14 +33,16 @@
     
 } 
 
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</div>
+
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
 
 @Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort }) )
 
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var showChar = 340, showtxt = " Read more", hidetxt = "Show less";
+        var showChar = 500, showtxt = " Read more", hidetxt = "Show less";
 
         $('.more').each(function () {
 
@@ -91,21 +92,8 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
 <style type="text/css">
 
-article {
-  border-bottom: 1px solid black;
-  padding: 20px;
-}
 
 
-body{
-
-
-
-}
-
-.more {
-
-}
 
 .morecontent span {
 
