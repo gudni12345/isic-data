@@ -379,5 +379,12 @@ input[readonly] {
     margin-bottom: 40px;
 }
 
+/****************************************************/
+/*Navigation Bar - Background color should be blue*/
+/*****************************************************/
 
+.navbar-inverse .navbar-inner {
+	  background-color: #1a3362;
+	  background-image: none;
+}
 
