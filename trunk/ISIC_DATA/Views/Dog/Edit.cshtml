@@ -230,16 +230,17 @@
                       Date of birth  
                       </div><br />
                      <div class="editor-field">                        
-                        <b>@Html.DisplayFor(model => model.Litter.DateOfBirth)</b>                        
+                        <b>@Html.TextBoxFor(model => model.Litter.DateOfBirth, new { @readonly="readonly" })</b>                        
                     </div>
                       </div>             
                     <div class="editor-label">
                         Born in
                     </div><br />
                     <div class="editor-field">
-                        <b>@Html.DisplayFor(model => model.BornInCountry.Name)</b>
+                        <b>@Html.TextBoxFor(model => model.BornInCountry.Name, new { @readonly="readonly" })</b>
                     </div>                    
                         @Html.HiddenFor(model => model.Sex)
+                        @Html.HiddenFor(model => model.BornInCountryId)
                     
                  </div>     
            </div>
