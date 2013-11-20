@@ -101,6 +101,12 @@ p {
     padding-left: 8px;
 }
 
+.nav-admin-adjust
+{
+    padding-top: 10px;
+    padding-left: 0px;
+}
+
 /*Heading on frontpage*/
 .span7  > h2{
     margin: 30px 10px;
