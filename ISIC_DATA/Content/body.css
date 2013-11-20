@@ -363,5 +363,12 @@ input[readonly] {
     margin-top: 15px;
 }
 
+.contact-details
+{
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 20px;
+}
+
 
 
