@@ -353,13 +353,15 @@ input[readonly] {
 /*************************/
 
 
-.news-details    {
-        background-color:#f2f2f2;
-        border-radius: 5px;
-        padding: 20px;
-        padding-bottom: 40px;
-        margin: 40px 0;
-        }
+.news-details
+{
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 20px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
 
 
 
