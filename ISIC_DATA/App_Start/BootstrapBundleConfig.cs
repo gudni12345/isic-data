@@ -23,7 +23,8 @@ namespace BootstrapSupport
             bundles.Add(new ScriptBundle("~/neededjs").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery-migrate-{version}.js",
-                "~/Scripts/bootstrap.js"               
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/typeahead.js"
                 ));
 
 

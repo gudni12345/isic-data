@@ -2,7 +2,8 @@
 @model ISIC_DATA.Models.TestMateViewModel
 
 @{
-ViewBag.Title = "Test mate";
+    Layout = "~/Views/Shared/_BootstrapLayout.Home.cshtml";
+    ViewBag.Title = "Test mate";
 }
 
 @Styles.Render("~/Content/typeahead.js-bootstrap.css")
@@ -150,9 +151,8 @@ ViewBag.Title = "Test mate";
       </div>
     </div>
 
-
-
 <script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
+
 <script type="text/javascript">
   
     $(document).ready(function () {
