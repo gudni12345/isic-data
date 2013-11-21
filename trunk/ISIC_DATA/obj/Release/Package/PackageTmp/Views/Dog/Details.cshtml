@@ -1,0 +1,658 @@
+﻿
+@using BootstrapSupport
+@model ISIC_DATA.Models.Dog
+
+@{
+    ViewBag.Title = "Dog Details";
+}
+
+  <div class="row dog-details">
+      <div class="span5">
+          <h2 class="dogTitle">@Html.DisplayFor(model => model.Name)</h2>
+               <dl class="dl-horizontal doglist">
+                        <dt>Registration Nr:</dt><dd>@Model.Reg</dd>
+                        <dt> Born:</dt> <dd>@Html.DisplayFor(model => Model.Litter.DateOfBirth) 
+                                 in  @Html.DisplayFor(model => Model.BornInCountry.Name) </dd>
+                                                   
+                           @if (Model.Sex == "M")
+                           {
+                               <dt>Gender: </dt><dd>Male </dd>
+                           }
+                           else
+                           {
+                                <dt>Gender: </dt><dd>Female </dd>
+                           }
+                          <dt>Father:</dt><dd> @Html.DisplayFor(model => model.Litter.Father.Name) </dd>
+                          <dt>Mother:</dt><dd> @Html.DisplayFor(model => model.Litter.Mother.Name)</dd> 
+                           @if (Model.Litter.PersonId != null)
+                           {
+                               <dt>Breeder: </dt><dd>@Html.DisplayFor(model => model.Litter.Person.Name)</dd>
+                           }
+                           else
+                           {
+                               <dt>Breeder: </dt><dd>No Breeder Registered</dd>
+                           }
+                           @if (Model.HD != null)
+                               {<dt>HD: </dt><dd>@Html.DisplayFor(model => model.HD)</dd>
+                               }
+                               else
+                               {
+                                   ;
+                               }
+                           @if (Model.LivesInCountryId != null){
+                              <dt>Living in: </dt><dd>@Html.DisplayFor(model => model.LivesInCountry.Name)</dd> }
+                              else {  ;
+                            }                    
+                 </dl>  
+                 
+            </div>
+            @*Load Photo from Database*@
+             <div class="span5">       
+                 <div class="dogPic">
+                            @if (@Model.PicturePath == null)
+                            {
+                                <img src="~/Images/dogs/dog1.jpg" alt ="~/Images/dogs/dog1.jpg" />     
+                            }
+                            else
+                            {                           
+                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                            } 
+                  </div> 
+                 
+             </div> 
+      
+             <div class="span1" style="margin-left: -25px; padding-top: 20px" >
+                  @if(User.IsInRole("Administrator"))
+                           {
+                              @Html.ActionLink("Edit dog", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+                           }
+             </div>   
+      
+             
+                        
+      </div>
+
+
+<div class="row pedigree">
+  <!-- Navigation Buttons -->
+  <div class="span2">
+    <ul class="nav nav-pills nav-stacked" id="myTabs">
+      <li class="active"><a href="#pedigree">Pedigree</a></li>
+      <li><a href="#litter">Litter</a></li>
+      <li><a href="#health">More Information</a></li>
+    </ul>
+
+  </div>
+
+  <!-- Content -->
+
+  <div class="span7 offset1">
+    <div class="tab-content">
+
+      <div class="tab-pane active" id="pedigree">      
+         
+         
+         <table  BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF"">
+           <thead>
+             <tr>
+                <th style="width:200px;table-layout:fixed">Parents</th>
+                <th style="width:200px;table-layout:fixed">Grandparents</th>
+                <th style="width:200px;table-layout:fixed">Great Grandparents</th>
+                <th style="width:300px;table-layout:fixed">Great Great Grandparents</th>
+             </tr>
+              </thead>
+                @*Fathers Pedigree*@           
+                  <tbody>
+                      <tr>
+                        
+                        <td ROWSPAN="8"> @if (Model.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Id) })
+                             }
+                                <br> @if (@Model.Litter.Father.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Father.PicturePath != null)
+                                 {                           
+                                 <img class="pedPhoto" src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 } 
+                        </td>                
+                        <td ROWSPAN="4"> @if (Model.Litter.Father.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Id) })
+                             }
+                            </td>
+                        <td ROWSPAN="2"> @if (Model.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {                            
+                                @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Id) })
+                            }
+                            </td>
+                                         
+                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {                            
+                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Id) })
+                             }
+                            </td>
+                     </tr>
+                    <tr>
+                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {
+                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Id) })
+                             }
+                             </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2">  @if (Model.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Id) })
+                             }
+                            </td>
+                        <td  style="height:20px;table-layout:fixed">@if (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
+                             {
+                                <p></p>
+                             }
+                             else
+                             { 
+                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { id = (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="height:20px;table-layout:fixed">@if (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="4"> @if (Model.Litter.Father.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {            
+                                 @Html.ActionLink(Model.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Id) })
+                             }
+                        </td>
+                        <td ROWSPAN="2"> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {            
+                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Id) })
+                             }
+                        </td>
+                        <td style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                 @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2">@if (Model.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Id) })
+                             }
+                        </td>
+                        <td  style="height:20px;table-layout:fixed">  @if (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
+                            {
+                                 <p></p>  
+                            }
+                            else
+                            {  
+                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Id) })
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                             @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Id) })
+                            }
+                        </td>
+                    </tr>
+                    
+
+                     @*Mothers Pedigree*@    
+                    <tr>
+                        <td ROWSPAN="8"> @if (Model.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Id) })
+                             }
+                             <br>
+                             @if (@Model.Litter.Mother.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Mother.PicturePath != null)
+                             {                           
+                                 <img class="pedPhoto" src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                             }  
+                        </td>
+                        <td ROWSPAN="4"> @if (Model.Litter.Mother.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {            
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Id) })
+                             }
+                        </td>
+                        <td ROWSPAN="2"> @if (Model.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                    @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Id) })
+                             }
+                        </td>
+                       <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Id) })
+                             }
+                       </td>
+                    </tr>
+                    <tr>
+                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2"> @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Id) })
+                             }
+                        </td>
+                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                         <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Id) })
+                             }
+                         </td>
+                    </tr>
+
+                    <tr>
+                        <td ROWSPAN="4">@if (Model.Litter.Mother.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Id) })
+                             }
+                        </td>
+                        <td ROWSPAN="2">  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Id) })
+                             }
+                        </td>
+                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Id) })
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                         <td ROWSPAN="2"> @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Id) })
+                             }
+                         </td>
+                         <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Id) })
+                             }
+                         </td>
+                    </tr>
+                    <tr>
+                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Id) })
+                             }
+                        </td>
+                    </tr>
+                   </tbody>
+                 </table>
+                                   	
+      </div>
+    
+          
+      <!-- FOR THE Health Information TAB --> 
+      <div class="tab-pane" id="health">
+          <div class="row">
+            <div class="span6">
+            <div class ="thumbnail">
+               <dl class="dl-horizontal doglist">
+                              @if (Model.ColorId != null)
+                              {<dt>Color-Group: </dt><dd>@Html.DisplayFor(model => model.Color.ColorText)</dd>}
+                                  else { ;
+                              }
+                              @if (Model.ColorComment != null)
+                              {<dt>Original Color: </dt><dd>@Html.DisplayFor(model => model.ColorComment)</dd>}
+                              else { ;
+                              } 
+                              @if (Model.PersonId != null)
+                              {<dt>Owner: </dt><dd>@Html.DisplayFor(model => model.Person.Name)</dd> }
+                              else {  ;
+                              } 
+                              @if (Model.Comment != null)
+                              {<dt>More Information: </dt><dd>@Html.DisplayFor(model => model.Comment)</dd> }
+                              else {  ;
+                              }
+                              @if (Model.NewReg != null)
+                              {<dt>New Registr. Nr: </dt><dd>@Html.DisplayFor(model => model.NewReg)</dd> }
+                              else {  ;
+                              }
+                              
+                              @if (Model.Hair != null)
+                              {<dt>Hair: </dt><dd>@Html.DisplayFor(model => model.Hair)</dd> }
+                              else {  ;
+                              }
+                               @if (Model.Eyes != null)
+                              {<dt>Eyes: </dt><dd>@Html.DisplayFor(model => model.Eyes)</dd> }
+                              else {  ;
+                              }
+                              @if (Model.Size != null)
+                              {<dt>Size: </dt><dd>@Html.DisplayFor(model => model.Size)</dd> }
+                              else {  ;
+                              }
+                              @if (Model.HD2 != null)
+                              {<dt>HD 2: </dt><dd>@Html.DisplayFor(model => model.HD2)</dd> }
+                              else {  ;
+                              }
+                              @if (Model.MT != null)
+                              {<dt>Mental Test: </dt><dd>@Html.DisplayFor(model => model.MT)</dd> }
+                              else {  ;
+                              }
+                               @if (Model.Inbreeding != null)
+                              {<dt>Inbreeding: </dt><dd>@Html.DisplayFor(model => model.Inbreeding)</dd> }
+                              else {  ;
+                              }
+                          </dl>           
+                     </div>
+                </div>
+          
+               <div class="span4">
+                <div class="thumbnail colorThumb">
+                    <h5>The Icelandic Sheepdogs and their colors</h5>
+                    <p> One of the most special attributes of the Icelandic dog is his color. To embrace the diffrenent approaches and keep the 
+                        varity alive, the <b>"Orignial-Color"</b> shows how the dog was registered, often in their original language.<br />
+                        The <b>"Color-Group"</b> shows which main color group the dog belongs to with two important rules: White is always part of the color, and dogs
+                        which are black are always registered as tricolor dogs.</p>
+                </div>
+                   </div>
+              </div>
+        </div>
+
+      <!-- FOR THE LITTER TAB -->      
+      <div class="tab-pane" id="litter">
+          <!-- <strong>Hérna er litterId => Model.LitterId  </strong> -->
+
+          @if (ViewBag.Siblings != null) {
+            if (ViewBag.Siblings.Count > 0)
+            { 
+                <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
+                <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Born</th>
+				    </tr>
+			        </thead>
+                    <tbody>		        
+                            @foreach (var item in ViewBag.Siblings)
+                            {    
+                                <tr>     
+                                <td> @item.Reg </td>
+                                <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                                <td> @item.Litter.Father.Name </td>
+                                <td> @item.Litter.Mother.Name</td>
+                                <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
+                                </tr>
+                            }               
+                    </tbody>
+                </table>              
+            }
+          }
+
+          @if (ViewBag.SiblingsFromFatherSide != null) {
+            if (ViewBag.SiblingsFromFatherSide.Count > 0)
+            { 
+                <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
+                <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Born</th>
+				    </tr>
+			        </thead>
+                    <tbody>	
+                    @foreach (var item in ViewBag.SiblingsFromFatherSide)
+                    {         
+                    <tr>     
+                        <td> @item.Reg </td>
+                        <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                        <td> @item.Litter.Father.Name </td>
+                        <td> @item.Litter.Mother.Name</td>
+                        <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
+                    </tr>            
+                    }
+                    </tbody>
+                </table>
+            }
+          }
+
+          @if (ViewBag.SiblingsFromMotherSide != null) {
+            if (ViewBag.SiblingsFromMotherSide.Count > 0)
+            {    
+                <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
+                <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Born</th>
+				    </tr>
+			        </thead>
+                    <tbody>	
+                    @foreach (var item in ViewBag.SiblingsFromMotherSide)
+                    {         
+                    <tr>     
+                        <td> @item.Reg </td>
+                        <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                        <td> @item.Litter.Father.Name </td>
+                        <td> @item.Litter.Mother.Name</td>
+                        <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+          }
+
+          @if (ViewBag.Puppies != null) {
+            if (ViewBag.Puppies.Count > 0)
+            {    
+                <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
+                   <table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Born</th>
+				    </tr>
+			        </thead>
+                    <tbody>
+                @foreach (var item in ViewBag.Puppies)
+                {         
+                <tr>     
+                    <td> @item.Reg </td>
+                    <td> @Html.ActionLink((string)item.Name, "Details", new { id = item.Id }) </td>
+                    <td> @item.Litter.Father.Name </td>
+                    <td> @item.Litter.Mother.Name</td>
+                    <td> @item.Litter.DateOfBirth.ToString("dd/MM/yyyy") </td>
+                </tr>
+                }
+                </tbody>
+             </table>
+            }
+          }
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+              
+
+<!--p>
+     
+    <p class="btn btn-primary icon  pull-left ">
+         @Html.ActionLink("Edit", "Edit", new { id = Model.Id })  </p>  |  <p class="btn btn-primary icon  pull-center "> @Html.ActionLink("Back to List", "Index")</p>
+    
+</p-->
+
+
+
+<script type="text/javascript">
+
+  $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+
+
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-45948404-1', '85.220.79.130'); ga('send', 'pageview');
+
+</script>
+
+
+
+
+

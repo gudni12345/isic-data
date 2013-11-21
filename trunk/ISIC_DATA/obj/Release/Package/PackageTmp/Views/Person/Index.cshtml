@@ -1,0 +1,63 @@
+﻿@model PagedList.IPagedList<ISIC_DATA.Models.Person>
+@using PagedList.Mvc; 
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>List of Owners and Breeders</h3>
+
+<div class="alignSearch">
+@using (Html.BeginForm("Index", "Person", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        <input type="submit" value="Search" />
+    </p>
+}
+</div>
+
+<p>
+     @Html.ActionLink("Add to list", "Create", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
+</p><br />
+
+<table class="table table-hover">
+    <tr>   
+        <th>Breeder / Owner</th>
+        <th>Country</th>
+        <th>Address</th>
+        <th>E-mail</th>
+        <th></th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Edit", new { id=item.Id })
+        </td>    
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        
+        <td>
+        @Html.DisplayFor(modelItem => item.Email)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )

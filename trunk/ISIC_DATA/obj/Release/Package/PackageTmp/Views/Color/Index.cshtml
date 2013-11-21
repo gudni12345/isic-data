@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ISIC_DATA.Models.Color>
+
+@{
+    ViewBag.Title = "Colors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>List of Colors</h3>
+
+<p>
+    @Html.ActionLink("Add a color", "Create")
+</p><br/>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ColorText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColorText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>
+

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DogContext-Web.config Connection String" description="DogContext Connection String used in web.config by the application to access the database." defaultValue="Server=85.220.79.130;Database=FinalDb_out1;user=icedog;password=icedog" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\HR\\deployMeðgoogle\\isic-data\\ISIC_DATA\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DogContext']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,67 @@
+﻿@model ISIC_DATA.Models.NewsArticle
+
+@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ViewBag.Title = "Create News";
+}
+ 
+
+@using (Html.BeginForm("CreateNews", "NewsArticle", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>NewsArticle</legend>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+                
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Valid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Valid)
+            @Html.ValidationMessageFor(model => model.Valid)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoriesName)
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownList("CategoriesName", "---- Select one -----")
+            @Html.ValidationMessageFor(model => model.CategoriesName)
+        </div>
+                
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Content)
+        </div>
+        <div class="editor-field">
+           @Html.EditorFor(model => model.Content)
+           @Html.ValidationMessageFor(model => model.Content)
+        </div>
+        
+
+        <p>
+            <input type="submit" value="Save News" />
+        </p>
+        @*<p>Posted Content: @ViewBag.HtmlContent</p>*@
+
+    </fieldset>
+      
+  
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,191 @@
+﻿@using BootstrapSupport
+@model ISIC_DATA.Models.TestMateViewModel
+
+@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ViewBag.Title = "Test mate";
+}
+<h2>Test mate</h2>
+@Styles.Render("~/Content/typeahead.js-bootstrap.css")
+
+@using (Html.BeginForm(new { @class = "form-horizontal span9" }))
+{
+    
+    <fieldset>
+           
+        <legend></legend>
+        <div class="editor-field">
+            <label>Father:</label>
+            <div class="CustomTemplate">                
+            @Html.TextBoxFor(model => model.Father.Reg, new { placeholder="Father's Reg", id="typeaheadFather" })
+            @Html.HiddenFor(model => model.Father.Id, new { @id = "returnFatherId" })                     
+            @Html.TextBoxFor(model => model.Father.Name, new { id="fatherName", disabled = "disabled"  }) 
+            </div>
+        </div>
+        <div class="editor-field">
+            <label>Mother:</label>
+            <div class="CustomTemplate">                
+            @Html.TextBoxFor(model => model.Mother.Reg, new {placeholder="Mother's Reg", id="typeaheadMother" })
+            @Html.HiddenFor(model => model.Mother.Id, new { @id = "returnMotherId" })     
+            @Html.TextBoxFor(model => model.Mother.Name, new { id = "motherName", disabled = "disabled" })    
+            </div>  
+        </div>            
+                
+
+
+    </fieldset>
+
+    if (ViewBag.Result != null)
+    {
+        <strong>Result = @ViewBag.Result %</strong>
+    }
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Check</button>
+        @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
+    </div>
+   
+} <!-- end form -->
+
+<div class="tab-pane active" id="pedigree">      
+         
+         
+         <table  BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF"">
+           <thead>
+             <tr>
+                <th style="width:50px;table-layout:fixed">Parents</th>
+                <th style="width:100px;table-layout:fixed">Grandparents</th>
+                <th style="width:100px;table-layout:fixed">Great Grandparents</th>
+                <th style="width:100px;table-layout:fixed">Great Great Grandparents</th>
+             </tr>
+              </thead>
+                @*Fathers Pedigree*@           
+                  <tbody>
+                      <tr>
+                        <td ROWSPAN="8"> @Html.DisplayFor(model => model.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Father.Reg)
+                        </td>                
+                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
+                        </td>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Reg)
+                         </td>                
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Father.Name)
+                        </td>
+                        <tr>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
+                        <tr>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Name)
+                        <br>            @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Reg) 
+                        </td>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
+                        </tr>
+                        <tr>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
+                        </tr>
+                        <tr>
+                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Mother.Name)
+                         <br>            @Html.DisplayFor(model => model.Father.Litter.Mother.Reg)
+                        </td>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Name)</td>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
+                    </tr>
+                    <tr>
+                        <td  style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Name)</td>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
+                    </tr>
+                    <tr>
+                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
+                    </tr>
+                    
+
+                     @*Mothers Pedigree*@    
+                    <tr>
+                        <td ROWSPAN="8"> @Html.DisplayFor(model => model.Mother.Name)
+                        <br>             @Html.DisplayFor(model => model.Mother.Reg)
+                        </td>
+                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Mother.Litter.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
+                        </td>
+
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Name)</td>
+                       <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Father.Name)</td>
+                    </tr>
+                    <tr>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Name)</td>
+                        <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
+                    </tr>
+                    <tr>
+                         <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
+                    </tr>
+
+                    <tr>
+                        <td ROWSPAN="4">@Html.DisplayFor(model => model.Mother.Litter.Mother.Name)
+                        <br>            @Html.DisplayFor(model => model.Mother.Litter.Mother.Reg)
+                        </td>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Name)</td>
+                        <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
+                    </tr>
+                    <tr>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
+                    </tr>
+                    <tr>
+                         <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Name)</td>
+                         <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
+                    </tr>
+                    <tr>
+                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
+                    </tr>
+                   </tbody>
+                 </table>
+                                   	
+      </div>
+
+
+
+<script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
+<script type="text/javascript">
+  
+    $(document).ready(function () {
+        $("#typeaheadFather").typeahead({
+            name: "Father", 
+            remote: 'Registerdog/FetchFathers?q=%QUERY',
+            limit: 3,
+            valueKey: "Reg",
+            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',
+            ].join(''),
+            engine: Hogan
+        }).on("typeahead:selected typeahead:autocompleted",
+            function (e, datum) {
+                $('#returnFatherId').val(datum.Id);
+                $('#fatherName').val(datum.Name);
+
+            }
+        );
+    });
+
+    $(document).ready(function () {
+        $("#typeaheadMother").typeahead({
+            name: "Mother",
+            remote: 'Registerdog/FetchMothers?q=%QUERY',
+            limit: 3,
+            valueKey: "Reg",
+            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',].join(''),
+            engine: Hogan
+        }).on("typeahead:selected typeahead:autocompleted",
+            function (e, datum) {
+                $('#returnMotherId').val(datum.Id);
+                $('#motherName').val(datum.Name);
+
+            }
+        );
+    });
+
+</script>

@@ -1,0 +1,39 @@
+﻿@model ISIC_DATA.Models.Country
+
+@{
+    ViewBag.Title = "EditCountry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Edit a Country</h3>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Country</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+      
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

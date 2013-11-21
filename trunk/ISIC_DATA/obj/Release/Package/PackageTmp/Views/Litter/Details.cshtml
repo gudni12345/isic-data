@@ -1,0 +1,55 @@
+﻿@model ISIC_DATA.Models.Litter
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Litter Details</h2>
+
+<fieldset>
+    
+<div class="container-fluid">
+    <ul class="thumbnails"> 
+    <li class="span12 clearfix">
+     <div class="thumbnail clearfix">
+     <div class="caption" "pull-right">
+   
+    <div class="container-fluid">
+   <div class="control-group">
+      <label class="control-label">  <b> @Html.DisplayNameFor(model => model.DateOfBirth):</b>  @Html.DisplayFor(model => model.DateOfBirth)</label>
+    </div>
+    
+   <div class="control-group">
+       <label class="control-label"> <b>@Html.DisplayNameFor(model => model.Reg_F):</b>@Html.DisplayFor(model=> model.Reg_F) </label>
+    </div>
+         <div class="control-group">
+             <label class="control-label"><b>@Html.DisplayNameFor(model => model.Reg_M):</b> @Html.DisplayFor(model=> model.Reg_M) </label>
+             </div>        
+        </div>     
+    </div>  
+ </div> 
+</li>
+</ul>
+</div>
+    
+</fieldset>
+<p>
+    <p>
+  
+  
+     
+    <p class="btn btn-primary icon  pull-left ">
+         @Html.ActionLink("Edit", "Edit", new  { id=Model.Id  } ) 
+
+    </p> 
+ |  <p 
+     class="btn btn-primary icon  pull-center "> @Html.ActionLink("Back to List", "Index")
+
+    </p>
+
+        
+   
+    
+
+
