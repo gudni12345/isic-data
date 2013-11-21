@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<ISIC_DATA.Models.NewsArticle>
+@using PagedList.Mvc; 
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ViewBag.Title = "News Overview";
+}
+
+<h3>List of NewsArticles</h3>
+<div class="alignSearch">
+@using (Html.BeginForm("Index", "NewsArticle", FormMethod.Get))
+{
+    <p>
+        Find by Title or Author: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        <input type="submit" value="Search" />
+    </p>
+}
+</div>
+<p>
+  @Html.ActionLink("Add a new Post to News", "CreateNews")
+</p>
+<table class="table table-hover">
+    <tr>   
+        <th>Title</th>
+        <th>Author</th>
+        <th>Categories</th>
+        <th>Date</th>
+        <th></th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.Name)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriesName)
+        </td>
+
+         <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditNews", new { id=item.Id })  |  
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )

@@ -1,0 +1,36 @@
+﻿@model ISIC_DATA.Models.Color
+
+@{
+    ViewBag.Title = "Create Color";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Add a new color</h3>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Color</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ColorText)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ColorText)
+            @Html.ValidationMessageFor(model => model.ColorText)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

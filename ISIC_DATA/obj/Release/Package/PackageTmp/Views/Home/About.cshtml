@@ -1,0 +1,26 @@
+﻿@model IQueryable<ISIC_DATA.Models.NewsArticle>
+@{
+    ViewBag.Title = "About";
+}
+
+
+ <div class="container-fluid containerLeftMargin"
+     <section>
+        @foreach (var ab in Model)
+         {
+         <article class="news-details">
+            <h4 class="NewsTitle">@ab.Title</h4>
+
+            <p>@Html.Raw(ab.Content)</p>
+
+         </article>
+         }           
+    
+    </section>        
+
+</div>
+
+        
+   
+
+

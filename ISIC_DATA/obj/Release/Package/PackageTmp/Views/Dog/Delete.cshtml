@@ -1,0 +1,76 @@
+﻿@model ISIC_DATA.Models.Dog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Dog</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Reg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Reg)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ColorComment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ColorComment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sex)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sex)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Litter.Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Litter.Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Color.ColorText)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Color.ColorText)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetailedInfo.OldColor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetailedInfo.OldColor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Person.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Person.Name)
+    </div>
+
+    </fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

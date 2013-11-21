@@ -12,6 +12,7 @@ using ISIC_DATA.DataAccess;
 using ISIC_DATA.Filters;
 using ISIC_DATA.Models;
 using System.Data;
+using System.Data.Entity;
 
 namespace ISIC_DATA.Controllers
 {

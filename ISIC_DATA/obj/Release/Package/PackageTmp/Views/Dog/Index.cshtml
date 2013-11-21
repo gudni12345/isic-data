@@ -1,0 +1,101 @@
+﻿@model PagedList.IPagedList<ISIC_DATA.Models.Dog>
+@using PagedList.Mvc; 
+@using BootstrapSupport;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">  
+    <a class="close" data-dismiss="alert">×</a>  
+    <strong>Success: </strong>@TempData["Success"].ToString() 
+    </div>   
+}
+
+@if (User.IsInRole("Administrator"))  
+    {
+      ViewBag.Title = "Registered Dogs";
+      Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else 
+    {
+        ViewBag.Title = "Registered Dogs";
+    }
+
+<div>
+    <p>If looking for a certain dog, you can enter the whole name or part of it. 
+    <a href="#" id="search" class="btn-mini btn-warning" rel="popover" data-content="If you enter the letter 'k' and press 'apply filter' you will get a list of all dog names that conatin the letter 'k'. You can also use both the Name filter and Country filter together." data-original-title="">i</a>
+    </p><br />
+</div>
+
+<div class="alignSearch">
+@using (Html.BeginForm("Index", "Dog", FormMethod.Get))
+{
+    <fieldset class="filtering">
+        <legend>Search filter</legend>
+    <p>
+        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class="search-query" })  
+        
+        @Html.DropDownList("CountryId", "--- All countries ---")     
+        
+        <input type="submit" class="btn btn-primary" value="apply filter" />  
+    </p>
+    </fieldset>
+}
+</div>
+
+<table class="table table-striped">
+                    <thead>
+				    <tr>					    
+					    <th>Reg</th>
+					    <th>Name</th>
+					    <th>Father</th>
+					    <th>Mother</th>
+                        <th>Born</th>
+				    </tr>
+			        </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reg)</td>
+        <td>
+            @Html.ActionLink(item.Name, "Details", new { id=item.Id })</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Litter.Father.Name)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Litter.Mother.Name)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Litter.DateOfBirth)</td>
+        
+        @if(User.IsInRole("Administrator"))  {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+        </td>
+        } 
+    </tr>
+}
+
+</table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, CountryId=ViewBag.currentCountry }) )
+
+<strong>Number of dogs = @ViewBag.numberOfDogsSelected</strong>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#search").popover({
+                trigger: 'hover',
+                'placement': 'top'
+        });
+    });
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-45948404-1', '85.220.79.130'); ga('send', 'pageview');
+
+</script>
+

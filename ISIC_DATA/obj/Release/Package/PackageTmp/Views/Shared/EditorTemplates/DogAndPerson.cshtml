@@ -1,0 +1,101 @@
+﻿@using BootstrapSupport
+﻿@model ISIC_DATA.Models.DogAndPerson
+
+<!-- ko foreach: positions -->
+<fieldset>
+    @Html.ValidationSummary(true)
+    <div class="control-group">
+			<label class="control-label">Dog: </label>
+			<div class="controls">
+				<div class="row-fluid">
+					<div class="span3">
+                        @Html.TextBoxFor(model => model.Dog.Name, new { data_bind = "value: name, namePath: true", placeholder="Name", @class = "input-block-level" })                      
+					</div>
+					<div class="span3">
+                        @Html.TextBoxFor(model => model.Dog.Reg, new { data_bind = "value: reg, namePath: true", placeholder="Reg", @class = "input-block-level" })                       					
+					</div>
+					<div class="span1">
+                        @Html.DropDownListFor( model => model.Dog.Sex, (SelectList)ViewBag.Gender ,new { data_bind = "value: sex, namePath: true", @class = "input-block-level"})				
+					</div>
+					<div class="span2">
+                        @Html.DropDownListFor( model => model.Dog.ColorId, (SelectList)ViewBag.ColorId ,new { data_bind = "value: colorId, namePath: true", @class="input-block-level"})
+                    </div>
+				</div>
+			</div>
+		</div>
+
+    <div class="control-group">
+			<label class="control-label">Dog owner: </label>
+			<div class="controls">
+				<div class="row-fluid">
+					<div class="span3">
+                        @Html.TextBoxFor(model => model.Person.Name, new { data_bind = "value: personName, namePath: true", placeholder="Owner", @class = "input-block-level" })					
+					</div>
+					<div class="span3">
+						@Html.TextBoxFor(model => model.Person.Email, new { data_bind = "value: email, namePath: true", placeholder="email", @class = "input-block-level" })
+					</div>
+                    <div class="span3">
+                        @Html.TextBoxFor(model => model.Person.Address, new { data_bind = "value: address, namePath: true", placeholder="address", @class = "input-block-level" })
+                    </div>
+				</div>
+			</div>
+		</div>
+
+    @Html.ValidationMessageFor(model => model.Dog.Name,null, new { @class = "help-inline" })	
+    @Html.ValidationMessageFor(model => model.Dog.Reg,null, new { @class = "help-inline" })	
+    @Html.ValidationMessageFor(model => model.Dog.Sex,null, new { @class = "help-inline" })
+    @Html.ValidationMessageFor(model => model.Dog.Color.Id,null, new { @class = "help-inline" })
+
+    @Html.ValidationMessageFor(model => model.Person.Name,null, new { @class = "help-inline" })
+    @Html.ValidationMessageFor(model => model.Person.Email,null, new { @class = "help-inline" })
+    @Html.ValidationMessageFor(model => model.Person.Address,null, new { @class = "help-inline" })
+
+</fieldset>    					
+
+<!--
+    <span class="editor-field">
+        Html.TextBoxFor(model => model.Dog.Name, new { data_bind = "value: name, namePath: true", placeholder="Name", class = "input-xlarge" })
+        Html.ValidationMessageFor(model => model.Dog.Name,null, new { class = "help-inline" })
+    </span>
+
+
+    <span class="editor-field">
+        Html.TextBoxFor(model => model.Dog.Reg, new { data_bind = "value: reg, namePath: true", placeholder="Reg", class = "input-small" })
+        Html.ValidationMessageFor(model => model.Dog.Reg,null, new { class = "help-inline" })    </span>
+
+
+    <span class="editor-field">
+        Html.DropDownListFor( model => model.Dog.Sex, (SelectList)ViewBag.Gender ,new { data_bind = "value: sex, namePath: true" })
+        Html.ValidationMessageFor(model => model.Dog.Sex,null, new { class = "help-inline" })
+    </span>
+
+    <br />
+    <span class="editor-field">
+        Html.DropDownListFor( model => model.Dog.ColorId, (SelectList)ViewBag.ColorId ,new { data_bind = "value: colorId, namePath: true" })
+        Html.ValidationMessageFor(model => model.Dog.Color.Id,null, new { class = "help-inline" })
+    </span>
+    -->
+
+    <!--
+    <span class="editor-field">
+        
+        
+    </span>
+
+
+    <span class="editor-field">
+        
+        
+    </span>
+
+     <span class="editor-field">
+        
+        
+    </span>
+
+</fieldset>
+    -->
+
+<!-- /ko -->
+
+

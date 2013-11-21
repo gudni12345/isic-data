@@ -1,0 +1,89 @@
+﻿@model ISIC_DATA.Models.NewsArticle
+@using BootstrapSupport
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "EditNews";
+}
+
+<h2>EditNews</h2>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>NewsArticle</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+        </div>
+        <div class="editor-field">
+           
+            @Html.TextBoxFor(model => model.Date, new {@class = "datePicker", data_bind = "value: date"})
+            @Html.ValidationMessageFor(model => model.Date, null, new { @class = "help-inline" })
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Valid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Valid)
+            @Html.ValidationMessageFor(model => model.Valid)
+        </div>     
+        
+         <div class="editor-label">
+            @Html.LabelFor(model => model.CategoriesName)
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownList("CategoriesName", "---- Select one ----")
+            @Html.ValidationMessageFor(model => model.CategoriesName)
+        </div>        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Content)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Content)
+            @Html.ValidationMessageFor(model => model.Content)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+ 
+    $(document).ready(function () {
+        $.validator.methods["date"] = function (value, element) { return true; }
+        $(".datePicker").datepicker({
+            format: 'dd/mm/yyyy',
+            todayBtn: true,
+            orientation: "top auto",
+            autoclose: true
+        });
+    });
+
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

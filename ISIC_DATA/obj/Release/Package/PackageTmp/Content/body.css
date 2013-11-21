@@ -1,0 +1,390 @@
+
+/*************************/
+/*for all pages*/
+/*************************/
+body {
+            padding-top: 10px;
+            padding-bottom: 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right:auto;
+                        
+      }
+
+/*have all components within 1100 px*/
+.container-fluid {
+max-width: 1100px;
+padding-left: 0px;
+padding-right: 0px;
+}
+.bodyContainer {
+max-width: 1072px;
+padding-left: 10px;
+padding-right: 10px;
+margin-left: 20px;
+margin-right: 20px;
+}
+
+/*needs reset, this is 0 0 10 in bootstrap.css*/
+p {
+  margin: 0 0 0 0;
+}
+
+.containerLeftMargin{
+    margin-left: -27px;
+}
+
+/*Adjustments needed on p/h3 on thumbnails on Home*/
+
+.span4 > p {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+}
+
+.span4 > h3{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+}
+
+.heading4 {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.countList {
+        list-style-type: none;
+}
+
+.span12 > h3{
+    padding-left: 15px;
+}
+
+
+/*************************/
+/*for Layout and Nav Bar*/
+/*************************/
+.top_of_page{
+   width:auto;
+}
+
+.logomynd {
+    width: 80px;
+    height: 120px;
+    padding-bottom: 1px;
+    margin-left: -6px;
+}
+
+.logoff{
+    float: right;
+    padding-top: 60px;
+    margin-bottom: 2px;  
+}
+
+
+/*padding for nav tabs*/
+.navbar .nav > li > a  {
+        padding: 5px 27px;
+    }
+.navOffset{
+    padding-left:0px;
+    padding-right:0px;
+}
+.navbar-inverse .nav > li > a {  
+        font-weight: bold; 
+        font-size: 18px;
+}
+.navbaradjustment{
+    padding-top: 6px;
+    padding-left: 8px;
+}
+
+.nav-admin-adjust
+{
+    padding-top: 10px;
+    padding-left: 0px;
+}
+
+/*Heading on frontpage*/
+.span7  > h2{
+    margin: 30px 10px;
+    font-family: Adobe Fangsong Std;
+}
+.span{
+    margin: 0;
+    
+}
+
+
+
+/*************************/
+/*for Home Page*/
+/*************************/
+.carousel inner, img{
+    border-radius: 4px;
+}
+
+#myCarousel{
+    max-width: 1100px;
+    margin-left:-30px;
+}
+
+
+
+.homeText
+{
+    text-align: justify;
+    padding-right: 10px;
+    padding-left: 15px;
+}
+
+.dogCountText
+{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.country-list
+{
+    line-height: 22px;
+}
+
+
+
+/*Adjustments Dog Detail thumbnail on Home*/
+.thumbnail > img     {
+         float:left;
+         margin-left: 10px;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         }
+
+.ThumbnailPopularDogs    {
+        margin: 15px;
+        background-color: white;
+        }
+
+.ThumbnailPopularDogs > img {
+        margin-bottom: 15px;
+       }
+
+.home-details{
+    background-color:#f2f2f2;
+    padding-bottom: 10px;
+ }
+
+.backg-white
+{
+    background-color: white;
+}
+
+
+
+/*************************/
+/*for Database tab (Search dog)*/
+/*************************/
+
+/*to align search box and text in dogs*/
+.alignSearch form p input{
+    margin-bottom: 10px;
+}
+
+input.search-query{
+    border-radius: 6px;
+}
+
+
+
+
+/*************************/
+/*for Details Page in DOGS*/
+/*************************/
+
+.pedigree /*for lower part of Details page*/
+{
+    margin-top: 25px;
+    padding-top: 25px;
+    background-color:#f2f2f2;
+    padding-bottom: 25px;
+    border-radius: 5px;
+}
+.pedPhoto { /*within pedigree*/
+    max-width: 160px;
+    height: 120px;
+    padding-top:3px;
+    padding-bottom: 1px;
+}
+
+.pedNotknow {
+    color:red;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.dogPic { /*top of Details page*/
+        max-width: 380px;
+        max-height: 280px;     
+        border-radius: 5px; 
+        padding: 20px;
+}
+
+/*Adjustments for upper part of details*/
+.dogTitle{
+        text-shadow: 1px 2px #d3d3d3;
+        color: #1a3362;
+        padding-left: 20px;
+}
+.doglist{
+    font-size: 16px;
+ }
+.doglist > dt{
+    text-align:left;
+    padding-left: 20px;
+    line-height: 25px;
+}
+.doglist dd{
+    line-height: 25px;
+}
+.dog-details{
+    padding: 15px;   
+    background-color:#f2f2f2;
+    border-radius: 5px;
+}
+
+
+/* left tabs*/
+.bs-sidebar .nav > .active > ul {
+    display: block;
+    margin-bottom: 8px;
+   }
+.nav-pills>.active>a, .nav-pills>.active>a:hover, .nav-pills>.active>a:focus {
+color: #fff;
+background-color: #1a3362;
+}
+
+
+/* health info*/
+
+.healthInfo{
+   border-top: solid 1px lightgrey
+}
+.colorThumb{
+   margin-top: 30px;
+   margin-bottom: 15px;
+   border-color: white;
+   background-color: #bebebe;
+   padding-left:20px;
+   padding-right:20px;
+   padding-bottom:20px;
+}
+.colorThumb > p{
+   color: #f2f2f2;
+   font-size: 13px;
+   border-radius: 5px;
+}
+
+/*************************/
+/*for Admin navbar*/
+/*************************/
+
+.nav admin { 
+    color: white;
+    padding-top:3px;
+    padding-bottom: 1px;
+    margin: 20px;    
+}
+
+.adminColor
+{
+    color: green;
+    background-color: #003D00;
+}
+
+/*************************/
+/*for Admin overview*/
+/*************************/
+
+.adminThumb1{
+    margin-top: 30px;
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: solid 3px  #003D00;
+    background-color: lightgrey;
+}
+
+   
+/*************************/
+/*for Upload button*/
+/*************************/
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+input[readonly] {
+			background-color: white !important;
+			cursor: text !important;
+		}
+
+
+
+
+/*************************/
+/*for Edit Dog*/
+/*************************/
+
+
+.edit-dog    {
+        background-color:lightgrey;
+        padding: 15px;
+        }
+
+
+/*************************/
+/*for News*/
+/*************************/
+
+
+.news-details
+{
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 20px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
+
+.contact-details
+{
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top:15px;
+    margin-bottom: 40px;
+}
+
+/****************************************************/
+/*Navigation Bar - Background color should be blue*/
+/*****************************************************/
+
+.navbar-inverse .navbar-inner {
+	  background-color: #1a3362;
+	  background-image: none;
+}
+
