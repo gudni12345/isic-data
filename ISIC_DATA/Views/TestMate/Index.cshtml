@@ -2,18 +2,19 @@
 @model ISIC_DATA.Models.TestMateViewModel
 
 @{
-Layout = "~/Views/Shared/_AdminLayout.cshtml";
 ViewBag.Title = "Test mate";
 }
-<h2>Test mate</h2>
+
 @Styles.Render("~/Content/typeahead.js-bootstrap.css")
+
+<div class="container-fluid containerLeftMargin contact-details">
 
 @using (Html.BeginForm(new { @class = "form-horizontal span9" }))
 {
     
     <fieldset>
            
-        <legend></legend>
+        <legend>Test mate - Get the inbreeding coefficent of a potential future puppy</legend>
         <div class="editor-field">
             <label>Father:</label>
             <div class="CustomTemplate">                
@@ -147,6 +148,7 @@ ViewBag.Title = "Test mate";
                  </table>
                                    	
       </div>
+    </div>
 
 
 

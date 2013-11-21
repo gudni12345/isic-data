@@ -17,7 +17,7 @@ namespace ISIC_DATA.Controllers
         //
         // GET: /TestMate/
 
-        [Authorize(Roles = "Administrator,SuperAdministrator")]
+       
         public ActionResult Index()
         {
       
@@ -26,7 +26,7 @@ namespace ISIC_DATA.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Administrator,SuperAdministrator")]    
         public ActionResult Index(TestMateViewModel viewModel)
         {         
             double vresult = 0.0;
