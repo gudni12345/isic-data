@@ -35,7 +35,7 @@
                         <a href="#" id="hd2" class="btn-mini btn-warning" rel="popover" data-content="If the dog have had another HD value state it here" data-original-title="HD2:">i</a>
                         </div>
                         <div class="editor-field">
-                        @Html.TextBoxFor(model => model.HD,new {style="width: 92px;" } ) @Html.TextBoxFor(model => model.HD2,new {style="width: 92px;" } )
+                        @Html.TextBoxFor(model => model.HD,new {style="width: 92px" } ) @Html.TextBoxFor(model => model.HD2,new {style="width: 92px;" } )
                         @Html.ValidationMessageFor(model => model.HD)
                         @Html.ValidationMessageFor(model => model.HD2)    
                        </div>
@@ -45,17 +45,25 @@
                         <a href="#" id="size" class="btn-mini btn-warning" rel="popover" data-content="Please enter the size of the dog in centimeters" data-original-title="Size:">i</a>
                         </div>
                         <div class="editor-field">
-                         @Html.TextBoxFor(model => model.Inbreeding,new {style="width: 92px;" } ) @Html.TextBoxFor(model => model.Size,new {style="width: 92px;" } )
-                         @Html.ValidationMessageFor(model => model.Inbreeding)
+                         @Html.TextBoxFor(model => model.Inbreeding,new {style="width: 92px;" ,placeholder="%" } ) @Html.TextBoxFor(model => model.Size,new {style="width: 92px" ,placeholder="Centimeters"  })
+                         @Html.ValidationMessageFor(model => model.Inbreeding)                
                         </div>
                         <div class="editor-label">Eyes</div>
                         <div class="editor-field">
                         @Html.EditorFor(model => model.Eyes)
-                        @Html.ValidationMessageFor(model => model.Eyes)
+                        @Html.ValidationMessageFor(model => model.Eyes).
                         </div>
                         <div class="editor-label">Dew Claws</div>      
                         <div class="editor-field">
-                            @Html.TextBoxFor(model => model.MT)
+                            @Html.DropDownListFor(model => model.MT, new SelectList( new List<Object>{ 
+                                  new { value = 0 , text = "Double"  },
+                                  new { value = 1 , text = "Single" },
+                                  new { value = 2 , text = "None"}
+                          },
+                            "value",
+                            "text",
+                           Model.MT)
+                          )
                             @Html.ValidationMessageFor(model => model.MT)
                        </div>
                                              
@@ -85,6 +93,7 @@
                         <a href="#" id="hair" class="btn-mini btn-warning" rel="popover" data-content="Please state here if the dog has long or short hair" data-original-title="Hair:">i</a>
                         </div>
                         <div class="editor-field">
+                             
                         @Html.EditorFor(model => model.Hair)
                         @Html.ValidationMessageFor(model => model.Hair)
                         
