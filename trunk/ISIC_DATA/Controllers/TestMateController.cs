@@ -25,8 +25,7 @@ namespace ISIC_DATA.Controllers
         }
 
 
-        [HttpPost]
-        [Authorize(Roles = "Administrator,SuperAdministrator")]    
+        [HttpPost]        
         public ActionResult Index(TestMateViewModel viewModel)
         {         
             double vresult = 0.0;
