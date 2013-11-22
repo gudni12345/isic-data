@@ -96,6 +96,7 @@ p {
         font-weight: bold; 
         font-size: 18px;
 }
+
 .navbaradjustment{
     padding-top: 6px;
     padding-left: 8px;
@@ -105,6 +106,11 @@ p {
 {
     padding-top: 10px;
     padding-left: 0px;
+}
+
+.admin-nav-padding
+{
+    margin-bottom: 7px;
 }
 
 /*Heading on frontpage*/
