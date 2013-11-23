@@ -92,14 +92,18 @@
                         <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Mother.Name)
                          <br>            @Html.DisplayFor(model => model.Father.Litter.Mother.Reg)
                         </td>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Name)</td>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Reg)
+                        </td>
                         <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
                     </tr>
                     <tr>
                         <td  style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Name)</td>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Name)
+                        <br>            @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Reg)
+                        </td>
                         <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
                     </tr>
                     <tr>
@@ -113,17 +117,21 @@
                         <br>             @Html.DisplayFor(model => model.Mother.Reg)
                         </td>
                         <td ROWSPAN="4"> @Html.DisplayFor(model => model.Mother.Litter.Father.Name)
-                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
+                        <br>             @Html.DisplayFor(model => model.Mother.Litter.Father.Reg)
                         </td>
 
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Name)</td>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Name)
+                        <br>             @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Reg)
+                        </td>
                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Father.Name)</td>
                     </tr>
                     <tr>
                         <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Name)</td>
+                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Name)
+                        <br>             @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Reg)
+                        </td>
                         <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
                     </tr>
                     <tr>
@@ -134,14 +142,18 @@
                         <td ROWSPAN="4">@Html.DisplayFor(model => model.Mother.Litter.Mother.Name)
                         <br>            @Html.DisplayFor(model => model.Mother.Litter.Mother.Reg)
                         </td>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Name)</td>
+                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Name)
+                         <br>           @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Reg)
+                        </td>
                         <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
                     </tr>
                     <tr>
                         <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
                     </tr>
                     <tr>
-                         <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Name)</td>
+                         <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Name)
+                          <br>           @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Reg)
+                         </td>
                          <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
                     </tr>
                     <tr>
