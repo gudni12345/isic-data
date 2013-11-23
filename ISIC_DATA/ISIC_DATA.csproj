@@ -219,6 +219,7 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RegisterDogController.cs" />
     <Compile Include="Controllers\TestMateController.cs" />
+    <Compile Include="Controllers\vresult.cs" />
     <Compile Include="DataAccess\DogContext.cs" />
     <Compile Include="Controllers\Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="DataAccess\DogRepository.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Lib\InbreedingResult.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Color.cs" />
