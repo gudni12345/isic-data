@@ -39,8 +39,10 @@
 
     if (ViewBag.Result != null)
     {
-        <strong>Result = @ViewBag.Result %</strong>
+        <strong>Result = @ViewBag.Result %</strong><br />
+        if (ViewBag.Ancestor != 1 && ViewBag.Ancestor != 0){<strong>The common ancestor is @ViewBag.Ancestor</strong>}
     }
+    
     
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Check</button>
