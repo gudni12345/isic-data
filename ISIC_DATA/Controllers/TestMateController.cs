@@ -44,8 +44,11 @@ namespace ISIC_DATA.Controllers
             //we show the Result if there is one and if the CommonAncestor found is not "not known". Otherwise we show 0.
             ViewBag.Result = (vresult != null && vresult.CommonAncestorID != 1) ? vresult.Result : 0.0;
             //if there is a result- We only show it if the it´s not Id 1 (not known)
-            ViewBag.Ancestor = (vresult.CommonAncestorID != 1) ? vresult.CommonAncestorID :0;
-            
+            int AncestorId = (vresult.CommonAncestorID != 1) ? vresult.CommonAncestorID :0;
+
+            ViewBag.Ancestor = AncestorId;
+            ViewBag.AncestorName = db.Dog.Find(AncestorId).Name;
+
             viewModel.Father.Name = FatherA.Name;
             viewModel.Mother.Name = MotherB.Name;
             ModelState.Clear();
@@ -68,6 +71,9 @@ namespace ISIC_DATA.Controllers
 
             var inbreedingResult = new InbreedingResult();
             double result = 0.0;   // A: Father, B: Mother
+
+            int commonAncestorID = 0;
+            string commonAncestorName = null;
                                    
             //if father and mother have the same parents, the tree does not need to be checked further. No more possible path.
             if ((A.Litter.FatherId == B.Litter.FatherId) && (A.Litter.MotherId == B.Litter.MotherId)) { inbreedingResult.CommonAncestorID = B.Litter.FatherId; result += 0.25; }
@@ -80,6 +86,8 @@ namespace ISIC_DATA.Controllers
             else if (A.Id == B.Litter.FatherId)
             {
                 inbreedingResult.CommonAncestorID = A.Id;
+              //  commonAncestorID = A.Id;
+              //  commonAncestorName = A.Name;
                 result = 0.25;
                 if (B.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.CommonAncestorID = A.Id; result += 0.125; } //check if Father is also Grandfather
                 else if (B.Litter.Mother.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.CommonAncestorID = A.Id; result += 0.0625; } //check if Father is mothers Great Grandfather
