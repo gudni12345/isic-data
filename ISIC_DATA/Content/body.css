@@ -229,11 +229,15 @@ input.search-query{
 }
 
 .dogPic { /*top of Details page*/
-        max-width: 380px;
-        max-height: 280px;     
-        border-radius: 5px; 
-        padding: 20px;
+    
+       border-radius: 5px; 
+       padding: 20px;
 }
+img.resize{height:350px;width:auto;}
+img.resize{width:350px;height:auto;}
+
+
+
 
 /*Adjustments for upper part of details*/
 .dogTitle{
