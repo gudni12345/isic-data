@@ -47,7 +47,10 @@ namespace ISIC_DATA.Controllers
             int AncestorId = (vresult.CommonAncestorID != 1) ? vresult.CommonAncestorID :0;
 
             ViewBag.Ancestor = AncestorId;
-            ViewBag.AncestorName = db.Dog.Find(AncestorId).Name;
+            if (AncestorId != 0)
+            {
+                ViewBag.AncestorName = db.Dog.Find(AncestorId).Name;
+            }
 
             viewModel.Father.Name = FatherA.Name;
             viewModel.Mother.Name = MotherB.Name;
