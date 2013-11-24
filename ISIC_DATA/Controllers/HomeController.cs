@@ -17,7 +17,26 @@ namespace ISIC_DATA.Controllers
         
         private DogContext db = new DogContext();
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index()
+        {
+            ViewBag.numberOfDogs = db.Dog.Count();
+            ViewBag.numberOfDogsIceland = db.Dog.Where(m => m.BornInCountryId == 1).ToList().Count;
+            ViewBag.numberOfDogsGermany = db.Dog.Where(m => m.BornInCountryId == 2).ToList().Count;
+            ViewBag.numberOfDogsHolland = db.Dog.Where(m => m.BornInCountryId == 3).ToList().Count;
+            ViewBag.numberOfDogsUSA = db.Dog.Where(m => m.BornInCountryId == 4).ToList().Count;
+            ViewBag.numberOfDogsFinland = db.Dog.Where(m => m.BornInCountryId == 5).ToList().Count;
+            ViewBag.numberOfDogsNorway = db.Dog.Where(m => m.BornInCountryId == 6).ToList().Count;
+            ViewBag.numberOfDogsSweden = db.Dog.Where(m => m.BornInCountryId == 7).ToList().Count;
+            ViewBag.numberOfDogsDenmark = db.Dog.Where(m => m.BornInCountryId == 8).ToList().Count;
+            ViewBag.numberOfDogsAustria = db.Dog.Where(m => m.BornInCountryId == 9).ToList().Count;
+
+
+            var dogs = db.Dog.OrderByDescending(d => d.Litter.DateOfBirth).Where(d => d.PicturePath != "");
+            return View(dogs.Take(5));
+        }
+
+
+        public ActionResult IndexOld(string sortOrder, string currentFilter, string searchString, int? page)
         {
 
             if (searchString != null)
@@ -62,16 +81,11 @@ namespace ISIC_DATA.Controllers
             ViewBag.numberOfDogsSweden = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 7).ToList().Count;
             ViewBag.numberOfDogsDenmark = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 8).ToList().Count;
             ViewBag.numberOfDogsAustria = db.Dog.AsEnumerable().Where(m => m.BornInCountryId == 9).ToList().Count;
-
-             
-            
+          
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(dogs.ToPagedList(pageNumber, pageSize));
             // return View(dogs.Take(5));
-
-
-
         }
 
         public ActionResult About()
