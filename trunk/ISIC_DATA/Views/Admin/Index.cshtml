@@ -12,7 +12,7 @@
     <div class="span4">
         <div class="thumbnail adminThumb1">
             <p> <b>Add or Edit a Person</b> of your country (Breeder or Owner):</p><br />
-            <a class="btn btn-success" href="Person">Edit People»</a><br /><br />
+            <a class="btn btn-success" href="Person">Add or Edit People»</a><br /><br />
         </div><br />
       </div>
        
@@ -35,7 +35,7 @@
     @if(User.IsInRole("SuperAdministrator"))  {
      <div class="span4">
        <div class="thumbnail adminThumb1">
-            <p>Edit the <b>birthday<br /> of a whole litter here:</p><br />
+            <p>Edit the <b>birthday<b /> or <b>breeder<b /> of a whole litter</p><br />
             <a class="btn btn-success" href="Litter">Edit Litter»</a><br /><br />
         </div><br />
        </div>
@@ -47,14 +47,16 @@
         </div><br />
       </div>
 
-      
-          <div class="span4">
+      <div class="span4">
            <div class="thumbnail adminThumb1">
                 <p>Administrators control:</p><br />
                   <a class="btn btn-error" href="Account">Administrators Edit/Create»</a><br /><br />
             </div><br />
-          </div>
+      </div>
+          
       }
+
+    
    </div>
        
        

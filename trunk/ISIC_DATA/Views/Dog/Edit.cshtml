@@ -172,7 +172,7 @@
                         @Html.TextBox("Owner",(string)ViewBag.Owner, new { placeholder="Owner name", @id="Owner_typeahead"})
                         @Html.HiddenFor(model => model.PersonId, new { @id = "returnOwnerId" })
                         <div>
-                            @Html.ActionLink("Add to list", "CreateOwner", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
+                            @Html.ActionLink("Create Owner", "CreateOwner", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
                         </div>
                         <br>
                         <div id='dialogDiv' class='modal hide fade in'>
