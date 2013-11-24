@@ -66,7 +66,7 @@ namespace ISIC_DATA.Controllers
                     dogs = dogs.OrderBy(d => d.Litter.DateOfBirth);
                     break;
                 default:
-                    dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth).Where(d => d.PicturePath !="");
+                    dogs = dogs.OrderByDescending(d => d.Litter.DateOfBirth).Where(d => d.PicturePath != null);
                     break;
             }
 

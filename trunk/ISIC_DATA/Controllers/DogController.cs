@@ -107,28 +107,29 @@ namespace ISIC_DATA.Controllers
                 return HttpNotFound();
             }
             else
-            if (dog.LitterId != 1) 
-            if ((dog.Litter.Father.LitterId != 1 ) || (dog.Litter.Mother.LitterId != 1))
+            if (dog.LitterId != 1)
             {
+                if ((dog.Litter.Father.LitterId != 1) || (dog.Litter.Mother.LitterId != 1))
+                {
 
-                // get siblings from the same litter // find all dogs that have same litterId as dog selected.
-                ViewBag.Siblings = db.allDogs.Where(d => d.LitterId == dog.LitterId).Where(d => d.Id != dog.Id).ToList();    
-                
-                // Find all dogs that have the same father
-                ViewBag.SiblingsFromFatherSide = db.allDogs.Where(d => d.Litter.FatherId == dog.Litter.FatherId)
-                                                  .Where(d => d.Id != dog.Id).ToList();
-                // Find all dogs that have the same mother
-                ViewBag.SiblingsFromMotherSide = db.allDogs.Where(d => d.Litter.MotherId == dog.Litter.MotherId)                                          
-                                                .Where(d => d.Id != dog.Id).ToList();
+                    // get siblings from the same litter // find all dogs that have same litterId as dog selected.
+                    ViewBag.Siblings = db.allDogs.Where(d => d.LitterId == dog.LitterId).Where(d => d.Id != dog.Id).ToList();
 
+                    // Find all dogs that have the same father
+                    ViewBag.SiblingsFromFatherSide = db.allDogs.Where(d => d.Litter.FatherId == dog.Litter.FatherId)
+                                                      .Where(d => d.Id != dog.Id).ToList();
+                    // Find all dogs that have the same mother
+                    ViewBag.SiblingsFromMotherSide = db.allDogs.Where(d => d.Litter.MotherId == dog.Litter.MotherId)
+                                                    .Where(d => d.Id != dog.Id).ToList();
 
+                }
                  //Find all puppies
                 if (dog.Sex.Equals("M"))  // if Dog is male
                     ViewBag.Puppies = db.allDogs.Where(d => d.Litter.FatherId == dog.Id).ToList();
                 else
                     if (dog.Sex.Equals("F"))
                         ViewBag.Puppies = db.allDogs.Where(d => d.Litter.MotherId == dog.Id).ToList();
-
+            
 
             }
             return View(dog);
