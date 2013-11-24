@@ -16,6 +16,11 @@
     <fieldset>
            
         <legend>Test mate - Get the inbreeding coefficent of a potential future puppy</legend>
+        @Html.ActionLink("i", "Info", "TestMate", null, new { id = "info", @class = "btn btn-success" })
+
+        <div id='dialogDiv' class='modal hide fade in'>
+            <div id='dialogContent'></div>
+        </div>
         <div class="editor-field">
             <label>Father:</label>
             <div class="CustomTemplate">                
@@ -39,7 +44,7 @@
 
     if (ViewBag.Result != null)
     {
-        <strong>Result = @ViewBag.Result %</strong><br />
+        <strong>Inbreeding Coefficient = @ViewBag.Result %</strong><br />
         if (ViewBag.Ancestor != 1 && ViewBag.Ancestor != 0){<strong>The common ancestor is @ViewBag.AncestorName</strong>}
     }
     
@@ -203,6 +208,44 @@
             }
         );
     });
+
+
+    //MODAL for Inbreeding info
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $('#info').click(function () {                 // Open the Modal
+            $('#dialogContent').load(this.href, function () {
+                $('#dialogDiv').modal({
+                    backdrop: 'static',
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {           // if data was saved successfully we close the modal.
+                        $('#dialogDiv').modal('hide');
+                        //Refresh: location.reload();
+
+                    } else {
+                        $('#dialogContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
+
 
 </script>
 <script>
