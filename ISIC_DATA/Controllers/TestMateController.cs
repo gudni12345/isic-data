@@ -25,6 +25,10 @@ namespace ISIC_DATA.Controllers
             return View();
         }
 
+        public ActionResult Info()
+        {
+            return PartialView("Info");
+        }
 
         [HttpPost]        
         public ActionResult Index(TestMateViewModel viewModel)
@@ -75,8 +79,8 @@ namespace ISIC_DATA.Controllers
             var inbreedingResult = new InbreedingResult();
             double result = 0.0;   // A: Father, B: Mother
 
-            int commonAncestorID = 0;
-            string commonAncestorName = null;
+            //int commonAncestorID = 0;
+            //string commonAncestorName = null;
                                    
             //if father and mother have the same parents, the tree does not need to be checked further. No more possible path.
             if ((A.Litter.FatherId == B.Litter.FatherId) && (A.Litter.MotherId == B.Litter.MotherId)) { inbreedingResult.CommonAncestorID = B.Litter.FatherId; result += 0.25; }
