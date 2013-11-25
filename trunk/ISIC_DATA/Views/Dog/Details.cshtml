@@ -48,17 +48,17 @@
             </div>
             @*Load Photo from Database*@
              <div class="span5">       
-                 <div class="dogPic">
+                 <div id="dogPic">
                             @if (@Model.PicturePath == null)
                             {
                                 <img src="~/Images/dogs/dog1.jpg" alt ="~/Images/dogs/dog1.jpg" />     
                             }
                             else
                             {                           
-                                 <img src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" class="resize" />                            
+                                 <img class="thumb" src="@Url.Content(@Model.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                             } 
                   </div> 
-                 
+   
              </div> 
       
              <div class="span1" style="margin-left: -25px; padding-top: 20px" >

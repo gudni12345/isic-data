@@ -233,10 +233,17 @@ input.search-query{
        border-radius: 5px; 
        padding: 20px;
 }
-img.resize{height:350px;width:auto;}
-img.resize{width:350px;height:auto;}
+/*img.resize{height:350px;width:auto;}
+img.resize{width:350px;height:auto;}*/
 
-
+.thumb {
+  max-width: 380px;
+  max-height: 280px;
+  width: expression(this.width > 100 ? "100px" : true);
+  height: expression(this.height > 100 ? "100px" : true);
+  border-radius: 5px; 
+       padding: 20px;
+}
 
 
 /*Adjustments for upper part of details*/
