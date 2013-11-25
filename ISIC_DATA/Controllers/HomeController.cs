@@ -76,12 +76,10 @@ namespace ISIC_DATA.Controllers
             int pageNumber = (page ?? 1);
             //return View(db.NewsArticle.ToList());
             return View(usernewsarticles.ToPagedList(pageNumber, pageSize));
-           
         }
 
         public ActionResult Contact()
         {
-
             return View();
         }
                                       
@@ -89,11 +87,6 @@ namespace ISIC_DATA.Controllers
         public ActionResult Users()
         {
                  return View(db.UserProfiles.ToList());
-        }
-
-        public ActionResult Details()
-        {
-            return View("../Dog/Details");
         }
     }
 }
