@@ -85,7 +85,7 @@
                             </div>
                             <br />
                             <div class="editor-field">
-                                <b>@Html.TextBoxFor(model => model.Litter.DateOfBirth,  new { @readonly = "readonly" })</b>
+                                <b>@Html.TextBoxFor(model => model.Litter.DateOfBirth,  "{0:dd-MM-yyyy}",   new { @readonly = "readonly" })</b>
                             </div>
                         </div>
                         <div class="editor-label">
