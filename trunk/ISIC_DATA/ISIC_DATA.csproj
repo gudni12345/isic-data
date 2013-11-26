@@ -389,7 +389,10 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Photos\IS1234513.jpg" />
     <Content Include="Photos\IS1329709.jpg" />
+    <Content Include="Photos\IS1577411.jpg" />
+    <Content Include="Photos\IS1577611.jpg" />
     <Content Include="Photos\IS1807913.JPG" />
     <Content Include="Photos\IS444444.jpg" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
@@ -829,6 +832,9 @@
     <Content Include="Views\Admin\RegisterDog.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\NewsArticle\EditNews.cshtml" />
+    <Content Include="Views\TestMate\Info.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
