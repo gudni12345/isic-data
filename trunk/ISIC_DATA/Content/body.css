@@ -10,6 +10,7 @@ body {
             max-width: 1100px;
             margin-left: auto;
             margin-right:auto;
+            
                         
       }
 
@@ -114,7 +115,7 @@ p {
 }
 
 /*Heading on frontpage*/
-.span7  > h2{
+.span7  > h3{
     margin: 30px 10px;
     font-family: Adobe Fangsong Std;
 }
@@ -162,7 +163,7 @@ p {
 .thumbnail > img     {
          float:left;
          margin-left: 10px;
-         margin-top: 10px;
+         margin-top: 18px;
          margin-bottom: 10px;
          }
 
@@ -242,7 +243,6 @@ img.resize{width:350px;height:auto;}*/
   width: expression(this.width > 100 ? "100px" : true);
   height: expression(this.height > 100 ? "100px" : true);
   border-radius: 5px; 
-       padding: 20px;
 }
 
 
