@@ -85,16 +85,7 @@ namespace ISIC_DATA.Controllers
             return db.Dog.Find(id).Litter.MotherId;
         }
 
-        List<Dog> pList = new List<Dog>();
-
-        private void AddFatherAndMother(int id)
-        {
-                int fatherId = returnFatherId(id);
-                int motherId = returnMotherId(id);
-                pList.Add(db.Dog.Find(returnFatherId(id))); 
-                pList.Add(db.Dog.Find(returnMotherId(id)));
-        }
-
+  
         private List<Dog> parents(int id)
         {
             List<Dog> pList = new List<Dog>();
