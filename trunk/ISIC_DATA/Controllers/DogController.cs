@@ -318,5 +318,56 @@ namespace ISIC_DATA.Controllers
         }
 
 
+        private List<Dog> parents(int id)
+        {
+            List<Dog> pList = new List<Dog>();
+            pList.Add(db.FindDog(db.FindDog(id).Litter.MotherId));
+            pList.Add(db.FindDog(db.FindDog(id).Litter.MotherId));
+            return pList;
+        }
+
+        public JsonResult FetchPedigree(int id)
+        {
+            List<Dog> parentList = new List<Dog>();
+            List<Dog> pTemp = new List<Dog>();
+            List<Dog> pTemp2 = new List<Dog>();
+            parentList = parents(id);  // Skilar foreldrum.  2 hundar
+
+            foreach (Dog d in parentList)
+            {
+                if (pTemp == null)
+                    pTemp = parents(d.Id);
+                else
+                    pTemp.AddRange(parents(d.Id));        // 4 hundar.
+            }
+
+            parentList.AddRange(pTemp);  // 6 hundar komnir.
+
+            foreach (Dog d in pTemp) // finnur foreldra fyrir þessa 4 hunda. 
+            {
+                if (pTemp2 == null)
+                    pTemp2 = parents(d.Id);
+                else
+                    pTemp2.AddRange(parents(d.Id));        // skila 8 hundar.
+            }
+            parentList.AddRange(pTemp2);    // 6 + 8 = 14 stk
+            pTemp = null;
+
+            foreach (Dog d in pTemp2) // finnur foreldra fyrir þessa 8 hunda. 
+            {
+                if (pTemp == null)
+                    pTemp = parents(d.Id);
+                else
+                    pTemp.AddRange(parents(d.Id));        //skila 16 hundar.
+            }
+            parentList.AddRange(pTemp);  // 14 + 16 = 30 stk
+
+            var serialisedJson = from result in parentList
+                                 select new { Name = result.Name, Id = result.Id };
+
+            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
