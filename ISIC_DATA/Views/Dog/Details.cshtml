@@ -105,158 +105,158 @@
                   <tbody>
                       <tr>
                         
-                        <td ROWSPAN="8"> @if (Model.Litter.Father.Name == "not known")
+                        <td rowspan="8">@if (ViewBag.Pedigree[0].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[0].Name, "Details", new { Id = ((int)ViewBag.Pedigree[0].Id) })
                              }
-                                <br> @if (@Model.Litter.Father.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Father.PicturePath != null)
+                                <br> @if (ViewBag.Pedigree[0].PicturePath != "~/Images/dogs/dog1.jpg" & ViewBag.Pedigree[0].PicturePath != null)
                                  {                           
-                                 <img class="pedPhoto" src="@Url.Content(@Model.Litter.Father.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 <img class="pedPhoto" src="@Url.Content(ViewBag.Pedigree[0].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                                  } 
                         </td>                
-                        <td ROWSPAN="4"> @if (Model.Litter.Father.Litter.Father.Name == "not known")
+                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[2].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[2].Name, "Details", new { Id = ((int)ViewBag.Pedigree[2].Id) })
                              }
                             </td>
-                        <td ROWSPAN="2"> @if (Model.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[6].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
-                             {                            
-                                @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Id) })
+                             {   
+                                @Html.ActionLink((string)ViewBag.Pedigree[6].Name, "Details", new { Id = ((int)ViewBag.Pedigree[6].Id) })                                                         
                             }
                             </td>
                                          
-                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
+                        <td  style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[14].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {                            
-                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[14].Name, "Details", new { Id = ((int)ViewBag.Pedigree[14].Id) }) 
                              }
                             </td>
                      </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
+                        <td  style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[15].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {
-                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Father.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[15].Name, "Details", new { Id = ((int)ViewBag.Pedigree[15].Id) }) 
                              }
                              </td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">  @if (Model.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
+                        <td ROWSPAN="2">  @if (ViewBag.Pedigree[7].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[7].Name, "Details", new { Id = ((int)ViewBag.Pedigree[7].Id) }) 
                              }
                             </td>
-                        <td  style="height:20px;table-layout:fixed">@if (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
+                        <td  style="height:20px;table-layout:fixed">@if (ViewBag.Pedigree[16].Name == "not known")
                              {
                                 <p></p>
                              }
                              else
                              { 
-                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { id = (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[16].Name, "Details", new { Id = ((int)ViewBag.Pedigree[16].Id) })
                              }
                         </td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed">@if (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
+                        <td  style="height:20px;table-layout:fixed">@if (ViewBag.Pedigree[17].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              { 
-                             @Html.ActionLink(Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Father.Litter.Mother.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[17].Name, "Details", new { Id = ((int)ViewBag.Pedigree[17].Id) })
                              }
                         </td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="4"> @if (Model.Litter.Father.Litter.Mother.Name == "not known")
+                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[3].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {            
-                                 @Html.ActionLink(Model.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Id) })
+                                 @Html.ActionLink((string)ViewBag.Pedigree[3].Name, "Details", new { Id = ((int)ViewBag.Pedigree[3].Id) })
                              }
                         </td>
-                        <td ROWSPAN="2"> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[8].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {            
-                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[8].Name, "Details", new { Id = ((int)ViewBag.Pedigree[8].Id) })
                              }
                         </td>
-                        <td style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
+                        <td style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[18].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              { 
-                                 @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Father.Id) })
+                                 @Html.ActionLink((string)ViewBag.Pedigree[18].Name, "Details", new { Id = ((int)ViewBag.Pedigree[18].Id) })
                              }
                         </td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
+                        <td  style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[19].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Father.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[19].Name, "Details", new { Id = ((int)ViewBag.Pedigree[19].Id) })
                              }
                         </td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@if (Model.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
+                        <td ROWSPAN="2">@if  (ViewBag.Pedigree[9].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[9].Name, "Details", new { Id = ((int)ViewBag.Pedigree[9].Id) })
                              }
                         </td>
-                        <td  style="height:20px;table-layout:fixed">  @if (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
+                        <td  style="height:20px;table-layout:fixed">  @if  (ViewBag.Pedigree[20].Name == "not known") 
                             {
                                  <p></p>  
                             }
                             else
                             {  
-                                @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[20].Name, "Details", new { Id = ((int)ViewBag.Pedigree[20].Id) })
                             }
                         </td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @if (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
+                        <td  style="height:20px;table-layout:fixed"> @if  (ViewBag.Pedigree[21].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                             @Html.ActionLink(Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Father.Litter.Mother.Litter.Mother.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[21].Name, "Details", new { Id = ((int)ViewBag.Pedigree[21].Id) })
                             }
                         </td>
                     </tr>
@@ -264,159 +264,159 @@
 
                      @*Mothers Pedigree*@    
                     <tr>
-                        <td ROWSPAN="8"> @if (Model.Litter.Mother.Name == "not known")
+                        <td ROWSPAN="8"> @if (ViewBag.Pedigree[1].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[1].Name, "Details", new { Id = ((int)ViewBag.Pedigree[1].Id) })                                
                              }
                              <br>
-                             @if (@Model.Litter.Mother.PicturePath != "~/Images/dogs/dog1.jpg" & @Model.Litter.Mother.PicturePath != null)
+                             @if (ViewBag.Pedigree[1].PicturePath != "~/Images/dogs/dog1.jpg" & ViewBag.Pedigree[1].PicturePath != null)
                              {                           
-                                 <img class="pedPhoto" src="@Url.Content(@Model.Litter.Mother.PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 <img class="pedPhoto" src="@Url.Content(ViewBag.Pedigree[1].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                              }  
                         </td>
-                        <td ROWSPAN="4"> @if (Model.Litter.Mother.Litter.Father.Name == "not known")
+                        <td ROWSPAN="4"> @if  (ViewBag.Pedigree[4].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {            
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[4].Name, "Details", new { Id = ((int)ViewBag.Pedigree[4].Id) })
                              }
                         </td>
-                        <td ROWSPAN="2"> @if (Model.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
+                        <td ROWSPAN="2">@if  (ViewBag.Pedigree[10].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
-                             {           
-                                    @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Id) })
+                             { 
+                                @Html.ActionLink((string)ViewBag.Pedigree[10].Name, "Details", new { Id = ((int)ViewBag.Pedigree[10].Id) })
                              }
                         </td>
-                       <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name == "not known")
+                       <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[22].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[22].Name, "Details", new { Id = ((int)ViewBag.Pedigree[22].Id) })                                
                              }
                        </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name == "not known")
+                        <td style="height:20px;table-layout:fixed">   @if (ViewBag.Pedigree[23].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Father.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[23].Name, "Details", new { Id = ((int)ViewBag.Pedigree[23].Id) }) 
                              }
                         </td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2"> @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[11].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[11].Name, "Details", new { Id = ((int)ViewBag.Pedigree[11].Id) }) 
                              }
                         </td>
-                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Name == "not known")
+                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[24].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[24].Name, "Details", new { Id = ((int)ViewBag.Pedigree[24].Id) }) 
                              }
                         </td>
                     </tr>
                     <tr>
-                         <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name == "not known")
+                         <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[25].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Father.Litter.Mother.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[25].Name, "Details", new { Id = ((int)ViewBag.Pedigree[25].Id) })
                              }
                          </td>
                     </tr>
 
                     <tr>
-                        <td ROWSPAN="4">@if (Model.Litter.Mother.Litter.Mother.Name == "not known")
+                        <td ROWSPAN="4">@if (ViewBag.Pedigree[5].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[5].Name, "Details", new { Id = ((int)ViewBag.Pedigree[5].Id) })
                              }
                         </td>
-                        <td ROWSPAN="2">  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
+                        <td ROWSPAN="2">  @if (ViewBag.Pedigree[12].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[12].Name, "Details", new { Id = ((int)ViewBag.Pedigree[12].Id) })
                              }
                         </td>
-                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name == "not known")
+                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[26].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[26].Name, "Details", new { Id = ((int)ViewBag.Pedigree[26].Id) })
                             }
                         </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name == "not known")
+                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[27].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[27].Name, "Details", new { Id = ((int)ViewBag.Pedigree[27].Id) })
                              }
                         </td>
                     </tr>
                     <tr>
-                         <td ROWSPAN="2"> @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
+                         <td ROWSPAN="2"> @if (ViewBag.Pedigree[13].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[13].Name, "Details", new { Id = ((int)ViewBag.Pedigree[13].Id) })
                              }
                          </td>
-                         <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name == "not known")
+                         <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[28].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Father.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[28].Name, "Details", new { Id = ((int)ViewBag.Pedigree[28].Id) })
                              }
                          </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">  @if (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name == "not known")
+                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[29].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink(Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name, "Details", new { Id = (Model.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[29].Name, "Details", new { Id = ((int)ViewBag.Pedigree[29].Id) })
                              }
                         </td>
                     </tr>
