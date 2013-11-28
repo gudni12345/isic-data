@@ -321,7 +321,7 @@ namespace ISIC_DATA.Controllers
         private List<Dog> parents(int id)
         {
             List<Dog> pList = new List<Dog>();
-            pList.Add(db.FindDog(db.FindDog(id).Litter.MotherId));
+            pList.Add(db.FindDog(db.FindDog(id).Litter.FatherId));
             pList.Add(db.FindDog(db.FindDog(id).Litter.MotherId));
             return pList;
         }
