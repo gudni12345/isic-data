@@ -129,13 +129,19 @@ namespace ISIC_DATA.Controllers
                 else
                     if (dog.Sex.Equals("F"))
                         ViewBag.Puppies = db.allDogs.Where(d => d.Litter.MotherId == dog.Id).ToList();
-            
-
+                
             }
-            ViewBag.Pedigree = FetchPedigree(id).ToList();
+            ViewBag.Pedigree = FetchPedigree(id);
             return View(dog);
         }
 
+        // GET: /Dog/Pedigree/5
+
+        public ActionResult Pedigree(int id = 0)
+        {
+           // ViewBag.Pedigree = FetchPedigree(id);
+            return View();
+        }
  
         //
         // GET: /Dog/Create
