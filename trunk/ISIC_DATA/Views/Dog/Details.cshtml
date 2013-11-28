@@ -161,14 +161,18 @@
               </div>
         </div>
 
-      <!-- FOR THE LITTER TAB -->      
+       <!-- FOR THE LITTER TAB -->      
       <div class="tab-pane" id="litter">
           <!-- <strong>Hérna er litterId => Model.LitterId  </strong> -->
 
           @if (ViewBag.Siblings != null) {
             if (ViewBag.Siblings.Count > 0)
             { 
-                <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
+                <a href="#" data-toggle="collapse" data-target="#siblings">
+                 <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
+                 </a>
+              <tr></tr>
+                <div id="siblings" class="collapse in"> 
                 <table class="table table-striped">
                     <thead>
 				    <tr>					    
@@ -191,14 +195,18 @@
                                 </tr>
                             }               
                     </tbody>
-                </table>              
+                </table>   
+                    </div>           
             }
           }
 
           @if (ViewBag.SiblingsFromFatherSide != null) {
             if (ViewBag.SiblingsFromFatherSide.Count > 0)
             { 
-                <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
+                 <a href="#" data-toggle="collapse" data-target="#father">
+                  <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
+                 </a>
+                 <div id="father" class="collapse in"> 
                 <table class="table table-striped">
                     <thead>
 				    <tr>					    
@@ -222,13 +230,17 @@
                     }
                     </tbody>
                 </table>
+                     </div>
             }
           }
 
           @if (ViewBag.SiblingsFromMotherSide != null) {
             if (ViewBag.SiblingsFromMotherSide.Count > 0)
             {    
-                <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
+                 <a href="#"data-toggle="collapse" data-target="#mother">
+                  <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
+                 </a>
+                <div id="mother" class="collapse in"> 
                 <table class="table table-striped">
                     <thead>
 				    <tr>					    
@@ -252,14 +264,17 @@
                     }
                     </tbody>
                 </table>
+                    </div>
             }
           }
 
           @if (ViewBag.Puppies != null) {
             if (ViewBag.Puppies.Count > 0)
-            {    
-                <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
-                   <table class="table table-striped">
+            {   
+                 <a href="#" data-toggle="collapse" data-target="#puppies">
+                 <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
+                 </a>
+                 <div id="puppies" class="collapse in"> <table class="table table-striped">
                     <thead>
 				    <tr>					    
 					    <th>Reg</th>
@@ -281,7 +296,8 @@
                 </tr>
                 }
                 </tbody>
-             </table>
+             </table></div>
+                  
             }
           }
       </div>
