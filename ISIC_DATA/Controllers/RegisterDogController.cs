@@ -107,7 +107,7 @@ namespace ISIC_DATA.Controllers
                             Name = dp.Name,
                             Reg = dp.Reg,
                             Sex = dp.Sex,
-                            Color = dp.Color,
+                            ColorId = dp.ColorId,
                             LitterId = l.Id,             // Dog linked with privious litter.                            
                             BornInCountryId = u.CountryId // Dog gets same Country as the Admin.
                         };
