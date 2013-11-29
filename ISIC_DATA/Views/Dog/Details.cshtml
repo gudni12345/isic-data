@@ -171,8 +171,8 @@
                 <a href="#" data-toggle="collapse" data-target="#siblings">
                  <strong>Siblings from the same litter ( @ViewBag.Siblings.Count )</strong> <br>
                  </a>
-              <tr></tr>
-                <div id="siblings" class="collapse in"> 
+              
+                <div id="siblings" class="collapse"> 
                 <table class="table table-striped">
                     <thead>
 				    <tr>					    
@@ -196,7 +196,7 @@
                             }               
                     </tbody>
                 </table>   
-                    </div>           
+            </div>           
             }
           }
 
@@ -206,7 +206,7 @@
                  <a href="#" data-toggle="collapse" data-target="#father">
                   <strong>Siblings with same father ( @ViewBag.SiblingsFromFatherSide.Count )</strong><br>
                  </a>
-                 <div id="father" class="collapse in"> 
+                 <div id="father" class="collapse"> 
                 <table class="table table-striped">
                     <thead>
 				    <tr>					    
@@ -240,7 +240,7 @@
                  <a href="#"data-toggle="collapse" data-target="#mother">
                   <strong>Siblings with same mother ( @ViewBag.SiblingsFromMotherSide.Count ) </strong><br>
                  </a>
-                <div id="mother" class="collapse in"> 
+                <div id="mother" class="collapse"> 
                 <table class="table table-striped">
                     <thead>
 				    <tr>					    
@@ -274,7 +274,7 @@
                  <a href="#" data-toggle="collapse" data-target="#puppies">
                  <strong>Puppies ( @ViewBag.Puppies.Count ) </strong><br>
                  </a>
-                 <div id="puppies" class="collapse in"> <table class="table table-striped">
+                 <div id="puppies" class="collapse"> <table class="table table-striped">
                     <thead>
 				    <tr>					    
 					    <th>Reg</th>
@@ -315,7 +315,6 @@
          @Html.ActionLink("Edit", "Edit", new { id = Model.Id })  </p>  |  <p class="btn btn-primary icon  pull-center "> @Html.ActionLink("Back to List", "Index")</p>
     
 </p-->
-
 
 
 <script type="text/javascript">
