@@ -309,7 +309,7 @@ $(document).ready(function () {
     $('#Owner_typeahead').typeahead({
         name: "Owner",
         remote: '/RegisterDog/FetchOwners?q=%QUERY',
-        limit: 5,
+        limit: 8,
         valueKey: "Name",
     }).on("typeahead:selected typeahead:autocompleted",
         function (e, datum) {
