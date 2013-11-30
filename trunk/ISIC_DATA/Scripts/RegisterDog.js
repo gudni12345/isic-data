@@ -1,15 +1,19 @@
 ﻿
+$("regform").validate().form();
 
+$.validator.setDefaults({ ignore: null });
 
 // Added client validation. Required in the regform. Litter model doesn't have the requirement for those fields for import purpose.
 $('#regform').validate({
+    ignore: [],
+    onkeyup: false,
     rules: {
         dateOfBirth: { required: true , class: "input-validation-error" },
         returnBreederId: { required: true, class: "input-validation-error" }
     },
     messages: {
-        dateOfBirth: { required: "Date of Birth is required." },
-        returnBreederId: { required: "Breeder is required." }
+        dateOfBirth: { required: "Date of Birth is required..." },
+        returnBreederId: { required: "Breeder is required..." }
     }
 });
 
