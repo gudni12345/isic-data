@@ -1,9 +1,10 @@
 ﻿
-$("regform").validate().form();
+//$("regform").validate().form();
 
-$.validator.setDefaults({ ignore: null });
+//$.validator.setDefaults({ ignore: null });
 
 // Added client validation. Required in the regform. Litter model doesn't have the requirement for those fields for import purpose.
+/*
 $('#regform').validate({
     ignore: [],
     onkeyup: false,
@@ -16,7 +17,7 @@ $('#regform').validate({
         returnBreederId: { required: "Breeder is required..." }
     }
 });
-
+*/
 
 
 

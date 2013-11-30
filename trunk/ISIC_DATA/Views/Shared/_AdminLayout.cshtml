@@ -92,9 +92,9 @@
     </body>
 </html>
 
-<script type="text/javascript">
-
+<script type="text/javascript">    
     jQuery.validator.setDefaults({
+        ignore: null,
         highlight: function (element, errorClass, validClass) {
             if (element.type === 'radio') {
                 this.findByName(element.name).addClass(errorClass).removeClass(validClass);
