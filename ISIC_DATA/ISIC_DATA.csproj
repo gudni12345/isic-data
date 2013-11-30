@@ -835,6 +835,7 @@
     <Content Include="Views\TestMate\Info.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Dog\Pedigree.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
