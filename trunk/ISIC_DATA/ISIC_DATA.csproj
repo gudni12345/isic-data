@@ -377,6 +377,12 @@
     <Content Include="HomePhotos\8.jpg" />
     <Content Include="Images\bgr315.png" />
     <Content Include="Images\calendar.gif" />
+    <Content Include="Images\Dogs\dog.jpg" />
+    <Content Include="Images\Dogs\dog1.jpg" />
+    <Content Include="Images\Dogs\dog2.jpg" />
+    <Content Include="Images\Dogs\Garpur.jpg" />
+    <Content Include="Images\Dogs\Jarl.jpg" />
+    <Content Include="Images\equation.PNG" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\isic\bgr150.png" />
     <Content Include="Images\isic\bgr190.png" />
@@ -389,6 +395,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Images\logo1.PNG" />
     <Content Include="Photos\IS1234513.jpg" />
     <Content Include="Photos\IS1329709.jpg" />
     <Content Include="Photos\IS1577411.jpg" />

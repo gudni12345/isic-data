@@ -210,7 +210,13 @@ namespace ISIC_DATA.Controllers
         [Authorize(Roles = "Administrator,SuperAdministrator")]
         public ActionResult Edit(Dog dog)
         {
-     
+            // The litter is displayed in form. the following code is to clear false positive validation errors
+            if ((dog.LitterId != null) && (dog.Litter.PersonId == null))
+            {
+                if (ModelState.ContainsKey("Litter.PersonId"))
+                    ModelState["Litter.PersonId"].Errors.Clear();
+            }
+          
             if (ModelState.IsValid)
             {
                 string fileName = null;
