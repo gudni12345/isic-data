@@ -37,7 +37,7 @@
     <fieldset class="filtering">
         <legend>Search filter</legend>
     <p>
-        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "search-query" })  
+        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "search-query", id = "isKeypad" })  
         
         @Html.DropDownList("CountryId", "--- All countries ---")     
         
