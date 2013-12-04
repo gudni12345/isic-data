@@ -283,6 +283,7 @@
     <Content Include="Images\Dogs\Jarl.jpg" />
     <Content Include="Images\equation.PNG" />
     <Content Include="Images\favicon.ico" />
+    <Content Include="Images\keypad.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -305,6 +306,7 @@
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Scripts\jquery-migrate-1.2.1.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\jquery.keypad.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
