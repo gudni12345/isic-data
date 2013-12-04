@@ -3,9 +3,6 @@
 @using BootstrapSupport;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <link type="text/css" href="~/Content/jquery.keypad.css" rel="stylesheet">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="~/Content/jquery.keypad.js"></script>
-
 
 @if (TempData["Success"] != null)
 {
@@ -41,7 +38,7 @@
         
         @Html.DropDownList("CountryId", "--- All countries ---")     
         
-        <input type="submit" class="btn btn-primary" value="apply filter" />  
+        <input type="submit" class="btn btn-primary" value="apply filter" />          
     </p>
     </fieldset>
 }
@@ -95,18 +92,20 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
                 'placement': 'top'
         });
     });
-</script>
 
-<script type="text/javascript">
+    // Auka lyklaborð með sér íslenskum stöfum.   
     $(function () {
         var isLayout = ['ÁÆÐÞÖÉÍÓÚÝ' + $.keypad.CLOSE];
         $('#isKeypad').keypad({
             keypadOnly: false, layout: isLayout, showOn: 'button',
-            buttonImageOnly: true, buttonImage: 'keypad.png'
+            buttonImageOnly: true, buttonImage: '/Images/keypad.png'
         });
 
     });
 </script>
+
+
+
 
 
 <script>
@@ -115,4 +114,6 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
     ga('create', 'UA-45948404-1', '85.220.79.130'); ga('send', 'pageview');
 
 </script>
+
+
 
