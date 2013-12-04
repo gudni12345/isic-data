@@ -275,7 +275,6 @@
     <Content Include="HomePhotos\6.jpg" />
     <Content Include="HomePhotos\7.jpg" />
     <Content Include="HomePhotos\8.jpg" />
-    <Content Include="Images\bgr315.png" />
     <Content Include="Images\calendar.gif" />
     <Content Include="Images\Dogs\dog.jpg" />
     <Content Include="Images\Dogs\dog1.jpg" />
@@ -284,12 +283,6 @@
     <Content Include="Images\Dogs\Jarl.jpg" />
     <Content Include="Images\equation.PNG" />
     <Content Include="Images\favicon.ico" />
-    <Content Include="Images\isic\bgr150.png" />
-    <Content Include="Images\isic\bgr190.png" />
-    <Content Include="Images\isic\bgr315.png" />
-    <Content Include="Images\isic\LineDownLeft.PNG" />
-    <Content Include="Images\isic\LineDownSlice.PNG" />
-    <Content Include="Images\isic\LineUp.PNG" />
     <Content Include="Images\logo.png" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -636,19 +629,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -676,7 +657,6 @@
     <Content Include="Views\Dog\Create.cshtml" />
     <Content Include="Views\Dog\Edit.cshtml" />
     <Content Include="Views\Dog\Delete.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Views\Person\Details.cshtml" />
     <Content Include="Views\Person\Create.cshtml" />
@@ -690,7 +670,6 @@
     <Content Include="Views\Litter\Create.cshtml" />
     <Content Include="Views\Litter\Edit.cshtml" />
     <Content Include="Views\Litter\Delete.cshtml" />
-    <Content Include="Views\Home\Users.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Dog.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
