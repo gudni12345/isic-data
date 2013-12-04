@@ -268,7 +268,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Dog/Delete/5
-        [Authorize(Roles = "Administrator,SuperAdministrator")] 
+        [Authorize(Roles = "SuperAdministrator")] 
         public ActionResult Delete(int id = 0)
         {           
             Dog dog = db.FindDog(id);
@@ -284,7 +284,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator,SuperAdministrator")] 
+        [Authorize(Roles = "SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
         {            
          //   Dog dog = db.FindDog(id);
@@ -339,49 +339,7 @@ namespace ISIC_DATA.Controllers
             return pList;
         }
 
-        public JsonResult JsonFetchPedigree(int id)
-        {
-            List<Dog> parentList = new List<Dog>();
-            List<Dog> pTemp = new List<Dog>();
-            List<Dog> pTemp2 = new List<Dog>();
-            parentList = parents(id);  // Skilar foreldrum.  2 hundar
-
-            foreach (Dog d in parentList)
-            {
-                if (pTemp == null)
-                    pTemp = parents(d.Id);
-                else
-                    pTemp.AddRange(parents(d.Id));        // 4 hundar.
-            }
-
-            parentList.AddRange(pTemp);  // 6 hundar komnir.
-
-            foreach (Dog d in pTemp) // finnur foreldra fyrir þessa 4 hunda. 
-            {
-                if (pTemp2 == null)
-                    pTemp2 = parents(d.Id);
-                else
-                    pTemp2.AddRange(parents(d.Id));        // skila 8 hundar.
-            }
-            parentList.AddRange(pTemp2);    // 6 + 8 = 14 stk
-            pTemp = null;
-
-            foreach (Dog d in pTemp2) // finnur foreldra fyrir þessa 8 hunda. 
-            {
-                if (pTemp == null)
-                    pTemp = parents(d.Id);
-                else
-                    pTemp.AddRange(parents(d.Id));        //skila 16 hundar.
-            }
-            parentList.AddRange(pTemp);  // 14 + 16 = 30 stk
-
-            var serialisedJson = from result in parentList
-                                 select new { Name = result.Name, Id = result.Id };
-
-            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
-        }
-
-
+        // Býr til list af foreldrum fyrir ættbók.                              
         public List<Dog> FetchPedigree(int id)
         {
             List<Dog> parentList = new List<Dog>();
@@ -403,8 +361,7 @@ namespace ISIC_DATA.Controllers
             {
                 if (pTemp2 == null)
                     pTemp2 = parents(d.Id);
-                else
-                    pTemp2.AddRange(parents(d.Id));        // skila 8 hundar.
+                else                    pTemp2.AddRange(parents(d.Id));        // skila 8 hundar.
             }
             parentList.AddRange(pTemp2);    // 6 + 8 = 14 stk
             pTemp = null;
