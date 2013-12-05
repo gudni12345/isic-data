@@ -11,6 +11,8 @@ using ISIC_DATA.Lib;
 
 namespace ISIC_DATA.Controllers
 {
+    //Testmate controller sé um innræktunar reikning og að koma niðurstöðunum í view.
+
     public class TestMateController : Controller
     {
         private DataAccess.DogContext db = new DataAccess.DogContext();

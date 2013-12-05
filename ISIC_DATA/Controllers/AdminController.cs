@@ -9,6 +9,9 @@ using ISIC_DATA.DataAccess;
 
 namespace ISIC_DATA.Controllers
 {
+
+    // Admin controller fyrir umsjónaraðila, helstu aðgerðir fyrir hann.
+
     public class AdminController : Controller
     {
         private DataAccess.DogContext db = new DataAccess.DogContext();
