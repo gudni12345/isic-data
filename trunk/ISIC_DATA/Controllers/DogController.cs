@@ -25,7 +25,8 @@ namespace ISIC_DATA.Controllers
         public DogController()
             : this(new DogRepository()) {
         }
-
+        // Notum repository. Þannig hægt sé að nota þennan controller einnig með fake repository. 
+        // semsagt með prófunargögn fyrir unitTest.
         public DogController(DogRepository repository) {
             db = repository;
         }
