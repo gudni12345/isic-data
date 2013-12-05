@@ -42,20 +42,25 @@
 
 
     </fieldset>
-
-    if (ViewBag.Result != null)
-    {
-        <strong>Inbreeding coefficient = @ViewBag.Result %</strong><br />
-        if (ViewBag.Ancestor != 1 && ViewBag.Ancestor != 0){<strong>Common ancestor: @ViewBag.AncestorName</strong>}
-    }
-    
-    
+ 
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Check</button>
         @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
     </div>
    
 } <!-- end form -->
+
+@if (@ViewBag.totalValue != null) {
+        <strong>Inbreeding coefficient = @ViewBag.totalValue %</strong><br/>    
+        <div>ancestor(s): 
+        @foreach (var item in @ViewBag.commonAncestors) 
+        {          
+            if (@item != "not known") { <strong> @item, </strong> }
+        }
+        </div>
+        
+}   
+
 
 <div class="tab-pane active" id="pedigree">      
          
