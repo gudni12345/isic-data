@@ -262,7 +262,6 @@
     <Content Include="Content\jquery.keypad.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\Site1.css" />
     <Content Include="Content\typeahead.js-bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
