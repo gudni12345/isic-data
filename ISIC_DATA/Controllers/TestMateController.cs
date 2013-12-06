@@ -53,7 +53,7 @@ namespace ISIC_DATA.Controllers
             {
                 foreach (Dog dog in PedigreeList)
                 {
-                    if ( vresult.Find(i => i.Id.Equals(dog.Id)) != null )   // Ef Id úr Result er það sama og úr ættbókarlistanum.
+                    if ( ( vresult.Find(i => i.Id.Equals(dog.Id)) != null ) && (dog.Id != 1) )  // Ef Id úr Result er það sama og úr ættbókarlistanum.
                     {
                         parentList.Add(new ParentList(dog.Name, dog.Reg, true));
                     }
