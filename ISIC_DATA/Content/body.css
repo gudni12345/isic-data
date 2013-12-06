@@ -238,7 +238,7 @@ input.search-query{
 img.resize{width:350px;height:auto;}*/
 
 .thumb
- {
+{
   max-width: 380px;
   max-height: 280px;
   width: expression(this.width > 100 ? "100px" : true);
@@ -248,20 +248,14 @@ img.resize{width:350px;height:auto;}*/
 
 .tablePed
 {
+   background-color: white;
+   width:100%;
+ }
 
-    background-color: white;
-    width:100%;
-   
-  
-  
-}
 .tablePed, td, th
 {
     padding: 4px;
     border: 2px solid;
-    
-    
-    
 }
 
 
