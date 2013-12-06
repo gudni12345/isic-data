@@ -34,29 +34,26 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost]        
         public ActionResult Index(TestMateViewModel viewModel)
-        {         
-     //       InbreedingResult vresult;
-            
+        {                    
             // We only get Id of the Dog backfrom the viewModel.
             Dog FatherA = db.Dog.Find(viewModel.Father.Id);
             Dog MotherB = db.Dog.Find(viewModel.Mother.Id);
             
-            viewModel.Father.LitterId = FatherA.LitterId;           //We add litter info to the ViewModel.
-            viewModel.Mother.LitterId = MotherB.LitterId;
-            viewModel.Father.Litter = FatherA.Litter;
-            viewModel.Mother.Litter = MotherB.Litter;
+      //      viewModel.Father.LitterId = FatherA.LitterId;           //We add litter info to the ViewModel.
+      //      viewModel.Mother.LitterId = MotherB.LitterId;
+      //      viewModel.Father.Litter = FatherA.Litter;
+      //      viewModel.Mother.Litter = MotherB.Litter;
 
             List<Dog> PedigreeList = FetchPedigreeForTestMate(FatherA, MotherB);  // get the Pedigree for the result the Testmate
             List<InbreedingResult> vresult = Inbreeding(FatherA, MotherB);        // get the result for the Testmate, CommonAncestors etc. 
 
             List<ParentList> parentList = new List<ParentList>();
 
-            if (PedigreeList.Count() == 30)  // if the list is correct 
+            if (PedigreeList.Count() == 30)  // Ef listinn er réttur, búum þá nýjann lista þar sem kemur fram hvort sameigilegur forfaðir sé til staðar. 
             {
                 foreach (Dog dog in PedigreeList)
                 {
-                    // dog.id == einhvað id í inbreedingresult. Semsagt ef sameignilegur forfaðir er í ættbókini.
-                    if ( vresult.Find(i => i.Id.Equals(dog.Id)) != null )
+                    if ( vresult.Find(i => i.Id.Equals(dog.Id)) != null )   // Ef Id úr Result er það sama og úr ættbókarlistanum.
                     {
                         parentList.Add(new ParentList(dog.Name, dog.Reg, true));
                     }
@@ -72,7 +69,7 @@ namespace ISIC_DATA.Controllers
             double totalValue = 0.0;
             List<string> commonAncestors = new List<string>();
 
-            foreach (InbreedingResult ir in vresult)
+            foreach (InbreedingResult ir in vresult)            // Fáum heildartöluna. setjum saman sameigilega forföður einnig í lista.
             {
                 totalValue += ir.Value;                
                 commonAncestors.Add(db.Dog.Find(ir.Id).Name);
@@ -81,21 +78,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.totalValue = totalValue * 100;   // prosents
             ViewBag.commonAncestors = commonAncestors;
 
-     //       vresult = Inbreeding(FatherA, MotherB);
-            //we show the Result if there is one and if the CommonAncestor found is not "not known". Otherwise we show 0.
-        //    ViewBag.Result = (vresult != null) ? vresult.Result : 0.0;
-            //if there is a result- We only show it if the it´s not Id 1 (not known)
-            //int AncestorId = (vresult.CommonAncestorID != 1) ? vresult.CommonAncestorID :0;
-
- 
-
-            //ViewBag.Ancestor = A
-         /*   if (AncestorId != 0)
-            {
-                ViewBag.AncestorName = db.Dog.Find(AncestorId).Name;
-            }
-            */
-            viewModel.Father.Name = FatherA.Name;    
+            viewModel.Father.Name = FatherA.Name;    // fyrra val helst þá inni.
             viewModel.Mother.Name = MotherB.Name;
             ModelState.Clear();
             return View(viewModel);
@@ -116,7 +99,7 @@ namespace ISIC_DATA.Controllers
         }
 
   
-        private List<Dog> parents(int id)
+        private List<Dog> parents(int id)  // Fáum inn Id af hundi og skilum foreldrum í lista.
         {
             List<Dog> pList = new List<Dog>();
 
@@ -126,7 +109,7 @@ namespace ISIC_DATA.Controllers
         }
 
 
-
+        // Fáum inn foreldra sem á prófa í Testmate og skilum ættbókarlista.  (eins og ættbók tilvonandi hvolps).
         public List<Dog> FetchPedigreeForTestMate(Dog A, Dog B)
         {
             List<Dog> parentList = new List<Dog>();
@@ -169,7 +152,8 @@ namespace ISIC_DATA.Controllers
         }
 
 
-
+        // Reiknum úr innræktunarstuðull fyrir faðir A og móðir B.  
+        // Fallið skilar síðan lista niðurstöðum(InbreedingResult) með sameigilegum forfeðrum og innræktunargildi. 
         public List<InbreedingResult> Inbreeding(Dog A, Dog B)
         {
             /*Typical coancestries between relatives are as follows:
