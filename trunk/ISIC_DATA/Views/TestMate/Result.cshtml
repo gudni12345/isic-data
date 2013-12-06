@@ -26,101 +26,170 @@
                   <tbody>
                       <tr>
                         <td ROWSPAN="8"> 
-                                         @ViewBag.Pedigree[0].Name
+                                         @if (ViewBag.Pedigree[0].CommonAncestor) { <strong> @ViewBag.Pedigree[0].Name </strong> } else {                                            
+                                         @ViewBag.Pedigree[0].Name }
                                 <br>     @ViewBag.Pedigree[0].Reg
                                                                                                                                                                                                        
-                                         @ViewBag.Pedigree[0].Name
-                        <br>             @ViewBag.Pedigree[0].Reg
                         </td>                
-                        <td ROWSPAN="4"> @ViewBag.Pedigree[2].Name
+                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[2].CommonAncestor) { <strong> @ViewBag.Pedigree[2].Name </strong> } else { 
+                                         @ViewBag.Pedigree[2].Name }
                         <br>             @ViewBag.Pedigree[2].Reg
                         </td>
-                        <td ROWSPAN="2"> @ViewBag.Pedigree[6].Name
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[6].CommonAncestor) { <strong> @ViewBag.Pedigree[6].Name </strong> } else {
+                                         @ViewBag.Pedigree[6].Name }
                         <br>             @ViewBag.Pedigree[6].Reg
                          </td>                
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[14].Name
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[14].CommonAncestor) { <strong> @ViewBag.Pedigree[14].Name </strong> } else { 
+                                        @ViewBag.Pedigree[14].Name }
                         </td>
                         <tr>
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[15].Name</td>
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[15].CommonAncestor) { <strong> @ViewBag.Pedigree[15].Name </strong> } else {
+                                        @ViewBag.Pedigree[15].Name }
+                        </td>
                         <tr>
-                        <td ROWSPAN="2">@ViewBag.Pedigree[7].Name
+                        <td ROWSPAN="2">@if (ViewBag.Pedigree[7].CommonAncestor) { <strong> @ViewBag.Pedigree[7].Name </strong> } else {
+                                        @ViewBag.Pedigree[7].Name }
                         <br>            @ViewBag.Pedigree[7].Reg
                         </td>
-                        <td  style="height:20px;table-layout:fixed">@ViewBag.Pedigree[16].Name</td>
+                        <td  style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[16].CommonAncestor) { <strong> @ViewBag.Pedigree[16].Name </strong> } else {
+                                        @ViewBag.Pedigree[16].Name }
+                        </td>
                         </tr>
                         <tr>
-                        <td  style="height:20px;table-layout:fixed">@ViewBag.Pedigree[17].Name</td>
+                        <td  style="height:20px;table-layout:fixed">
+                                         @if (ViewBag.Pedigree[17].CommonAncestor) { <strong> @ViewBag.Pedigree[17].Name </strong> } else {
+                                         @ViewBag.Pedigree[17].Name }
+                        </td>
                         </tr>
                         <tr>
-                        <td ROWSPAN="4"> @ViewBag.Pedigree[3].Name
+                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[3].CommonAncestor) { <strong> @ViewBag.Pedigree[3].Name </strong> } else {
+                                         @ViewBag.Pedigree[3].Name }
                          <br>            @ViewBag.Pedigree[3].Reg
                         </td>
-                        <td ROWSPAN="2"> @ViewBag.Pedigree[8].Name
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[8].CommonAncestor) { <strong> @ViewBag.Pedigree[8].Name </strong> } else {
+                                         @ViewBag.Pedigree[8].Name }
                         <br>             @ViewBag.Pedigree[8].Reg
                         </td>
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[18].Name</td>
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[18].CommonAncestor) { <strong> @ViewBag.Pedigree[18].Name </strong> } else {
+                                        @ViewBag.Pedigree[18].Name }
+                        </td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @ViewBag.Pedigree[19].Name</td>
+                        <td  style="height:20px;table-layout:fixed"> 
+                                        @if (ViewBag.Pedigree[19].CommonAncestor) { <strong> @ViewBag.Pedigree[19].Name </strong> } else {        
+                                        @ViewBag.Pedigree[19].Name }
+                        </td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@ViewBag.Pedigree[9].Name
+                        <td ROWSPAN="2">@if (ViewBag.Pedigree[9].CommonAncestor) { <strong> @ViewBag.Pedigree[9].Name </strong> } else {
+                                        @ViewBag.Pedigree[9].Name }
                         <br>            @ViewBag.Pedigree[9].Reg
                         </td>
-                        <td  style="height:20px;table-layout:fixed">@ViewBag.Pedigree[20].Name</td>
+                        <td  style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[20].CommonAncestor) { <strong> @ViewBag.Pedigree[20].Name </strong> } else {
+                                        @ViewBag.Pedigree[20].Name }
+
+                        </td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed">@ViewBag.Pedigree[21].Name</td>
+                        <td  style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[21].CommonAncestor) { <strong> @ViewBag.Pedigree[21].Name </strong> } else {
+                                        @ViewBag.Pedigree[21].Name }
+
+                        </td>
                     </tr>
                     
 
                      @*Mothers Pedigree*@    
                     <tr>
-                        <td ROWSPAN="8"> @ViewBag.Pedigree[1].Name
+                        <td ROWSPAN="8"> @if (ViewBag.Pedigree[1].CommonAncestor) { <strong> @ViewBag.Pedigree[1].Name </strong> } else {
+                                         @ViewBag.Pedigree[1].Name }
                         <br>             @ViewBag.Pedigree[1].Reg
                         </td>
-                        <td ROWSPAN="4"> @ViewBag.Pedigree[4].Name
+                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[4].CommonAncestor) { <strong> @ViewBag.Pedigree[4].Name </strong> } else {
+                                         @ViewBag.Pedigree[4].Name }
                         <br>             @ViewBag.Pedigree[4].Reg
                         </td>
 
-                        <td ROWSPAN="2"> @ViewBag.Pedigree[10].Name
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[10].CommonAncestor) { <strong> @ViewBag.Pedigree[10].Name </strong> } else {
+                                         @ViewBag.Pedigree[10].Name }
                         <br>             @ViewBag.Pedigree[10].Reg
                         </td>
-                       <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[22].Name</td>
+                       <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[22].CommonAncestor) { <strong> @ViewBag.Pedigree[22].Name </strong> } else {
+                                        @ViewBag.Pedigree[22].Name }
+
+                       </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[23].Name</td>
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[23].CommonAncestor) { <strong> @ViewBag.Pedigree[23].Name </strong> } else {
+                                        @ViewBag.Pedigree[23].Name }
+
+                        </td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2"> @ViewBag.Pedigree[11].Name
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[11].CommonAncestor) { <strong> @ViewBag.Pedigree[11].Name </strong> } else {
+                                         @ViewBag.Pedigree[11].Name }
                         <br>             @ViewBag.Pedigree[11].Reg
                         </td>
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[24].Name</td>
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[24].CommonAncestor) { <strong> @ViewBag.Pedigree[24].Name </strong> } else {
+                                        @ViewBag.Pedigree[24].Name }
+
+                        </td>
                     </tr>
                     <tr>
-                         <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[25].Name</td>
+                         <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[25].CommonAncestor) { <strong> @ViewBag.Pedigree[25].Name </strong> } else {
+                                        @ViewBag.Pedigree[25].Name }
+
+                         </td>
                     </tr>
 
                     <tr>
-                        <td ROWSPAN="4">@ViewBag.Pedigree[5].Name
+                        <td ROWSPAN="4">@if (ViewBag.Pedigree[5].CommonAncestor) { <strong> @ViewBag.Pedigree[5].Name </strong> } else {
+                                        @ViewBag.Pedigree[5].Name }
                         <br>            @ViewBag.Pedigree[5].Reg
                         </td>
-                        <td ROWSPAN="2">@ViewBag.Pedigree[12].Name
+                        <td ROWSPAN="2">@if (ViewBag.Pedigree[12].CommonAncestor) { <strong> @ViewBag.Pedigree[12].Name </strong> } else {
+                                        @ViewBag.Pedigree[12].Name }
                          <br>           @ViewBag.Pedigree[12].Reg
                         </td>
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[26].Name</td>
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[26].CommonAncestor) { <strong> @ViewBag.Pedigree[26].Name </strong> } else {
+                                        @ViewBag.Pedigree[26].Name }
+
+                        </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[27].Name</td>
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[27].CommonAncestor) { <strong> @ViewBag.Pedigree[27].Name </strong> } else {    
+                                        @ViewBag.Pedigree[27].Name }
+
+                        </td>
                     </tr>
                     <tr>
-                         <td ROWSPAN="2">@ViewBag.Pedigree[13].Name
-                          <br>           @ViewBag.Pedigree[13].Reg
+                         <td ROWSPAN="2"> @if (ViewBag.Pedigree[13].CommonAncestor) { <strong> @ViewBag.Pedigree[13].Name </strong> } else {
+                                          @ViewBag.Pedigree[13].Name }
+                          <br>            @ViewBag.Pedigree[13].Reg
                          </td>
-                         <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[28].Name</td>
+                         <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[28].CommonAncestor) { <strong> @ViewBag.Pedigree[28].Name </strong> } else {
+                                        @ViewBag.Pedigree[28].Name }
+
+                         </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">@ViewBag.Pedigree[29].Name</td>
+                        <td style="height:20px;table-layout:fixed">
+                                        @if (ViewBag.Pedigree[29].CommonAncestor) { <strong> @ViewBag.Pedigree[29].Name </strong> } else {
+                                        @ViewBag.Pedigree[29].Name } 
+
+                        </td>
                     </tr>
                    </tbody>
                  </table>
