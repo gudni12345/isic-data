@@ -46,12 +46,31 @@ namespace ISIC_DATA.Controllers
             viewModel.Father.Litter = FatherA.Litter;
             viewModel.Mother.Litter = MotherB.Litter;
 
+            List<Dog> PedigreeList = FetchPedigreeForTestMate(FatherA, MotherB);  // get the Pedigree for the result the Testmate
+            List<InbreedingResult> vresult = Inbreeding(FatherA, MotherB);        // get the result for the Testmate, CommonAncestors etc. 
 
-            List<InbreedingResult> vresult = Inbreeding(FatherA, MotherB);
+            List<ParentList> parentList = new List<ParentList>();
+
+            if (PedigreeList.Count() == 30)  // if the list is correct 
+            {
+                foreach (Dog dog in PedigreeList)
+                {
+                    // dog.id == einhvað id í inbreedingresult. Semsagt ef sameignilegur forfaðir er í ættbókini.
+                    if ( vresult.Find(i => i.Id.Equals(dog.Id)) != null )
+                    {
+                        parentList.Add(new ParentList(dog.Name, dog.Reg, true));
+                    }
+                    else
+                    {
+                        parentList.Add(new ParentList(dog.Name, dog.Reg, false));
+                    }                  
+                }
+            }
+
+            ViewBag.Pedigree = parentList;
 
             double totalValue = 0.0;
             List<string> commonAncestors = new List<string>();
-
 
             foreach (InbreedingResult ir in vresult)
             {
@@ -76,7 +95,7 @@ namespace ISIC_DATA.Controllers
                 ViewBag.AncestorName = db.Dog.Find(AncestorId).Name;
             }
             */
-            viewModel.Father.Name = FatherA.Name;
+            viewModel.Father.Name = FatherA.Name;    
             viewModel.Mother.Name = MotherB.Name;
             ModelState.Clear();
             return View(viewModel);
@@ -106,15 +125,14 @@ namespace ISIC_DATA.Controllers
             return pList;
         }
 
-        
 
-        public JsonResult FetchPedigreeForTestMate(int a_id, int b_id)
+
+        public List<Dog> FetchPedigreeForTestMate(Dog A, Dog B)
         {
             List<Dog> parentList = new List<Dog>();
             List<Dog> pTemp = new List<Dog>();
             List<Dog> pTemp2 = new List<Dog>();
-            Dog A = db.Dog.Find(a_id);
-            Dog B = db.Dog.Find(b_id);
+
             parentList.Add(A);
             parentList.Add(B);
 
@@ -147,10 +165,7 @@ namespace ISIC_DATA.Controllers
             }
             parentList.AddRange(pTemp);  // 14 + 16 = 30 stk
 
-            var serialisedJson = from result in parentList
-                                 select new { Name = result.Name, Id = result.Id };
-
-            return Json(serialisedJson, JsonRequestBehavior.AllowGet);
+            return parentList;
         }
 
 
