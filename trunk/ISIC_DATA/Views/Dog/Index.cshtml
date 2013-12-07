@@ -26,6 +26,9 @@
 <div>
     <p>If looking for a certain dog, you can enter the whole name or part of it. 
     @Html.ActionLink("Search Information", "Info", "Dog", null, new { id = "info", style = "margin-bottom: 8px", @class = "btn btn-success" })
+    <div id='dialogDiv' class='modal hide fade in'>
+        <div id='dialogContent'></div>
+    </div>
     <!--a href="#" id="search" class="btn-mini btn-warning" rel="popover" data-content="If you enter the letter 'k' and press 'apply filter' you will get a list of all dog names that conatin the letter 'k'. You can also use both the Name filter and Country filter together." data-original-title="">i</a-->
     </p><br />
 </div>
