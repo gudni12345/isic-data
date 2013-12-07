@@ -35,21 +35,16 @@ namespace ISIC_DATA.Controllers
         [HttpPost]        
         public ActionResult Index(TestMateViewModel viewModel)
         {                    
-            // We only get Id of the Dog backfrom the viewModel.
+            // We only get Id of the Dog backfrom the viewModel. frá typeahead.
             Dog FatherA = db.Dog.Find(viewModel.Father.Id);
             Dog MotherB = db.Dog.Find(viewModel.Mother.Id);
             
-      //      viewModel.Father.LitterId = FatherA.LitterId;           //We add litter info to the ViewModel.
-      //      viewModel.Mother.LitterId = MotherB.LitterId;
-      //      viewModel.Father.Litter = FatherA.Litter;
-      //      viewModel.Mother.Litter = MotherB.Litter;
+            List<Dog> PedigreeList = FetchPedigreeForTestMate(FatherA, MotherB);  // fáum ættbókarlistann.
+            List<InbreedingResult> vresult = Inbreeding(FatherA, MotherB);        // fáum niðurstöður og sameigilega forfeður. . 
 
-            List<Dog> PedigreeList = FetchPedigreeForTestMate(FatherA, MotherB);  // get the Pedigree for the result the Testmate
-            List<InbreedingResult> vresult = Inbreeding(FatherA, MotherB);        // get the result for the Testmate, CommonAncestors etc. 
+            List<ParentList> parentList = new List<ParentList>();  // nýr listi sem við notum til að birta ættbókarlista og niðurstöður í result viewinu.
 
-            List<ParentList> parentList = new List<ParentList>();
-
-            if (PedigreeList.Count() == 30)  // Ef listinn er réttur, búum þá nýjann lista þar sem kemur fram hvort sameigilegur forfaðir sé til staðar. 
+            if (PedigreeList.Count() == 30)  // Ef listinn er réttur, þá bætum við í nýja listann þar sem kemur fram hvort sameigilegur forfaðir sé til staðar. 
             {
                 foreach (Dog dog in PedigreeList)
                 {
@@ -64,7 +59,7 @@ namespace ISIC_DATA.Controllers
                 }
             }
 
-            ViewBag.Pedigree = parentList;
+            ViewBag.Pedigree = parentList;  // Ættbókin með sameiginlegum forfeðrum ef þeir eru til staðar.
 
             double totalValue = 0.0;
             List<string> commonAncestors = new List<string>();
@@ -72,7 +67,7 @@ namespace ISIC_DATA.Controllers
             foreach (InbreedingResult ir in vresult)            // Fáum heildartöluna. setjum saman sameigilega forföður einnig í lista.
             {
                 totalValue += ir.Value;                
-                commonAncestors.Add(db.Dog.Find(ir.Id).Name);
+                commonAncestors.Add(db.Dog.Find(ir.Id).Name);  //Hérna bætum við í textastrenginn "Ancestors..."
             }
 
             ViewBag.totalValue = totalValue * 100;   // prosents
@@ -87,7 +82,7 @@ namespace ISIC_DATA.Controllers
 
 
 
-
+        /*
         public int returnFatherId(int id)
         {
             return db.Dog.Find(id).Litter.FatherId;
@@ -97,14 +92,16 @@ namespace ISIC_DATA.Controllers
         {
             return db.Dog.Find(id).Litter.MotherId;
         }
-
+        */
   
-        private List<Dog> parents(int id)  // Fáum inn Id af hundi og skilum foreldrum í lista.
+        private List<Dog> parents(Dog d)  // Fáum inn Id af hundi og skilum foreldrum í lista.
         {
             List<Dog> pList = new List<Dog>();
 
-            pList.Add(db.Dog.Find(returnFatherId(id))); 
-            pList.Add(db.Dog.Find(returnMotherId(id)));
+          //  pList.Add(db.Dog.Find(returnFatherId(id))); 
+         //   pList.Add(db.Dog.Find(returnMotherId(id)));
+            pList.Add(d.Litter.Father);
+            pList.Add(d.Litter.Mother);
             return pList;
         }
 
@@ -122,9 +119,9 @@ namespace ISIC_DATA.Controllers
             foreach (Dog d in parentList)
             {
                 if (pTemp == null)
-                    pTemp = parents(d.Id);
+                    pTemp = parents(d);
                 else
-                    pTemp.AddRange(parents(d.Id));        // 4 hundar.
+                    pTemp.AddRange(parents(d));        // 4 hundar.
             }
 
             parentList.AddRange(pTemp);  // 6 hundar komnir.
@@ -132,9 +129,9 @@ namespace ISIC_DATA.Controllers
             foreach (Dog d in pTemp) // finnur foreldra fyrir þessa 4 hunda. 
             {
                 if (pTemp2 == null)
-                    pTemp2 = parents(d.Id);
+                    pTemp2 = parents(d);
                 else
-                    pTemp2.AddRange(parents(d.Id));        // 8 hundar.
+                    pTemp2.AddRange(parents(d));        // 8 hundar.
             }
             parentList.AddRange(pTemp2);    // 6 + 8 = 14 stk
             pTemp = null;
@@ -142,9 +139,9 @@ namespace ISIC_DATA.Controllers
             foreach (Dog d in pTemp2) // finnur foreldra fyrir þessa 8 hunda. 
             {
                 if (pTemp == null)
-                    pTemp = parents(d.Id);
+                    pTemp = parents(d);
                 else
-                    pTemp.AddRange(parents(d.Id));        // 8 hundar.
+                    pTemp.AddRange(parents(d));        // 8 hundar.
             }
             parentList.AddRange(pTemp);  // 14 + 16 = 30 stk
 
