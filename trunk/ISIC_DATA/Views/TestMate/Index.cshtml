@@ -56,84 +56,9 @@
 }
 </div>
 
-<script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
+<script type="text/javascript" src="~/scripts/hogan-2.0.0.js"></script>
+<script type="text/javascript" src="~/scripts/TestMate.js"></script>
 
-<script type="text/javascript">
-  
-    $(document).ready(function () {
-        $("#typeaheadFather").typeahead({
-            name: "Father", 
-            remote: 'Registerdog/FetchFathers?q=%QUERY',
-            limit: 3,
-            valueKey: "Reg",
-            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',
-            ].join(''),
-            engine: Hogan
-        }).on("typeahead:selected typeahead:autocompleted",
-            function (e, datum) {
-                $('#returnFatherId').val(datum.Id);
-                $('#fatherName').val(datum.Name);
-
-            }
-        );
-    });
-
-    $(document).ready(function () {
-        $("#typeaheadMother").typeahead({
-            name: "Mother",
-            remote: 'Registerdog/FetchMothers?q=%QUERY',
-            limit: 3,
-            valueKey: "Reg",
-            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',].join(''),
-            engine: Hogan
-        }).on("typeahead:selected typeahead:autocompleted",
-            function (e, datum) {
-                $('#returnMotherId').val(datum.Id);
-                $('#motherName').val(datum.Name);
-
-            }
-        );
-    });
-
-
-    //MODAL for Inbreeding info
-    $(function () {
-        $.ajaxSetup({ cache: false });
-        $('#info').click(function () {                 // Open the Modal
-            $('#dialogContent').load(this.href, function () {
-                $('#dialogDiv').modal({
-                    backdrop: 'static',
-                    keyboard: true
-                }, 'show');
-                bindForm(this);
-            });
-            return false;
-        });
-    });
-
-    function bindForm(dialog) {
-        $('form', dialog).submit(function () {
-            $.ajax({
-                url: this.action,
-                type: this.method,
-                data: $(this).serialize(),
-                success: function (result) {
-                    if (result.success) {           // if data was saved successfully we close the modal.
-                        $('#dialogDiv').modal('hide');
-                        //Refresh: location.reload();
-
-                    } else {
-                        $('#dialogContent').html(result);
-                        bindForm();
-                    }
-                }
-            });
-            return false;
-        });
-    }
-
-
-</script>
 <script>
     (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
