@@ -115,7 +115,7 @@
                         <div class="span6">
                             <div class="editor-label">
                                 HD
-                        <a href="#" id="hd" class="btn-mini btn-warning" rel="popover" data-content="This is the most common health information for the Icelandic Sheepdog. Please use your country...." data-original-title="HD:">i</a>
+                        <a href="#" id="hd" class="btn-mini btn-warning" rel="popover" data-content="If the dog has been x-rayed for hip dysplasia, HD state it here." data-original-title="HD:">i</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HD2
                         <a href="#" id="hd2" class="btn-mini btn-warning" rel="popover" data-content="If the dog have had another HD value state it here" data-original-title="HD2:">i</a>
                             </div>
@@ -157,7 +157,8 @@
                         </div>
                         <!--second row left - second column-->
                         <div class="span6">
-                            <div class="editor-label">Color-Group</div>
+                            <div class="editor-label">Color-Group
+                            <a href="#" id="color" class="btn-mini btn-warning" rel="popover" data-content="Choose the best fitting for the main color of the dog" data-original-title="Color:">i</a></div> 
                             <div class="editor-field">
                                 @Html.DropDownList("ColorId", String.Empty)
                                 @Html.ValidationMessageFor(model => model.ColorId)
@@ -199,7 +200,10 @@
                     <div class="row-fluid">
                         <div class="span4">
 
-                            <p>Current Photo</p>
+                            <p>Current Photo
+                            <a href="#" id="photo" class="btn-mini btn-warning" rel="popover" data-content="Please use photos that are in landscape format, upright photos will be smaller to fit into our background
+                                Keep in mind, that it shouldn´t be larger than 2 MB" data-original-title="Upload Photo:">i</a>
+                            </p>
                             @if (@Model.PicturePath == null)
                             {
                                 <img src="~/Images/dogs/dog2.jpg" alt ="photo missing" style = "margin-left:10px"/>     
@@ -222,29 +226,11 @@
                                 <button type="reset" class="btn btn-warning cancel"><span>Cancel upload</span></button>
 
                             </div>
-
-                            <!-- The loading indicator is shown during file processing -->
-                            <span class="fileupload-loading"></span>
-
-                            <!-- The global progress information -->
-                            <div class="span5 fileupload-progress fade">
-                                <!-- The global progress bar -->
-                                <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="bar" style="width: 0%;"></div>
-                                </div>
-                                <!-- The extended global progress information -->
-                                <div class="progress-extended">&nbsp;</div>
-                            </div>
-                        </div>
-                        <!-- The table listing the files available for upload/download -->
-                        <table role="presentation" class="table table-striped">
-                            <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
-                        </table>
-                    </div>
+                       </div>
+                   </div>
                 </div>
             </div>
         </div>
-
     </div>
     <br>    
     <p>
@@ -301,7 +287,14 @@ $(function ()
         trigger: 'hover',
         'placement': 'top'
     });
-
+    $("#color").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
+    $("#photo").popover({
+        trigger: 'hover',
+        'placement': 'top'
+    });
 });
 
     // Typeahead for the owner
