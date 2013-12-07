@@ -297,6 +297,7 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DogEdit.js" />
     <Content Include="Scripts\DogIndex.js" />
     <Content Include="Scripts\hogan-2.0.0.js" />
     <Content Include="Scripts\html5shiv.js" />
