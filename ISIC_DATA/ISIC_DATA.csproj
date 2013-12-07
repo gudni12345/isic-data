@@ -258,7 +258,6 @@
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\jquery.keypad.alt.css" />
     <Content Include="Content\jquery.keypad.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
@@ -709,6 +708,7 @@
     </Content>
     <Content Include="Views\Dog\Pedigree.cshtml" />
     <Content Include="Views\TestMate\Result.cshtml" />
+    <Content Include="Views\Dog\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
