@@ -31,7 +31,7 @@ namespace ISIC_DATA.Controllers
             db = repository;
         }
 
-        
+ 
 
         //
         // GET: /Dog/
@@ -93,6 +93,10 @@ namespace ISIC_DATA.Controllers
             return View(dogs.ToPagedList(pageNumber, pageSize));                                            
         }
 
+        public ActionResult Info()
+        {
+            return PartialView("Info");
+        } 
 
 
 

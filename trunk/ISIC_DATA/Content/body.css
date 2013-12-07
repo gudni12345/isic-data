@@ -237,8 +237,7 @@ input.search-query{
 /*img.resize{height:350px;width:auto;}
 img.resize{width:350px;height:auto;}*/
 
-.thumb
-{
+.thumb {
   max-width: 380px;
   max-height: 280px;
   width: expression(this.width > 100 ? "100px" : true);
@@ -246,33 +245,26 @@ img.resize{width:350px;height:auto;}*/
   border-radius: 5px; 
 }
 
-.tablePed
-{
+.tablePed {
    background-color: white;
    width:100%;
  }
 
-.tablePed, td, th
-{
+.tablePed, td, th {
     padding: 4px;
-    
-}
-
-
-
-
+ }
 
 
 /*Adjustments for upper part of details*/
-.dogTitle{
+.dogTitle {
         text-shadow: 1px 2px #d3d3d3;
         color: #1a3362;
         padding-left: 20px;
 }
-.doglist{
+.doglist {
     font-size: 16px;
  }
-.doglist > dt{
+.doglist > dt {
     text-align:left;
     padding-left: 20px;
     line-height: 25px;
