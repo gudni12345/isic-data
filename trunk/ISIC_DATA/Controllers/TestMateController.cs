@@ -77,7 +77,7 @@ namespace ISIC_DATA.Controllers
 
             ViewBag.totalValue = totalValue * 100;   // prosents
             ViewBag.commonAncestors = commonAncestors;
-
+            
             viewModel.Father.Name = FatherA.Name;    // fyrra val helst þá inni.
             viewModel.Mother.Name = MotherB.Name;
             ModelState.Clear();
