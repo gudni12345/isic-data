@@ -80,26 +80,10 @@ namespace ISIC_DATA.Controllers
         }
  
 
-
-
-        /*
-        public int returnFatherId(int id)
-        {
-            return db.Dog.Find(id).Litter.FatherId;
-        }
-
-        public int returnMotherId(int id)
-        {
-            return db.Dog.Find(id).Litter.MotherId;
-        }
-        */
   
         private List<Dog> parents(Dog d)  // Fáum inn Id af hundi og skilum foreldrum í lista.
         {
             List<Dog> pList = new List<Dog>();
-
-          //  pList.Add(db.Dog.Find(returnFatherId(id))); 
-         //   pList.Add(db.Dog.Find(returnMotherId(id)));
             pList.Add(d.Litter.Father);
             pList.Add(d.Litter.Mother);
             return pList;
@@ -164,16 +148,12 @@ namespace ISIC_DATA.Controllers
                  */
 
             List<InbreedingResult> inbreedingResult = new List<InbreedingResult>();
-            //double result = 0.0;   // A: Father, B: Mother
-
-            //int commonAncestorID = 0;
-            //string commonAncestorName = null;
                                    
             //if father and mother have the same parents, the tree does not need to be checked further. No more possible path.
             if ((A.Litter.FatherId == B.Litter.FatherId) && (A.Litter.MotherId == B.Litter.MotherId))
             {
-                inbreedingResult.Add(new InbreedingResult(  B.Litter.FatherId, 0.25));
-              //  inbreedingResult.Add(new InbreedingResult(B.Litter.FatherId,0.25)); 
+                inbreedingResult.Add(new InbreedingResult(B.Litter.FatherId, 0.25));
+                inbreedingResult.Add(new InbreedingResult(B.Litter.MotherId, 0.0));     // result value only added once.              
             }
             //To do: get mothers (10%) and fathers(5%) inbreeding and calculate: result = result*1.15
 
@@ -183,12 +163,8 @@ namespace ISIC_DATA.Controllers
             // Father/daughter
             else if (A.Id == B.Litter.FatherId)
             {
-                //inbreedingResult.CommonAncestorID = A.Id;
-                
                 inbreedingResult.Add(new InbreedingResult( A.Id,0.25));
-              //  commonAncestorID = A.Id;
-              //  commonAncestorName = A.Name;
-            //    result = 0.25;
+
                 if (B.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.25)); } //check if Father is also Grandfather
                 else if (B.Litter.Mother.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult( A.Id, 0.0625)); } //check if Father is mothers Great Grandfather
                 else if (B.Litter.Mother.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.0625)); }
