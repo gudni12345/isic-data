@@ -9,7 +9,6 @@
 
 <h2>Register Dog(s)</h2>
 
-
 @if (ViewData.ModelState.Keys.Any(k => ViewData.ModelState[k].Errors.Count() > 0))
 { 
 	<div class="alert alert-danger">
@@ -17,7 +16,6 @@
 		@Html.ValidationSummary(false, "Errors: ")
 	</div>
 }
-
 
 @using (Html.BeginForm(new {@id="regform", @name="regform"}))
 { 
@@ -39,9 +37,7 @@
                 @Html.ValidationMessageFor(model => model.Litter.Person.Name) 
                 @Html.HiddenFor(m => m.Litter.PersonId, new {id = "returnBreederId" })
                 @Html.ValidationMessageFor(model => model.Litter.PersonId)
-                
-                
-
+                               
                 <div id='dialogDiv' class='modal hide fade in'>
                     <div id='dialogContent'></div>
                 </div>
@@ -96,28 +92,5 @@
 
 
 @Scripts.Render("~/registerBundle")
-
-
-
-<!--
-    <script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
-<script type="text/javascript" src="../scripts/knockout-2.3.0.js"></script>
-<script type="text/javascript" src="../scripts/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="../scripts/typeahead.js"></script>
-<script type="text/javascript" src="../scripts/Registerdog.js"></script>
-
-
-    Scripts.Render("~/registerBundle")
-section scripts{ <script src="~/registerBundle"></script> }
-
-<script src="~/scripts/jquery.validate.js" type="text/javascript">
-    $("regform").validate().form();
-    $.validator.setDefaults({
-        ignore: ""
-    });
-
-</script>
-
-    -->
 
 
