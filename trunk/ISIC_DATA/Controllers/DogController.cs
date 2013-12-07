@@ -136,7 +136,7 @@ namespace ISIC_DATA.Controllers
                         ViewBag.Puppies = db.allDogs.Where(d => d.Litter.MotherId == dog.Id).ToList();
                 
             }
-            ViewBag.Pedigree = FetchPedigree(id);
+            ViewBag.Pedigree = FetchPedigree(dog);
             return View(dog);
         }
 
@@ -335,29 +335,28 @@ namespace ISIC_DATA.Controllers
             return Json(serialisedJson, JsonRequestBehavior.AllowGet);
         }
 
-
-        private List<Dog> parents(int id)
+        private List<Dog> parents(Dog d)  // Skilum foreldrum í lista.
         {
             List<Dog> pList = new List<Dog>();
-            pList.Add(db.FindDog(db.FindDog(id).Litter.FatherId));
-            pList.Add(db.FindDog(db.FindDog(id).Litter.MotherId));
+            pList.Add(d.Litter.Father);
+            pList.Add(d.Litter.Mother);
             return pList;
         }
 
         // Býr til list af foreldrum fyrir ættbók.                              
-        public List<Dog> FetchPedigree(int id)
+        public List<Dog> FetchPedigree(Dog dog)
         {
             List<Dog> parentList = new List<Dog>();
             List<Dog> pTemp = new List<Dog>();
             List<Dog> pTemp2 = new List<Dog>();
-            parentList = parents(id);  // Skilar foreldrum.  2 hundar
+            parentList = parents(dog);  // Skilar foreldrum.  2 hundar
 
             foreach (Dog d in parentList)
             {
                 if (pTemp == null)
-                    pTemp = parents(d.Id);
+                    pTemp = parents(d);
                 else
-                    pTemp.AddRange(parents(d.Id));        // 4 hundar.
+                    pTemp.AddRange(parents(d));        // 4 hundar.
             }
 
             parentList.AddRange(pTemp);  // 6 hundar komnir.
@@ -365,8 +364,8 @@ namespace ISIC_DATA.Controllers
             foreach (Dog d in pTemp) // finnur foreldra fyrir þessa 4 hunda. 
             {
                 if (pTemp2 == null)
-                    pTemp2 = parents(d.Id);
-                else                    pTemp2.AddRange(parents(d.Id));        // skila 8 hundar.
+                    pTemp2 = parents(d);
+                else                    pTemp2.AddRange(parents(d));        // skila 8 hundar.
             }
             parentList.AddRange(pTemp2);    // 6 + 8 = 14 stk
             pTemp = null;
@@ -374,9 +373,9 @@ namespace ISIC_DATA.Controllers
             foreach (Dog d in pTemp2) // finnur foreldra fyrir þessa 8 hunda. 
             {
                 if (pTemp == null)
-                    pTemp = parents(d.Id);
+                    pTemp = parents(d);
                 else
-                    pTemp.AddRange(parents(d.Id));        //skila 16 hundar.
+                    pTemp.AddRange(parents(d));        //skila 16 hundar.
             }
             parentList.AddRange(pTemp);  // 14 + 16 = 30 stk
 
