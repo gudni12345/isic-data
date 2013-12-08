@@ -8,7 +8,7 @@
 
   <div class="row dog-details">
       <div class="span5">
-          <h2 class="dogTitle">@Html.DisplayFor(model => model.Name)</h2>
+          <h2 class="dog-title">@Html.DisplayFor(model => model.Name)</h2>
                <dl class="dl-horizontal doglist">
                         <dt>Registration Nr:</dt><dd>@Model.Reg</dd>
                         <dt> Born:</dt> <dd>@Html.DisplayFor(model => Model.Litter.DateOfBirth) 
@@ -48,7 +48,7 @@
             </div>
             @*Load Photo from Database*@
              <div class="span5">       
-                 <div class="dogPic">
+                 <div class="dog-pic">
                             @if (@Model.PicturePath == null)
                             {
                                 <img src="~/Images/dogs/dog1.jpg" alt ="~/Images/dogs/dog1.jpg" />     
@@ -150,7 +150,7 @@
                 </div>
           
                <div class="span4">
-                <div class="thumbnail colorThumb">
+                <div class="thumbnail color-thumb">
                     <h5>The Icelandic Sheepdogs and their colors</h5>
                     <p> One of the most special attributes of the Icelandic dog is his color. To embrace the diffrenent approaches and keep the 
                         varity alive, the <b>"Orignial-Color"</b> shows how the dog was registered, often in their original language.<br />
