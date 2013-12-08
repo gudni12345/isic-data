@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using ISIC_DATA.DataAccess;
 using UnitTest_ISIC_DATA.Fakes;
 using ISIC_DATA.Tests.Fakes;
+using System.Web.Mvc;
 
 namespace UnitTest_ISIC_DATA
 {
     
     [TestClass]
-    public class UnitTest1
+    public class DogControllerTest
     {
         List<Dog> CreateFakeDogs() 
         {
@@ -43,40 +44,29 @@ namespace UnitTest_ISIC_DATA
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void DogTest()
         {
             var controller = CreateDogController();
             var testData = FakePedigree.CreateTestDogs();
             FakeDogRepository fakeDb = new FakeDogRepository(testData);
 
-            int numberOfDogs = fakeDb.NumberOfDogs();
-            Assert.AreEqual(numberOfDogs, 3);
-
+            int numberOfDogs = fakeDb.NumberOfDogs();           
             Dog dog = fakeDb.Find(3);
-            Assert.AreEqual(dog.Name, "Rakki");
-            Assert.AreEqual(dog.LitterId, 1);
-          
-            
 
+            Assert.AreEqual(numberOfDogs, 4);
+            Assert.AreEqual(dog.Name, "Hvolpur1");
+            Assert.AreEqual(dog.LitterId, 2);                     
+        }
 
+        [TestMethod]
+        public void Pedigree_ValidView()
+        {
+            var controller = CreateDogController();
+            var testData = FakePedigree.CreateTestDogs();
+            FakeDogRepository fakeDb = new FakeDogRepository(testData);
+            var result = controller.Pedigree() as ViewResult;
+            Assert.IsNotNull(result);            
         }
     }
 }
 
-
-/*     DogController CreateDogController()
-        {
-            var fakedb = new DogRepository(CreateFakeDogs());
-            return new DogController(fakedb);
-        }
-
-
-        [TestMethod]
-        public void TestMethod2()
-        {
-            var fakedb = new DogRepository(CreateFakeDogs());
-            Dog dog = new Dog { Id =1, Name = "Rakki", Reg = "IS1", Sex = "M" };
-            fakedb.
-            
-        }
-    */
