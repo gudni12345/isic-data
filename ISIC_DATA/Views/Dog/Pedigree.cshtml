@@ -1,6 +1,6 @@
 ﻿@model ISIC_DATA.Models.Dog
 
-<table class="tablePed" border="1">
+<table class="table-ped" border="1">
            <thead>
              <tr>
                 <th style="width:200px;table-layout:fixed">Parents</th>
@@ -23,7 +23,7 @@
                              }
                                 <br> @if (ViewBag.Pedigree[0].PicturePath != "~/Images/dogs/dog1.jpg" & ViewBag.Pedigree[0].PicturePath != null)
                                  {                           
-                                 <img class="pedPhoto" src="@Url.Content(ViewBag.Pedigree[0].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 <img class="ped-photo" src="@Url.Content(ViewBag.Pedigree[0].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                                  } 
                         </td>                
                         <td ROWSPAN="4"> @if (ViewBag.Pedigree[2].Name == "not known")
@@ -183,7 +183,7 @@
                              <br>
                              @if (ViewBag.Pedigree[1].PicturePath != "~/Images/dogs/dog1.jpg" & ViewBag.Pedigree[1].PicturePath != null)
                              {                           
-                                 <img class="pedPhoto" src="@Url.Content(ViewBag.Pedigree[1].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
+                                 <img class="ped-photo" src="@Url.Content(ViewBag.Pedigree[1].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                              }  
                         </td>
                         <td ROWSPAN="4"> @if  (ViewBag.Pedigree[4].Name == "not known") 
