@@ -1,13 +1,13 @@
 ﻿
 @if (ViewBag.totalValue != null) {
-    <strong>Inbreeding coefficient = @ViewBag.totalValue %</strong><br/>    
+    <strong>Inbreeding coefficient = @ViewBag.totalValue %</strong><br/><br />    
 }        
 
 @if (ViewBag.commonAncestors.Count > 0 ) {    
-    <div> ancestor(s):
+    <div> <strong>Common ancestor(s):</strong><br />
     @foreach (var item in ViewBag.commonAncestors) 
     {          
-        if (item != "not known") { <strong> @item, </strong> }
+        if (item != "not known") { <i>@item &nbsp; </i>}
     }
     </div> 
 }
