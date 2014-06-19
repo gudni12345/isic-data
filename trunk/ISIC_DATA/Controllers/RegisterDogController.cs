@@ -123,7 +123,8 @@ namespace ISIC_DATA.Controllers
                 catch (Exception)
                 {                 
                     ViewData["Error"] = "Unable to save";
-                    return RedirectToAction("Error");
+                    TempData["Error"] = "!Unable to save data.";
+                    //return RedirectToAction("Error");
                 }
                 
                 return RedirectToAction("Index","Dog");  // Success
