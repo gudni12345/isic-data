@@ -22,16 +22,13 @@ ViewBag.Title = "Create News";
             @Html.ValidationMessageFor(model => model.Title)
         </div>
                 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Valid)
-        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Valid)
+            publish &nbsp;@Html.EditorFor(model => model.Valid) 
             @Html.ValidationMessageFor(model => model.Valid)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CategoriesName)
+            Choose between News and About
         </div>
 
         <div class="editor-field">
@@ -51,7 +48,7 @@ ViewBag.Title = "Create News";
         <p>
             <input type="submit" value="Save News" />
         </p>
-        @*<p>Posted Content: @ViewBag.HtmlContent</p>*@
+        
 
     </fieldset>
       

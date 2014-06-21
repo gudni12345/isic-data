@@ -10,8 +10,8 @@ namespace ISIC_DATA.Models
     public class Litter
     {       
         [Key]
-   //     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+   //     [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'.'MM'.'yyyy}")]

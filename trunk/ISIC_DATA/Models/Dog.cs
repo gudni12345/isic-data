@@ -10,8 +10,9 @@ namespace ISIC_DATA.Models
 {
     public class Dog
     {
-    //    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+   //     [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Required, MaxLength(50), MinLength(4, ErrorMessage = "Reg number is required.")]

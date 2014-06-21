@@ -20,7 +20,7 @@
 </div>
 
 <p>
-     @Html.ActionLink("Add to list", "Create", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
+     @Html.ActionLink("Create Owner or Breeder", "Create", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
 </p><br />
 
 <table class="table table-hover">
@@ -51,8 +51,10 @@
         </td>
        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+            @if(User.IsInRole("SuperAdministrator"))  {
+                @Html.ActionLink(" |  Delete", "Delete", new { id=item.Id })
+             }
         </td>
     </tr>
 }
