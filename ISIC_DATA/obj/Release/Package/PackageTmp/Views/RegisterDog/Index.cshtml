@@ -4,21 +4,22 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Register Dog";
-    Html.EnableClientValidation(false);
+    Html.EnableClientValidation(true);
 }
 
 <h2>Register Dog(s)</h2>
 
-
-@if (ViewData.ModelState.Keys.Any(k=> ViewData.ModelState[k].Errors.Count() > 0)) { 
+@if (ViewData.ModelState.Keys.Any(k => ViewData.ModelState[k].Errors.Count() > 0))
+{ 
 	<div class="alert alert-danger">
 		<button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		@Html.ValidationSummary(false, "Errors: ")
 	</div>
 }
 
-@using (Html.BeginForm(new { @class = "form-horizontal span9" }))
-{
+@using (Html.BeginForm(new {@id="regform", @name="regform"}))
+{ 
+    
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <fieldset>
@@ -28,12 +29,15 @@
 
                 <b>@Html.Label("Date of birth:", new { @class = "control-label" }) </b>
                 @Html.TextBoxFor(model => model.Litter.DateOfBirth, new { id="dateOfBirth", @class = "datePicker", data_bind = "value: birth" })
+                @Html.ValidationMessageFor(model => model.Litter.DateOfBirth)
 
                 <label>Breeder:</label>              
-                @Html.TextBoxFor(model => model.Litter.Person.Name, new { placeholder="Breeder name", @id="Breeder_typeahead"})
-                @Html.HiddenFor(model => model.Litter.PersonId, new { @id = "returnBreederId" })
-                @Html.ActionLink("Add", "CreateBreeder", "Person", null, new { id = "btnCreate", @class = "btn btn-success" })
-
+                @Html.TextBoxFor(model => model.Litter.Person.Name, new { placeholder="Breeder name", @id="Breeder_typeahead"})                
+                @Html.ActionLink("Add", "CreateBreeder", "Person", null, new { id = "btnCreate", style="margin-bottom:8px", @class = "btn btn-success" })
+                @Html.ValidationMessageFor(model => model.Litter.Person.Name) 
+                @Html.HiddenFor(m => m.Litter.PersonId, new {id = "returnBreederId" })
+                @Html.ValidationMessageFor(model => model.Litter.PersonId)
+                               
                 <div id='dialogDiv' class='modal hide fade in'>
                     <div id='dialogContent'></div>
                 </div>
@@ -42,7 +46,9 @@
                 <div class="CustomTemplate">
                     @Html.TextBoxFor(model => model.Litter.Father.Reg, new { placeholder="Father's Reg", id="typeaheadFather" })                                
                     @Html.HiddenFor(model => model.Litter.FatherId, new { @id = "returnFatherId" })
-                    @Html.TextBoxFor(model => model.Litter.Father.Name, new { id = "fatherName", disabled = "disabled"})                  
+                    @Html.TextBoxFor(model => model.Litter.Father.Name, new { id = "fatherName", disabled = "disabled"})
+                    @Html.ValidationMessageFor(model => model.Litter.Father.Name)                  
+                    @Html.ValidationMessageFor(model => model.Litter.FatherId)  
                 </div>
 
                 <label>Mother:</label>
@@ -50,6 +56,8 @@
                     @Html.TextBoxFor(model => model.Litter.Mother.Reg, new {placeholder="Mother's Reg", id="typeaheadMother" })                    
                     @Html.HiddenFor(model => model.Litter.MotherId, new { @id = "returnMotherId" })
                     @Html.TextBoxFor(model => model.Litter.Mother.Name, new { id="motherName", disabled = "disabled"})
+                    @Html.ValidationMessageFor(model => model.Litter.Mother.Name)   
+                    @Html.ValidationMessageFor(model => model.Litter.MotherId) 
                 </div>
             </div>
         </div>
@@ -66,7 +74,7 @@
 		<button class="btn btn-danger" data-bind="click: removePosition">Remove one</button>
 	</fieldset>        
 	
-	<div class="form-actions">
+	<div class="form-actions" style="padding-left: 0">
 		<button type="submit" class="btn btn-primary">Save changes</button>
 		@Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
 	</div>
@@ -82,8 +90,7 @@
 	<div class="alert alert-success">@TempData["Success"].ToString()</div>
 }
 
-<script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
-@section scripts{ <script src="~/registerBundle"></script> }
 
+@Scripts.Render("~/registerBundle")
 
 

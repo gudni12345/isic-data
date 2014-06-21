@@ -10,6 +10,7 @@ body {
             max-width: 1100px;
             margin-left: auto;
             margin-right:auto;
+            
                         
       }
 
@@ -19,7 +20,7 @@ max-width: 1100px;
 padding-left: 0px;
 padding-right: 0px;
 }
-.bodyContainer {
+.body-container {
 max-width: 1072px;
 padding-left: 10px;
 padding-right: 10px;
@@ -32,7 +33,7 @@ p {
   margin: 0 0 0 0;
 }
 
-.containerLeftMargin{
+.container-left-margin{
     margin-left: -27px;
 }
 
@@ -54,9 +55,7 @@ p {
     margin-left: 10px;
     margin-bottom: 20px;
 }
-.countList {
-        list-style-type: none;
-}
+
 
 .span12 > h3{
     padding-left: 15px;
@@ -96,6 +95,7 @@ p {
         font-weight: bold; 
         font-size: 18px;
 }
+
 .navbaradjustment{
     padding-top: 6px;
     padding-left: 8px;
@@ -107,8 +107,13 @@ p {
     padding-left: 0px;
 }
 
+.admin-nav-padding
+{
+    margin-bottom: 7px;
+}
+
 /*Heading on frontpage*/
-.span7  > h2{
+.span7  > h3{
     margin: 30px 10px;
     font-family: Adobe Fangsong Std;
 }
@@ -133,14 +138,14 @@ p {
 
 
 
-.homeText
+.home-text
 {
     text-align: justify;
     padding-right: 10px;
     padding-left: 15px;
 }
 
-.dogCountText
+.dog-count-text
 {
     padding-right: 10px;
     padding-left: 10px;
@@ -156,16 +161,16 @@ p {
 .thumbnail > img     {
          float:left;
          margin-left: 10px;
-         margin-top: 10px;
+         margin-top: 18px;
          margin-bottom: 10px;
          }
 
-.ThumbnailPopularDogs    {
+.thumbnail-popular-dogs    {
         margin: 15px;
         background-color: white;
         }
 
-.ThumbnailPopularDogs > img {
+.thumbnail-popular-dogs > img {
         margin-bottom: 15px;
        }
 
@@ -179,6 +184,14 @@ p {
     background-color: white;
 }
 
+/*************************/
+/*for table (Test Mate)*/
+/*************************/
+
+.t-padding 
+{
+    padding-top: 20px;
+}
 
 
 /*************************/
@@ -209,36 +222,48 @@ input.search-query{
     padding-bottom: 25px;
     border-radius: 5px;
 }
-.pedPhoto { /*within pedigree*/
+.ped-photo { /*within pedigree*/
     max-width: 160px;
     height: 120px;
     padding-top:3px;
     padding-bottom: 1px;
 }
 
-.pedNotknow {
-    color:red;
-    font-size: 14px;
-    padding-top: 3px;
+.dog-pic { /*top of Details page*/
+    
+       border-radius: 5px; 
+       padding: 20px;
 }
 
-.dogPic { /*top of Details page*/
-        max-width: 380px;
-        max-height: 280px;     
-        border-radius: 5px; 
-        padding: 20px;
+
+.thumb {
+  max-width: 380px;
+  max-height: 280px;
+  width: expression(this.width > 100 ? "100px" : true);
+  height: expression(this.height > 100 ? "100px" : true);
+  border-radius: 5px; 
 }
+
+.table-ped {
+   background-color: white;
+   width:100%;
+ }
+
+.table-ped, td, th {
+    padding: 4px;
+ }
+
 
 /*Adjustments for upper part of details*/
-.dogTitle{
+.dog-title {
         text-shadow: 1px 2px #d3d3d3;
         color: #1a3362;
         padding-left: 20px;
 }
-.doglist{
+.doglist {
     font-size: 16px;
  }
-.doglist > dt{
+.doglist > dt {
     text-align:left;
     padding-left: 20px;
     line-height: 25px;
@@ -266,10 +291,7 @@ background-color: #1a3362;
 
 /* health info*/
 
-.healthInfo{
-   border-top: solid 1px lightgrey
-}
-.colorThumb{
+.color-thumb{
    margin-top: 30px;
    margin-bottom: 15px;
    border-color: white;
@@ -278,7 +300,7 @@ background-color: #1a3362;
    padding-right:20px;
    padding-bottom:20px;
 }
-.colorThumb > p{
+.color-thumb > p{
    color: #f2f2f2;
    font-size: 13px;
    border-radius: 5px;
@@ -295,7 +317,7 @@ background-color: #1a3362;
     margin: 20px;    
 }
 
-.adminColor
+.admin-color
 {
     color: green;
     background-color: #003D00;
@@ -305,7 +327,7 @@ background-color: #1a3362;
 /*for Admin overview*/
 /*************************/
 
-.adminThumb1{
+.admin-thumb{
     margin-top: 30px;
     margin-left: 10px;
     padding: 10px 20px;
@@ -353,6 +375,15 @@ input[readonly] {
         background-color:lightgrey;
         padding: 15px;
         }
+
+/*************************/
+/*for Contact*/
+/*************************/
+
+.about-us
+{
+    font-size: 12px;
+}
 
 
 /*************************/

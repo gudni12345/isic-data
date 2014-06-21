@@ -2,12 +2,21 @@
 @using PagedList.Mvc; 
 @using BootstrapSupport;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="~/Content/jquery.keypad.css" rel="stylesheet">
 
 @if (TempData["Success"] != null)
 {
     <div class="alert alert-success">  
     <a class="close" data-dismiss="alert">×</a>  
     <strong>Success: </strong>@TempData["Success"].ToString() 
+    </div>   
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">  
+    <a class="close" data-dismiss="alert">×</a>  
+    <strong>ERROR: </strong>@TempData["Error"].ToString() 
     </div>   
 }
 
@@ -18,12 +27,17 @@
     }
     else 
     {
+        Layout = "~/Views/Shared/_BootstrapLayout.Home.cshtml";
         ViewBag.Title = "Registered Dogs";
     }
 
 <div>
     <p>If looking for a certain dog, you can enter the whole name or part of it. 
-    <a href="#" id="search" class="btn-mini btn-warning" rel="popover" data-content="If you enter the letter 'k' and press 'apply filter' you will get a list of all dog names that conatin the letter 'k'. You can also use both the Name filter and Country filter together." data-original-title="">i</a>
+    @Html.ActionLink("Search Information", "Info", "Dog", null, new { id = "info", style = "margin-bottom: 8px", @class = "btn btn-success" })
+    <div id='dialogDiv' class='modal hide fade in'>
+        <div id='dialogContent'></div>
+    </div>
+    <!--a href="#" id="search" class="btn-mini btn-warning" rel="popover" data-content="If you enter the letter 'k' and press 'apply filter' you will get a list of all dog names that conatin the letter 'k'. You can also use both the Name filter and Country filter together." data-original-title="">i</a-->
     </p><br />
 </div>
 
@@ -33,11 +47,11 @@
     <fieldset class="filtering">
         <legend>Search filter</legend>
     <p>
-        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class="search-query" })  
+        Find by name or Registration Number: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "search-query", id = "isKeypad" })  
         
         @Html.DropDownList("CountryId", "--- All countries ---")     
         
-        <input type="submit" class="btn btn-primary" value="apply filter" />  
+        <input type="submit" class="btn btn-primary" value="apply filter" />          
     </p>
     </fieldset>
 }
@@ -84,18 +98,14 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 <strong>Number of dogs = @ViewBag.numberOfDogsSelected</strong>
 
 
-<script type="text/javascript">
-    $(function () {
-        $("#search").popover({
-                trigger: 'hover',
-                'placement': 'top'
-        });
-    });
-</script>
+<script type="text/javascript" src="~/scripts/DogIndex.js"></script>
+
 <script>
     (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-45948404-1', '85.220.79.130'); ga('send', 'pageview');
 
 </script>
+
+
 

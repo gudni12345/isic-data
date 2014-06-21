@@ -10,10 +10,6 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
-
-        @Scripts.Render("~/bundles/jquery")    
-        @Scripts.Render("~/bundles/knockout")
-        <script src="~/Scripts/knockout.namepathbinding.js"></script>
     
         @RenderSection("head", required: false)
         @Html.Partial("_html5shiv")
@@ -28,20 +24,20 @@
                
 		        <div class="span12">
 			        <div class="navbar">
-                        <div class="navbar navbar-inverse adminColor">
-				            <div class="navbar-inner navOffset">
+                        <div class="navbar navbar-inverse admin-color">
+				            <div class="navbar-inner navOffset" style="border-width:0">
 					            <div class="container-fluid">
-                                    <div class="navbar-header adminColor">
-                                        <a class="btn btn-navbar adminColor" data-toggle="collapse" data-target=".nav-collapse">
+                                    <div class="navbar-header admin-color">
+                                        <a class="btn btn-navbar admin-color" data-toggle="collapse" data-target=".nav-collapse">
         
                                         </a>
                                         <div class="nav-collapse collapse nav-admin-adjust">
                                             <ul class="nav admin">
-                                                <li class="active">
+                                                <li class="admin-nav-padding">
                                                 @Html.ActionLink("Overview", "Index", "Admin")
                                                  </li>
                                                  <li>
-                                                @Html.ActionLink("Edit Dog", "Index", "Dog")
+                                                @Html.ActionLink("Database", "Index", "Dog")
                                                  </li>
                                                 <li>
                                                 @Html.ActionLink("Register Dog", "Index", "RegisterDog")
@@ -56,7 +52,7 @@
                                             </ul>
                                             <ul class="nav pull-right">
 								                    <li>
-									                     @Html.ActionLink("Home (Database)", "Index", "Home")  
+									                     @Html.ActionLink("Home", "Index", "Home")  
 								                    </li>
                                                </ul>
                                              <div class="container">
@@ -79,7 +75,8 @@
                  @RenderSection("featured", required: false)
             </div>
             }
-                     
+            
+            <script type="text/javascript" src="~/scripts/jquery-2.0.3.js"></script>        
             @RenderBody()   
             <hr>
             <footer>
@@ -92,9 +89,9 @@
     </body>
 </html>
 
-<script type="text/javascript">
-
+<script type="text/javascript">    
     jQuery.validator.setDefaults({
+        ignore: null,
         highlight: function (element, errorClass, validClass) {
             if (element.type === 'radio') {
                 this.findByName(element.name).addClass(errorClass).removeClass(validClass);

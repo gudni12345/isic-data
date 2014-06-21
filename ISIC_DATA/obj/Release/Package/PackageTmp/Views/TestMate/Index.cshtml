@@ -1,19 +1,27 @@
 ﻿@using BootstrapSupport
 @model ISIC_DATA.Models.TestMateViewModel
 
-@{
-Layout = "~/Views/Shared/_AdminLayout.cshtml";
-ViewBag.Title = "Test mate";
-}
-<h2>Test mate</h2>
-@Styles.Render("~/Content/typeahead.js-bootstrap.css")
 
-@using (Html.BeginForm(new { @class = "form-horizontal span9" }))
-{
+@{
+    Layout = "~/Views/Shared/_BootstrapLayout.Home.cshtml";
+    ViewBag.Title = "Test mate";
+}
+   
+@Styles.Render("~/Content/typeahead.js-bootstrap.css") 
+
+<div class="container-fluid container-left-margin dog-details"> 
+
+@using (Html.BeginForm() ) {
     
     <fieldset>
            
-        <legend></legend>
+        <legend>Test mate - Get the inbreeding coefficent of a potential future puppy&nbsp;&nbsp;
+            @Html.ActionLink("More Info", "Info", "TestMate", null, new { id = "info", style = "margin-bottom: 8px", @class = "btn btn-success" })
+        </legend>
+
+        <div id='dialogDiv' class='modal hide fade in'>
+            <div id='dialogContent'></div>
+        </div>
         <div class="editor-field">
             <label>Father:</label>
             <div class="CustomTemplate">                
@@ -34,158 +42,26 @@ ViewBag.Title = "Test mate";
 
 
     </fieldset>
-
-    if (ViewBag.Result != null)
-    {
-        <strong>Result = @ViewBag.Result %</strong>
-    }
-    
-    <div class="form-actions">
+ 
+    <div class="form-actions" style="padding-left:0">
         <button type="submit" class="btn btn-primary">Check</button>
-        @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn " })
+        @Html.ActionLink("Cancel", "../Home/Index", null, new { @class = "btn ", style="margin-left: 10px" })
     </div>
    
 } <!-- end form -->
 
-<div class="tab-pane active" id="pedigree">      
-         
-         
-         <table  BORDER="2" CELLSPACING=0 CELLPADDING=4 COLS=5 WIDTH="100%" BGCOLOR="#FFFFFF"">
-           <thead>
-             <tr>
-                <th style="width:50px;table-layout:fixed">Parents</th>
-                <th style="width:100px;table-layout:fixed">Grandparents</th>
-                <th style="width:100px;table-layout:fixed">Great Grandparents</th>
-                <th style="width:100px;table-layout:fixed">Great Great Grandparents</th>
-             </tr>
-              </thead>
-                @*Fathers Pedigree*@           
-                  <tbody>
-                      <tr>
-                        <td ROWSPAN="8"> @Html.DisplayFor(model => model.Father.Name)
-                        <br>             @Html.DisplayFor(model => model.Father.Reg)
-                        </td>                
-                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Father.Name)
-                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
-                        </td>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Name)
-                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Reg)
-                         </td>                
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Father.Name)
-                        </td>
-                        <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
-                        <tr>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Name)
-                        <br>            @Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Reg) 
-                        </td>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
-                        </tr>
-                        <tr>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
-                        </tr>
-                        <tr>
-                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Father.Litter.Mother.Name)
-                         <br>            @Html.DisplayFor(model => model.Father.Litter.Mother.Reg)
-                        </td>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Name)</td>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
-                    </tr>
-                    <tr>
-                        <td  style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
-                    </tr>
-                    <tr>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Name)</td>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
-                    </tr>
-                    <tr>
-                        <td  style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Father.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
-                    </tr>
-                    
+@if (ViewBag.Pedigree != null) 
+{
+    @Html.Partial("Result", Model)    
+}
+</div>
 
-                     @*Mothers Pedigree*@    
-                    <tr>
-                        <td ROWSPAN="8"> @Html.DisplayFor(model => model.Mother.Name)
-                        <br>             @Html.DisplayFor(model => model.Mother.Reg)
-                        </td>
-                        <td ROWSPAN="4"> @Html.DisplayFor(model => model.Mother.Litter.Father.Name)
-                        <br>             @Html.DisplayFor(model => model.Father.Litter.Father.Reg)
-                        </td>
+<script type="text/javascript" src="~/scripts/hogan-2.0.0.js"></script>
+<script type="text/javascript" src="~/scripts/TestMate.js"></script>
 
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Name)</td>
-                       <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Father.Name)</td>
-                    </tr>
-                    <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Father.Litter.Mother.Name)</td>
-                    </tr>
-                    <tr>
-                        <td ROWSPAN="2"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Name)</td>
-                        <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Litter.Father.Name)</td>
-                    </tr>
-                    <tr>
-                         <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Father.Litter.Mother.Litter.Mother.Name)</td>
-                    </tr>
+<script>
+    (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-                    <tr>
-                        <td ROWSPAN="4">@Html.DisplayFor(model => model.Mother.Litter.Mother.Name)
-                        <br>            @Html.DisplayFor(model => model.Mother.Litter.Mother.Reg)
-                        </td>
-                        <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Name)</td>
-                        <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Father.Name)</td>
-                    </tr>
-                    <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Father.Litter.Mother.Name)</td>
-                    </tr>
-                    <tr>
-                         <td ROWSPAN="2">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Name)</td>
-                         <td style="height:20px;table-layout:fixed"> @Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Father.Name)</td>
-                    </tr>
-                    <tr>
-                        <td style="height:20px;table-layout:fixed">@Html.DisplayFor(model => model.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Name)</td>
-                    </tr>
-                   </tbody>
-                 </table>
-                                   	
-      </div>
-
-
-
-<script type="text/javascript" src="../scripts/hogan-2.0.0.js"></script>
-<script type="text/javascript">
-  
-    $(document).ready(function () {
-        $("#typeaheadFather").typeahead({
-            name: "Father", 
-            remote: 'Registerdog/FetchFathers?q=%QUERY',
-            limit: 3,
-            valueKey: "Reg",
-            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',
-            ].join(''),
-            engine: Hogan
-        }).on("typeahead:selected typeahead:autocompleted",
-            function (e, datum) {
-                $('#returnFatherId').val(datum.Id);
-                $('#fatherName').val(datum.Name);
-
-            }
-        );
-    });
-
-    $(document).ready(function () {
-        $("#typeaheadMother").typeahead({
-            name: "Mother",
-            remote: 'Registerdog/FetchMothers?q=%QUERY',
-            limit: 3,
-            valueKey: "Reg",
-            template: ['<p class="repo-reg">{{Reg}}</p>', '<p class="repo-name">{{Name}}</p>',].join(''),
-            engine: Hogan
-        }).on("typeahead:selected typeahead:autocompleted",
-            function (e, datum) {
-                $('#returnMotherId').val(datum.Id);
-                $('#motherName').val(datum.Name);
-
-            }
-        );
-    });
+    ga('create', 'UA-45948404-1', '85.220.79.130'); ga('send', 'pageview');
 
 </script>

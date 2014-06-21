@@ -81,7 +81,7 @@ namespace ISIC_DATA.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+              //  try
                 {
 
                     int uId = (int)WebMatrix.WebData.WebSecurity.GetUserId(User.Identity.Name);               
@@ -120,10 +120,10 @@ namespace ISIC_DATA.Controllers
                 
                     TempData["Success"] = "Data was successfully saved.";
                 } //end try
-                catch (Exception)
+              //  catch (Exception)
                 {                 
-                    ViewData["Error"] = "Unable to save";
-                    TempData["Error"] = "!Unable to save data.";
+              //      ViewData["Error"] = "Unable to save";
+             //       TempData["Error"] = "!Unable to save data.";
                     //return RedirectToAction("Error");
                 }
                 
