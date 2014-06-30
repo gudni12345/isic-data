@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="DogContext-Web.config Connection String" description="DogContext Connection String used in web.config by the application to access the database." defaultValue="Server=85.220.79.130;Database=ISIC_06_2014;user=icedog;password=icedog" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\HR\\isic\\isic-data\\ISIC_DATA\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DogContext']/@connectionString" />
+  <parameter name="DogContext-Web.config Connection String" description="DogContext Connection String used in web.config by the application to access the database." defaultValue="Server=85.220.87.172;Database=ISIC_07_2014;user=icedog;password=icedog" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Gudni\\Documents\\Visual\ Studio\ 2012\\Projects\\Project30\\ISIC_DATA\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DogContext']/@connectionString" />
   </parameter>
 </parameters>
