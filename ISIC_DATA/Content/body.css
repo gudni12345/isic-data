@@ -152,10 +152,20 @@ p {
 }
 .country-list
 {
-    line-height: 22px;
+    line-height: 18px;
 }
 
+.tableCountry-list {
+   
+   border-color:aliceblue;
+   background-color: white;
+   border-radius: 14px;
+   width:100%;
+ }
 
+.tableCountry-list, td, th {
+    padding: 4px;
+ }
 
 /*Adjustments Dog Detail thumbnail on Home*/
 .thumbnail > img     {
