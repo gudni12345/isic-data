@@ -42,19 +42,21 @@ namespace ISIC_DATA.Controllers
             List<Dog> PedigreeList = FetchPedigreeForTestMate(FatherA, MotherB);  // fáum ættbókarlistann.
             List<InbreedingResult> vresult = Inbreeding(FatherA, MotherB);        // fáum niðurstöður og sameigilega forfeður. . 
 
-            List<ParentList> parentList = new List<ParentList>();  // nýr listi sem við notum til að birta ættbókarlista og niðurstöður í result viewinu.
+            List<ParentList> parentList = new List<ParentList>();  // nýr listi sem við notum til að birta ættbókarlista og niðurstöður
+                                                                    //í result viewinu.
 
-            if (PedigreeList.Count() == 30)  // Ef listinn er réttur, þá bætum við í nýja listann þar sem kemur fram hvort sameigilegur forfaðir sé til staðar. 
+            if (PedigreeList.Count() == 62)  // Ef listinn er réttur, þá bætum við í nýja listann þar sem kemur
+                                            //fram hvort sameigilegur forfaðir sé til staðar. 
             {
                 foreach (Dog dog in PedigreeList)
                 {
                     if ( ( vresult.Find(i => i.Id.Equals(dog.Id)) != null ) && (dog.Id != 1) )  // Ef Id úr Result er það sama og úr ættbókarlistanum.
                     {
-                        parentList.Add(new ParentList(dog.Name, dog.Reg, true));
+                        parentList.Add(new ParentList(dog.Name, dog.Reg,true, dog.HD));
                     }
                     else
                     {
-                        parentList.Add(new ParentList(dog.Name, dog.Reg, false));
+                        parentList.Add(new ParentList(dog.Name, dog.Reg,  false, dog.HD));
                     }                  
                 }
             }
@@ -129,6 +131,20 @@ namespace ISIC_DATA.Controllers
             }
             parentList.AddRange(pTemp);  // 14 + 16 = 30 stk
 
+            pTemp2 = null;
+
+            foreach (Dog d in pTemp) // finnur þetta foreldra fyrir 16 hundana ?
+            {
+                if (pTemp2 == null)
+                    pTemp2 = parents(d);
+                else
+                    pTemp2.AddRange(parents(d));        // skila 32 hundar.
+            }
+
+            parentList.AddRange(pTemp2);  // 30 + 32 = 62 stk
+
+
+            
             return parentList;
         }
 
@@ -168,23 +184,46 @@ namespace ISIC_DATA.Controllers
                 if (B.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.25)); } //check if Father is also Grandfather
                 else if (B.Litter.Mother.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult( A.Id, 0.0625)); } //check if Father is mothers Great Grandfather
                 else if (B.Litter.Mother.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.0625)); }
+            
                 else if (B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id,0.03125)); } //check if Father is mothers Great Great Grandfather
                 else if (B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id,0.03125)); }
                 else if (B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id,0.03125)); }
                 else if (B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id,0.03125)); }
+
+                else if (B.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); } //check if Father is mothers Great Great Great Grandfather
+                else if (B.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); }
+                else if (B.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); }
+                else if (B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); }
+                else if (B.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); }
+                else if (B.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); }
+                else if (B.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); }
+                else if (B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == A.Id) { inbreedingResult.Add(new InbreedingResult(A.Id, 0.015625)); }
+                                  
                 //To do: get fathers inbreeding (F) and calculate: result = result * 1.F
             }
             //mother/son
             else if (B.Id == A.Litter.MotherId)
             {
                 inbreedingResult.Add(new InbreedingResult(A.Id,0.25));
+                
                 if (A.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id,0.125)); } //check if Mother is also Grandmother
                 else if (A.Litter.Mother.Litter.Father.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id,0.0625)); } //check if mother is fathers Great Grandmother
                 else if (A.Litter.Mother.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id,0.0625)); }
+                
                 else if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id,0.03125)); } //check if Mother is fathers Great Great Grandmother
                 else if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id,0.03125)); }
                 else if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id,0.03125)); }
                 else if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id,0.03125)); }
+
+                else if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); } //check if Mother is fathers Great Great Great Grandmother
+                else if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); }
+                else if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); }
+                else if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); }
+                else if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); }
+                else if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); }
+                else if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); }
+                else if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Id) { inbreedingResult.Add(new InbreedingResult(B.Id, 0.015625)); }
+               
                 //To do: get mothers inbreeding (F) and calculate: result = result * 1.F
             }
 
@@ -439,8 +478,178 @@ namespace ISIC_DATA.Controllers
                 if (A.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.MotherId,0.0078125)); }
 
 
-                }
-             
+
+                //A and B have the G.G.G, Grandparents starting down from top of the pedigree.
+
+                //starting with the G.G.G:Grand father - the first line.
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                // The second line
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                // The 3rd line of G.G.G.Gfathers
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                // The 4th line of G.G.G.Gfathers
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                // The 5th line og G.G.G. Gfathers
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                // The 6th line og G.G.G. Gfathers
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                // The 7th line og G.G.G. Gfathers
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                // The 8th line og G.G.G. Gfathers
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.FatherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.FatherId, 0.00195)); }
+
+                //starting with the G.G.G:Grand Mothers - the first line.
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+                //starting with the G.G.G:Grand Mothers - the 2nd line.
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+
+                //t 3rd line line.
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+                //the 4th line line.
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+                //the 5th line line.
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+                //the 6th line line.
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+                //the 7th line line.
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+                //the 8th line line.
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Father.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Father.Litter.Mother.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Father.Litter.MotherId, 0.00195)); }
+                if (A.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId == B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId) { inbreedingResult.Add(new InbreedingResult(B.Litter.Mother.Litter.Mother.Litter.Mother.Litter.MotherId, 0.00195)); }
+
+            }
+
+            //Grate Great Greandparents 
+            //if great great grandpa the same
+
+
+
+
 
           //   result = result*100;
           //   inbreedingResult.Result = result;
