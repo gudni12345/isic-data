@@ -349,6 +349,7 @@ namespace ISIC_DATA.Controllers
             List<Dog> parentList = new List<Dog>();
             List<Dog> pTemp = new List<Dog>();
             List<Dog> pTemp2 = new List<Dog>();
+            List<Dog> pTemp3 = new List<Dog>();
             parentList = parents(dog);  // Skilar foreldrum.  2 hundar
 
             foreach (Dog d in parentList)
@@ -365,7 +366,8 @@ namespace ISIC_DATA.Controllers
             {
                 if (pTemp2 == null)
                     pTemp2 = parents(d);
-                else                    pTemp2.AddRange(parents(d));        // skila 8 hundar.
+                else        
+                pTemp2.AddRange(parents(d));        // skila 8 hundar.
             }
             parentList.AddRange(pTemp2);    // 6 + 8 = 14 stk
             pTemp = null;
@@ -379,9 +381,20 @@ namespace ISIC_DATA.Controllers
             }
             parentList.AddRange(pTemp);  // 14 + 16 = 30 stk
 
+            pTemp2 = null;
+
+            foreach (Dog d in pTemp) // finnur þetta foreldra fyrir 16 hundana ?
+            {
+                if (pTemp2 == null)
+                    pTemp2 = parents(d);
+                else
+                    pTemp2.AddRange(parents(d));        // skila 32 hundar.
+            }
+
+            parentList.AddRange(pTemp2);  // 16 + 32 = 48 stk
+
+
             return parentList;
         }
-
-
     }
 }
