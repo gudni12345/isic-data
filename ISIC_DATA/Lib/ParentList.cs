@@ -11,14 +11,14 @@ namespace ISIC_DATA.Lib
         {
         }
 
-        public ParentList(string name, string reg)
+        public ParentList(string name, string reg, string hd)
         {
-            this.Name = name; this.Reg = reg; 
+            this.Name = name; this.Reg = reg; this.HD = hd; 
         }
 
-        public ParentList(string name, string reg, bool commonAncestor)
+        public ParentList(string name, string reg, bool commonAncestor, string hd)
         {
-            this.Name = name; this.Reg = reg; this.CommonAncestor = commonAncestor;
+            this.Name = name; this.Reg = reg; this.CommonAncestor = commonAncestor; this.HD = hd;
         }
        
         public string Name
@@ -34,6 +34,11 @@ namespace ISIC_DATA.Lib
         }
 
         public bool CommonAncestor
+        {
+            get;
+            set;
+        }
+        public string HD
         {
             get;
             set;
