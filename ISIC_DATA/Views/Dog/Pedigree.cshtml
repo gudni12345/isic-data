@@ -1,19 +1,11 @@
 ﻿@model ISIC_DATA.Models.Dog
-
 <table class="table-ped" border="1">
-           <thead>
-             <tr>
-                <th style="width:200px;table-layout:fixed">Parents</th>
-                <th style="width:200px;table-layout:fixed">Grandparents</th>
-                <th style="width:200px;table-layout:fixed">Great Grandparents</th>
-                <th style="width:300px;table-layout:fixed">Great Great Grandparents</th>
-             </tr>
-              </thead>
+           
                 @*Fathers Pedigree*@           
                   <tbody>
                       <tr>
                         
-                        <td rowspan="8">@if (ViewBag.Pedigree[0].Name == "not known")
+                        <td rowspan="16"><H4>Father</H4>@if (ViewBag.Pedigree[0].Name == "not known")
                              {
                                  <p></p>  
                              }
@@ -21,31 +13,34 @@
                              {           
                                 @Html.ActionLink((string)ViewBag.Pedigree[0].Name, "Details", new { Id = ((int)ViewBag.Pedigree[0].Id) })
                              }
+                            <br>    <span style="color:green">HD: @ViewBag.Pedigree[0].HD</span>
                                 <br> @if (ViewBag.Pedigree[0].PicturePath != "~/Images/dogs/dog1.jpg" & ViewBag.Pedigree[0].PicturePath != null)
                                  {                           
                                  <img class="ped-photo" src="@Url.Content(ViewBag.Pedigree[0].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                                  } 
-                        </td>                
-                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[2].Name == "not known")
+                                </td>                
+                          <td ROWSPAN="8" style="width:200px"> @if (ViewBag.Pedigree[2].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
                                 @Html.ActionLink((string)ViewBag.Pedigree[2].Name, "Details", new { Id = ((int)ViewBag.Pedigree[2].Id) })
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[2].HD</span>
                              }
                             </td>
-                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[6].Name == "not known")
+                        <td ROWSPAN="4" style="width:200px"> @if (ViewBag.Pedigree[6].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {   
                                 @Html.ActionLink((string)ViewBag.Pedigree[6].Name, "Details", new { Id = ((int)ViewBag.Pedigree[6].Id) })                                                         
-                            }
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[6].HD</span>
+                              }
                             </td>
                                          
-                        <td  style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[14].Name == "not known")
+                        <td  ROWSPAN="2" style="width:200px"> @if (ViewBag.Pedigree[14].Name == "not known")
                              {
                                  <p></p>  
                              }
@@ -54,9 +49,29 @@
                                 @Html.ActionLink((string)ViewBag.Pedigree[14].Name, "Details", new { Id = ((int)ViewBag.Pedigree[14].Id) }) 
                              }
                             </td>
-                     </tr>
+                            <td  ROWSPAN="1" style="width:200px"> @if (ViewBag.Pedigree[30].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {                            
+                                @Html.ActionLink((string)ViewBag.Pedigree[30].Name, "Details", new { Id = ((int)ViewBag.Pedigree[30].Id) }) 
+                             }
+                            </td>
+                            </tr>
+                         <tr>
+                                 <td  ROWSPAN="1"> @if (ViewBag.Pedigree[31].Name == "not known")
+                                 {
+                                     <p></p>  
+                                 }
+                                else
+                                     {                            
+                                        @Html.ActionLink((string)ViewBag.Pedigree[31].Name, "Details", new { Id = ((int)ViewBag.Pedigree[31].Id) }) 
+                                     }
+                            </td>
+                         </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[15].Name == "not known")
+                        <td  ROWSPAN="2"> @if (ViewBag.Pedigree[15].Name == "not known")
                              {
                                  <p></p>  
                              }
@@ -65,18 +80,40 @@
                                 @Html.ActionLink((string)ViewBag.Pedigree[15].Name, "Details", new { Id = ((int)ViewBag.Pedigree[15].Id) }) 
                              }
                              </td>
+                     <td  ROWSPAN="1"> @if (ViewBag.Pedigree[32].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {
+                                @Html.ActionLink((string)ViewBag.Pedigree[32].Name, "Details", new { Id = ((int)ViewBag.Pedigree[32].Id) }) 
+                             }
+                             </td>
+                    
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">  @if (ViewBag.Pedigree[7].Name == "not known")
+                        <td  ROWSPAN="1"> @if (ViewBag.Pedigree[33].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {
+                                @Html.ActionLink((string)ViewBag.Pedigree[33].Name, "Details", new { Id = ((int)ViewBag.Pedigree[33].Id) }) 
+                             }
+                             </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="4">  @if (ViewBag.Pedigree[7].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {           
                                 @Html.ActionLink((string)ViewBag.Pedigree[7].Name, "Details", new { Id = ((int)ViewBag.Pedigree[7].Id) }) 
-                             }
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[7].HD</span>
+                              }
                             </td>
-                        <td  style="height:20px;table-layout:fixed">@if (ViewBag.Pedigree[16].Name == "not known")
+                        <td  ROWSPAN="2">@if (ViewBag.Pedigree[16].Name == "not known")
                              {
                                 <p></p>
                              }
@@ -85,94 +122,215 @@
                                 @Html.ActionLink((string)ViewBag.Pedigree[16].Name, "Details", new { Id = ((int)ViewBag.Pedigree[16].Id) })
                              }
                         </td>
-                    </tr>
-                    <tr>
-                        <td  style="height:20px;table-layout:fixed">@if (ViewBag.Pedigree[17].Name == "not known")
+                      <td ROWSPAN="1">@if (ViewBag.Pedigree[34].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              { 
-                                @Html.ActionLink((string)ViewBag.Pedigree[17].Name, "Details", new { Id = ((int)ViewBag.Pedigree[17].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[34].Name, "Details", new { Id = ((int)ViewBag.Pedigree[34].Id) })
                              }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[3].Name == "not known")
-                             {
-                                 <p></p>  
-                             }
-                             else
-                             {            
-                                 @Html.ActionLink((string)ViewBag.Pedigree[3].Name, "Details", new { Id = ((int)ViewBag.Pedigree[3].Id) })
-                             }
-                        </td>
-                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[8].Name == "not known")
-                             {
-                                 <p></p>  
-                             }
-                             else
-                             {            
-                                @Html.ActionLink((string)ViewBag.Pedigree[8].Name, "Details", new { Id = ((int)ViewBag.Pedigree[8].Id) })
-                             }
-                        </td>
-                        <td style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[18].Name == "not known")
+                     </td>
+                     </tr>
+                        <tr>
+                         <td ROWSPAN="1">@if (ViewBag.Pedigree[35].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              { 
-                                 @Html.ActionLink((string)ViewBag.Pedigree[18].Name, "Details", new { Id = ((int)ViewBag.Pedigree[18].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[35].Name, "Details", new { Id = ((int)ViewBag.Pedigree[35].Id) })
                              }
                         </td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @if (ViewBag.Pedigree[19].Name == "not known")
+                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[17].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {            
+                                 @Html.ActionLink((string)ViewBag.Pedigree[17].Name, "Details", new { Id = ((int)ViewBag.Pedigree[17].Id) })
+                             }
+                        </td>
+                        <td ROWSPAN="1">@if (ViewBag.Pedigree[36].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                @Html.ActionLink((string)ViewBag.Pedigree[36].Name, "Details", new { Id = ((int)ViewBag.Pedigree[36].Id) })
+                             }
+                        </td>
+                        </tr>
+                        <tr>
+                         <td ROWSPAN="1">@if (ViewBag.Pedigree[37].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                @Html.ActionLink((string)ViewBag.Pedigree[37].Name, "Details", new { Id = ((int)ViewBag.Pedigree[37].Id) })
+                             }
+                        </td>
+                        </tr>
+                      <tr>
+                        <td ROWSPAN="8"> @if (ViewBag.Pedigree[3].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {            
+                                @Html.ActionLink((string)ViewBag.Pedigree[3].Name, "Details", new { Id = ((int)ViewBag.Pedigree[3].Id) })
+                             <br>    <span style="color:green">HD: @ViewBag.Pedigree[3].HD</span>
+                             }
+                        </td>
+                        <td ROWSPAN="4"> @if (ViewBag.Pedigree[8].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                 @Html.ActionLink((string)ViewBag.Pedigree[8].Name, "Details", new { Id = ((int)ViewBag.Pedigree[8].Id) })
+                                <br>    <span style="color:green">HD: @ViewBag.Pedigree[8].HD</span>
+                            }
+                        </td>
+                      <td  ROWSPAN="2"> @if (ViewBag.Pedigree[18].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[19].Name, "Details", new { Id = ((int)ViewBag.Pedigree[19].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[18].Name, "Details", new { Id = ((int)ViewBag.Pedigree[18].Id) })
+                            
+                            }
+                        </td>
+                           <td ROWSPAN="1">@if (ViewBag.Pedigree[38].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                @Html.ActionLink((string)ViewBag.Pedigree[38].Name, "Details", new { Id = ((int)ViewBag.Pedigree[38].Id) })
+                             }
+                        </td>
+                        </tr>
+                         <tr>
+                         <td ROWSPAN="1">@if (ViewBag.Pedigree[39].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                @Html.ActionLink((string)ViewBag.Pedigree[39].Name, "Details", new { Id = ((int)ViewBag.Pedigree[39].Id) })
                              }
                         </td>
                     </tr>
                     <tr>
-                        <td ROWSPAN="2">@if  (ViewBag.Pedigree[9].Name == "not known") 
+                        <td ROWSPAN="2">@if  (ViewBag.Pedigree[19].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {           
-                                @Html.ActionLink((string)ViewBag.Pedigree[9].Name, "Details", new { Id = ((int)ViewBag.Pedigree[9].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[19].Name, "Details", new { Id = ((int)ViewBag.Pedigree[19].Id) })
                              }
                         </td>
-                        <td  style="height:20px;table-layout:fixed">  @if  (ViewBag.Pedigree[20].Name == "not known") 
+                        <td  ROWSPAN="1">  @if  (ViewBag.Pedigree[40].Name == "not known") 
                             {
                                  <p></p>  
                             }
                             else
                             {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[20].Name, "Details", new { Id = ((int)ViewBag.Pedigree[20].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[40].Name, "Details", new { Id = ((int)ViewBag.Pedigree[40].Id) })
                             }
                         </td>
                     </tr>
                     <tr>
-                        <td  style="height:20px;table-layout:fixed"> @if  (ViewBag.Pedigree[21].Name == "not known") 
+                        <td   ROWSPAN="1"> @if  (ViewBag.Pedigree[41].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[21].Name, "Details", new { Id = ((int)ViewBag.Pedigree[21].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[41].Name, "Details", new { Id = ((int)ViewBag.Pedigree[41].Id) })
                             }
                         </td>
                     </tr>
-                    
-
-                     @*Mothers Pedigree*@    
                     <tr>
-                        <td ROWSPAN="8"> @if (ViewBag.Pedigree[1].Name == "not known")
+                      <td ROWSPAN="4"> @if (ViewBag.Pedigree[8].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                 @Html.ActionLink((string)ViewBag.Pedigree[8].Name, "Details", new { Id = ((int)ViewBag.Pedigree[8].Id) })
+                             }
+                        </td>
+                      <td  ROWSPAN="2"> @if (ViewBag.Pedigree[18].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[18].Name, "Details", new { Id = ((int)ViewBag.Pedigree[18].Id) })
+                             }
+                        </td>
+                           <td ROWSPAN="1">@if (ViewBag.Pedigree[38].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                @Html.ActionLink((string)ViewBag.Pedigree[38].Name, "Details", new { Id = ((int)ViewBag.Pedigree[38].Id) })
+                             }
+                        </td>
+                        </tr>
+                       <tr>
+                         <td ROWSPAN="1">@if (ViewBag.Pedigree[39].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             { 
+                                @Html.ActionLink((string)ViewBag.Pedigree[39].Name, "Details", new { Id = ((int)ViewBag.Pedigree[39].Id) })
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2">@if  (ViewBag.Pedigree[19].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {           
+                                @Html.ActionLink((string)ViewBag.Pedigree[19].Name, "Details", new { Id = ((int)ViewBag.Pedigree[19].Id) })
+                             }
+                        </td>
+                        <td  ROWSPAN="1">  @if  (ViewBag.Pedigree[40].Name == "not known") 
+                            {
+                                 <p></p>  
+                            }
+                            else
+                            {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[40].Name, "Details", new { Id = ((int)ViewBag.Pedigree[40].Id) })
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td   ROWSPAN="1"> @if  (ViewBag.Pedigree[41].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[41].Name, "Details", new { Id = ((int)ViewBag.Pedigree[41].Id) })
+                            }
+                        </td>
+                    </tr>
+                @*Mothers Pedigree*@    
+                    <tr>
+                        <td ROWSPAN="16"><H4>Mother</H4> @if (ViewBag.Pedigree[1].Name == "not known")
                              {
                                  <p></p>  
                              }
@@ -180,31 +338,34 @@
                              {           
                                 @Html.ActionLink((string)ViewBag.Pedigree[1].Name, "Details", new { Id = ((int)ViewBag.Pedigree[1].Id) })                                
                              }
+                             <br>    <span style="color:green">HD: @ViewBag.Pedigree[1].HD</span>
                              <br>
                              @if (ViewBag.Pedigree[1].PicturePath != "~/Images/dogs/dog1.jpg" & ViewBag.Pedigree[1].PicturePath != null)
                              {                           
                                  <img class="ped-photo" src="@Url.Content(ViewBag.Pedigree[1].PicturePath)" alt ="@Html.DisplayFor(model => model.Name)" />                            
                              }  
                         </td>
-                        <td ROWSPAN="4"> @if  (ViewBag.Pedigree[4].Name == "not known") 
+                        <td ROWSPAN="8"> @if  (ViewBag.Pedigree[4].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {            
                                 @Html.ActionLink((string)ViewBag.Pedigree[4].Name, "Details", new { Id = ((int)ViewBag.Pedigree[4].Id) })
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[4].HD</span>
                              }
                         </td>
-                        <td ROWSPAN="2">@if  (ViewBag.Pedigree[10].Name == "not known") 
+                        <td ROWSPAN="4">@if  (ViewBag.Pedigree[10].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              { 
                                 @Html.ActionLink((string)ViewBag.Pedigree[10].Name, "Details", new { Id = ((int)ViewBag.Pedigree[10].Id) })
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[10].HD</span>
                              }
                         </td>
-                       <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[22].Name == "not known") 
+                         <td ROWSPAN="2">  @if (ViewBag.Pedigree[22].Name == "not known") 
                              {
                                  <p></p>  
                              }
@@ -213,9 +374,29 @@
                                 @Html.ActionLink((string)ViewBag.Pedigree[22].Name, "Details", new { Id = ((int)ViewBag.Pedigree[22].Id) })                                
                              }
                        </td>
+                         <td ROWSPAN="1">  @if (ViewBag.Pedigree[46].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[46].Name, "Details", new { Id = ((int)ViewBag.Pedigree[46].Id) })                                
+                             }
+                       </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">   @if (ViewBag.Pedigree[23].Name == "not known") 
+                         <td ROWSPAN="1">  @if (ViewBag.Pedigree[47].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[47].Name, "Details", new { Id = ((int)ViewBag.Pedigree[47].Id) })                                
+                             }
+                       </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2">  @if (ViewBag.Pedigree[23].Name == "not known") 
                              {
                                  <p></p>  
                              }
@@ -224,18 +405,39 @@
                                 @Html.ActionLink((string)ViewBag.Pedigree[23].Name, "Details", new { Id = ((int)ViewBag.Pedigree[23].Id) }) 
                              }
                         </td>
-                    </tr>
-                    <tr>
-                        <td ROWSPAN="2"> @if (ViewBag.Pedigree[11].Name == "not known") 
+                         <td ROWSPAN="1">  @if (ViewBag.Pedigree[48].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
-                             {           
-                                @Html.ActionLink((string)ViewBag.Pedigree[11].Name, "Details", new { Id = ((int)ViewBag.Pedigree[11].Id) }) 
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[48].Name, "Details", new { Id = ((int)ViewBag.Pedigree[48].Id) })                                
                              }
+                       </td>
+                       </tr>
+                       <tr> 
+                         <td ROWSPAN="1">  @if (ViewBag.Pedigree[48].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[49].Name, "Details", new { Id = ((int)ViewBag.Pedigree[49].Id) })                                
+                             }
+                       </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="4">  @if (ViewBag.Pedigree[11].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[11].Name, "Details", new { Id = ((int)ViewBag.Pedigree[11].Id) })                                
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[11].HD</span>
+                               }
                         </td>
-                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[24].Name == "not known")
+                        <td ROWSPAN="2">  @if (ViewBag.Pedigree[24].Name == "not known")
                              {
                                  <p></p>  
                              }
@@ -244,87 +446,209 @@
                                 @Html.ActionLink((string)ViewBag.Pedigree[24].Name, "Details", new { Id = ((int)ViewBag.Pedigree[24].Id) }) 
                              }
                         </td>
-                    </tr>
-                    <tr>
-                         <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[25].Name == "not known")
+						<td ROWSPAN="1">  @if (ViewBag.Pedigree[50].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[25].Name, "Details", new { Id = ((int)ViewBag.Pedigree[25].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[50].Name, "Details", new { Id = ((int)ViewBag.Pedigree[50].Id) }) 
                              }
-                         </td>
-                    </tr>
-
-                    <tr>
-                        <td ROWSPAN="4">@if (ViewBag.Pedigree[5].Name == "not known")
+                        </td>
+                     </tr>
+                     <tr>
+                        <td ROWSPAN="1">  @if (ViewBag.Pedigree[51].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
-                             {           
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[51].Name, "Details", new { Id = ((int)ViewBag.Pedigree[51].Id) }) 
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                         <td ROWSPAN="2">  @if (ViewBag.Pedigree[25].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[25].Name, "Details", new { Id = ((int)ViewBag.Pedigree[25].Id) }) 
+                             }
+                        </td>
+						<td ROWSPAN="1">  @if (ViewBag.Pedigree[52].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[52].Name, "Details", new { Id = ((int)ViewBag.Pedigree[52].Id) }) 
+                             }
+                        </td>
+                     </tr>
+                     <tr>
+                        <td ROWSPAN="1">  @if (ViewBag.Pedigree[53].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[53].Name, "Details", new { Id = ((int)ViewBag.Pedigree[53].Id) }) 
+                             }
+                        </td>
+                    </tr>
+                    <tr>
+                    <td ROWSPAN="8"> @if  (ViewBag.Pedigree[5].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {            
                                 @Html.ActionLink((string)ViewBag.Pedigree[5].Name, "Details", new { Id = ((int)ViewBag.Pedigree[5].Id) })
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[5].HD</span>
                              }
                         </td>
-                        <td ROWSPAN="2">  @if (ViewBag.Pedigree[12].Name == "not known")
+                        <td ROWSPAN="4">@if  (ViewBag.Pedigree[12].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
-                             {           
+                             { 
                                 @Html.ActionLink((string)ViewBag.Pedigree[12].Name, "Details", new { Id = ((int)ViewBag.Pedigree[12].Id) })
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[12].HD</span>
                              }
                         </td>
-                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[26].Name == "not known")
+                         <td ROWSPAN="2">  @if (ViewBag.Pedigree[26].Name == "not known") 
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[26].Name, "Details", new { Id = ((int)ViewBag.Pedigree[26].Id) })
-                            }
+                                @Html.ActionLink((string)ViewBag.Pedigree[26].Name, "Details", new { Id = ((int)ViewBag.Pedigree[26].Id) })                                
+                             }
+                       </td>
+                         <td ROWSPAN="1">  @if (ViewBag.Pedigree[54].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[54].Name, "Details", new { Id = ((int)ViewBag.Pedigree[54].Id) })                                
+                             }
+                       </td>
+                    </tr>
+                    <tr>
+                         <td ROWSPAN="1" style="width:160px">  @if (ViewBag.Pedigree[55].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[55].Name, "Details", new { Id = ((int)ViewBag.Pedigree[55].Id) })                                
+                             }
+                       </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="2" style="width:160px">  @if (ViewBag.Pedigree[27].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[27].Name, "Details", new { Id = ((int)ViewBag.Pedigree[27].Id) }) 
+                             }
+                        </td>
+                         <td ROWSPAN="1">  @if (ViewBag.Pedigree[56].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[56].Name, "Details", new { Id = ((int)ViewBag.Pedigree[56].Id) })                                
+                             }
+                       </td>
+                       </tr>
+                       <tr> 
+                         <td ROWSPAN="1" style="width:160px">  @if (ViewBag.Pedigree[57].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[57].Name, "Details", new { Id = ((int)ViewBag.Pedigree[57].Id) })                                
+                             }
+                       </td>
+                    </tr>
+                    <tr>
+                        <td ROWSPAN="4">  @if (ViewBag.Pedigree[13].Name == "not known") 
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[13].Name, "Details", new { Id = ((int)ViewBag.Pedigree[13].Id) })                                
+                                 <br>    <span style="color:green">HD: @ViewBag.Pedigree[13].HD</span>
+                              }
+                        </td>
+                        <td ROWSPAN="2">  @if (ViewBag.Pedigree[28].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[28].Name, "Details", new { Id = ((int)ViewBag.Pedigree[28].Id) }) 
+                             }
+                        </td>
+						<td ROWSPAN="1" style="width:160px">  @if (ViewBag.Pedigree[58].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[58].Name, "Details", new { Id = ((int)ViewBag.Pedigree[58].Id) }) 
+                             }
+                        </td>
+                     </tr>
+                     <tr>
+                        <td ROWSPAN="1" style="width:160px">  @if (ViewBag.Pedigree[59].Name == "not known")
+                             {
+                                 <p></p>  
+                             }
+                             else
+                             {  
+                                @Html.ActionLink((string)ViewBag.Pedigree[59].Name, "Details", new { Id = ((int)ViewBag.Pedigree[59].Id) }) 
+                             }
                         </td>
                     </tr>
                     <tr>
-                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[27].Name == "not known")
+                         <td ROWSPAN="2">  @if (ViewBag.Pedigree[29].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[27].Name, "Details", new { Id = ((int)ViewBag.Pedigree[27].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[29].Name, "Details", new { Id = ((int)ViewBag.Pedigree[29].Id) }) 
                              }
                         </td>
-                    </tr>
-                    <tr>
-                         <td ROWSPAN="2"> @if (ViewBag.Pedigree[13].Name == "not known")
-                             {
-                                 <p></p>  
-                             }
-                             else
-                             {           
-                                @Html.ActionLink((string)ViewBag.Pedigree[13].Name, "Details", new { Id = ((int)ViewBag.Pedigree[13].Id) })
-                             }
-                         </td>
-                         <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[28].Name == "not known")
+						<td ROWSPAN="1" style="width:160px">  @if (ViewBag.Pedigree[60].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[28].Name, "Details", new { Id = ((int)ViewBag.Pedigree[28].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[60].Name, "Details", new { Id = ((int)ViewBag.Pedigree[60].Id) }) 
                              }
-                         </td>
-                    </tr>
-                    <tr>
-                        <td style="height:20px;table-layout:fixed">  @if (ViewBag.Pedigree[29].Name == "not known")
+                        </td>
+                     </tr>
+                     <tr>
+                        <td ROWSPAN="1" style="width:160px">  @if (ViewBag.Pedigree[61].Name == "not known")
                              {
                                  <p></p>  
                              }
                              else
                              {  
-                                @Html.ActionLink((string)ViewBag.Pedigree[29].Name, "Details", new { Id = ((int)ViewBag.Pedigree[29].Id) })
+                                @Html.ActionLink((string)ViewBag.Pedigree[61].Name, "Details", new { Id = ((int)ViewBag.Pedigree[61].Id) }) 
                              }
                         </td>
                     </tr>
