@@ -13,6 +13,7 @@ body {
             
                         
       }
+@media print{@page {size: landscape}}
 
 /*have all components within 1100 px*/
 .container-fluid {
@@ -152,10 +153,20 @@ p {
 }
 .country-list
 {
-    line-height: 22px;
+    line-height: 18px;
 }
 
+.tableCountry-list {
+   
+   border-color:aliceblue;
+   background-color: white;
+   border-radius: 14px;
+   width:100%;
+ }
 
+.tableCountry-list, td, th {
+    padding: 4px;
+ }
 
 /*Adjustments Dog Detail thumbnail on Home*/
 .thumbnail > img     {
@@ -192,8 +203,26 @@ p {
 {
     padding-top: 20px;
 }
+/*
+.testMate-ped {
+   background-color: white;
+   width:100%;
+ }
+
+.testMate-ped, td {
+    padding: 0px;
+ }
 
 
+.testMate-ped, td, th {
+    padding: 2px;
+ }
+
+.testMate-ped, td {
+   font-size: 11px;
+   padding: -1px;
+}
+*/
 /*************************/
 /*for Database tab (Search dog)*/
 /*************************/
@@ -247,11 +276,27 @@ input.search-query{
 .table-ped {
    background-color: white;
    width:100%;
+   
  }
 
-.table-ped, td, th {
-    padding: 4px;
+.table-ped,th {
+  
+  
  }
+
+
+.table-ped, td, th{
+    padding:0px 5px;
+    font-size:12px ;
+ }
+
+
+
+
+
+
+
+
 
 
 /*Adjustments for upper part of details*/
