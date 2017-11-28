@@ -654,6 +654,7 @@ namespace ISIC_DATA.Controllers
           //   result = result*100;
           //   inbreedingResult.Result = result;
              return inbreedingResult;
+
         }
 
 
