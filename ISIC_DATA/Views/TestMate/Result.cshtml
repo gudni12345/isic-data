@@ -1,18 +1,21 @@
-﻿
+﻿<div id="div_print">
     @if (ViewBag.commonAncestors.Count > 0)
     {
         <div>
-            <strong>Common ancestor(s):</strong><br />
+            <strong>Common ancestor(s):</strong>
             @foreach (var item in ViewBag.commonAncestors)
             {
                 if (item != "not known")
-                { <i>@item &nbsp; </i>}
+                { <i>@item, </i>}
             }
 
         
 
         </div>
     }
+	
+      
+
     <div class="tab-pane active t-padding" id="pedigree">
         <table class="table-ped" border="1">
 
@@ -23,15 +26,13 @@
               <tr >
               
                   <td rowspan="32" style="width:130px" >
-                       <strong>Planned Litter</strong>                       @if (ViewBag.totalValue != null)
-                       {
-
-                        <span style="color:green">
-                            <strong>Inbreeding coefficient = @ViewBag.totalValue %</strong><br /><br />
-                        </span>
-                       }
-
-</td>
+                       <strong>Planned Litter</strong> @if (ViewBag.totalValue != null)
+                   {        
+                                                       
+                            <span>Inbreeding coefficient @ViewBag.totalValue %</span><br /><br />
+                   }
+                  
+                   </td>
                       <td rowspan="16"><H5>Father </H5>
                                      @if (ViewBag.Pedigree[0].CommonAncestor){<span style="color:red"> @ViewBag.Pedigree[0].Name </span> }else{
                                      @ViewBag.Pedigree[0].Name }
@@ -353,8 +354,17 @@
                 </tr>
             </tbody>
         </table>
+		
+		<!--input name="b_print" type="button" class="ipt"   onClick="printdiv('div_print');" value=" Print "-->
+
+		
+
+		</div>
+		
+		</div>
         <br>
         <div>
-        <button type="button" onClick="window.print()" class="btn btn-primary pull-left btn-lg">Print pedigree</button>
+        <button type="button" onClick="printdiv('div_print');" class="btn btn-primary pull-left btn-lg">Print pedigree</button>
         </div>
     </div>
+
