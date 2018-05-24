@@ -33,7 +33,7 @@ namespace ISIC_DATA.Controllers
             ViewBag.numberOfDogsFrance = db.Dog.Where(m => m.BornInCountryId == 19).ToList().Count;
             ViewBag.numberOfDogsPoland = db.Dog.Where(m => m.BornInCountryId == 21).ToList().Count;
             ViewBag.numberOfDogsSwitzerland = db.Dog.Where(m => m.BornInCountryId == 10).ToList().Count;
-            ViewBag.numberOfDogsBelgium = db.Dog.Where(m => m.BornInCountryId == 18).ToList().Count
+            ViewBag.numberOfDogsBelgium = db.Dog.Where(m => m.BornInCountryId == 18).ToList().Count;
             ViewBag.numberOfDogsCanada= db.Dog.Where(m => m.BornInCountryId == 12).ToList().Count;
 
             var dogs = db.Dog.OrderByDescending(d => d.Litter.DateOfBirth).Where(d => d.PicturePath != null);
