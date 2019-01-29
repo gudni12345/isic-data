@@ -24,26 +24,15 @@
         <b>@Html.Label("Date of birth:", new { @class = "control-label" }) </b>
         @Html.TextBoxFor(model => model.DateOfBirth, new { id="dateOfBirth", @class = "datePicker", data_bind = "value: birth" })
 
+        <label>Father:</label>              
+        @Html.TextBoxFor(model => model.Father.Name, new { placeholder="Father name", @id="Father_typeahead"})
+        @Html.HiddenFor(model => model.FatherId, new { @id = "returnFatherId" })
       
-      
-        <label>Father:</label>
-        <div class="CustomTemplate">
-            @Html.TextBoxFor(model => model.Father.Reg, new { placeholder = "Father's Reg", id = "typeaheadFather" })
-            @Html.HiddenFor(model => model.FatherId, new { @id = "returnFatherId" })
-            @Html.TextBoxFor(model => model.Father.Name, new { id = "fatherName"     })
-            @Html.ValidationMessageFor(model => model.Father.Name)
-            @Html.ValidationMessageFor(model => model.FatherId)
-        </div>
 
         <label>Mother:</label>
-        <div class="CustomTemplate">
-            @Html.TextBoxFor(model => model.Mother.Reg, new { placeholder = "Mother's Reg", id = "typeaheadMother" })
-            @Html.HiddenFor(model => model.MotherId, new { @id = "returnMotherId" })
-            @Html.TextBoxFor(model => model.Mother.Name, new { id = "motherName" })
-            @Html.ValidationMessageFor(model => model.Mother.Name)
-            @Html.ValidationMessageFor(model => model.MotherId)
-        </div>
-
+        @Html.TextBoxFor(model => model.Mother.Name, new { placeholder = "Mother name", @id = "Mother_typeahead" })
+        @Html.HiddenFor(model => model.MotherId, new { @id = "returnMotherId" })
+      
 
         <label>Breeder:</label>
         @Html.TextBoxFor(model => model.Person.Name, new { placeholder = "Breeder name", @id = "Breeder_typeahead" })
