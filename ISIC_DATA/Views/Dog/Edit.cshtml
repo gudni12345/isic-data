@@ -65,7 +65,7 @@
                             @Html.HiddenFor(model => model.LitterId)
                         </div>
                         <div class="editor-field">
-                            @Html.TextBoxFor(model => model.Name, new { @readonly = "readonly" })
+                            @Html.TextBoxFor(model => model.Name)
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                         @Html.LabelFor(model => model.Reg)
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.Reg, new { @readonly = "readonly" })
+                        @Html.TextBoxFor(model => model.Reg)
                     </div>
                     <br />
                     <br />
@@ -85,7 +85,7 @@
                             </div>
                             <br />
                             <div class="editor-field">
-                                <b>@Html.TextBoxFor(model => model.Litter.DateOfBirth,  "{0:dd-MM-yyyy}",   new { @readonly = "readonly" })</b>
+                                <b>@Html.TextBoxFor(model => model.Litter.DateOfBirth,  "{0:dd-MM-yyyy}")</b>
                             </div>
                         </div>
                         <div class="editor-label">
