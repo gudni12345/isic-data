@@ -34,7 +34,7 @@ namespace ISIC_DATA.Models
         public Nullable<int> ColorId { get; set; }
         public virtual Color Color { get; set; }
 
-       public Nullable<int> PersonId { get; set; }
+        public Nullable<int> PersonId { get; set; }
         public virtual Person Person { get; set; } 
 
         public Nullable<int> BornInCountryId { get; set; }
@@ -48,6 +48,7 @@ namespace ISIC_DATA.Models
         
         public String Eyes { get; set; }
         public string Comment { get; set; }
+        public string Gender { get; set; }
         public string Hair { get; set; }
 
         [MaxLength(20)]
