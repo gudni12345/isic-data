@@ -7,6 +7,7 @@
 }
 
 @using (Html.BeginForm("Edit", "Dog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
 {
 
     @Html.AntiForgeryToken()
@@ -93,7 +94,8 @@
                         </div>
                         <br />
                         <div class="editor-field">
-                            <b>@Html.TextBoxFor(model => model.BornInCountry.Name, new { @readonly = "readonly" })</b>
+                            @Html.DropDownList("BornInCountryId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.BornInCountryId)
                         </div>
                         @Html.HiddenFor(model => model.Sex)
                         @Html.HiddenFor(model => model.BornInCountryId)
@@ -101,7 +103,7 @@
                 </div>
             </div>
         </div>
-
+       
         <div class="row-fluid">
             <div class="span12">
             </div>
