@@ -23,7 +23,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
-
+    <!--
     <div class="display-label">
          @Html.DisplayNameFor(model => model.ColorComment)
     </div>
@@ -59,8 +59,9 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Person.Name)
     </div>
-
+-->
     </fieldset>
+<br />
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
