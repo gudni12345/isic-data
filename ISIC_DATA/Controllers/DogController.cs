@@ -273,7 +273,7 @@ namespace ISIC_DATA.Controllers
 
         //
         // GET: /Dog/Delete/5
-        [Authorize(Roles = "SuperAdministrator")] 
+       [Authorize(Roles = "Administrator,SuperAdministrator")]
         public ActionResult Delete(int id = 0)
         {           
             Dog dog = db.FindDog(id);
@@ -289,7 +289,7 @@ namespace ISIC_DATA.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "SuperAdministrator")] 
+        [Authorize(Roles = "Administrator,SuperAdministrator")] 
         public ActionResult DeleteConfirmed(int id)
         {            
          //   Dog dog = db.FindDog(id);
