@@ -76,15 +76,12 @@
                     <div class="editor-field">
                         @Html.TextBoxFor(model => model.Reg)
                     </div>
-                    <br />
-                    <br />
-
                     <div class="row-fluid">
                         <div class="span6">
                             <div class="editor-label">
-                                Date of birth  
+                                Date of birth (dd-mm-yyy)
                             </div>
-                            <br />
+                        
                             <div class="editor-field">
                                 <b>@Html.TextBoxFor(model => model.Litter.DateOfBirth,  "{0:dd-MM-yyyy}")</b>
                             </div>
@@ -92,7 +89,7 @@
                         <div class="editor-label">
                             Born in
                         </div>
-                        <br />
+              
                         <div class="editor-field">
                             @Html.DropDownList("BornInCountryId", String.Empty)
                             @Html.ValidationMessageFor(model => model.BornInCountryId)
@@ -100,7 +97,8 @@
                         @Html.HiddenFor(model => model.Sex)
                         @Html.HiddenFor(model => model.BornInCountryId)
                     </div>
-                </div>
+
+                         </div>
             </div>
         </div>
        
@@ -157,12 +155,13 @@
                             </div>
                             <div class="editor-label">
                                 Sex
-                                <a href="#" id="sex" class="btn-mini btn-warning" rel="popover" data-content="Only if the gender need to be corrected" data-original-title="Hair:">i</a>
+                                <a href="#" id="color" class="btn-mini btn-warning" rel="popover" data-content="Only if the gender need to be corrected.  Use only F(Female) or M(Male)" data-original-title="Sex:">i</a>
                             </div>
                             <div class="editor-field">
                                 @Html.EditorFor(model => model.Sex)
                                 @Html.ValidationMessageFor(model => model.Sex)
                             </div>
+                      
                         </div>
                         <!--second row left - second column-->
                         <div class="span6">
