@@ -19,7 +19,7 @@
     <div class="span4">
         <div class="thumbnail admin-thumb">
             <p>Add or edit information of a <b>certain dog</b> (use also link above)</p><br />
-            <a class="btn btn-success" href="Dog">Edit dog»</a><br /><br />
+            <a class="btn btn-success" href="Dog">Edit or delete dog»</a><br /><br />
         </div><br />
      </div>
      <div class="span4">
@@ -32,14 +32,15 @@
    
   <div class="row-fluid">
    
-    @if(User.IsInRole("SuperAdministrator"))  {
+   
      <div class="span4">
        <div class="thumbnail admin-thumb">
-            <p>Edit the <b>birthday<b /> or <b>breeder<b /> of a whole litter</p><br />
+            <p>Edit the <b>birthday</b> or <b>breeder</b> of a whole litter</p><br />
             <a class="btn btn-success" href="Litter">Edit Litter»</a><br /><br />
         </div><br />
        </div>
-    
+    @if (User.IsInRole("SuperAdministrator"))
+    {
       <div class="span4">
        <div class="thumbnail admin-thumb">
             <p>If you want to <b>Edit a Color</b> click here:</p><br />
