@@ -85,8 +85,13 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
         </td>
-        } 
-    </tr>
+        }
+        @if (User.IsInRole("Administrator")){
+        <td>
+            @Html.ActionLink("Delete","Delete",new { id = item.Id },new { onclick = "return confirm('Are you sure you wish to delete this dog?');" })
+        </td>
+        }
+</tr>
 }
 
 </table>
