@@ -135,6 +135,7 @@ namespace ISIC_DATA.Controllers
                 litter.UsersId = uId;                               // Saving User that changed the litter.
 
                 db.Entry(litter).State = EntityState.Modified;
+                //db.UpdateLitter(litter);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -171,9 +172,9 @@ namespace ISIC_DATA.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+         db.Dispose();
+        base.Dispose(disposing);
+       }
 
         public JsonResult FetchBreeders(string q)                                   //     Get all posible Breeders to json, used for typeAhead
         {
